@@ -1,3 +1,4 @@
+import {describeNode} from './node-descriptions.js';
 import {isAssignable,TypeRegistry} from './types.js';
 import type {Catalog,CodecDefinition,Flow,FlowNode,NodeDefinition,TypeRef,TypeDocument} from './model.js';
 import {canonicalJson,isTransportable} from './transport.js';
@@ -6,7 +7,7 @@ import {valueCodecDefinition} from './value-codecs.js';
 
 export const coalesceType='Standard.Values.Coalesce';
 export const valueNodeType=(id:string)=>coalesceType;
-export function valueNodeDefinition(node:FlowNode):NodeDefinition {
+function valueNodeDefinitionCore(node:FlowNode):NodeDefinition {
   const binding=node.value;
   if(binding&&binding.operation!=='coalesce')return generalValueDefinition(node);
   if(!binding||binding.operation!=='coalesce'||node.type!==valueNodeType(node.id)||node.typeVersion!==1||node.graph||node.query||binding.member!==undefined||binding.result!==undefined||binding.fields!==undefined||binding.count!==undefined||['null','nullable','optional'].includes(binding.type.kind))throw new Error('Ungültige Coalesce-Spezialisierung: T muss einen vorhandenen, nicht-nullfähigen Wert beschreiben.');
@@ -107,3 +108,5 @@ export function inferValueNode(node:FlowNode,flow:Flow,definition:(node:FlowNode
   }
   return before!==canonicalJson(node.value.type);
 }
+
+export function valueNodeDefinition(node:FlowNode):NodeDefinition {return describeNode(valueNodeDefinitionCore(node));}

@@ -1,3 +1,4 @@
+import {describeNode} from './node-descriptions.js';
 import {dictionaryShape} from './dictionaries.js';
 import {supportsValueOrder} from './value-order.js';
 import {supportsValueEquality} from './value-equality.js';
@@ -7,7 +8,7 @@ import {canonicalJson,isTransportable} from './transport.js';
 import {jsonValueType,jsonSupports} from './json-values.js';
 export const generalValueOperations=['dictCreate','dictGet','dictTryGet','dictSet','dictRemove','dictContainsKey','dictKeys','dictValues','ternary','input','output','null','isNull','isMissing','require','hasField','removeField','merge','getProperty','record','withFields','list','count','getItem','addItem','addRange','insertItem','insertRange','setItem','removeAt','removeRange','clear','removeItem','removeAll','tryGetItem','first','last','tryFirst','tryLast','single','trySingle','contains','indexOf','lastIndexOf','isEmpty','skip','take','slice','reverse','chunk','flatten','sort','distinct','union','intersect','except','zip','sum','average','min','max','jsonFrom','jsonTo'] as const;
 export const generalValueNodeType=(id:string,operation:string)=>valueNames[operation as keyof typeof valueNames];
-export function generalValueDefinition(node:FlowNode):NodeDefinition {
+function generalValueDefinitionCore(node:FlowNode):NodeDefinition {
   const b=node.value!,t=structuredClone(b.type);
   function require(value:unknown,message:string):asserts value{if(!value)throw new Error(message);}
   require(generalValueOperations.some(op=>op===b.operation)&&node.type===generalValueNodeType(node.id,b.operation)&&node.typeVersion===1&&!node.graph&&!node.query,'Invalid value specialization.');
@@ -159,3 +160,5 @@ export function generalValueDefault(operation:ValueNodeBinding['operation']):Val
 export function generalValueTemplates():NodeDefinition[]{
   return generalValueOperations.map(operation=>{const {value,nodeId,...definition}=generalValueDefinition({id:'template',type:generalValueNodeType('template',operation),typeVersion:1,environment:'server',config:{},value:generalValueDefault(operation)});return {...definition,type:valueNames[operation]};});
 }
+
+export function generalValueDefinition(node:FlowNode):NodeDefinition {return describeNode(generalValueDefinitionCore(node));}

@@ -7,7 +7,8 @@ public static class TemplateNodes
 {
     public static readonly string[] Operations = ["execute", "byId", "default", "fromModel"];
     public static string? Operation(string type) => Operations.FirstOrDefault(operation => type == NodeNames.Template(operation));
-    public static NodeDefinition Definition(string type, TypeRef? parameters = null)
+    public static NodeDefinition Definition(string type, TypeRef? parameters = null) => NodeDescriptions.Describe(DefinitionCore(type, parameters));
+    private static NodeDefinition DefinitionCore(string type, TypeRef? parameters = null)
     {
         var operation = Operation(type) ?? throw new InvalidOperationException("Unknown template operation.");
         parameters ??= new("object", Fields: []);

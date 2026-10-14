@@ -1,3 +1,4 @@
+import {describeNode} from '@adam-flow/core/flow-core/node-descriptions.js';
 import {validateConfig} from '@adam-flow/core/flow-core/config.js';
 import {inputFieldsType,resolveInputFields} from '../ui/input-fields.js';
 import {options,validateOptions} from '../ui/step-values.js';
@@ -21,7 +22,7 @@ export const fileType:TypeRef={kind:'object',fields:{name:text,mimeType:text,siz
 export const stepNames={SelectOptions:'Optionen auswählen',SelectFiles:'Dateien auswählen',Signature:'Unterschrift erfassen',Checklist:'Checkliste bestätigen',Table:'Tabelle anzeigen',EditTable:'Tabelle bearbeiten',Message:'Hinweis anzeigen',Confirm:'Ja/Nein abfragen',ChooseAction:'Aktion auswählen',Input:'Werte eingeben',SelectRecord:'Datensatz auswählen',SelectRecords:'Datensätze auswählen',RecordDetails:'Datensatzmaske öffnen',Preview:'Vorschau anzeigen'};
 export const isStep=(type:string)=>Object.keys(stepNames).some(name=>type===`Frontend.UI.${name}`);
 const configText=(label:string,value:string,options?:string[]):ConfigField=>({type:'string',label,default:value,...(options?{options}:{})});
-export function stepDefinition(node:FlowNode):NodeDefinition {
+function stepDefinitionCore(node:FlowNode):NodeDefinition {
   if(!isStep(node.type)||node.environment!=='browser'||node.typeVersion!==1)throw new Error('Ungültiger Interaktionsschritt.');
   const operation=node.type.slice('Frontend.UI.'.length) as keyof typeof stepNames;
   const inputs:Record<string,TypeRef>={title:text,subtitle:optional(text),htmlContent:optional(text),icon:optional(text),dialogOptions:optional(dialogOptionsType)};
@@ -69,7 +70,7 @@ export function stepDefinition(node:FlowNode):NodeDefinition {
   if(operation==='Preview'){inputs.content=text;inputs.subject=optional(text);config.format=configText('Format','html',['html','pdf','email','sms']);}
   for(const [key,field] of Object.entries(config))if(!inputs[key])inputs[key]=optional(field.type==='boolean'?bool:field.type==='number'?{kind:'scalar',name:'core.Integer'}:text);
   const labels:Record<string,string>={fields:'Feldkonfiguration',options:'Optionen / Prüfpunkte',files:'Dateien',image:'Unterschrift (PNG)',rows:'Zeilen',columns:'Spalten',selectedRows:'Ausgewählte Zeilen',selectedIndices:'Ausgewählte Zeilenindizes',title:'Titel',subtitle:'Untertitel',htmlContent:'HTML-Inhalt',icon:'Icon',dialogOptions:'Dialogoptionen',buttons:'Aktionsbuttons',data:'Daten',filter:'Filter',selected:'Vorauswahl',id:'Datensatz-ID',ids:'Datensatz-IDs',content:'Inhalt',subject:'Betreff',action:'Aktion',cancelled:'Abgebrochen',confirmed:'Bestätigt'};
-  return {type:node.type,version:1,nodeId:node.id,environments:['browser'],inputs,outputs,config,control:{input:true,output:true,start:false},...(operation==='Input'||isTableStep(node.type)?{ui:structuredClone(node.ui)}:{}),metadata:{label:stepNames[operation],category:'Frontend/Prozessschritte',description:'Wartet auf die Abschlussaktion des Benutzers. Abbrechen liefert cancelled=true; ein Laufabbruch beendet die Ausführung.',inputs:Object.fromEntries(Object.keys(inputs).map(key=>[key,{label:labels[key]??config[key]?.label??key,...(key==='htmlContent'?{editor:{kind:'html' as const,editors:['monaco' as const,'tinymce' as const]}}:{})}])),outputs:Object.fromEntries(Object.keys(outputs).map(key=>[key,{label:labels[key]??key}]))}};
+  return {type:node.type,version:1,nodeId:node.id,environments:['browser'],inputs,outputs,config,control:{input:true,output:true,start:false},...(operation==='Input'||isTableStep(node.type)?{ui:structuredClone(node.ui)}:{}),metadata:{label:stepNames[operation],category:'Frontend/Prozessschritte',inputs:Object.fromEntries(Object.keys(inputs).map(key=>[key,{label:labels[key]??config[key]?.label??key,...(key==='htmlContent'?{editor:{kind:'html' as const,editors:['monaco' as const,'tinymce' as const]}}:{})}])),outputs:Object.fromEntries(Object.keys(outputs).map(key=>[key,{label:labels[key]??key}]))}};
 }
 /** Only these nodes construct the presentation; authors configure ports and typed fields. */
 export function stepInteraction(definition:NodeDefinition,inputs:Readonly<Record<string,unknown>>,config:Readonly<Record<string,unknown>>):Interaction {
@@ -168,6 +169,8 @@ export function stepNodes(host?:FlowInteractionHost){return Object.keys(stepName
 
 /** Buttons are data: their values and the final list can be assembled by any flow. */
 export const buttonNode={
-  definition:{type:'Frontend.UI.Button',version:1,environments:['browser'],inputs:{id:text,label:text,icon:optional(text),disabled:optional(bool),visible:optional(bool)},outputs:{value:buttonType},metadata:{label:'Aktionsbutton erstellen',category:'Frontend/Prozessschritte',description:'Erzeugt ein Button-Objekt. Mehrere Buttons mit Liste erstellen zusammenstellen und an eine Interaktions-Node übergeben.',inputs:{id:{label:'Aktions-ID'},label:{label:'Beschriftung'},icon:{label:'Icon'},disabled:{label:'Deaktiviert'},visible:{label:'Sichtbar'}},outputs:{value:{label:'Button'}}}} as NodeDefinition,
+  definition:describeNode({type:'Frontend.UI.Button',version:1,environments:['browser'],inputs:{id:text,label:text,icon:optional(text),disabled:optional(bool),visible:optional(bool)},outputs:{value:buttonType},metadata:{label:'Aktionsbutton erstellen',category:'Frontend/Prozessschritte',description:'Erzeugt ein Button-Objekt. Mehrere Buttons mit Liste erstellen zusammenstellen und an eine Interaktions-Node übergeben.',inputs:{id:{label:'Aktions-ID'},label:{label:'Beschriftung'},icon:{label:'Icon'},disabled:{label:'Deaktiviert'},visible:{label:'Sichtbar'}},outputs:{value:{label:'Button'}}}} as NodeDefinition),
   execute:(inputs:Readonly<Record<string,unknown>>)=>({value:validateButtons([{id:inputs.id as string,label:inputs.label as string,...(inputs.icon!==undefined?{icon:String(inputs.icon)}:{}),disabled:inputs.disabled===true,visible:inputs.visible!==false}])[0]})
 };
+
+export function stepDefinition(node:FlowNode):NodeDefinition {return describeNode(stepDefinitionCore(node));}

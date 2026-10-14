@@ -1,3 +1,4 @@
+import {describeNode} from './node-descriptions.js';
 import {efDefinition} from './ef-nodes.js';
 import {queryNames} from './node-names.js';
 import {resolveDefinition} from './node-resolution.js';
@@ -16,7 +17,7 @@ export function queryOperation(node:Pick<NodeDefinition,'type'|'query'>):QueryNo
 }
 export const queryNodeType=(id:string,operation:string)=>queryNames[operation as keyof typeof queryNames];
 export const queryPredicate=(operation:string)=>['where','all'].includes(operation);
-export function queryNodeDefinition(node:FlowNode):NodeDefinition {
+function queryNodeDefinitionCore(node:FlowNode):NodeDefinition {
   const binding=node.query;
   if(!binding||!Object.hasOwn(labels,binding.operation)||node.type!==queryNodeType(node.id,binding.operation)||node.typeVersion!==1||node.environment!=='server'||node.graph||
     (['select','groupBy'].includes(binding.operation)?!binding.result:binding.result!==undefined))throw new Error('Ungültige Query-Spezialisierung.');
@@ -126,3 +127,5 @@ export function inferQueryNodes(flow:Flow,catalog:Catalog,types?:TypeDocument):v
     if(!changed)return;
   }
 }
+
+export function queryNodeDefinition(node:FlowNode):NodeDefinition {return describeNode(queryNodeDefinitionCore(node));}

@@ -22,7 +22,9 @@ public static class EntityNodeFactory
         var entity = new PortType(metadata.TypeId, typeof(T), new("entity", Name: metadata.TypeId));
         return new(new(metadata.GetNodeType, metadata.NodeVersion,
             new Dictionary<string, PortType> { ["id"] = ContactDemo.StringType },
-            new Dictionary<string, PortType> { ["contact"] = entity }),
+            new Dictionary<string, PortType> { ["contact"] = entity },
+            new(Description: "Lädt eine native Entity anhand ihrer ID; eine unbekannte ID führt zu einem Fehler.",
+                Inputs: new() { ["id"] = new(Description: "ID der zu ladenden Entity im Repository.") })),
             inputs => new Dictionary<string, object> { ["contact"] = getById((string)inputs["id"]) });
     }
 }

@@ -5,7 +5,8 @@ namespace Adam.Flow2.Contracts;
 /// <summary>Canonical browser UI contracts, specialized independently for each graph instance.</summary>
 public static class PageNodes
 {
-    public static NodeDefinition Definition(FlowNode node)
+    public static NodeDefinition Definition(FlowNode node) => NodeDescriptions.Describe(DefinitionCore(node));
+    private static NodeDefinition DefinitionCore(FlowNode node)
     {
         if(node.Type is "Frontend.UI.Input" or "Frontend.UI.Table" or "Frontend.UI.EditTable")return InputDefinition(node);
         if(node.Type is not ("Frontend.UI.ShowPage" or "Frontend.UI.ShowDialog") || node.TypeVersion!=1 ||

@@ -1,3 +1,4 @@
+import {describeNode} from './node-descriptions.js';
 import {joinDefinition,joinSlotSignature} from './graph-joins.js';
 import {supportsValueOrder} from './value-order.js';
 import {supportsValueEquality} from './value-equality.js';
@@ -32,7 +33,7 @@ export function graphSlotSignature(binding:GraphNodeBinding,slot:string):FlowInt
   }
   return signature;
 }
-export function graphControlDefinition(node:FlowNode):NodeDefinition {
+function graphControlDefinitionCore(node:FlowNode):NodeDefinition {
   const b=node.graph!,signature=b.signature;
   function require(value:unknown,message:string):asserts value{if(!value)throw new Error(message);}
   require(isGraphControl(b.operation)&&b.graphId===undefined,'Control nodes require explicit typed graph inputs.');
@@ -100,3 +101,5 @@ export function whileLimit(node:FlowNode):number {
   if(typeof limit!=='number'||!Number.isInteger(limit)||limit<1||limit>500)throw new Error('While maxIterations must be an integer between 1 and 500.');
   return limit;
 }
+
+export function graphControlDefinition(node:FlowNode):NodeDefinition {return describeNode(graphControlDefinitionCore(node));}

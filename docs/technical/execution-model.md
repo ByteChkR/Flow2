@@ -9,3 +9,5 @@ Der Compiler baut einen deterministischen Plan und gliedert einen kombinierten G
 Die Backend-Runtime führt vorbereitete Ausdrücke mit Jint aus. Jint erhält nur den generierten Wrapper und kontrollierte Host-Aufrufe, keine freie CLR-Interop. Konfiguration und Werte werden nicht als JavaScript-Quelltext eingebettet. Der Browser verwendet ebenfalls generierte, kontrollierte Aufrufe. Beide Seiten prüfen Ein- und Ausgaben gegen die Registry.
 
 Bei koordinierter Ausführung koordiniert der Backend-Host Session, Segmentauftrag, Fortschritt und Abschluss. Browsersegmente erhalten nur die dafür vorgesehenen transportierten Eingangswerte und melden ihre Ausgangswerte oder einen Fehler zurück. Lokale Browserläufe verwenden keinen HTTP-Transport.
+
+Die vollständige Zustandsmaschine, der Segmentaustausch, die Subgraph-Hierarchie und die Freigabe eines validierten Bundles sind unter [Laufzeit-Pipeline](runtime-pipeline.html) beschrieben. Caches und Profiling sind unter [Optimierungen und Benchmarks](optimizations.html) dokumentiert.

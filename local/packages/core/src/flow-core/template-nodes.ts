@@ -1,10 +1,11 @@
+import {describeNode} from './node-descriptions.js';
 import {templateNames} from './node-names.js';
 import type {Catalog,Flow,FlowNode,NodeDefinition,TypeRef} from './model.js';
 import {canonicalJson,isTransportable} from './transport.js';
 import {parseContract} from './schema.js';
 
 export function templateOperation(type:string):string|undefined{return Object.entries(templateNames).find(([,name])=>name===type)?.[0];}
-export function templateNodeDefinition(node:FlowNode):NodeDefinition {
+function templateNodeDefinitionCore(node:FlowNode):NodeDefinition {
   const operation=templateOperation(node.type);
   if(!operation||node.environment!=='server'||node.typeVersion!==1)throw new Error('Ungültige Template-Node.');
   const parameters:TypeRef=node.config.parameterType?parseContract('type',String(node.config.parameterType)):{kind:'object',fields:{}};
@@ -42,3 +43,5 @@ export function inferTemplateNodes(flow:Flow,definition:(node:FlowNode)=>NodeDef
   }
   return changed;
 }
+
+export function templateNodeDefinition(node:FlowNode):NodeDefinition {return describeNode(templateNodeDefinitionCore(node));}

@@ -6,7 +6,8 @@ public static class GeneralValueNodes
 {
     public static readonly string[] Operations=["dictCreate","dictGet","dictTryGet","dictSet","dictRemove","dictContainsKey","dictKeys","dictValues","ternary","input","output","null","isNull","isMissing","require","hasField","removeField","merge","getProperty","record","withFields","list","count","getItem","addItem","addRange","insertItem","insertRange","setItem","removeAt","removeRange","clear","removeItem","removeAll","tryGetItem","first","last","tryFirst","tryLast","single","trySingle","contains","indexOf","lastIndexOf","isEmpty","skip","take","slice","reverse","chunk","flatten","sort","distinct","union","intersect","except","zip","sum","average","min","max","jsonFrom","jsonTo"];
     public static string NodeType(string id,string operation)=>NodeNames.Value(operation);
-    public static NodeDefinition Definition(FlowNode node)
+    public static NodeDefinition Definition(FlowNode node) => NodeDescriptions.Describe(DefinitionCore(node));
+    private static NodeDefinition DefinitionCore(FlowNode node)
     {
         var b=node.Value!;var t=b.Type;
         void Require(bool test,string message){if(!test)throw new ContractException([new("value_binding","/flow/nodes/"+node.Id,message)]);}

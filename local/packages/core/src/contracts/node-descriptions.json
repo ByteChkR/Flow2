@@ -1,0 +1,3086 @@
+{
+  "Standard.Convert.ByteArrayToBase64": {
+    "description": "Kodiert eine Byte-Liste als Base64-Text.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert."
+    }
+  },
+  "Standard.Convert.Base64ToByteArray": {
+    "description": "Dekodiert Base64-Text in eine Byte-Liste; ungültige Eingaben führen zu einem Fehler.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert."
+    }
+  },
+  "Standard.JSON.Parse": {
+    "description": "Parst JSON-Text in einen JSON-Wert; ungültiges JSON führt zu einem Fehler.",
+    "inputs": {
+      "text": "Eingabetext der Operation."
+    }
+  },
+  "Standard.JSON.Stringify": {
+    "description": "Serialisiert einen JSON-Wert als JSON-Text.",
+    "inputs": {
+      "value": "JSON-Wert bzw. typisierter Quellwert der Konvertierung."
+    }
+  },
+  "Standard.JSON.GetField": {
+    "description": "Liest ein benanntes Feld aus einem JSON-Objekt; bei einem fehlenden Feld fehlt auch der Ausgang value.",
+    "inputs": {
+      "value": "JSON-Wert bzw. typisierter Quellwert der Konvertierung.",
+      "name": "Exakter Name des gesuchten oder zu ändernden Felds."
+    }
+  },
+  "Standard.JSON.TryParse": {
+    "description": "Parst JSON-Text; bei ungültigem JSON ist found=false und value fehlt.",
+    "inputs": {
+      "text": "Eingabetext der Operation."
+    }
+  },
+  "Standard.JSON.HasField": {
+    "description": "Prüft, ob ein JSON-Objekt das benannte Feld besitzt.",
+    "inputs": {
+      "value": "JSON-Wert bzw. typisierter Quellwert der Konvertierung.",
+      "name": "Exakter Name des gesuchten oder zu ändernden Felds."
+    }
+  },
+  "Standard.JSON.RemoveField": {
+    "description": "Liefert das JSON-Objekt ohne das benannte Feld.",
+    "inputs": {
+      "value": "JSON-Wert bzw. typisierter Quellwert der Konvertierung.",
+      "name": "Exakter Name des gesuchten oder zu ändernden Felds."
+    }
+  },
+  "Standard.JSON.GetPath": {
+    "description": "Liest einen JSON-Wert über den angegebenen Pfad.",
+    "inputs": {
+      "value": "JSON-Wert bzw. typisierter Quellwert der Konvertierung.",
+      "path": "JSON-Pointer-Pfad, z. B. /items/0/name; ~0 steht für ~, ~1 für /. Leer adressiert das gesamte Dokument."
+    }
+  },
+  "Standard.JSON.SetField": {
+    "description": "Liefert das JSON-Objekt mit dem gesetzten oder überschriebenen Feld.",
+    "inputs": {
+      "value": "JSON-Wert bzw. typisierter Quellwert der Konvertierung.",
+      "name": "Exakter Name des gesuchten oder zu ändernden Felds.",
+      "field": "JSON-Wert, der in das benannte Feld geschrieben wird."
+    }
+  },
+  "Standard.Values.Constant.Decimal": {
+    "description": "Liefert den in der Node-Konfiguration gespeicherten Decimal-Wert.",
+    "inputs": {}
+  },
+  "Standard.Values.Constant.Bool": {
+    "description": "Liefert den in der Node-Konfiguration gespeicherten Bool-Wert.",
+    "inputs": {}
+  },
+  "Standard.Values.Constant.Integer": {
+    "description": "Liefert den in der Node-Konfiguration gespeicherten Integer-Wert.",
+    "inputs": {}
+  },
+  "Standard.Values.Constant.Guid": {
+    "description": "Liefert den in der Node-Konfiguration gespeicherten Guid-Wert.",
+    "inputs": {}
+  },
+  "Standard.Values.Constant.TimeSpan": {
+    "description": "Liefert den in der Node-Konfiguration gespeicherten TimeSpan-Wert.",
+    "inputs": {}
+  },
+  "Standard.Math.Decimal.Add": {
+    "description": "Addiert left und right.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Math.Decimal.Subtract": {
+    "description": "Subtrahiert right von left.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Math.Decimal.Multiply": {
+    "description": "Multipliziert left mit right.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Math.Decimal.Divide": {
+    "description": "Dividiert left durch right; Division durch null schlägt fehl.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Math.Integer.Add": {
+    "description": "Addiert left und right.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Math.Integer.Subtract": {
+    "description": "Subtrahiert right von left.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Math.Integer.Multiply": {
+    "description": "Multipliziert left mit right.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Math.Integer.Divide": {
+    "description": "Dividiert left durch right; Division durch null schlägt fehl.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Math.Decimal.Round": {
+    "description": "Rundet einen Dezimalwert auf die angegebene Anzahl Nachkommastellen.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert.",
+      "digits": "Anzahl der Nachkommastellen für die Rundung."
+    }
+  },
+  "Standard.Logic.And": {
+    "description": "Liefert true, wenn beide Werte true sind.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Logic.Or": {
+    "description": "Liefert true, wenn mindestens ein Wert true ist.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Logic.Xor": {
+    "description": "Liefert true, wenn genau einer der Werte true ist.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Logic.Not": {
+    "description": "Kehrt den booleschen Wert um.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert."
+    }
+  },
+  "Standard.Compare.Bool.Equals": {
+    "description": "Prüft, ob left und right gleich sind.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.Bool.NotEquals": {
+    "description": "Prüft, ob left und right verschieden sind.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.Integer.Equals": {
+    "description": "Prüft, ob left und right gleich sind.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.Integer.NotEquals": {
+    "description": "Prüft, ob left und right verschieden sind.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.Integer.GreaterThan": {
+    "description": "Prüft, ob left größer als right ist.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.Integer.GreaterOrEqual": {
+    "description": "Prüft, ob left größer oder gleich right ist.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.Integer.LessThan": {
+    "description": "Prüft, ob left kleiner als right ist.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.Integer.LessOrEqual": {
+    "description": "Prüft, ob left kleiner oder gleich right ist.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.Guid.Equals": {
+    "description": "Prüft, ob left und right gleich sind.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.Guid.NotEquals": {
+    "description": "Prüft, ob left und right verschieden sind.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.TimeSpan.Equals": {
+    "description": "Prüft, ob left und right gleich sind.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.TimeSpan.NotEquals": {
+    "description": "Prüft, ob left und right verschieden sind.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.TimeSpan.GreaterThan": {
+    "description": "Prüft, ob left größer als right ist.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.TimeSpan.GreaterOrEqual": {
+    "description": "Prüft, ob left größer oder gleich right ist.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.TimeSpan.LessThan": {
+    "description": "Prüft, ob left kleiner als right ist.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.TimeSpan.LessOrEqual": {
+    "description": "Prüft, ob left kleiner oder gleich right ist.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.DateTimeOffset.Equals": {
+    "description": "Prüft, ob left und right gleich sind.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.DateTimeOffset.NotEquals": {
+    "description": "Prüft, ob left und right verschieden sind.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.DateTimeOffset.GreaterThan": {
+    "description": "Prüft, ob left größer als right ist.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.DateTimeOffset.GreaterOrEqual": {
+    "description": "Prüft, ob left größer oder gleich right ist.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.DateTimeOffset.LessThan": {
+    "description": "Prüft, ob left kleiner als right ist.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.DateTimeOffset.LessOrEqual": {
+    "description": "Prüft, ob left kleiner oder gleich right ist.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.Decimal.Equals": {
+    "description": "Prüft, ob left und right gleich sind.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.Decimal.NotEquals": {
+    "description": "Prüft, ob left und right verschieden sind.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.Decimal.GreaterThan": {
+    "description": "Prüft, ob left größer als right ist.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.Decimal.GreaterOrEqual": {
+    "description": "Prüft, ob left größer oder gleich right ist.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.Decimal.LessThan": {
+    "description": "Prüft, ob left kleiner als right ist.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.Decimal.LessOrEqual": {
+    "description": "Prüft, ob left kleiner oder gleich right ist.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.String.Equals": {
+    "description": "Prüft, ob left und right gleich sind.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Compare.String.NotEquals": {
+    "description": "Prüft, ob left und right verschieden sind.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Text.Join": {
+    "description": "Verbindet die Texte einer Liste mit einem Trennzeichen.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge.",
+      "separator": "Trennzeichen zwischen den Textabschnitten."
+    }
+  },
+  "Standard.Text.Concat": {
+    "description": "Hängt right an left an.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Text.Contains": {
+    "description": "Prüft, ob left den Text right enthält.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Text.StartsWith": {
+    "description": "Prüft, ob left mit right beginnt.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Text.EndsWith": {
+    "description": "Prüft, ob left mit right endet.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Text.Replace": {
+    "description": "Ersetzt Vorkommen des Suchtexts durch den Ersatztext.",
+    "inputs": {
+      "value": "Text, auf den die Operation angewendet wird.",
+      "search": "Gesuchter Text; kein regulärer Ausdruck.",
+      "replacement": "Text, der die gefundenen Vorkommen ersetzt."
+    }
+  },
+  "Standard.Text.Trim": {
+    "description": "Entfernt Leerraum am Anfang und Ende des Texts.",
+    "inputs": {
+      "value": "Text, auf den die Operation angewendet wird."
+    }
+  },
+  "Standard.Date.AddDuration": {
+    "description": "Addiert eine Zeitspanne zum Zeitpunkt.",
+    "inputs": {
+      "value": "Zeitpunkt einschließlich UTC-Offset.",
+      "duration": "Zum Zeitpunkt zu addierende Zeitspanne; negative Werte verschieben rückwärts."
+    }
+  },
+  "Standard.Date.Difference": {
+    "description": "Berechnet die Zeitspanne left minus right.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Convert.Bool.Parse": {
+    "description": "Liest einen Bool-Wert aus dem kanonischen Textformat. Ungültiger Text führt zu einem Fehler.",
+    "inputs": {
+      "value": "Zu lesender Text im kanonischen Format des Zieltyps."
+    }
+  },
+  "Standard.Convert.Bool.ToString": {
+    "description": "Wandelt einen Bool-Wert in sein kanonisches Textformat um.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert."
+    }
+  },
+  "Standard.Convert.Integer.Parse": {
+    "description": "Liest einen Integer-Wert aus dem kanonischen Textformat. Ungültiger Text führt zu einem Fehler.",
+    "inputs": {
+      "value": "Zu lesender Text im kanonischen Format des Zieltyps."
+    }
+  },
+  "Standard.Convert.Integer.ToString": {
+    "description": "Wandelt einen Integer-Wert in sein kanonisches Textformat um.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert."
+    }
+  },
+  "Standard.Convert.Decimal.Parse": {
+    "description": "Liest einen Decimal-Wert aus dem kanonischen Textformat. Ungültiger Text führt zu einem Fehler.",
+    "inputs": {
+      "value": "Zu lesender Text im kanonischen Format des Zieltyps."
+    }
+  },
+  "Standard.Convert.Decimal.ToString": {
+    "description": "Wandelt einen Decimal-Wert in sein kanonisches Textformat um.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert."
+    }
+  },
+  "Standard.Convert.Guid.Parse": {
+    "description": "Liest einen Guid-Wert aus dem kanonischen Textformat. Ungültiger Text führt zu einem Fehler.",
+    "inputs": {
+      "value": "Zu lesender Text im kanonischen Format des Zieltyps."
+    }
+  },
+  "Standard.Convert.Guid.ToString": {
+    "description": "Wandelt einen Guid-Wert in sein kanonisches Textformat um.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert."
+    }
+  },
+  "Standard.Convert.TimeSpan.Parse": {
+    "description": "Liest einen TimeSpan-Wert aus dem kanonischen Textformat. Ungültiger Text führt zu einem Fehler.",
+    "inputs": {
+      "value": "Zu lesender Text im kanonischen Format des Zieltyps."
+    }
+  },
+  "Standard.Convert.TimeSpan.ToString": {
+    "description": "Wandelt einen TimeSpan-Wert in sein kanonisches Textformat um.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert."
+    }
+  },
+  "Standard.Convert.DateTimeOffset.Parse": {
+    "description": "Liest einen DateTimeOffset-Wert aus dem kanonischen Textformat. Ungültiger Text führt zu einem Fehler.",
+    "inputs": {
+      "value": "Zu lesender Text im kanonischen Format des Zieltyps."
+    }
+  },
+  "Standard.Convert.DateTimeOffset.ToString": {
+    "description": "Wandelt einen DateTimeOffset-Wert in sein kanonisches Textformat um.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert."
+    }
+  },
+  "Standard.Date.Now": {
+    "description": "Liefert den aktuellen Zeitpunkt der ausführenden Laufzeit.",
+    "inputs": {}
+  },
+  "Standard.Date.Today": {
+    "description": "Liefert den Tagesbeginn des aktuellen Datums im konfigurierten festen UTC-Offset.",
+    "inputs": {}
+  },
+  "Standard.Text.Length": {
+    "description": "Zählt Unicode-Codepunkte des Texts.",
+    "inputs": {
+      "value": "Text, auf den die Operation angewendet wird."
+    }
+  },
+  "Standard.Text.Substring": {
+    "description": "Liest einen Textausschnitt mit nullbasiertem Codepunkt-Index; ungültige Bereiche führen zu einem Fehler.",
+    "inputs": {
+      "value": "Text, auf den die Operation angewendet wird.",
+      "index": "Nullbasierter Index in der Eingabe.",
+      "length": "Anzahl der Elemente bzw. Codepunkte im Bereich."
+    }
+  },
+  "Standard.Text.IndexOf": {
+    "description": "Sucht ab start nach search und liefert den nullbasierten Codepunkt-Index oder -1.",
+    "inputs": {
+      "value": "Text, auf den die Operation angewendet wird.",
+      "search": "Gesuchter Text; kein regulärer Ausdruck.",
+      "start": "Nullbasierter Startindex in Codepunkten; ohne Wert 0."
+    }
+  },
+  "Standard.Text.IsEmpty": {
+    "description": "Prüft, ob der Text leer ist.",
+    "inputs": {
+      "value": "Text, auf den die Operation angewendet wird."
+    }
+  },
+  "Standard.Text.IsNullOrWhiteSpace": {
+    "description": "Prüft, ob der Text null, leer oder ausschließlich Leerraum ist.",
+    "inputs": {
+      "value": "Text, auf den die Operation angewendet wird."
+    }
+  },
+  "Standard.Text.Split": {
+    "description": "Zerlegt einen Text am Trennzeichen; ein leeres Trennzeichen ist unzulässig.",
+    "inputs": {
+      "value": "Text, auf den die Operation angewendet wird.",
+      "separator": "Trennzeichen zwischen den Textabschnitten.",
+      "removeEmpty": "Bei true leere Abschnitte entfernen; ohne Wert bleiben sie erhalten."
+    }
+  },
+  "Standard.Text.ToLower": {
+    "description": "Wandelt Unicode-Zeichen in Kleinbuchstaben um.",
+    "inputs": {
+      "value": "Text, auf den die Operation angewendet wird."
+    }
+  },
+  "Standard.Text.ToUpper": {
+    "description": "Wandelt Unicode-Zeichen in Großbuchstaben um.",
+    "inputs": {
+      "value": "Text, auf den die Operation angewendet wird."
+    }
+  },
+  "Standard.Convert.Bool.TryParse": {
+    "description": "Versucht, einen Bool-Wert zu lesen. Bei ungültigem Text ist found=false und value fehlt.",
+    "inputs": {
+      "value": "Zu lesender Text im kanonischen Format des Zieltyps."
+    }
+  },
+  "Standard.Convert.Integer.TryParse": {
+    "description": "Versucht, einen Integer-Wert zu lesen. Bei ungültigem Text ist found=false und value fehlt.",
+    "inputs": {
+      "value": "Zu lesender Text im kanonischen Format des Zieltyps."
+    }
+  },
+  "Standard.Convert.Decimal.TryParse": {
+    "description": "Versucht, einen Decimal-Wert zu lesen. Bei ungültigem Text ist found=false und value fehlt.",
+    "inputs": {
+      "value": "Zu lesender Text im kanonischen Format des Zieltyps."
+    }
+  },
+  "Standard.Convert.Guid.TryParse": {
+    "description": "Versucht, einen Guid-Wert zu lesen. Bei ungültigem Text ist found=false und value fehlt.",
+    "inputs": {
+      "value": "Zu lesender Text im kanonischen Format des Zieltyps."
+    }
+  },
+  "Standard.Convert.TimeSpan.TryParse": {
+    "description": "Versucht, einen TimeSpan-Wert zu lesen. Bei ungültigem Text ist found=false und value fehlt.",
+    "inputs": {
+      "value": "Zu lesender Text im kanonischen Format des Zieltyps."
+    }
+  },
+  "Standard.Convert.DateTimeOffset.TryParse": {
+    "description": "Versucht, einen DateTimeOffset-Wert zu lesen. Bei ungültigem Text ist found=false und value fehlt.",
+    "inputs": {
+      "value": "Zu lesender Text im kanonischen Format des Zieltyps."
+    }
+  },
+  "Standard.Text.Regex.Test": {
+    "description": "Prüft, ob das Muster im Text einen Treffer findet.",
+    "inputs": {
+      "value": "Text, auf den die Operation angewendet wird.",
+      "pattern": "Regulärer Ausdruck aus dem unterstützten portablen ECMAScript-Teilumfang.",
+      "flags": "Optionale Regex-Flags i, m und s.",
+      "timeoutMilliseconds": "Zeitlimit in Millisekunden: 1–5000, ohne Wert 100."
+    }
+  },
+  "Standard.Text.Regex.Replace": {
+    "description": "Ersetzt Treffer des Musters durch den Ersatztext.",
+    "inputs": {
+      "value": "Text, auf den die Operation angewendet wird.",
+      "pattern": "Regulärer Ausdruck aus dem unterstützten portablen ECMAScript-Teilumfang.",
+      "flags": "Optionale Regex-Flags i, m und s.",
+      "timeoutMilliseconds": "Zeitlimit in Millisekunden: 1–5000, ohne Wert 100.",
+      "replacement": "Ersatztext; unterstützt $$, $& und die Capture-Gruppen $1 bis $99."
+    }
+  },
+  "Standard.Text.Regex.Extract": {
+    "description": "Liefert die Treffer mit Codepunkt-Index, Länge und Capture-Gruppen; nicht beteiligte Gruppen sind null.",
+    "inputs": {
+      "value": "Text, auf den die Operation angewendet wird.",
+      "pattern": "Regulärer Ausdruck aus dem unterstützten portablen ECMAScript-Teilumfang.",
+      "flags": "Optionale Regex-Flags i, m und s.",
+      "timeoutMilliseconds": "Zeitlimit in Millisekunden: 1–5000, ohne Wert 100."
+    }
+  },
+  "Standard.Date.Create": {
+    "description": "Erstellt einen Zeitpunkt aus Datum, Uhrzeit und UTC-Offset; ungültige Datumsbestandteile führen zu einem Fehler.",
+    "inputs": {
+      "year": "Jahr des zu erzeugenden Datums.",
+      "month": "Monat von 1 bis 12.",
+      "day": "Tag des Monats, beginnend mit 1.",
+      "hour": "Stunde von 0 bis 23; ohne Wert 0.",
+      "minute": "Minute von 0 bis 59; ohne Wert 0.",
+      "second": "Sekunde von 0 bis 59; ohne Wert 0.",
+      "fractionTicks": "Sekundenbruchteil in 100-ns-Ticks; ohne Wert 0.",
+      "offsetMinutes": "UTC-Offset in Minuten; ohne Wert 0."
+    }
+  },
+  "Standard.Date.Parts": {
+    "description": "Zerlegt einen Zeitpunkt in seine Datums-, Uhrzeit- und Offsetbestandteile.",
+    "inputs": {
+      "value": "Zeitpunkt einschließlich UTC-Offset."
+    }
+  },
+  "Standard.Date.StartOfDay": {
+    "description": "Liefert den Beginn des Tages mit dem Offset des Eingabewerts.",
+    "inputs": {
+      "value": "Zeitpunkt einschließlich UTC-Offset."
+    }
+  },
+  "Standard.Date.StartOfMonth": {
+    "description": "Liefert den Beginn des Monats mit dem Offset des Eingabewerts.",
+    "inputs": {
+      "value": "Zeitpunkt einschließlich UTC-Offset."
+    }
+  },
+  "Standard.Date.AddDays": {
+    "description": "Verschiebt den Zeitpunkt um die angegebene Anzahl Tage.",
+    "inputs": {
+      "value": "Zeitpunkt einschließlich UTC-Offset.",
+      "amount": "Anzahl der zu addierenden Zeiteinheiten; negative Werte verschieben rückwärts."
+    }
+  },
+  "Standard.TimeSpan.FromUnits": {
+    "description": "Erstellt eine Zeitspanne aus einem Zahlenwert und einer Zeiteinheit.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert.",
+      "unit": "Zeiteinheit der Umrechnung (z. B. days, hours, minutes oder seconds)."
+    }
+  },
+  "Standard.TimeSpan.TotalUnits": {
+    "description": "Liefert die gesamte Zeitspanne als Zahlenwert in der gewählten Einheit.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert.",
+      "unit": "Zeiteinheit der Umrechnung (z. B. days, hours, minutes oder seconds)."
+    }
+  },
+  "Standard.Values.NewGuid": {
+    "description": "Erzeugt eine neue GUID.",
+    "inputs": {}
+  },
+  "Standard.Flow.Assert": {
+    "description": "Prüft eine Bedingung und löst bei false einen Fehler mit message und optionalem code aus.",
+    "inputs": {
+      "condition": "Boolesche Bedingung, die die Auswahl oder Prüfung steuert.",
+      "message": "Fehlermeldung für den abgebrochenen Ausführungspfad.",
+      "code": "Optionaler maschinenlesbarer Fehlercode."
+    }
+  },
+  "Standard.Math.Integer.Abs": {
+    "description": "Liefert den Betrag des Werts.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert."
+    }
+  },
+  "Standard.Math.Integer.Min": {
+    "description": "Liefert den kleineren der beiden Werte.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Math.Integer.Max": {
+    "description": "Liefert den größeren der beiden Werte.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Math.Integer.Modulo": {
+    "description": "Berechnet den Rest der Division von left durch right.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Math.Integer.Power": {
+    "description": "Potenziert value mit exponent.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert.",
+      "exponent": "Exponent, mit dem value potenziert wird."
+    }
+  },
+  "Standard.Math.Integer.Clamp": {
+    "description": "Begrenzt value auf das inklusive Intervall von min bis max.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert.",
+      "min": "Inklusive Untergrenze.",
+      "max": "Inklusive Obergrenze; darf nicht kleiner als min sein."
+    }
+  },
+  "Standard.Math.Decimal.Abs": {
+    "description": "Liefert den Betrag des Werts.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert."
+    }
+  },
+  "Standard.Math.Decimal.Min": {
+    "description": "Liefert den kleineren der beiden Werte.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Math.Decimal.Max": {
+    "description": "Liefert den größeren der beiden Werte.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Math.Decimal.Modulo": {
+    "description": "Berechnet den Rest der Division von left durch right.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Math.Decimal.Power": {
+    "description": "Potenziert value mit exponent.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert.",
+      "exponent": "Exponent, mit dem value potenziert wird."
+    }
+  },
+  "Standard.Math.Decimal.Clamp": {
+    "description": "Begrenzt value auf das inklusive Intervall von min bis max.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert.",
+      "min": "Inklusive Untergrenze.",
+      "max": "Inklusive Obergrenze; darf nicht kleiner als min sein."
+    }
+  },
+  "Standard.Date.AddMonths": {
+    "description": "Verschiebt den Zeitpunkt um die angegebene Anzahl Monate.",
+    "inputs": {
+      "value": "Zeitpunkt einschließlich UTC-Offset.",
+      "amount": "Anzahl der zu addierenden Zeiteinheiten; negative Werte verschieben rückwärts."
+    }
+  },
+  "Standard.Date.AddYears": {
+    "description": "Verschiebt den Zeitpunkt um die angegebene Anzahl Jahre.",
+    "inputs": {
+      "value": "Zeitpunkt einschließlich UTC-Offset.",
+      "amount": "Anzahl der zu addierenden Zeiteinheiten; negative Werte verschieben rückwärts."
+    }
+  },
+  "Standard.Convert.Integer.Format": {
+    "description": "Formatiert einen Integer-Wert mit dem angegebenen Format und Sprachcode.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert.",
+      "format": "Formatmuster aus dem unterstützten portablen Formatumfang des Werttyps.",
+      "language": "Sprachcode für die Formatierung, z. B. de-DE oder en-US."
+    }
+  },
+  "Standard.Convert.Decimal.Format": {
+    "description": "Formatiert einen Decimal-Wert mit dem angegebenen Format und Sprachcode.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert.",
+      "format": "Formatmuster aus dem unterstützten portablen Formatumfang des Werttyps.",
+      "language": "Sprachcode für die Formatierung, z. B. de-DE oder en-US."
+    }
+  },
+  "Standard.Convert.Guid.Format": {
+    "description": "Formatiert einen Guid-Wert mit dem angegebenen Format und Sprachcode.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert.",
+      "format": "Formatmuster aus dem unterstützten portablen Formatumfang des Werttyps.",
+      "language": "Sprachcode für die Formatierung, z. B. de-DE oder en-US."
+    }
+  },
+  "Standard.Convert.TimeSpan.Format": {
+    "description": "Formatiert einen TimeSpan-Wert mit dem angegebenen Format und Sprachcode.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert.",
+      "format": "Formatmuster aus dem unterstützten portablen Formatumfang des Werttyps.",
+      "language": "Sprachcode für die Formatierung, z. B. de-DE oder en-US."
+    }
+  },
+  "Standard.Convert.DateTimeOffset.Format": {
+    "description": "Formatiert einen DateTimeOffset-Wert mit dem angegebenen Format und Sprachcode.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert.",
+      "format": "Formatmuster aus dem unterstützten portablen Formatumfang des Werttyps.",
+      "language": "Sprachcode für die Formatierung, z. B. de-DE oder en-US."
+    }
+  },
+  "Standard.Text.Format": {
+    "description": "Ersetzt nummerierte Platzhalter im Vorlagentext durch die angegebenen Textargumente.",
+    "inputs": {
+      "template": "Vorlagentext mit nummerierten Platzhaltern für arguments.",
+      "arguments": "Textargumente in der Reihenfolge der Platzhalterindizes."
+    }
+  },
+  "Standard.Values.Dictionary.Create": {
+    "description": "Erstellt ein Wörterbuch aus Schlüssel-Wert-Einträgen.",
+    "inputs": {
+      "entries": "Liste der Schlüssel-Wert-Einträge für das neue Wörterbuch."
+    }
+  },
+  "Standard.Values.Dictionary.Get": {
+    "description": "Liest den Wert eines Schlüssels; ein fehlender Schlüssel führt zu einem Fehler.",
+    "inputs": {
+      "dictionary": "Wörterbuch, auf das die Operation angewendet wird.",
+      "key": "String-Schlüssel des Wörterbucheintrags."
+    }
+  },
+  "Standard.Values.Dictionary.TryGet": {
+    "description": "Liest den Wert eines Schlüssels; fehlt er, ist found=false und value fehlt.",
+    "inputs": {
+      "dictionary": "Wörterbuch, auf das die Operation angewendet wird.",
+      "key": "String-Schlüssel des Wörterbucheintrags."
+    }
+  },
+  "Standard.Values.Dictionary.Set": {
+    "description": "Liefert ein Wörterbuch mit dem hinzugefügten oder ersetzten Schlüssel-Wert-Paar.",
+    "inputs": {
+      "dictionary": "Wörterbuch, auf das die Operation angewendet wird.",
+      "key": "String-Schlüssel des Wörterbucheintrags.",
+      "item": "Einzelnes Element zum Einfügen, Ersetzen oder Vergleichen."
+    }
+  },
+  "Standard.Values.Dictionary.Remove": {
+    "description": "Entfernt einen Schlüssel und meldet über removed, ob er vorhanden war.",
+    "inputs": {
+      "dictionary": "Wörterbuch, auf das die Operation angewendet wird.",
+      "key": "String-Schlüssel des Wörterbucheintrags."
+    }
+  },
+  "Standard.Values.Dictionary.ContainsKey": {
+    "description": "Prüft, ob der Schlüssel im Wörterbuch vorkommt.",
+    "inputs": {
+      "dictionary": "Wörterbuch, auf das die Operation angewendet wird.",
+      "key": "String-Schlüssel des Wörterbucheintrags."
+    }
+  },
+  "Standard.Values.Dictionary.Keys": {
+    "description": "Liefert die Schlüssel des Wörterbuchs als Liste.",
+    "inputs": {
+      "dictionary": "Wörterbuch, auf das die Operation angewendet wird."
+    }
+  },
+  "Standard.Values.Dictionary.Values": {
+    "description": "Liefert die Werte des Wörterbuchs als Liste.",
+    "inputs": {
+      "dictionary": "Wörterbuch, auf das die Operation angewendet wird."
+    }
+  },
+  "Standard.Values.Ternary": {
+    "description": "Liefert whenTrue bei condition=true, andernfalls whenFalse. Beide verbundenen Werte werden vor der Auswahl ausgewertet.",
+    "inputs": {
+      "condition": "Boolesche Bedingung, die die Auswahl oder Prüfung steuert.",
+      "whenTrue": "Ergebniswert bei condition=true; wird auch bei false ausgewertet.",
+      "whenFalse": "Ergebniswert bei condition=false; wird auch bei true ausgewertet."
+    }
+  },
+  "Standard.Flow.Input": {
+    "description": "Stellt einen benannten Eingang des Graphen als Wert bereit.",
+    "inputs": {}
+  },
+  "Standard.Flow.Output": {
+    "description": "Schreibt den Wert in den benannten Ausgang des Graphen.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert."
+    }
+  },
+  "Standard.Values.Null": {
+    "description": "Liefert null mit dem ausgewählten Nullable-Typ.",
+    "inputs": {}
+  },
+  "Standard.Values.IsNull": {
+    "description": "Prüft, ob der Wert null ist.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert."
+    }
+  },
+  "Standard.Values.IsMissing": {
+    "description": "Prüft, ob der optionale Wert fehlt; null ist ein vorhandener Wert.",
+    "inputs": {
+      "value": "Zu verarbeitender Eingabewert."
+    }
+  },
+  "Standard.Values.Require": {
+    "description": "Liefert einen vorhandenen, nicht-null Wert als T; fehlende Werte und null führen zu einem Fehler.",
+    "inputs": {
+      "value": "Optionaler, nullable Wert; ein fehlender Eingang ist von null unterscheidbar."
+    }
+  },
+  "Standard.Values.Record.HasField": {
+    "description": "Prüft, ob das benannte Feld im Record vorhanden ist.",
+    "inputs": {
+      "value": "Record, dessen Felder gelesen oder geändert werden.",
+      "name": "Exakter Name des gesuchten oder zu ändernden Felds."
+    }
+  },
+  "Standard.Values.Record.RemoveField": {
+    "description": "Liefert den Record ohne das in der Node gewählte Feld.",
+    "inputs": {
+      "value": "Record, dessen Felder gelesen oder geändert werden."
+    }
+  },
+  "Standard.Values.Record.Merge": {
+    "description": "Führt zwei Records gemäß dem konfigurierten Ergebnisvertrag zusammen.",
+    "inputs": {
+      "left": "Linker Operand; bei einer Differenz der Ausgangswert.",
+      "right": "Rechter Operand; bei einer Differenz der abzuziehende Wert."
+    }
+  },
+  "Standard.Values.Record.GetProperty": {
+    "description": "Liest das in der Node ausgewählte Feld aus dem Record.",
+    "inputs": {
+      "value": "Record, dessen Felder gelesen oder geändert werden."
+    }
+  },
+  "Standard.Values.Record.Create": {
+    "description": "Erstellt einen Record aus den einzelnen Feldeingängen.",
+    "inputs": {
+      "field_text": "Wert für das Record-Feld text."
+    }
+  },
+  "Standard.Values.Record.WithFields": {
+    "description": "Liefert den Record mit den übergebenen Feldwerten; nicht gesetzte optionale Feldeingänge bleiben unverändert.",
+    "inputs": {
+      "value": "Record, dessen Felder gelesen oder geändert werden.",
+      "field_text": "Wert für das Record-Feld text."
+    }
+  },
+  "Standard.Values.List.Create": {
+    "description": "Erstellt eine Liste aus den konfigurierten Elementeingängen in ihrer Reihenfolge.",
+    "inputs": {
+      "item_0": "Listenelement an Position 0.",
+      "item_1": "Listenelement an Position 1."
+    }
+  },
+  "Standard.Values.List.Count": {
+    "description": "Liefert die Anzahl der Listenelemente.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge."
+    }
+  },
+  "Standard.Values.List.GetItem": {
+    "description": "Liest das Element am nullbasierten Index; ein ungültiger Index führt zu einem Fehler.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge.",
+      "index": "Nullbasierter Index in der Eingabe."
+    }
+  },
+  "Standard.Values.List.AddItem": {
+    "description": "Hängt ein Element an die Liste an.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge.",
+      "item": "Einzelnes Element zum Einfügen, Ersetzen oder Vergleichen."
+    }
+  },
+  "Standard.Values.List.AddRange": {
+    "description": "Hängt alle zusätzlichen Elemente in ihrer Reihenfolge an.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge.",
+      "additionalItems": "Einzufügende oder anzuhängende Elemente in ihrer Reihenfolge."
+    }
+  },
+  "Standard.Values.List.InsertItem": {
+    "description": "Fügt ein Element vor dem nullbasierten Index ein.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge.",
+      "item": "Einzelnes Element zum Einfügen, Ersetzen oder Vergleichen.",
+      "index": "Nullbasierter Index in der Eingabe."
+    }
+  },
+  "Standard.Values.List.InsertRange": {
+    "description": "Fügt zusätzliche Elemente vor dem nullbasierten Index ein.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge.",
+      "additionalItems": "Einzufügende oder anzuhängende Elemente in ihrer Reihenfolge.",
+      "index": "Nullbasierter Index in der Eingabe."
+    }
+  },
+  "Standard.Values.List.SetItem": {
+    "description": "Ersetzt das Element am nullbasierten Index.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge.",
+      "item": "Einzelnes Element zum Einfügen, Ersetzen oder Vergleichen.",
+      "index": "Nullbasierter Index in der Eingabe."
+    }
+  },
+  "Standard.Values.List.RemoveAt": {
+    "description": "Entfernt das Element am nullbasierten Index.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge.",
+      "index": "Nullbasierter Index in der Eingabe."
+    }
+  },
+  "Standard.Values.List.RemoveRange": {
+    "description": "Entfernt length Elemente ab dem nullbasierten Index.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge.",
+      "index": "Nullbasierter Index in der Eingabe.",
+      "length": "Anzahl der Elemente bzw. Codepunkte im Bereich."
+    }
+  },
+  "Standard.Values.List.Clear": {
+    "description": "Liefert eine leere Liste desselben Elementtyps.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge."
+    }
+  },
+  "Standard.Values.List.RemoveItem": {
+    "description": "Entfernt das erste gleiche Element aus der Liste.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge.",
+      "item": "Einzelnes Element zum Einfügen, Ersetzen oder Vergleichen."
+    }
+  },
+  "Standard.Values.List.RemoveAll": {
+    "description": "Entfernt alle gleichen Elemente aus der Liste.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge.",
+      "item": "Einzelnes Element zum Einfügen, Ersetzen oder Vergleichen."
+    }
+  },
+  "Standard.Values.List.TryGetItem": {
+    "description": "Liest das Element am nullbasierten Index; ein ungültiger Index liefert found=false und keinen value.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge.",
+      "index": "Nullbasierter Index in der Eingabe."
+    }
+  },
+  "Standard.Values.List.First": {
+    "description": "Liefert das erste Element; eine leere Liste führt zu einem Fehler.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge."
+    }
+  },
+  "Standard.Values.List.Last": {
+    "description": "Liefert das letzte Element; eine leere Liste führt zu einem Fehler.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge."
+    }
+  },
+  "Standard.Values.List.TryFirst": {
+    "description": "Liefert das erste Element oder found=false ohne value bei einer leeren Liste.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge."
+    }
+  },
+  "Standard.Values.List.TryLast": {
+    "description": "Liefert das letzte Element oder found=false ohne value bei einer leeren Liste.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge."
+    }
+  },
+  "Standard.Values.List.Single": {
+    "description": "Liefert das einzige Element; eine leere Liste oder mehrere Elemente führen zu einem Fehler.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge."
+    }
+  },
+  "Standard.Values.List.TrySingle": {
+    "description": "Versucht, genau ein Element zu lesen; found und status beschreiben das Ergebnis.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge."
+    }
+  },
+  "Standard.Values.List.Contains": {
+    "description": "Prüft, ob ein gleiches Element in der Liste vorkommt.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge.",
+      "item": "Einzelnes Element zum Einfügen, Ersetzen oder Vergleichen."
+    }
+  },
+  "Standard.Values.List.IndexOf": {
+    "description": "Liefert den ersten nullbasierten Index eines gleichen Elements oder -1.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge.",
+      "item": "Einzelnes Element zum Einfügen, Ersetzen oder Vergleichen."
+    }
+  },
+  "Standard.Values.List.LastIndexOf": {
+    "description": "Liefert den letzten nullbasierten Index eines gleichen Elements oder -1.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge.",
+      "item": "Einzelnes Element zum Einfügen, Ersetzen oder Vergleichen."
+    }
+  },
+  "Standard.Values.List.IsEmpty": {
+    "description": "Prüft, ob die Liste keine Elemente enthält.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge."
+    }
+  },
+  "Standard.Values.List.Skip": {
+    "description": "Überspringt die ersten count Elemente.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge.",
+      "count": "Anzahl der zu verarbeitenden Elemente."
+    }
+  },
+  "Standard.Values.List.Take": {
+    "description": "Liefert höchstens die ersten count Elemente.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge.",
+      "count": "Anzahl der zu verarbeitenden Elemente."
+    }
+  },
+  "Standard.Values.List.Slice": {
+    "description": "Liefert length Elemente ab dem nullbasierten Index.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge.",
+      "index": "Nullbasierter Index in der Eingabe.",
+      "length": "Anzahl der Elemente bzw. Codepunkte im Bereich."
+    }
+  },
+  "Standard.Values.List.Reverse": {
+    "description": "Kehrt die Reihenfolge der Elemente um.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge."
+    }
+  },
+  "Standard.Values.List.Chunk": {
+    "description": "Teilt die Liste in aufeinanderfolgende Teillisten mit höchstens size Elementen.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge.",
+      "size": "Maximale Anzahl Elemente je Teilliste; muss positiv sein."
+    }
+  },
+  "Standard.Values.List.Flatten": {
+    "description": "Führt die Teillisten in ihrer Reihenfolge zu einer Liste zusammen.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge."
+    }
+  },
+  "Standard.Values.List.Sort": {
+    "description": "Sortiert Elemente nach der portablen Wertordnung; der Typ muss vergleichbar sein.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend."
+    }
+  },
+  "Standard.Values.List.Distinct": {
+    "description": "Entfernt gleiche Elemente und behält deren erstes Vorkommen.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge."
+    }
+  },
+  "Standard.Values.List.Union": {
+    "description": "Vereinigt beide Listen ohne doppelte Elemente.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge.",
+      "other": "Zweite Liste für die Verknüpfung mit items."
+    }
+  },
+  "Standard.Values.List.Intersect": {
+    "description": "Liefert die gemeinsamen Elemente beider Listen ohne Duplikate.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge.",
+      "other": "Zweite Liste für die Verknüpfung mit items."
+    }
+  },
+  "Standard.Values.List.Except": {
+    "description": "Liefert die Elemente aus items, die nicht in other vorkommen, ohne Duplikate.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge.",
+      "other": "Zweite Liste für die Verknüpfung mit items."
+    }
+  },
+  "Standard.Values.List.Zip": {
+    "description": "Paart Elemente beider Listen nach Position als left/right-Records.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge.",
+      "other": "Zweite Liste für die Verknüpfung mit items."
+    }
+  },
+  "Standard.Values.List.Sum": {
+    "description": "Addiert die numerischen Elemente der Liste.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge."
+    }
+  },
+  "Standard.Values.List.Average": {
+    "description": "Berechnet den Durchschnitt; bei einer leeren Liste fehlt value.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge."
+    }
+  },
+  "Standard.Values.List.Min": {
+    "description": "Liefert das kleinste Element; bei einer leeren Liste fehlt value.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge."
+    }
+  },
+  "Standard.Values.List.Max": {
+    "description": "Liefert das größte Element; bei einer leeren Liste fehlt value.",
+    "inputs": {
+      "items": "Zu verarbeitende Liste in Eingabereihenfolge."
+    }
+  },
+  "Standard.JSON.FromValue": {
+    "description": "Konvertiert einen typisierten Wert in den portablen JSON-Vertrag.",
+    "inputs": {
+      "value": "JSON-Wert bzw. typisierter Quellwert der Konvertierung."
+    }
+  },
+  "Standard.JSON.ToValue": {
+    "description": "Konvertiert einen JSON-Wert in den ausgewählten Typ T; unpassende Werte führen zu einem Fehler.",
+    "inputs": {
+      "value": "JSON-Wert bzw. typisierter Quellwert der Konvertierung."
+    }
+  },
+  "Standard.Values.Coalesce": {
+    "description": "Liefert fallback, wenn value fehlt oder null ist. Beide verbundenen Eingänge werden ausgewertet.",
+    "inputs": {
+      "value": "Optionaler, nullable Wert; ein fehlender Eingang ist von null unterscheidbar.",
+      "fallback": "Ersatzwert bei fehlendem value oder null; wird immer ausgewertet."
+    }
+  },
+  "Standard.Flow.Start": {
+    "description": "Startet den Kontrollfluss des Graphen.",
+    "inputs": {}
+  },
+  "Standard.Flow.Wait": {
+    "description": "Wartet die angegebene Anzahl Sekunden, bevor der Kontrollfluss fortgesetzt wird.",
+    "inputs": {
+      "seconds": "Wartezeit in Sekunden."
+    }
+  },
+  "Standard.Debug.Print": {
+    "description": "Schreibt den Text in die Laufzeitprotokollierung und setzt den Kontrollfluss fort.",
+    "inputs": {
+      "text": "Eingabetext der Operation."
+    }
+  },
+  "Standard.Debug.Error": {
+    "description": "Bricht den aktuellen Ausführungspfad mit der angegebenen Fehlermeldung ab.",
+    "inputs": {
+      "message": "Fehlermeldung für den abgebrochenen Ausführungspfad."
+    }
+  },
+  "Standard.Values.Constant.DateTimeOffset": {
+    "description": "Liefert den in der Node-Konfiguration gespeicherten DateTimeOffset-Wert.",
+    "inputs": {}
+  },
+  "Standard.Values.Constant.String": {
+    "description": "Liefert den in der Node-Konfiguration gespeicherten String-Wert.",
+    "inputs": {}
+  },
+  "Standard.Values.Constant.Image": {
+    "description": "Normalisiert das konfigurierte Base64-Bild oder die Data-URL zu einer Bild-Data-URL; ungültige Bilddaten führen zu einem Fehler.",
+    "inputs": {}
+  },
+  "Standard.Flow.Reference": {
+    "description": "Liefert eine typisierte Referenz auf den konfigurierten Graphen, ohne ihn auszuführen.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.Invoke": {
+    "description": "Führt den referenzierten Graphen mit den Eingabewerten seiner Schnittstelle aus und liefert dessen Ergebnisse.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.If": {
+    "description": "Führt then nur bei condition=true aus; andernfalls fehlen seine Ergebnisse.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.IfElse": {
+    "description": "Führt abhängig von condition genau einen der Graphen then oder else aus.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.Switch": {
+    "description": "Führt den Graphen des passenden String-Falls aus, andernfalls default.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.While": {
+    "description": "Prüft condition vor jedem Durchlauf. Solange dessen Bool-Ausgang value=true ist, läuft body. Dessen gleichnamige Ausgänge werden zu den Eingängen des nächsten Durchlaufs. maxIterations begrenzt die Schleife.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.ForEach": {
+    "description": "Führt body sequenziell für jedes Element aus. Der Body erhält item und den nullbasierten index und liefert keine Ergebnisse.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.Map": {
+    "description": "Führt body für jedes Element aus und sammelt dessen Ausgang value in Eingabereihenfolge.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.ParallelMap": {
+    "description": "Führt body mit begrenzter Parallelität aus. Jeder Aufruf erhält einen eigenen Ausführungskontext; Ergebnisse bleiben in Eingabereihenfolge. Ein- und Ausgaben müssen transportierbar sein.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.Filter": {
+    "description": "Behält die Elemente, für die body am Bool-Ausgang value=true liefert.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.Aggregate": {
+    "description": "Faltet die Liste ab seed. body erhält item, index und accumulator und liefert accumulator für den nächsten Durchlauf zurück.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.FlatMap": {
+    "description": "Führt body für jedes Element aus und verbindet dessen value-Listen in Eingabereihenfolge.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.Any": {
+    "description": "Prüft, ob body für mindestens ein Element true liefert, und beendet beim ersten Treffer.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.All": {
+    "description": "Prüft, ob body für alle Elemente true liefert, und beendet beim ersten false.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.Find": {
+    "description": "Liefert das erste Element, für das body true liefert; ohne Treffer ist found=false und value fehlt.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.FindIndex": {
+    "description": "Liefert den nullbasierten Index des ersten Elements, für das body true liefert, oder -1.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.TakeWhile": {
+    "description": "Liefert die Elemente vom Listenanfang bis zum ersten false-Ergebnis des Body.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.SkipWhile": {
+    "description": "Überspringt Elemente vom Listenanfang, solange body true liefert, und liefert den Rest.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.Partition": {
+    "description": "Teilt die Elemente nach dem Bool-Ergebnis des Body in matching und nonMatching.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.SortBy": {
+    "description": "Sortiert Elemente nach den vom Body gelieferten Schlüsseln. Records als Schlüssel benötigen eine explizite Feldreihenfolge in orderBy.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.DistinctBy": {
+    "description": "Behält das erste Element je gleichem, vom Body geliefertem Schlüssel.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.GroupBy": {
+    "description": "Gruppiert Elemente nach dem vom Body gelieferten Schlüssel; jede Gruppe enthält key und items.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.MinBy": {
+    "description": "Liefert das Element mit dem kleinsten vom Body gelieferten Schlüssel; bei leerer Liste fehlt value.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.MaxBy": {
+    "description": "Liefert das Element mit dem größten vom Body gelieferten Schlüssel; bei leerer Liste fehlt value.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.JoinByKey": {
+    "description": "Verknüpft Elemente beider Listen, deren Schlüssel aus leftKey und rightKey gleich sind.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.LeftJoinByKey": {
+    "description": "Verknüpft beide Listen anhand gleicher Schlüssel und erhält auch linke Elemente ohne Treffer.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.GroupJoinByKey": {
+    "description": "Ordnet jedem linken Element die rechten Elemente mit gleichem Schlüssel als Gruppe zu.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.Try": {
+    "description": "Führt body aus, behandelt Fehler mit catch und führt den abschließenden Graphen finally aus.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.Timeout": {
+    "description": "Führt body mit einem Zeitlimit aus und bricht den Aufruf bei dessen Überschreitung ab.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.Retry": {
+    "description": "Wiederholt body nur bei Fehlercodes aus retryCodes. Der Body erhält attempt ab 1. Schreiboperationen müssen für Wiederholungen geeignet sein.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Standard.Flow.Repeat": {
+    "description": "Führt body count-mal sequenziell mit dem nullbasierten index aus. Der Body liefert keine Ergebnisse.",
+    "inputs": {
+      "graph": "Referenz auf den aufzurufenden Graphen; seine Schnittstelle muss zum Port passen.",
+      "body": "Auszuführender Graph mit der angezeigten Ein-/Ausgangsschnittstelle. Bei Listenoperationen erhält er item und index.",
+      "condition": "Boolesche Bedingung; bei While ein Graph, der value als Bool zurückgibt.",
+      "then": "Graph für den Fall condition=true.",
+      "else": "Graph für den Fall condition=false.",
+      "default": "Graph für selector-Werte ohne passenden Fall.",
+      "selector": "String, der mit den konfigurierten Fallbezeichnungen verglichen wird.",
+      "catch": "Graph zur Fehlerbehandlung; erhält zusätzlich error als String.",
+      "finally": "Abschließender Graph ohne Ergebnisse.",
+      "items": "Zu verarbeitende Elemente in Eingabereihenfolge.",
+      "seed": "Anfangswert für accumulator; zugleich Ergebnis bei leerer Liste.",
+      "count": "Anzahl Durchläufe von 0 bis 1000.",
+      "maxConcurrency": "Maximale Anzahl gleichzeitiger Body-Aufrufe von 1 bis 16.",
+      "timeoutMilliseconds": "Zeitlimit für den Body-Aufruf in Millisekunden.",
+      "maxAttempts": "Maximale Anzahl Versuche einschließlich des ersten Aufrufs.",
+      "retryCodes": "Fehlercodes, bei denen ein weiterer Versuch erlaubt ist.",
+      "delayMilliseconds": "Optionale Wartezeit zwischen Versuchen in Millisekunden.",
+      "descending": "Bei true absteigend sortieren; ohne Wert aufsteigend.",
+      "orderBy": "Liste der Schlüssel-Feldnamen mit ihrer Sortierrichtung in Prioritätsreihenfolge.",
+      "left": "Linke Liste der zu verknüpfenden Elemente.",
+      "right": "Rechte Liste der zu verknüpfenden Elemente.",
+      "leftKey": "Graph für den linken Schlüssel; erhält item und index und liefert value.",
+      "rightKey": "Graph für den rechten Schlüssel; erhält item und index und liefert value im selben Schlüsseltyp wie leftKey."
+    }
+  },
+  "Backend.Query.Any": {
+    "description": "Prüft, ob die Abfrage mindestens einen Treffer enthält, optional mit einer Bedingung. Führt die Abfrage aus.",
+    "inputs": {
+      "query": "Abfragequelle mit dem passenden Elementtyp; ThenBy benötigt eine bereits geordnete Quelle.",
+      "count": "Anzahl der zu überspringenden bzw. maximal zurückzugebenden Treffer."
+    }
+  },
+  "Backend.Query.All": {
+    "description": "Prüft, ob alle Treffer die Bedingung erfüllen. Führt die Abfrage aus.",
+    "inputs": {
+      "query": "Abfragequelle mit dem passenden Elementtyp; ThenBy benötigt eine bereits geordnete Quelle.",
+      "count": "Anzahl der zu überspringenden bzw. maximal zurückzugebenden Treffer."
+    }
+  },
+  "Backend.Query.First": {
+    "description": "Liefert den ersten Treffer; eine leere Ergebnismenge führt zu einem Fehler. Führt die Abfrage aus.",
+    "inputs": {
+      "query": "Abfragequelle mit dem passenden Elementtyp; ThenBy benötigt eine bereits geordnete Quelle.",
+      "count": "Anzahl der zu überspringenden bzw. maximal zurückzugebenden Treffer."
+    }
+  },
+  "Backend.Query.FirstOrDefault": {
+    "description": "Liefert den ersten Treffer oder den Standardwert des Elementtyps bei leerer Ergebnismenge. Führt die Abfrage aus.",
+    "inputs": {
+      "query": "Abfragequelle mit dem passenden Elementtyp; ThenBy benötigt eine bereits geordnete Quelle.",
+      "count": "Anzahl der zu überspringenden bzw. maximal zurückzugebenden Treffer."
+    }
+  },
+  "Backend.Query.ToList": {
+    "description": "Führt die Abfrage aus und materialisiert die Treffer als Liste.",
+    "inputs": {
+      "query": "Abfragequelle mit dem passenden Elementtyp; ThenBy benötigt eine bereits geordnete Quelle.",
+      "count": "Anzahl der zu überspringenden bzw. maximal zurückzugebenden Treffer."
+    }
+  },
+  "Backend.Query.Count": {
+    "description": "Führt die Abfrage aus und zählt die Treffer.",
+    "inputs": {
+      "query": "Abfragequelle mit dem passenden Elementtyp; ThenBy benötigt eine bereits geordnete Quelle.",
+      "count": "Anzahl der zu überspringenden bzw. maximal zurückzugebenden Treffer."
+    }
+  },
+  "Backend.Query.Where": {
+    "description": "Ergänzt einen Filterausdruck; die Abfrage wird noch nicht ausgeführt.",
+    "inputs": {
+      "query": "Abfragequelle mit dem passenden Elementtyp; ThenBy benötigt eine bereits geordnete Quelle.",
+      "count": "Anzahl der zu überspringenden bzw. maximal zurückzugebenden Treffer."
+    }
+  },
+  "Backend.Query.Select": {
+    "description": "Ergänzt eine Projektion auf den Ergebnisvertrag; die Abfrage wird noch nicht ausgeführt.",
+    "inputs": {
+      "query": "Abfragequelle mit dem passenden Elementtyp; ThenBy benötigt eine bereits geordnete Quelle.",
+      "count": "Anzahl der zu überspringenden bzw. maximal zurückzugebenden Treffer."
+    }
+  },
+  "Backend.Query.OrderBy": {
+    "description": "Legt den ersten Sortierschlüssel fest; die Abfrage wird noch nicht ausgeführt.",
+    "inputs": {
+      "query": "Abfragequelle mit dem passenden Elementtyp; ThenBy benötigt eine bereits geordnete Quelle.",
+      "count": "Anzahl der zu überspringenden bzw. maximal zurückzugebenden Treffer."
+    }
+  },
+  "Backend.Query.ThenBy": {
+    "description": "Ergänzt einen nachrangigen Sortierschlüssel zu einer bereits sortierten Abfrage.",
+    "inputs": {
+      "query": "Abfragequelle mit dem passenden Elementtyp; ThenBy benötigt eine bereits geordnete Quelle.",
+      "count": "Anzahl der zu überspringenden bzw. maximal zurückzugebenden Treffer."
+    }
+  },
+  "Backend.Query.GroupBy": {
+    "description": "Gruppiert nach dem Schlüsselausdruck; die Abfrage wird noch nicht ausgeführt.",
+    "inputs": {
+      "query": "Abfragequelle mit dem passenden Elementtyp; ThenBy benötigt eine bereits geordnete Quelle.",
+      "count": "Anzahl der zu überspringenden bzw. maximal zurückzugebenden Treffer."
+    }
+  },
+  "Backend.Query.Skip": {
+    "description": "Überspringt count Treffer in der Abfrage; die Abfrage wird noch nicht ausgeführt.",
+    "inputs": {
+      "query": "Abfragequelle mit dem passenden Elementtyp; ThenBy benötigt eine bereits geordnete Quelle.",
+      "count": "Anzahl der zu überspringenden bzw. maximal zurückzugebenden Treffer."
+    }
+  },
+  "Backend.Query.Take": {
+    "description": "Begrenzt die Abfrage auf höchstens count Treffer; die Abfrage wird noch nicht ausgeführt.",
+    "inputs": {
+      "query": "Abfragequelle mit dem passenden Elementtyp; ThenBy benötigt eine bereits geordnete Quelle.",
+      "count": "Anzahl der zu überspringenden bzw. maximal zurückzugebenden Treffer."
+    }
+  },
+  "Backend.EF.Source": {
+    "description": "Stellt die Entity-Menge des gewählten DbContext als Abfragequelle bereit; lädt noch keine Datensätze.",
+    "inputs": {
+      "entity": "Entity-Instanz im gewählten DbContext, deren Felder geändert werden.",
+      "id": "GUID des zu ladenden oder zu löschenden Datensatzes."
+    }
+  },
+  "Backend.EF.GetById": {
+    "description": "Lädt eine Entity anhand ihrer GUID im gewählten DbContext.",
+    "inputs": {
+      "entity": "Entity-Instanz im gewählten DbContext, deren Felder geändert werden.",
+      "id": "GUID des zu ladenden oder zu löschenden Datensatzes."
+    }
+  },
+  "Backend.EF.Create": {
+    "description": "Erstellt eine neue Entity im gewählten DbContext; SaveChanges schreibt die Änderung in die Datenbank.",
+    "inputs": {
+      "entity": "Entity-Instanz im gewählten DbContext, deren Felder geändert werden.",
+      "id": "GUID des zu ladenden oder zu löschenden Datensatzes."
+    }
+  },
+  "Backend.EF.SetFields": {
+    "description": "Setzt die übergebenen erlaubten Entity-Felder. Nicht gesetzte optionale Felder bleiben unverändert; SaveChanges persistiert die Änderungen.",
+    "inputs": {
+      "entity": "Entity-Instanz im gewählten DbContext, deren Felder geändert werden.",
+      "id": "GUID des zu ladenden oder zu löschenden Datensatzes."
+    }
+  },
+  "Backend.EF.Delete": {
+    "description": "Markiert die Entity mit der angegebenen GUID zum Löschen; SaveChanges persistiert die Löschung.",
+    "inputs": {
+      "entity": "Entity-Instanz im gewählten DbContext, deren Felder geändert werden.",
+      "id": "GUID des zu ladenden oder zu löschenden Datensatzes."
+    }
+  },
+  "Backend.EF.SaveChanges": {
+    "description": "Speichert die ausstehenden Änderungen des gewählten DbContext und liefert die Anzahl betroffener Einträge.",
+    "inputs": {
+      "entity": "Entity-Instanz im gewählten DbContext, deren Felder geändert werden.",
+      "id": "GUID des zu ladenden oder zu löschenden Datensatzes."
+    }
+  },
+  "Backend.Template.Execute": {
+    "description": "Erstellt eine Vorlage anhand von Entity-Name und Vorlagenname über den Template-Service.",
+    "inputs": {
+      "parameters": "Optionale zusätzliche Parameter im konfigurierten Record-Vertrag.",
+      "id": "GUID des Datensatzes, für den die Vorlage erstellt wird.",
+      "where": "Optionaler Filterausdruck für die Datenabfrage des Template-Service.",
+      "entity": "Technischer Entity-Name für die Vorlagenauswahl.",
+      "name": "Name der auszuführenden Vorlage.",
+      "groupName": "Name der Vorlagengruppe für die Auswahl.",
+      "templateId": "GUID der auszuführenden Vorlage.",
+      "model": "Vollständiges Datenmodell gemäß dem konfigurierten Record-Vertrag."
+    }
+  },
+  "Backend.Template.ById": {
+    "description": "Erstellt die Vorlage mit der angegebenen Vorlagen-ID über den Template-Service.",
+    "inputs": {
+      "parameters": "Optionale zusätzliche Parameter im konfigurierten Record-Vertrag.",
+      "id": "GUID des Datensatzes, für den die Vorlage erstellt wird.",
+      "where": "Optionaler Filterausdruck für die Datenabfrage des Template-Service.",
+      "entity": "Technischer Entity-Name für die Vorlagenauswahl.",
+      "name": "Name der auszuführenden Vorlage.",
+      "groupName": "Name der Vorlagengruppe für die Auswahl.",
+      "templateId": "GUID der auszuführenden Vorlage.",
+      "model": "Vollständiges Datenmodell gemäß dem konfigurierten Record-Vertrag."
+    }
+  },
+  "Backend.Template.Default": {
+    "description": "Ermittelt und erstellt die Standardvorlage der angegebenen Gruppe für den Datensatz.",
+    "inputs": {
+      "parameters": "Optionale zusätzliche Parameter im konfigurierten Record-Vertrag.",
+      "id": "GUID des Datensatzes, für den die Vorlage erstellt wird.",
+      "where": "Optionaler Filterausdruck für die Datenabfrage des Template-Service.",
+      "entity": "Technischer Entity-Name für die Vorlagenauswahl.",
+      "name": "Name der auszuführenden Vorlage.",
+      "groupName": "Name der Vorlagengruppe für die Auswahl.",
+      "templateId": "GUID der auszuführenden Vorlage.",
+      "model": "Vollständiges Datenmodell gemäß dem konfigurierten Record-Vertrag."
+    }
+  },
+  "Backend.Template.FromModel": {
+    "description": "Erstellt eine Vorlage direkt aus dem übergebenen Datenmodell.",
+    "inputs": {
+      "parameters": "Optionale zusätzliche Parameter im konfigurierten Record-Vertrag.",
+      "id": "GUID des Datensatzes, für den die Vorlage erstellt wird.",
+      "where": "Optionaler Filterausdruck für die Datenabfrage des Template-Service.",
+      "entity": "Technischer Entity-Name für die Vorlagenauswahl.",
+      "name": "Name der auszuführenden Vorlage.",
+      "groupName": "Name der Vorlagengruppe für die Auswahl.",
+      "templateId": "GUID der auszuführenden Vorlage.",
+      "model": "Vollständiges Datenmodell gemäß dem konfigurierten Record-Vertrag."
+    }
+  },
+  "Frontend.UI.ShowPage": {
+    "description": "Zeigt eine konfigurierte Seite an und wartet auf die Abschlussaktion. Wartet auf die Abschlussaktion; Benutzerabbruch liefert cancelled=true und beendet nicht automatisch den gesamten Flow.",
+    "inputs": {
+      "page": "Seitenkonfiguration mit den darzustellenden Panels.",
+      "data": "Anfangsdaten gemäß dem konfigurierten Record-Vertrag.",
+      "title": "Überschrift des Prozessschritts.",
+      "subtitle": "Optionaler erläuternder Text.",
+      "htmlContent": "Optionaler HTML-Inhalt zur Anzeige.",
+      "icon": "Optionaler SVG-Pfad oder Bild als Data-URL.",
+      "dialogOptions": "Optionen für Größe, Vollbild, Abbruchmöglichkeit und Abbruchbeschriftung.",
+      "fields": "Optionale Feldkonfiguration, die die statische Konfiguration ersetzt.",
+      "rows": "Zeilen im konfigurierten Record-Vertrag.",
+      "columns": "Spaltenkonfiguration für Darstellung und Bearbeitung.",
+      "selectedRows": "Vorausgewählte Zeilen.",
+      "selectedIndices": "Nullbasierte Indizes der vorausgewählten Zeilen.",
+      "display": "Darstellung als page oder dialog.",
+      "allowCancel": "Erlaubt den Benutzerabbruch; ein Abbruch liefert cancelled=true.",
+      "dialogSize": "Dialoggröße small, medium oder large.",
+      "fullscreen": "Bei true im Vollbild darstellen.",
+      "buttons": "Liste der Abschlussaktionen mit eindeutiger ID und Beschriftung; cancel ist reserviert.",
+      "options": "Auswählbare Optionen mit eindeutigen IDs, Beschriftungen und optionalen Beschreibungen.",
+      "selected": "Vorauswahl: Options-IDs bzw. Datensatz-GUIDs passend zum Auswahltyp.",
+      "filter": "Zusätzlicher Filterausdruck, der die Suchergebnisse einschränkt.",
+      "id": "GUID des anzuzeigenden oder zu bearbeitenden Datensatzes; bei Neuanlage optional.",
+      "content": "Anzuzeigender Vorlageninhalt im gewählten Format.",
+      "subject": "Optionaler Betreff der E-Mail-Vorschau.",
+      "multiple": "Erlaubt die Auswahl mehrerer Optionen.",
+      "required": "Erfordert eine gültige Auswahl bzw. Eingabe vor der Bestätigung.",
+      "accept": "Erlaubte Dateiendungen oder MIME-Typen für die Dateiauswahl.",
+      "maxFiles": "Maximal zulässige Anzahl Dateien.",
+      "maxBytes": "Maximal zulässige Größe pro Datei in Bytes.",
+      "pageSize": "Zeilen pro Tabellenseite, von 1 bis 200.",
+      "selection": "Auswahlmodus: none, single oder multiple.",
+      "searchName": "Name der Suchkonfiguration zur Datensatzauswahl.",
+      "detailsName": "Name der Detail- oder Teilmaskenkonfiguration.",
+      "mode": "Datensatzmodus: read zum Anzeigen, edit zum Bearbeiten oder new zur Neuanlage.",
+      "format": "Vorschauformat: html, pdf, email oder sms."
+    }
+  },
+  "Frontend.UI.ShowDialog": {
+    "description": "Zeigt eine konfigurierte Seite als Dialog und wartet auf die Abschlussaktion. Wartet auf die Abschlussaktion; Benutzerabbruch liefert cancelled=true und beendet nicht automatisch den gesamten Flow.",
+    "inputs": {
+      "page": "Seitenkonfiguration mit den darzustellenden Panels.",
+      "data": "Anfangsdaten gemäß dem konfigurierten Record-Vertrag.",
+      "title": "Überschrift des Prozessschritts.",
+      "subtitle": "Optionaler erläuternder Text.",
+      "htmlContent": "Optionaler HTML-Inhalt zur Anzeige.",
+      "icon": "Optionaler SVG-Pfad oder Bild als Data-URL.",
+      "dialogOptions": "Optionen für Größe, Vollbild, Abbruchmöglichkeit und Abbruchbeschriftung.",
+      "fields": "Optionale Feldkonfiguration, die die statische Konfiguration ersetzt.",
+      "rows": "Zeilen im konfigurierten Record-Vertrag.",
+      "columns": "Spaltenkonfiguration für Darstellung und Bearbeitung.",
+      "selectedRows": "Vorausgewählte Zeilen.",
+      "selectedIndices": "Nullbasierte Indizes der vorausgewählten Zeilen.",
+      "display": "Darstellung als page oder dialog.",
+      "allowCancel": "Erlaubt den Benutzerabbruch; ein Abbruch liefert cancelled=true.",
+      "dialogSize": "Dialoggröße small, medium oder large.",
+      "fullscreen": "Bei true im Vollbild darstellen.",
+      "buttons": "Liste der Abschlussaktionen mit eindeutiger ID und Beschriftung; cancel ist reserviert.",
+      "options": "Auswählbare Optionen mit eindeutigen IDs, Beschriftungen und optionalen Beschreibungen.",
+      "selected": "Vorauswahl: Options-IDs bzw. Datensatz-GUIDs passend zum Auswahltyp.",
+      "filter": "Zusätzlicher Filterausdruck, der die Suchergebnisse einschränkt.",
+      "id": "GUID des anzuzeigenden oder zu bearbeitenden Datensatzes; bei Neuanlage optional.",
+      "content": "Anzuzeigender Vorlageninhalt im gewählten Format.",
+      "subject": "Optionaler Betreff der E-Mail-Vorschau.",
+      "multiple": "Erlaubt die Auswahl mehrerer Optionen.",
+      "required": "Erfordert eine gültige Auswahl bzw. Eingabe vor der Bestätigung.",
+      "accept": "Erlaubte Dateiendungen oder MIME-Typen für die Dateiauswahl.",
+      "maxFiles": "Maximal zulässige Anzahl Dateien.",
+      "maxBytes": "Maximal zulässige Größe pro Datei in Bytes.",
+      "pageSize": "Zeilen pro Tabellenseite, von 1 bis 200.",
+      "selection": "Auswahlmodus: none, single oder multiple.",
+      "searchName": "Name der Suchkonfiguration zur Datensatzauswahl.",
+      "detailsName": "Name der Detail- oder Teilmaskenkonfiguration.",
+      "mode": "Datensatzmodus: read zum Anzeigen, edit zum Bearbeiten oder new zur Neuanlage.",
+      "format": "Vorschauformat: html, pdf, email oder sms."
+    }
+  },
+  "Frontend.UI.Input": {
+    "description": "Erfasst Werte gemäß dem konfigurierten Datenvertrag und liefert sie nach Bestätigung zurück. Wartet auf die Abschlussaktion; Benutzerabbruch liefert cancelled=true und beendet nicht automatisch den gesamten Flow.",
+    "inputs": {
+      "page": "Seitenkonfiguration mit den darzustellenden Panels.",
+      "data": "Anfangsdaten gemäß dem konfigurierten Record-Vertrag.",
+      "title": "Überschrift des Prozessschritts.",
+      "subtitle": "Optionaler erläuternder Text.",
+      "htmlContent": "Optionaler HTML-Inhalt zur Anzeige.",
+      "icon": "Optionaler SVG-Pfad oder Bild als Data-URL.",
+      "dialogOptions": "Optionen für Größe, Vollbild, Abbruchmöglichkeit und Abbruchbeschriftung.",
+      "fields": "Optionale Feldkonfiguration, die die statische Konfiguration ersetzt.",
+      "rows": "Zeilen im konfigurierten Record-Vertrag.",
+      "columns": "Spaltenkonfiguration für Darstellung und Bearbeitung.",
+      "selectedRows": "Vorausgewählte Zeilen.",
+      "selectedIndices": "Nullbasierte Indizes der vorausgewählten Zeilen.",
+      "display": "Darstellung als page oder dialog.",
+      "allowCancel": "Erlaubt den Benutzerabbruch; ein Abbruch liefert cancelled=true.",
+      "dialogSize": "Dialoggröße small, medium oder large.",
+      "fullscreen": "Bei true im Vollbild darstellen.",
+      "buttons": "Liste der Abschlussaktionen mit eindeutiger ID und Beschriftung; cancel ist reserviert.",
+      "options": "Auswählbare Optionen mit eindeutigen IDs, Beschriftungen und optionalen Beschreibungen.",
+      "selected": "Vorauswahl: Options-IDs bzw. Datensatz-GUIDs passend zum Auswahltyp.",
+      "filter": "Zusätzlicher Filterausdruck, der die Suchergebnisse einschränkt.",
+      "id": "GUID des anzuzeigenden oder zu bearbeitenden Datensatzes; bei Neuanlage optional.",
+      "content": "Anzuzeigender Vorlageninhalt im gewählten Format.",
+      "subject": "Optionaler Betreff der E-Mail-Vorschau.",
+      "multiple": "Erlaubt die Auswahl mehrerer Optionen.",
+      "required": "Erfordert eine gültige Auswahl bzw. Eingabe vor der Bestätigung.",
+      "accept": "Erlaubte Dateiendungen oder MIME-Typen für die Dateiauswahl.",
+      "maxFiles": "Maximal zulässige Anzahl Dateien.",
+      "maxBytes": "Maximal zulässige Größe pro Datei in Bytes.",
+      "pageSize": "Zeilen pro Tabellenseite, von 1 bis 200.",
+      "selection": "Auswahlmodus: none, single oder multiple.",
+      "searchName": "Name der Suchkonfiguration zur Datensatzauswahl.",
+      "detailsName": "Name der Detail- oder Teilmaskenkonfiguration.",
+      "mode": "Datensatzmodus: read zum Anzeigen, edit zum Bearbeiten oder new zur Neuanlage.",
+      "format": "Vorschauformat: html, pdf, email oder sms."
+    }
+  },
+  "Frontend.UI.Table": {
+    "description": "Zeigt eine typisierte Tabelle mit konfigurierbarer Auswahl an. Wartet auf die Abschlussaktion; Benutzerabbruch liefert cancelled=true und beendet nicht automatisch den gesamten Flow.",
+    "inputs": {
+      "page": "Seitenkonfiguration mit den darzustellenden Panels.",
+      "data": "Anfangsdaten gemäß dem konfigurierten Record-Vertrag.",
+      "title": "Überschrift des Prozessschritts.",
+      "subtitle": "Optionaler erläuternder Text.",
+      "htmlContent": "Optionaler HTML-Inhalt zur Anzeige.",
+      "icon": "Optionaler SVG-Pfad oder Bild als Data-URL.",
+      "dialogOptions": "Optionen für Größe, Vollbild, Abbruchmöglichkeit und Abbruchbeschriftung.",
+      "fields": "Optionale Feldkonfiguration, die die statische Konfiguration ersetzt.",
+      "rows": "Zeilen im konfigurierten Record-Vertrag.",
+      "columns": "Spaltenkonfiguration für Darstellung und Bearbeitung.",
+      "selectedRows": "Vorausgewählte Zeilen.",
+      "selectedIndices": "Nullbasierte Indizes der vorausgewählten Zeilen.",
+      "display": "Darstellung als page oder dialog.",
+      "allowCancel": "Erlaubt den Benutzerabbruch; ein Abbruch liefert cancelled=true.",
+      "dialogSize": "Dialoggröße small, medium oder large.",
+      "fullscreen": "Bei true im Vollbild darstellen.",
+      "buttons": "Liste der Abschlussaktionen mit eindeutiger ID und Beschriftung; cancel ist reserviert.",
+      "options": "Auswählbare Optionen mit eindeutigen IDs, Beschriftungen und optionalen Beschreibungen.",
+      "selected": "Vorauswahl: Options-IDs bzw. Datensatz-GUIDs passend zum Auswahltyp.",
+      "filter": "Zusätzlicher Filterausdruck, der die Suchergebnisse einschränkt.",
+      "id": "GUID des anzuzeigenden oder zu bearbeitenden Datensatzes; bei Neuanlage optional.",
+      "content": "Anzuzeigender Vorlageninhalt im gewählten Format.",
+      "subject": "Optionaler Betreff der E-Mail-Vorschau.",
+      "multiple": "Erlaubt die Auswahl mehrerer Optionen.",
+      "required": "Erfordert eine gültige Auswahl bzw. Eingabe vor der Bestätigung.",
+      "accept": "Erlaubte Dateiendungen oder MIME-Typen für die Dateiauswahl.",
+      "maxFiles": "Maximal zulässige Anzahl Dateien.",
+      "maxBytes": "Maximal zulässige Größe pro Datei in Bytes.",
+      "pageSize": "Zeilen pro Tabellenseite, von 1 bis 200.",
+      "selection": "Auswahlmodus: none, single oder multiple.",
+      "searchName": "Name der Suchkonfiguration zur Datensatzauswahl.",
+      "detailsName": "Name der Detail- oder Teilmaskenkonfiguration.",
+      "mode": "Datensatzmodus: read zum Anzeigen, edit zum Bearbeiten oder new zur Neuanlage.",
+      "format": "Vorschauformat: html, pdf, email oder sms."
+    }
+  },
+  "Frontend.UI.EditTable": {
+    "description": "Erlaubt die Bearbeitung einer typisierten Tabelle und liefert die bestätigten Daten zurück. Wartet auf die Abschlussaktion; Benutzerabbruch liefert cancelled=true und beendet nicht automatisch den gesamten Flow.",
+    "inputs": {
+      "page": "Seitenkonfiguration mit den darzustellenden Panels.",
+      "data": "Anfangsdaten gemäß dem konfigurierten Record-Vertrag.",
+      "title": "Überschrift des Prozessschritts.",
+      "subtitle": "Optionaler erläuternder Text.",
+      "htmlContent": "Optionaler HTML-Inhalt zur Anzeige.",
+      "icon": "Optionaler SVG-Pfad oder Bild als Data-URL.",
+      "dialogOptions": "Optionen für Größe, Vollbild, Abbruchmöglichkeit und Abbruchbeschriftung.",
+      "fields": "Optionale Feldkonfiguration, die die statische Konfiguration ersetzt.",
+      "rows": "Zeilen im konfigurierten Record-Vertrag.",
+      "columns": "Spaltenkonfiguration für Darstellung und Bearbeitung.",
+      "selectedRows": "Vorausgewählte Zeilen.",
+      "selectedIndices": "Nullbasierte Indizes der vorausgewählten Zeilen.",
+      "display": "Darstellung als page oder dialog.",
+      "allowCancel": "Erlaubt den Benutzerabbruch; ein Abbruch liefert cancelled=true.",
+      "dialogSize": "Dialoggröße small, medium oder large.",
+      "fullscreen": "Bei true im Vollbild darstellen.",
+      "buttons": "Liste der Abschlussaktionen mit eindeutiger ID und Beschriftung; cancel ist reserviert.",
+      "options": "Auswählbare Optionen mit eindeutigen IDs, Beschriftungen und optionalen Beschreibungen.",
+      "selected": "Vorauswahl: Options-IDs bzw. Datensatz-GUIDs passend zum Auswahltyp.",
+      "filter": "Zusätzlicher Filterausdruck, der die Suchergebnisse einschränkt.",
+      "id": "GUID des anzuzeigenden oder zu bearbeitenden Datensatzes; bei Neuanlage optional.",
+      "content": "Anzuzeigender Vorlageninhalt im gewählten Format.",
+      "subject": "Optionaler Betreff der E-Mail-Vorschau.",
+      "multiple": "Erlaubt die Auswahl mehrerer Optionen.",
+      "required": "Erfordert eine gültige Auswahl bzw. Eingabe vor der Bestätigung.",
+      "accept": "Erlaubte Dateiendungen oder MIME-Typen für die Dateiauswahl.",
+      "maxFiles": "Maximal zulässige Anzahl Dateien.",
+      "maxBytes": "Maximal zulässige Größe pro Datei in Bytes.",
+      "pageSize": "Zeilen pro Tabellenseite, von 1 bis 200.",
+      "selection": "Auswahlmodus: none, single oder multiple.",
+      "searchName": "Name der Suchkonfiguration zur Datensatzauswahl.",
+      "detailsName": "Name der Detail- oder Teilmaskenkonfiguration.",
+      "mode": "Datensatzmodus: read zum Anzeigen, edit zum Bearbeiten oder new zur Neuanlage.",
+      "format": "Vorschauformat: html, pdf, email oder sms."
+    }
+  },
+  "Frontend.UI.SelectOptions": {
+    "description": "Lässt eine oder mehrere vorgegebene Optionen auswählen. Wartet auf die Abschlussaktion; Benutzerabbruch liefert cancelled=true und beendet nicht automatisch den gesamten Flow.",
+    "inputs": {
+      "page": "Seitenkonfiguration mit den darzustellenden Panels.",
+      "data": "Anfangsdaten gemäß dem konfigurierten Record-Vertrag.",
+      "title": "Überschrift des Prozessschritts.",
+      "subtitle": "Optionaler erläuternder Text.",
+      "htmlContent": "Optionaler HTML-Inhalt zur Anzeige.",
+      "icon": "Optionaler SVG-Pfad oder Bild als Data-URL.",
+      "dialogOptions": "Optionen für Größe, Vollbild, Abbruchmöglichkeit und Abbruchbeschriftung.",
+      "fields": "Optionale Feldkonfiguration, die die statische Konfiguration ersetzt.",
+      "rows": "Zeilen im konfigurierten Record-Vertrag.",
+      "columns": "Spaltenkonfiguration für Darstellung und Bearbeitung.",
+      "selectedRows": "Vorausgewählte Zeilen.",
+      "selectedIndices": "Nullbasierte Indizes der vorausgewählten Zeilen.",
+      "display": "Darstellung als page oder dialog.",
+      "allowCancel": "Erlaubt den Benutzerabbruch; ein Abbruch liefert cancelled=true.",
+      "dialogSize": "Dialoggröße small, medium oder large.",
+      "fullscreen": "Bei true im Vollbild darstellen.",
+      "buttons": "Liste der Abschlussaktionen mit eindeutiger ID und Beschriftung; cancel ist reserviert.",
+      "options": "Auswählbare Optionen mit eindeutigen IDs, Beschriftungen und optionalen Beschreibungen.",
+      "selected": "Vorauswahl: Options-IDs bzw. Datensatz-GUIDs passend zum Auswahltyp.",
+      "filter": "Zusätzlicher Filterausdruck, der die Suchergebnisse einschränkt.",
+      "id": "GUID des anzuzeigenden oder zu bearbeitenden Datensatzes; bei Neuanlage optional.",
+      "content": "Anzuzeigender Vorlageninhalt im gewählten Format.",
+      "subject": "Optionaler Betreff der E-Mail-Vorschau.",
+      "multiple": "Erlaubt die Auswahl mehrerer Optionen.",
+      "required": "Erfordert eine gültige Auswahl bzw. Eingabe vor der Bestätigung.",
+      "accept": "Erlaubte Dateiendungen oder MIME-Typen für die Dateiauswahl.",
+      "maxFiles": "Maximal zulässige Anzahl Dateien.",
+      "maxBytes": "Maximal zulässige Größe pro Datei in Bytes.",
+      "pageSize": "Zeilen pro Tabellenseite, von 1 bis 200.",
+      "selection": "Auswahlmodus: none, single oder multiple.",
+      "searchName": "Name der Suchkonfiguration zur Datensatzauswahl.",
+      "detailsName": "Name der Detail- oder Teilmaskenkonfiguration.",
+      "mode": "Datensatzmodus: read zum Anzeigen, edit zum Bearbeiten oder new zur Neuanlage.",
+      "format": "Vorschauformat: html, pdf, email oder sms."
+    }
+  },
+  "Frontend.UI.SelectFiles": {
+    "description": "Lässt Dateien auswählen und liefert Name, MIME-Typ, Größe und Inhalt zurück. Wartet auf die Abschlussaktion; Benutzerabbruch liefert cancelled=true und beendet nicht automatisch den gesamten Flow.",
+    "inputs": {
+      "page": "Seitenkonfiguration mit den darzustellenden Panels.",
+      "data": "Anfangsdaten gemäß dem konfigurierten Record-Vertrag.",
+      "title": "Überschrift des Prozessschritts.",
+      "subtitle": "Optionaler erläuternder Text.",
+      "htmlContent": "Optionaler HTML-Inhalt zur Anzeige.",
+      "icon": "Optionaler SVG-Pfad oder Bild als Data-URL.",
+      "dialogOptions": "Optionen für Größe, Vollbild, Abbruchmöglichkeit und Abbruchbeschriftung.",
+      "fields": "Optionale Feldkonfiguration, die die statische Konfiguration ersetzt.",
+      "rows": "Zeilen im konfigurierten Record-Vertrag.",
+      "columns": "Spaltenkonfiguration für Darstellung und Bearbeitung.",
+      "selectedRows": "Vorausgewählte Zeilen.",
+      "selectedIndices": "Nullbasierte Indizes der vorausgewählten Zeilen.",
+      "display": "Darstellung als page oder dialog.",
+      "allowCancel": "Erlaubt den Benutzerabbruch; ein Abbruch liefert cancelled=true.",
+      "dialogSize": "Dialoggröße small, medium oder large.",
+      "fullscreen": "Bei true im Vollbild darstellen.",
+      "buttons": "Liste der Abschlussaktionen mit eindeutiger ID und Beschriftung; cancel ist reserviert.",
+      "options": "Auswählbare Optionen mit eindeutigen IDs, Beschriftungen und optionalen Beschreibungen.",
+      "selected": "Vorauswahl: Options-IDs bzw. Datensatz-GUIDs passend zum Auswahltyp.",
+      "filter": "Zusätzlicher Filterausdruck, der die Suchergebnisse einschränkt.",
+      "id": "GUID des anzuzeigenden oder zu bearbeitenden Datensatzes; bei Neuanlage optional.",
+      "content": "Anzuzeigender Vorlageninhalt im gewählten Format.",
+      "subject": "Optionaler Betreff der E-Mail-Vorschau.",
+      "multiple": "Erlaubt die Auswahl mehrerer Optionen.",
+      "required": "Erfordert eine gültige Auswahl bzw. Eingabe vor der Bestätigung.",
+      "accept": "Erlaubte Dateiendungen oder MIME-Typen für die Dateiauswahl.",
+      "maxFiles": "Maximal zulässige Anzahl Dateien.",
+      "maxBytes": "Maximal zulässige Größe pro Datei in Bytes.",
+      "pageSize": "Zeilen pro Tabellenseite, von 1 bis 200.",
+      "selection": "Auswahlmodus: none, single oder multiple.",
+      "searchName": "Name der Suchkonfiguration zur Datensatzauswahl.",
+      "detailsName": "Name der Detail- oder Teilmaskenkonfiguration.",
+      "mode": "Datensatzmodus: read zum Anzeigen, edit zum Bearbeiten oder new zur Neuanlage.",
+      "format": "Vorschauformat: html, pdf, email oder sms."
+    }
+  },
+  "Frontend.UI.Signature": {
+    "description": "Erfasst eine Unterschrift und liefert sie als PNG-Bild zurück. Wartet auf die Abschlussaktion; Benutzerabbruch liefert cancelled=true und beendet nicht automatisch den gesamten Flow.",
+    "inputs": {
+      "page": "Seitenkonfiguration mit den darzustellenden Panels.",
+      "data": "Anfangsdaten gemäß dem konfigurierten Record-Vertrag.",
+      "title": "Überschrift des Prozessschritts.",
+      "subtitle": "Optionaler erläuternder Text.",
+      "htmlContent": "Optionaler HTML-Inhalt zur Anzeige.",
+      "icon": "Optionaler SVG-Pfad oder Bild als Data-URL.",
+      "dialogOptions": "Optionen für Größe, Vollbild, Abbruchmöglichkeit und Abbruchbeschriftung.",
+      "fields": "Optionale Feldkonfiguration, die die statische Konfiguration ersetzt.",
+      "rows": "Zeilen im konfigurierten Record-Vertrag.",
+      "columns": "Spaltenkonfiguration für Darstellung und Bearbeitung.",
+      "selectedRows": "Vorausgewählte Zeilen.",
+      "selectedIndices": "Nullbasierte Indizes der vorausgewählten Zeilen.",
+      "display": "Darstellung als page oder dialog.",
+      "allowCancel": "Erlaubt den Benutzerabbruch; ein Abbruch liefert cancelled=true.",
+      "dialogSize": "Dialoggröße small, medium oder large.",
+      "fullscreen": "Bei true im Vollbild darstellen.",
+      "buttons": "Liste der Abschlussaktionen mit eindeutiger ID und Beschriftung; cancel ist reserviert.",
+      "options": "Auswählbare Optionen mit eindeutigen IDs, Beschriftungen und optionalen Beschreibungen.",
+      "selected": "Vorauswahl: Options-IDs bzw. Datensatz-GUIDs passend zum Auswahltyp.",
+      "filter": "Zusätzlicher Filterausdruck, der die Suchergebnisse einschränkt.",
+      "id": "GUID des anzuzeigenden oder zu bearbeitenden Datensatzes; bei Neuanlage optional.",
+      "content": "Anzuzeigender Vorlageninhalt im gewählten Format.",
+      "subject": "Optionaler Betreff der E-Mail-Vorschau.",
+      "multiple": "Erlaubt die Auswahl mehrerer Optionen.",
+      "required": "Erfordert eine gültige Auswahl bzw. Eingabe vor der Bestätigung.",
+      "accept": "Erlaubte Dateiendungen oder MIME-Typen für die Dateiauswahl.",
+      "maxFiles": "Maximal zulässige Anzahl Dateien.",
+      "maxBytes": "Maximal zulässige Größe pro Datei in Bytes.",
+      "pageSize": "Zeilen pro Tabellenseite, von 1 bis 200.",
+      "selection": "Auswahlmodus: none, single oder multiple.",
+      "searchName": "Name der Suchkonfiguration zur Datensatzauswahl.",
+      "detailsName": "Name der Detail- oder Teilmaskenkonfiguration.",
+      "mode": "Datensatzmodus: read zum Anzeigen, edit zum Bearbeiten oder new zur Neuanlage.",
+      "format": "Vorschauformat: html, pdf, email oder sms."
+    }
+  },
+  "Frontend.UI.Checklist": {
+    "description": "Zeigt Prüfpunkte und fordert die konfigurierten Bestätigungen an. Wartet auf die Abschlussaktion; Benutzerabbruch liefert cancelled=true und beendet nicht automatisch den gesamten Flow.",
+    "inputs": {
+      "page": "Seitenkonfiguration mit den darzustellenden Panels.",
+      "data": "Anfangsdaten gemäß dem konfigurierten Record-Vertrag.",
+      "title": "Überschrift des Prozessschritts.",
+      "subtitle": "Optionaler erläuternder Text.",
+      "htmlContent": "Optionaler HTML-Inhalt zur Anzeige.",
+      "icon": "Optionaler SVG-Pfad oder Bild als Data-URL.",
+      "dialogOptions": "Optionen für Größe, Vollbild, Abbruchmöglichkeit und Abbruchbeschriftung.",
+      "fields": "Optionale Feldkonfiguration, die die statische Konfiguration ersetzt.",
+      "rows": "Zeilen im konfigurierten Record-Vertrag.",
+      "columns": "Spaltenkonfiguration für Darstellung und Bearbeitung.",
+      "selectedRows": "Vorausgewählte Zeilen.",
+      "selectedIndices": "Nullbasierte Indizes der vorausgewählten Zeilen.",
+      "display": "Darstellung als page oder dialog.",
+      "allowCancel": "Erlaubt den Benutzerabbruch; ein Abbruch liefert cancelled=true.",
+      "dialogSize": "Dialoggröße small, medium oder large.",
+      "fullscreen": "Bei true im Vollbild darstellen.",
+      "buttons": "Liste der Abschlussaktionen mit eindeutiger ID und Beschriftung; cancel ist reserviert.",
+      "options": "Auswählbare Optionen mit eindeutigen IDs, Beschriftungen und optionalen Beschreibungen.",
+      "selected": "Vorauswahl: Options-IDs bzw. Datensatz-GUIDs passend zum Auswahltyp.",
+      "filter": "Zusätzlicher Filterausdruck, der die Suchergebnisse einschränkt.",
+      "id": "GUID des anzuzeigenden oder zu bearbeitenden Datensatzes; bei Neuanlage optional.",
+      "content": "Anzuzeigender Vorlageninhalt im gewählten Format.",
+      "subject": "Optionaler Betreff der E-Mail-Vorschau.",
+      "multiple": "Erlaubt die Auswahl mehrerer Optionen.",
+      "required": "Erfordert eine gültige Auswahl bzw. Eingabe vor der Bestätigung.",
+      "accept": "Erlaubte Dateiendungen oder MIME-Typen für die Dateiauswahl.",
+      "maxFiles": "Maximal zulässige Anzahl Dateien.",
+      "maxBytes": "Maximal zulässige Größe pro Datei in Bytes.",
+      "pageSize": "Zeilen pro Tabellenseite, von 1 bis 200.",
+      "selection": "Auswahlmodus: none, single oder multiple.",
+      "searchName": "Name der Suchkonfiguration zur Datensatzauswahl.",
+      "detailsName": "Name der Detail- oder Teilmaskenkonfiguration.",
+      "mode": "Datensatzmodus: read zum Anzeigen, edit zum Bearbeiten oder new zur Neuanlage.",
+      "format": "Vorschauformat: html, pdf, email oder sms."
+    }
+  },
+  "Frontend.UI.Message": {
+    "description": "Zeigt einen Hinweis mit optionalem HTML-Inhalt und wartet auf Weiter. Wartet auf die Abschlussaktion; Benutzerabbruch liefert cancelled=true und beendet nicht automatisch den gesamten Flow.",
+    "inputs": {
+      "page": "Seitenkonfiguration mit den darzustellenden Panels.",
+      "data": "Anfangsdaten gemäß dem konfigurierten Record-Vertrag.",
+      "title": "Überschrift des Prozessschritts.",
+      "subtitle": "Optionaler erläuternder Text.",
+      "htmlContent": "Optionaler HTML-Inhalt zur Anzeige.",
+      "icon": "Optionaler SVG-Pfad oder Bild als Data-URL.",
+      "dialogOptions": "Optionen für Größe, Vollbild, Abbruchmöglichkeit und Abbruchbeschriftung.",
+      "fields": "Optionale Feldkonfiguration, die die statische Konfiguration ersetzt.",
+      "rows": "Zeilen im konfigurierten Record-Vertrag.",
+      "columns": "Spaltenkonfiguration für Darstellung und Bearbeitung.",
+      "selectedRows": "Vorausgewählte Zeilen.",
+      "selectedIndices": "Nullbasierte Indizes der vorausgewählten Zeilen.",
+      "display": "Darstellung als page oder dialog.",
+      "allowCancel": "Erlaubt den Benutzerabbruch; ein Abbruch liefert cancelled=true.",
+      "dialogSize": "Dialoggröße small, medium oder large.",
+      "fullscreen": "Bei true im Vollbild darstellen.",
+      "buttons": "Liste der Abschlussaktionen mit eindeutiger ID und Beschriftung; cancel ist reserviert.",
+      "options": "Auswählbare Optionen mit eindeutigen IDs, Beschriftungen und optionalen Beschreibungen.",
+      "selected": "Vorauswahl: Options-IDs bzw. Datensatz-GUIDs passend zum Auswahltyp.",
+      "filter": "Zusätzlicher Filterausdruck, der die Suchergebnisse einschränkt.",
+      "id": "GUID des anzuzeigenden oder zu bearbeitenden Datensatzes; bei Neuanlage optional.",
+      "content": "Anzuzeigender Vorlageninhalt im gewählten Format.",
+      "subject": "Optionaler Betreff der E-Mail-Vorschau.",
+      "multiple": "Erlaubt die Auswahl mehrerer Optionen.",
+      "required": "Erfordert eine gültige Auswahl bzw. Eingabe vor der Bestätigung.",
+      "accept": "Erlaubte Dateiendungen oder MIME-Typen für die Dateiauswahl.",
+      "maxFiles": "Maximal zulässige Anzahl Dateien.",
+      "maxBytes": "Maximal zulässige Größe pro Datei in Bytes.",
+      "pageSize": "Zeilen pro Tabellenseite, von 1 bis 200.",
+      "selection": "Auswahlmodus: none, single oder multiple.",
+      "searchName": "Name der Suchkonfiguration zur Datensatzauswahl.",
+      "detailsName": "Name der Detail- oder Teilmaskenkonfiguration.",
+      "mode": "Datensatzmodus: read zum Anzeigen, edit zum Bearbeiten oder new zur Neuanlage.",
+      "format": "Vorschauformat: html, pdf, email oder sms."
+    }
+  },
+  "Frontend.UI.Confirm": {
+    "description": "Fragt Ja/Nein ab und liefert confirmed. Wartet auf die Abschlussaktion; Benutzerabbruch liefert cancelled=true und beendet nicht automatisch den gesamten Flow.",
+    "inputs": {
+      "page": "Seitenkonfiguration mit den darzustellenden Panels.",
+      "data": "Anfangsdaten gemäß dem konfigurierten Record-Vertrag.",
+      "title": "Überschrift des Prozessschritts.",
+      "subtitle": "Optionaler erläuternder Text.",
+      "htmlContent": "Optionaler HTML-Inhalt zur Anzeige.",
+      "icon": "Optionaler SVG-Pfad oder Bild als Data-URL.",
+      "dialogOptions": "Optionen für Größe, Vollbild, Abbruchmöglichkeit und Abbruchbeschriftung.",
+      "fields": "Optionale Feldkonfiguration, die die statische Konfiguration ersetzt.",
+      "rows": "Zeilen im konfigurierten Record-Vertrag.",
+      "columns": "Spaltenkonfiguration für Darstellung und Bearbeitung.",
+      "selectedRows": "Vorausgewählte Zeilen.",
+      "selectedIndices": "Nullbasierte Indizes der vorausgewählten Zeilen.",
+      "display": "Darstellung als page oder dialog.",
+      "allowCancel": "Erlaubt den Benutzerabbruch; ein Abbruch liefert cancelled=true.",
+      "dialogSize": "Dialoggröße small, medium oder large.",
+      "fullscreen": "Bei true im Vollbild darstellen.",
+      "buttons": "Liste der Abschlussaktionen mit eindeutiger ID und Beschriftung; cancel ist reserviert.",
+      "options": "Auswählbare Optionen mit eindeutigen IDs, Beschriftungen und optionalen Beschreibungen.",
+      "selected": "Vorauswahl: Options-IDs bzw. Datensatz-GUIDs passend zum Auswahltyp.",
+      "filter": "Zusätzlicher Filterausdruck, der die Suchergebnisse einschränkt.",
+      "id": "GUID des anzuzeigenden oder zu bearbeitenden Datensatzes; bei Neuanlage optional.",
+      "content": "Anzuzeigender Vorlageninhalt im gewählten Format.",
+      "subject": "Optionaler Betreff der E-Mail-Vorschau.",
+      "multiple": "Erlaubt die Auswahl mehrerer Optionen.",
+      "required": "Erfordert eine gültige Auswahl bzw. Eingabe vor der Bestätigung.",
+      "accept": "Erlaubte Dateiendungen oder MIME-Typen für die Dateiauswahl.",
+      "maxFiles": "Maximal zulässige Anzahl Dateien.",
+      "maxBytes": "Maximal zulässige Größe pro Datei in Bytes.",
+      "pageSize": "Zeilen pro Tabellenseite, von 1 bis 200.",
+      "selection": "Auswahlmodus: none, single oder multiple.",
+      "searchName": "Name der Suchkonfiguration zur Datensatzauswahl.",
+      "detailsName": "Name der Detail- oder Teilmaskenkonfiguration.",
+      "mode": "Datensatzmodus: read zum Anzeigen, edit zum Bearbeiten oder new zur Neuanlage.",
+      "format": "Vorschauformat: html, pdf, email oder sms."
+    }
+  },
+  "Frontend.UI.ChooseAction": {
+    "description": "Zeigt die übergebenen Aktionsbuttons und liefert die ID der gewählten Aktion. Wartet auf die Abschlussaktion; Benutzerabbruch liefert cancelled=true und beendet nicht automatisch den gesamten Flow.",
+    "inputs": {
+      "page": "Seitenkonfiguration mit den darzustellenden Panels.",
+      "data": "Anfangsdaten gemäß dem konfigurierten Record-Vertrag.",
+      "title": "Überschrift des Prozessschritts.",
+      "subtitle": "Optionaler erläuternder Text.",
+      "htmlContent": "Optionaler HTML-Inhalt zur Anzeige.",
+      "icon": "Optionaler SVG-Pfad oder Bild als Data-URL.",
+      "dialogOptions": "Optionen für Größe, Vollbild, Abbruchmöglichkeit und Abbruchbeschriftung.",
+      "fields": "Optionale Feldkonfiguration, die die statische Konfiguration ersetzt.",
+      "rows": "Zeilen im konfigurierten Record-Vertrag.",
+      "columns": "Spaltenkonfiguration für Darstellung und Bearbeitung.",
+      "selectedRows": "Vorausgewählte Zeilen.",
+      "selectedIndices": "Nullbasierte Indizes der vorausgewählten Zeilen.",
+      "display": "Darstellung als page oder dialog.",
+      "allowCancel": "Erlaubt den Benutzerabbruch; ein Abbruch liefert cancelled=true.",
+      "dialogSize": "Dialoggröße small, medium oder large.",
+      "fullscreen": "Bei true im Vollbild darstellen.",
+      "buttons": "Liste der Abschlussaktionen mit eindeutiger ID und Beschriftung; cancel ist reserviert.",
+      "options": "Auswählbare Optionen mit eindeutigen IDs, Beschriftungen und optionalen Beschreibungen.",
+      "selected": "Vorauswahl: Options-IDs bzw. Datensatz-GUIDs passend zum Auswahltyp.",
+      "filter": "Zusätzlicher Filterausdruck, der die Suchergebnisse einschränkt.",
+      "id": "GUID des anzuzeigenden oder zu bearbeitenden Datensatzes; bei Neuanlage optional.",
+      "content": "Anzuzeigender Vorlageninhalt im gewählten Format.",
+      "subject": "Optionaler Betreff der E-Mail-Vorschau.",
+      "multiple": "Erlaubt die Auswahl mehrerer Optionen.",
+      "required": "Erfordert eine gültige Auswahl bzw. Eingabe vor der Bestätigung.",
+      "accept": "Erlaubte Dateiendungen oder MIME-Typen für die Dateiauswahl.",
+      "maxFiles": "Maximal zulässige Anzahl Dateien.",
+      "maxBytes": "Maximal zulässige Größe pro Datei in Bytes.",
+      "pageSize": "Zeilen pro Tabellenseite, von 1 bis 200.",
+      "selection": "Auswahlmodus: none, single oder multiple.",
+      "searchName": "Name der Suchkonfiguration zur Datensatzauswahl.",
+      "detailsName": "Name der Detail- oder Teilmaskenkonfiguration.",
+      "mode": "Datensatzmodus: read zum Anzeigen, edit zum Bearbeiten oder new zur Neuanlage.",
+      "format": "Vorschauformat: html, pdf, email oder sms."
+    }
+  },
+  "Frontend.UI.SelectRecord": {
+    "description": "Lässt einen Datensatz über eine Suchkonfiguration auswählen und liefert seine GUID. Wartet auf die Abschlussaktion; Benutzerabbruch liefert cancelled=true und beendet nicht automatisch den gesamten Flow.",
+    "inputs": {
+      "page": "Seitenkonfiguration mit den darzustellenden Panels.",
+      "data": "Anfangsdaten gemäß dem konfigurierten Record-Vertrag.",
+      "title": "Überschrift des Prozessschritts.",
+      "subtitle": "Optionaler erläuternder Text.",
+      "htmlContent": "Optionaler HTML-Inhalt zur Anzeige.",
+      "icon": "Optionaler SVG-Pfad oder Bild als Data-URL.",
+      "dialogOptions": "Optionen für Größe, Vollbild, Abbruchmöglichkeit und Abbruchbeschriftung.",
+      "fields": "Optionale Feldkonfiguration, die die statische Konfiguration ersetzt.",
+      "rows": "Zeilen im konfigurierten Record-Vertrag.",
+      "columns": "Spaltenkonfiguration für Darstellung und Bearbeitung.",
+      "selectedRows": "Vorausgewählte Zeilen.",
+      "selectedIndices": "Nullbasierte Indizes der vorausgewählten Zeilen.",
+      "display": "Darstellung als page oder dialog.",
+      "allowCancel": "Erlaubt den Benutzerabbruch; ein Abbruch liefert cancelled=true.",
+      "dialogSize": "Dialoggröße small, medium oder large.",
+      "fullscreen": "Bei true im Vollbild darstellen.",
+      "buttons": "Liste der Abschlussaktionen mit eindeutiger ID und Beschriftung; cancel ist reserviert.",
+      "options": "Auswählbare Optionen mit eindeutigen IDs, Beschriftungen und optionalen Beschreibungen.",
+      "selected": "Vorauswahl: Options-IDs bzw. Datensatz-GUIDs passend zum Auswahltyp.",
+      "filter": "Zusätzlicher Filterausdruck, der die Suchergebnisse einschränkt.",
+      "id": "GUID des anzuzeigenden oder zu bearbeitenden Datensatzes; bei Neuanlage optional.",
+      "content": "Anzuzeigender Vorlageninhalt im gewählten Format.",
+      "subject": "Optionaler Betreff der E-Mail-Vorschau.",
+      "multiple": "Erlaubt die Auswahl mehrerer Optionen.",
+      "required": "Erfordert eine gültige Auswahl bzw. Eingabe vor der Bestätigung.",
+      "accept": "Erlaubte Dateiendungen oder MIME-Typen für die Dateiauswahl.",
+      "maxFiles": "Maximal zulässige Anzahl Dateien.",
+      "maxBytes": "Maximal zulässige Größe pro Datei in Bytes.",
+      "pageSize": "Zeilen pro Tabellenseite, von 1 bis 200.",
+      "selection": "Auswahlmodus: none, single oder multiple.",
+      "searchName": "Name der Suchkonfiguration zur Datensatzauswahl.",
+      "detailsName": "Name der Detail- oder Teilmaskenkonfiguration.",
+      "mode": "Datensatzmodus: read zum Anzeigen, edit zum Bearbeiten oder new zur Neuanlage.",
+      "format": "Vorschauformat: html, pdf, email oder sms."
+    }
+  },
+  "Frontend.UI.SelectRecords": {
+    "description": "Lässt mehrere Datensätze über eine Suchkonfiguration auswählen und liefert ihre GUIDs. Wartet auf die Abschlussaktion; Benutzerabbruch liefert cancelled=true und beendet nicht automatisch den gesamten Flow.",
+    "inputs": {
+      "page": "Seitenkonfiguration mit den darzustellenden Panels.",
+      "data": "Anfangsdaten gemäß dem konfigurierten Record-Vertrag.",
+      "title": "Überschrift des Prozessschritts.",
+      "subtitle": "Optionaler erläuternder Text.",
+      "htmlContent": "Optionaler HTML-Inhalt zur Anzeige.",
+      "icon": "Optionaler SVG-Pfad oder Bild als Data-URL.",
+      "dialogOptions": "Optionen für Größe, Vollbild, Abbruchmöglichkeit und Abbruchbeschriftung.",
+      "fields": "Optionale Feldkonfiguration, die die statische Konfiguration ersetzt.",
+      "rows": "Zeilen im konfigurierten Record-Vertrag.",
+      "columns": "Spaltenkonfiguration für Darstellung und Bearbeitung.",
+      "selectedRows": "Vorausgewählte Zeilen.",
+      "selectedIndices": "Nullbasierte Indizes der vorausgewählten Zeilen.",
+      "display": "Darstellung als page oder dialog.",
+      "allowCancel": "Erlaubt den Benutzerabbruch; ein Abbruch liefert cancelled=true.",
+      "dialogSize": "Dialoggröße small, medium oder large.",
+      "fullscreen": "Bei true im Vollbild darstellen.",
+      "buttons": "Liste der Abschlussaktionen mit eindeutiger ID und Beschriftung; cancel ist reserviert.",
+      "options": "Auswählbare Optionen mit eindeutigen IDs, Beschriftungen und optionalen Beschreibungen.",
+      "selected": "Vorauswahl: Options-IDs bzw. Datensatz-GUIDs passend zum Auswahltyp.",
+      "filter": "Zusätzlicher Filterausdruck, der die Suchergebnisse einschränkt.",
+      "id": "GUID des anzuzeigenden oder zu bearbeitenden Datensatzes; bei Neuanlage optional.",
+      "content": "Anzuzeigender Vorlageninhalt im gewählten Format.",
+      "subject": "Optionaler Betreff der E-Mail-Vorschau.",
+      "multiple": "Erlaubt die Auswahl mehrerer Optionen.",
+      "required": "Erfordert eine gültige Auswahl bzw. Eingabe vor der Bestätigung.",
+      "accept": "Erlaubte Dateiendungen oder MIME-Typen für die Dateiauswahl.",
+      "maxFiles": "Maximal zulässige Anzahl Dateien.",
+      "maxBytes": "Maximal zulässige Größe pro Datei in Bytes.",
+      "pageSize": "Zeilen pro Tabellenseite, von 1 bis 200.",
+      "selection": "Auswahlmodus: none, single oder multiple.",
+      "searchName": "Name der Suchkonfiguration zur Datensatzauswahl.",
+      "detailsName": "Name der Detail- oder Teilmaskenkonfiguration.",
+      "mode": "Datensatzmodus: read zum Anzeigen, edit zum Bearbeiten oder new zur Neuanlage.",
+      "format": "Vorschauformat: html, pdf, email oder sms."
+    }
+  },
+  "Frontend.UI.RecordDetails": {
+    "description": "Öffnet eine Datensatzmaske zum Anzeigen, Bearbeiten oder Neuanlegen. Wartet auf die Abschlussaktion; Benutzerabbruch liefert cancelled=true und beendet nicht automatisch den gesamten Flow.",
+    "inputs": {
+      "page": "Seitenkonfiguration mit den darzustellenden Panels.",
+      "data": "Anfangsdaten gemäß dem konfigurierten Record-Vertrag.",
+      "title": "Überschrift des Prozessschritts.",
+      "subtitle": "Optionaler erläuternder Text.",
+      "htmlContent": "Optionaler HTML-Inhalt zur Anzeige.",
+      "icon": "Optionaler SVG-Pfad oder Bild als Data-URL.",
+      "dialogOptions": "Optionen für Größe, Vollbild, Abbruchmöglichkeit und Abbruchbeschriftung.",
+      "fields": "Optionale Feldkonfiguration, die die statische Konfiguration ersetzt.",
+      "rows": "Zeilen im konfigurierten Record-Vertrag.",
+      "columns": "Spaltenkonfiguration für Darstellung und Bearbeitung.",
+      "selectedRows": "Vorausgewählte Zeilen.",
+      "selectedIndices": "Nullbasierte Indizes der vorausgewählten Zeilen.",
+      "display": "Darstellung als page oder dialog.",
+      "allowCancel": "Erlaubt den Benutzerabbruch; ein Abbruch liefert cancelled=true.",
+      "dialogSize": "Dialoggröße small, medium oder large.",
+      "fullscreen": "Bei true im Vollbild darstellen.",
+      "buttons": "Liste der Abschlussaktionen mit eindeutiger ID und Beschriftung; cancel ist reserviert.",
+      "options": "Auswählbare Optionen mit eindeutigen IDs, Beschriftungen und optionalen Beschreibungen.",
+      "selected": "Vorauswahl: Options-IDs bzw. Datensatz-GUIDs passend zum Auswahltyp.",
+      "filter": "Zusätzlicher Filterausdruck, der die Suchergebnisse einschränkt.",
+      "id": "GUID des anzuzeigenden oder zu bearbeitenden Datensatzes; bei Neuanlage optional.",
+      "content": "Anzuzeigender Vorlageninhalt im gewählten Format.",
+      "subject": "Optionaler Betreff der E-Mail-Vorschau.",
+      "multiple": "Erlaubt die Auswahl mehrerer Optionen.",
+      "required": "Erfordert eine gültige Auswahl bzw. Eingabe vor der Bestätigung.",
+      "accept": "Erlaubte Dateiendungen oder MIME-Typen für die Dateiauswahl.",
+      "maxFiles": "Maximal zulässige Anzahl Dateien.",
+      "maxBytes": "Maximal zulässige Größe pro Datei in Bytes.",
+      "pageSize": "Zeilen pro Tabellenseite, von 1 bis 200.",
+      "selection": "Auswahlmodus: none, single oder multiple.",
+      "searchName": "Name der Suchkonfiguration zur Datensatzauswahl.",
+      "detailsName": "Name der Detail- oder Teilmaskenkonfiguration.",
+      "mode": "Datensatzmodus: read zum Anzeigen, edit zum Bearbeiten oder new zur Neuanlage.",
+      "format": "Vorschauformat: html, pdf, email oder sms."
+    }
+  },
+  "Frontend.UI.Preview": {
+    "description": "Zeigt eine erstellte HTML-, PDF-, E-Mail- oder SMS-Vorlage an. Wartet auf die Abschlussaktion; Benutzerabbruch liefert cancelled=true und beendet nicht automatisch den gesamten Flow.",
+    "inputs": {
+      "page": "Seitenkonfiguration mit den darzustellenden Panels.",
+      "data": "Anfangsdaten gemäß dem konfigurierten Record-Vertrag.",
+      "title": "Überschrift des Prozessschritts.",
+      "subtitle": "Optionaler erläuternder Text.",
+      "htmlContent": "Optionaler HTML-Inhalt zur Anzeige.",
+      "icon": "Optionaler SVG-Pfad oder Bild als Data-URL.",
+      "dialogOptions": "Optionen für Größe, Vollbild, Abbruchmöglichkeit und Abbruchbeschriftung.",
+      "fields": "Optionale Feldkonfiguration, die die statische Konfiguration ersetzt.",
+      "rows": "Zeilen im konfigurierten Record-Vertrag.",
+      "columns": "Spaltenkonfiguration für Darstellung und Bearbeitung.",
+      "selectedRows": "Vorausgewählte Zeilen.",
+      "selectedIndices": "Nullbasierte Indizes der vorausgewählten Zeilen.",
+      "display": "Darstellung als page oder dialog.",
+      "allowCancel": "Erlaubt den Benutzerabbruch; ein Abbruch liefert cancelled=true.",
+      "dialogSize": "Dialoggröße small, medium oder large.",
+      "fullscreen": "Bei true im Vollbild darstellen.",
+      "buttons": "Liste der Abschlussaktionen mit eindeutiger ID und Beschriftung; cancel ist reserviert.",
+      "options": "Auswählbare Optionen mit eindeutigen IDs, Beschriftungen und optionalen Beschreibungen.",
+      "selected": "Vorauswahl: Options-IDs bzw. Datensatz-GUIDs passend zum Auswahltyp.",
+      "filter": "Zusätzlicher Filterausdruck, der die Suchergebnisse einschränkt.",
+      "id": "GUID des anzuzeigenden oder zu bearbeitenden Datensatzes; bei Neuanlage optional.",
+      "content": "Anzuzeigender Vorlageninhalt im gewählten Format.",
+      "subject": "Optionaler Betreff der E-Mail-Vorschau.",
+      "multiple": "Erlaubt die Auswahl mehrerer Optionen.",
+      "required": "Erfordert eine gültige Auswahl bzw. Eingabe vor der Bestätigung.",
+      "accept": "Erlaubte Dateiendungen oder MIME-Typen für die Dateiauswahl.",
+      "maxFiles": "Maximal zulässige Anzahl Dateien.",
+      "maxBytes": "Maximal zulässige Größe pro Datei in Bytes.",
+      "pageSize": "Zeilen pro Tabellenseite, von 1 bis 200.",
+      "selection": "Auswahlmodus: none, single oder multiple.",
+      "searchName": "Name der Suchkonfiguration zur Datensatzauswahl.",
+      "detailsName": "Name der Detail- oder Teilmaskenkonfiguration.",
+      "mode": "Datensatzmodus: read zum Anzeigen, edit zum Bearbeiten oder new zur Neuanlage.",
+      "format": "Vorschauformat: html, pdf, email oder sms."
+    }
+  },
+  "Frontend.UI.PageByName": {
+    "description": "Lädt eine Seitenkonfiguration über ihren Namen aus dem eingebundenen Seitenkatalog.",
+    "inputs": {
+      "page": "Seitenkonfiguration mit den darzustellenden Panels.",
+      "data": "Anfangsdaten gemäß dem konfigurierten Record-Vertrag.",
+      "title": "Überschrift des Prozessschritts.",
+      "subtitle": "Optionaler erläuternder Text.",
+      "htmlContent": "Optionaler HTML-Inhalt zur Anzeige.",
+      "icon": "Optionaler SVG-Pfad oder Bild als Data-URL.",
+      "dialogOptions": "Optionen für Größe, Vollbild, Abbruchmöglichkeit und Abbruchbeschriftung.",
+      "fields": "Optionale Feldkonfiguration, die die statische Konfiguration ersetzt.",
+      "rows": "Zeilen im konfigurierten Record-Vertrag.",
+      "columns": "Spaltenkonfiguration für Darstellung und Bearbeitung.",
+      "selectedRows": "Vorausgewählte Zeilen.",
+      "selectedIndices": "Nullbasierte Indizes der vorausgewählten Zeilen.",
+      "display": "Darstellung als page oder dialog.",
+      "allowCancel": "Erlaubt den Benutzerabbruch; ein Abbruch liefert cancelled=true.",
+      "dialogSize": "Dialoggröße small, medium oder large.",
+      "fullscreen": "Bei true im Vollbild darstellen.",
+      "buttons": "Liste der Abschlussaktionen mit eindeutiger ID und Beschriftung; cancel ist reserviert.",
+      "options": "Auswählbare Optionen mit eindeutigen IDs, Beschriftungen und optionalen Beschreibungen.",
+      "selected": "Vorauswahl: Options-IDs bzw. Datensatz-GUIDs passend zum Auswahltyp.",
+      "filter": "Zusätzlicher Filterausdruck, der die Suchergebnisse einschränkt.",
+      "id": "GUID des anzuzeigenden oder zu bearbeitenden Datensatzes; bei Neuanlage optional.",
+      "content": "Anzuzeigender Vorlageninhalt im gewählten Format.",
+      "subject": "Optionaler Betreff der E-Mail-Vorschau.",
+      "multiple": "Erlaubt die Auswahl mehrerer Optionen.",
+      "required": "Erfordert eine gültige Auswahl bzw. Eingabe vor der Bestätigung.",
+      "accept": "Erlaubte Dateiendungen oder MIME-Typen für die Dateiauswahl.",
+      "maxFiles": "Maximal zulässige Anzahl Dateien.",
+      "maxBytes": "Maximal zulässige Größe pro Datei in Bytes.",
+      "pageSize": "Zeilen pro Tabellenseite, von 1 bis 200.",
+      "selection": "Auswahlmodus: none, single oder multiple.",
+      "searchName": "Name der Suchkonfiguration zur Datensatzauswahl.",
+      "detailsName": "Name der Detail- oder Teilmaskenkonfiguration.",
+      "mode": "Datensatzmodus: read zum Anzeigen, edit zum Bearbeiten oder new zur Neuanlage.",
+      "format": "Vorschauformat: html, pdf, email oder sms."
+    }
+  },
+  "Frontend.UI.PageConfig": {
+    "description": "Liefert die in der Node konfigurierte Seitenkonfiguration.",
+    "inputs": {
+      "page": "Seitenkonfiguration mit den darzustellenden Panels.",
+      "data": "Anfangsdaten gemäß dem konfigurierten Record-Vertrag.",
+      "title": "Überschrift des Prozessschritts.",
+      "subtitle": "Optionaler erläuternder Text.",
+      "htmlContent": "Optionaler HTML-Inhalt zur Anzeige.",
+      "icon": "Optionaler SVG-Pfad oder Bild als Data-URL.",
+      "dialogOptions": "Optionen für Größe, Vollbild, Abbruchmöglichkeit und Abbruchbeschriftung.",
+      "fields": "Optionale Feldkonfiguration, die die statische Konfiguration ersetzt.",
+      "rows": "Zeilen im konfigurierten Record-Vertrag.",
+      "columns": "Spaltenkonfiguration für Darstellung und Bearbeitung.",
+      "selectedRows": "Vorausgewählte Zeilen.",
+      "selectedIndices": "Nullbasierte Indizes der vorausgewählten Zeilen.",
+      "display": "Darstellung als page oder dialog.",
+      "allowCancel": "Erlaubt den Benutzerabbruch; ein Abbruch liefert cancelled=true.",
+      "dialogSize": "Dialoggröße small, medium oder large.",
+      "fullscreen": "Bei true im Vollbild darstellen.",
+      "buttons": "Liste der Abschlussaktionen mit eindeutiger ID und Beschriftung; cancel ist reserviert.",
+      "options": "Auswählbare Optionen mit eindeutigen IDs, Beschriftungen und optionalen Beschreibungen.",
+      "selected": "Vorauswahl: Options-IDs bzw. Datensatz-GUIDs passend zum Auswahltyp.",
+      "filter": "Zusätzlicher Filterausdruck, der die Suchergebnisse einschränkt.",
+      "id": "GUID des anzuzeigenden oder zu bearbeitenden Datensatzes; bei Neuanlage optional.",
+      "content": "Anzuzeigender Vorlageninhalt im gewählten Format.",
+      "subject": "Optionaler Betreff der E-Mail-Vorschau.",
+      "multiple": "Erlaubt die Auswahl mehrerer Optionen.",
+      "required": "Erfordert eine gültige Auswahl bzw. Eingabe vor der Bestätigung.",
+      "accept": "Erlaubte Dateiendungen oder MIME-Typen für die Dateiauswahl.",
+      "maxFiles": "Maximal zulässige Anzahl Dateien.",
+      "maxBytes": "Maximal zulässige Größe pro Datei in Bytes.",
+      "pageSize": "Zeilen pro Tabellenseite, von 1 bis 200.",
+      "selection": "Auswahlmodus: none, single oder multiple.",
+      "searchName": "Name der Suchkonfiguration zur Datensatzauswahl.",
+      "detailsName": "Name der Detail- oder Teilmaskenkonfiguration.",
+      "mode": "Datensatzmodus: read zum Anzeigen, edit zum Bearbeiten oder new zur Neuanlage.",
+      "format": "Vorschauformat: html, pdf, email oder sms."
+    }
+  },
+  "Standard.Values.Constant.Catalog": {
+    "description": "Liefert den konfigurierten, nicht leeren Adam-Katalognamen.",
+    "inputs": {}
+  },
+  "Standard.Text.ByName": {
+    "description": "Lädt den benannten Texteintrag über den vom Host bereitgestellten Text-Service.",
+    "inputs": {}
+  },
+  "Frontend.UI.Button": {
+    "description": "Erstellt einen Aktionsbutton als Datenobjekt zur Übergabe an eine UI-Node.",
+    "inputs": {
+      "id": "Eindeutige ID der Aktion; cancel ist reserviert.",
+      "label": "Sichtbare Beschriftung des Buttons.",
+      "icon": "Optionaler SVG-Pfad oder Bild als Data-URL.",
+      "disabled": "Bei true ist der Button sichtbar, aber nicht anklickbar.",
+      "visible": "Bei false wird der Button ausgeblendet."
+    }
+  }
+}

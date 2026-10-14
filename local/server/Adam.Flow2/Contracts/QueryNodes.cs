@@ -10,7 +10,8 @@ public static class QueryNodes
     public static bool Predicate(string operation) => operation is "where" or "all";
     public static bool HasExpression(QueryNodeBinding binding) => binding.Operation=="any"?binding.Predicate:HasExpression(binding.Operation);
     public static bool HasExpression(string operation) => Predicate(operation) || operation is "orderBy" or "thenBy" or "select" or "groupBy";
-    public static NodeDefinition Definition(FlowNode node)
+    public static NodeDefinition Definition(FlowNode node) => NodeDescriptions.Describe(DefinitionCore(node));
+    private static NodeDefinition DefinitionCore(FlowNode node)
     {
         var binding = node.Query ?? throw new InvalidOperationException("Missing query binding.");
         if (!Operations.Contains(binding.Operation) || node.Type != NodeType(node.Id, binding.Operation) || node.TypeVersion != 1 || node.Graph is not null || node.Environment != "server" ||

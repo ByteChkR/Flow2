@@ -4,7 +4,8 @@ public static class ValueNodes
 {
     public const string CoalesceType="Standard.Values.Coalesce";
     public static string NodeType(string id)=>CoalesceType;
-    public static NodeDefinition Definition(FlowNode node)
+    public static NodeDefinition Definition(FlowNode node) => NodeDescriptions.Describe(DefinitionCore(node));
+    private static NodeDefinition DefinitionCore(FlowNode node)
     {
         var binding=node.Value;
         if(binding is not null&&binding.Operation!="coalesce")return GeneralValueNodes.Definition(node);

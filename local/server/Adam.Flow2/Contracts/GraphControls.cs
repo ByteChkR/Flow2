@@ -27,7 +27,8 @@ public static class GraphControls
         "parallelMap" or "forEach" or "map" or "filter" or "aggregate" or "flatMap" or "any" or "all" or "find" or "findIndex" or "takeWhile" or "skipWhile" or "partition" or "sortBy" or "distinctBy" or "groupBy" or "minBy" or "maxBy" => ["body"],
         _ => []
     };
-    public static NodeDefinition Definition(FlowNode node)
+    public static NodeDefinition Definition(FlowNode node) => NodeDescriptions.Describe(DefinitionCore(node));
+    private static NodeDefinition DefinitionCore(FlowNode node)
     {
         var b=node.Graph!;var signature=b.Signature;
         void Require(bool value,string message){if(!value)throw new ContractException([new("graph_control","/nodes/"+node.Id,message)]);}

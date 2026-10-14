@@ -1,3 +1,4 @@
+import {describeNode} from './node-descriptions.js';
 import type {FlowNode,GraphNodeBinding,FlowInterface,NodeDefinition,TypeRef,PortMetadata} from './model.js';
 import {isTransportable} from './transport.js';
 import {supportsValueEquality} from './value-equality.js';
@@ -9,7 +10,7 @@ export function joinSlotSignature(binding:GraphNodeBinding,slot:string):FlowInte
  signature.inputs=signature.inputs.filter(p=>p.name!==other).map(p=>p.name===own?{...p,name:'item'}:p);
  return signature;
 }
-export function joinDefinition(node:FlowNode):NodeDefinition {
+function joinDefinitionCore(node:FlowNode):NodeDefinition {
  const b=node.graph!,s=b.signature;
  const left=s.inputs.find(p=>p.name==='leftItem'),right=s.inputs.find(p=>p.name==='rightItem'),index=s.inputs.find(p=>p.name==='index');
  if(!left||!right||left.type.kind==='optional'||right.type.kind==='optional'||index?.type.kind!=='scalar'||index.type.name!=='core.Integer'||s.inputs.some(p=>p.name==='item'))throw new Error('Join requires leftItem, rightItem and Integer index inputs; item is reserved.');
@@ -21,3 +22,5 @@ export function joinDefinition(node:FlowNode):NodeDefinition {
  if(b.operation==='leftJoinByKey')fields.found={kind:'scalar',name:'core.Bool'};
  return {nodeId:node.id,type:node.type,version:1,environments:[...s.inputs,...s.outputs].every(p=>isTransportable(p.type))?['server','browser']:['server'],inputs,outputs:{value:{kind:'array',items:{kind:'object',fields}}},metadata:{label:b.operation,category:'Control/Graphs',inputs:labels},control:{input:true,output:true,start:false},graph:structuredClone(b)};
 }
+
+export function joinDefinition(node:FlowNode):NodeDefinition {return describeNode(joinDefinitionCore(node));}

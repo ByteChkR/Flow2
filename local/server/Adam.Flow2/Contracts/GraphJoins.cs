@@ -7,7 +7,8 @@ public static class GraphJoins
   var own=slot=="leftKey"?"leftItem":"rightItem";var other=slot=="leftKey"?"rightItem":"leftItem";
   return b.Signature with {Inputs=b.Signature.Inputs.Where(p=>p.Name!=other).Select(p=>p.Name==own?p with{Name="item"}:p).ToArray()};
  }
- public static NodeDefinition Definition(FlowNode node)
+ public static NodeDefinition Definition(FlowNode node) => NodeDescriptions.Describe(DefinitionCore(node));
+    private static NodeDefinition DefinitionCore(FlowNode node)
  {
   var b=node.Graph!;var s=b.Signature;
   var left=s.Inputs.SingleOrDefault(p=>p.Name=="leftItem");var right=s.Inputs.SingleOrDefault(p=>p.Name=="rightItem");var index=s.Inputs.SingleOrDefault(p=>p.Name=="index");

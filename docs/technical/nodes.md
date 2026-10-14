@@ -6,6 +6,19 @@ Eine Node-Definition enthält mindestens Typ, Version, Laufzeiten, Ein- und Ausg
 
 Eine Node muss auf beiden Laufzeiten denselben Vertragskern besitzen, wenn sie mit derselben ID in Browser und Backend registriert wird. Ports sind nach dem Typmodell in `@adam-flow/core` bzw. `Adam.Flow2.Contracts` zu beschreiben. Neue Node-Versionen erhalten eine neue Versionsnummer; gespeicherte Graphen referenzieren Typ und Version.
 
+## Gemeinsame Beschreibungen
+
+Die produktiven Pakete unter `local/` beziehen ergänzende deutsche Node- und Input-Beschreibungen aus `local/packages/core/src/contracts/node-descriptions.json`. Der Browser importiert diese Datei; das Backend bindet dieselbe Datei als Assembly-Ressource ein. Die Registries und die spezialisierten Definitionsfabriken ergänzen damit `metadata.description` und `metadata.inputs[port].description`. Bereits gesetzte Beschreibungen und sonstige Metadaten bleiben erhalten. Dynamische Record-Felder, Listenelemente, Query-Parameter und Graph-Eingänge erhalten Beschreibungen anhand ihrer Portnamen beziehungsweise Labels.
+
+Neue Standard-Nodes erhalten dort einen Eintrag mit ihrem vollständigen Typnamen und den tatsächlichen Input-Schlüsseln. Anwendungsspezifische Nodes außerhalb dieses Katalogs liefern ihre Beschreibungen weiterhin selbst. Metadaten ändern weder Portverträge noch das Laufzeitverhalten.
+
+Der Coverage-Test prüft die realen Standardkataloge beider Laufzeiten, UI-Nodes und spezialisierte Definitionen auf vollständige Beschreibungen und vergleicht gemeinsame Input-Texte:
+
+```bash
+cd local
+node --test tests/node-metadata.test.mjs
+```
+
 ## Generierte Referenz
 
 Die [Flow2-Referenz](../generated/index.html) führt zur [Standard-Node-Referenz](../generated/nodes/index.html) und zur [Typreferenz](../generated/types/index.html). Sie entstehen aus den real registrierten Standard-Nodes:

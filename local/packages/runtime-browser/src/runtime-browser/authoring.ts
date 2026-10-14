@@ -1,3 +1,4 @@
+import {describeNode} from '@adam-flow/core/flow-core/node-descriptions.js';
 import { parseScalar } from '@adam-flow/core/flow-core/scalars.js';
 import type { ScalarName } from '@adam-flow/core/flow-core/scalars.js';
 import type { FlowInterface, GraphReference, ConfigField, NodeDefinition, PortMetadata, TypeRef } from '@adam-flow/core/flow-core/index.js';
@@ -46,5 +47,5 @@ export function defineNode<I extends Ports,O extends Ports,C extends Record<stri
     ...(spec.flowPort===undefined?{}:{flowPort:spec.flowPort}),
     ...(spec.control===undefined?{}:{control:spec.control}),
     ...(spec.config===undefined?{}:{config:spec.config})};
-  return {definition:structuredClone(definition),execute:(inputs,context)=>spec.execute(inputs as PortValues<I>,context as {nodeId:string;config:ConfigValues<C>;log:FlowLogger})};
+  return {definition:structuredClone(describeNode(definition)),execute:(inputs,context)=>spec.execute(inputs as PortValues<I>,context as {nodeId:string;config:ConfigValues<C>;log:FlowLogger})};
 }

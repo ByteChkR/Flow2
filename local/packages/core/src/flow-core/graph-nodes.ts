@@ -1,3 +1,4 @@
+import {describeNode} from './node-descriptions.js';
 import {extendGraphCatalog} from './extensions.js';
 import {efCatalog} from './ef-nodes.js';
 import type {TypeDocument} from './model.js';
@@ -16,7 +17,7 @@ export const graphInputPort=(parameter:FlowParameter)=>`in_${parameter.nodeId}`;
 export const graphOutputPort=(parameter:FlowParameter)=>`out_${parameter.nodeId}`;
 export function graphNodeType(id:string,operation:GraphNodeBinding['operation']):string{return graphNames[operation as keyof typeof graphNames];}
 /** Only these four fixed operations are executable. A document never supplies code. */
-export function graphNodeDefinition(node:FlowNode):NodeDefinition {
+function graphNodeDefinitionCore(node:FlowNode):NodeDefinition {
   const binding=node.graph;
   if(!binding)throw new Error('Missing graph node binding.');
   const errors=validateSchema('type',{kind:'graph',signature:binding.signature});
@@ -77,3 +78,5 @@ export function graphCodecs(bundle:GraphBundle):CodecDefinition[]{
   if(new Set(codecs.map(codec=>codec.typeId)).size!==codecs.length)throw new Error('Graph codec identity collision.');
   return codecs;
 }
+
+export function graphNodeDefinition(node:FlowNode):NodeDefinition {return describeNode(graphNodeDefinitionCore(node));}

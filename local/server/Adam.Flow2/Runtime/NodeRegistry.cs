@@ -132,7 +132,7 @@ public sealed class NodeRegistry
     public void Register(RegisteredNode node)
     {
         if (!Wants(node.Definition.Type)||node.Definition.NodeId is null&&specializedTypes.Contains(node.Definition.Type)) return;
-        var metadata = node.Definition.ToContract();
+        var metadata = NodeDescriptions.Describe(node.Definition.ToContract());
         var errors = ContractSchemas.Validate("catalog", JsonSerializer.SerializeToElement(new NodeCatalog(1, [metadata]), ContractSchemas.JsonOptions)).ToList();
         if (errors.Count != 0) throw new ContractException(errors);
         errors.AddRange(NodeAuthoringContracts.Validate(metadata));

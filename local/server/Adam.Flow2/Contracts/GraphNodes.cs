@@ -6,7 +6,8 @@ public static class GraphNodes
     public static string InputPort(FlowParameter parameter)=>"in_"+parameter.NodeId;
     public static string OutputPort(FlowParameter parameter)=>"out_"+parameter.NodeId;
     public static string NodeType(string id,string operation)=>NodeNames.Graph(operation);
-    public static NodeDefinition Definition(FlowNode node)
+    public static NodeDefinition Definition(FlowNode node) => NodeDescriptions.Describe(DefinitionCore(node));
+    private static NodeDefinition DefinitionCore(FlowNode node)
     {
         var binding=node.Graph??throw new InvalidOperationException("Missing graph node binding.");
         var graphType=new TypeRef("graph",Signature:binding.Signature);

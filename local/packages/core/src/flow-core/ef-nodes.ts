@@ -1,5 +1,6 @@
+import {describeNode} from './node-descriptions.js';
 import type {Catalog,Flow,FlowNode,NodeDefinition,TypeDocument,TypeRef} from './model.js';
-export function efDefinition(node:FlowNode,catalog:Catalog,types:TypeDocument):NodeDefinition {
+function efDefinitionCore(node:FlowNode,catalog:Catalog,types:TypeDocument):NodeDefinition {
   const binding=node.ef;
   const family=catalog.nodes.find(d=>d.type===node.type&&!d.nodeId);
   if(!binding||!family||node.environment!=='server'||node.typeVersion!==1||!family.metadata?.efTargets?.some(t=>t.context===binding.context&&t.entity===binding.entity&&t.collection===binding.collection))throw new Error('Unbekanntes EF-Ziel.');
@@ -23,3 +24,5 @@ export function efDefinition(node:FlowNode,catalog:Catalog,types:TypeDocument):N
 export function efCatalog(flow:Flow,catalog:Catalog,types:TypeDocument):Catalog {
   return {...catalog,nodes:[...catalog.nodes.filter(n=>!n.nodeId||!n.ef),...flow.nodes.filter(n=>n.ef).map(n=>efDefinition(n,catalog,types))]};
 }
+
+export function efDefinition(node:FlowNode,catalog:Catalog,types:TypeDocument):NodeDefinition {return describeNode(efDefinitionCore(node,catalog,types));}

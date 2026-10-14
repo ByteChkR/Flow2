@@ -16,7 +16,7 @@ public sealed class ConstantCatalog:IFlowNode
     }
 }
 
-[FlowNode("Standard.Text.ByName",Label="TextByName",Category="Values/Text")]
+[FlowNode("Standard.Text.ByName",Label="TextByName",Category="Values/Text",Description="Lädt den benannten Texteintrag über den vom Host bereitgestellten Text-Service.")]
 public sealed class TextByName(IFlowTextProvider config):IAsyncFlowNode
 {
     [FlowConfig("name","",Label="Texteintrag")] public string Name {get;set;}="";
@@ -30,7 +30,7 @@ public sealed class TextByName(IFlowTextProvider config):IAsyncFlowNode
     }
 }
 
-[FlowNode("Standard.Values.Constant.Image",Label="Constant Image",Category="Values/Image")]
+[FlowNode("Standard.Values.Constant.Image",Label="Constant Image",Category="Values/Image",Description="Normalisiert Base64-Bilddaten oder eine Bild-Data-URL zu einer Data-URL; ungültige Bilddaten führen zu einem Fehler.")]
 public sealed class ConstantImage:IFlowNode
 {
     [FlowConfig("value","",Label="Base64 / Data-URL")] public string ConfiguredValue {get;set;}="";

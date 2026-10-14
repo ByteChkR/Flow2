@@ -1,3 +1,4 @@
+import {describeNode} from '@adam-flow/core/flow-core/node-descriptions.js';
 import {isStep,stepDefinition,stepImplementation} from './steps.js';
 import type {Flow,FlowNode,NodeDefinition,TypeRef,Catalog} from '@adam-flow/core/flow-core/model.js';
 import type {BrowserNodeRegistry} from '../runtime-browser/index.js';
@@ -7,7 +8,7 @@ import type {FlowInteractionHost} from '../ui/interactions.js';
 export interface PageHost {preparePage?(page:unknown):unknown;pageByName(name:string):unknown|Promise<unknown>}
 export const pageType:TypeRef={kind:'pageConfig'};
 export const isPageShow=(type:string)=>type==='Frontend.UI.ShowPage'||type==='Frontend.UI.ShowDialog';
-export function pageDefinition(node:FlowNode):NodeDefinition {
+function pageDefinitionCore(node:FlowNode):NodeDefinition {
   if(!isPageShow(node.type)||node.environment!=='browser'||node.typeVersion!==1||!node.ui||node.ui.dataType.kind!=='object'||!isTransportable(node.ui.dataType))throw new Error('Ansicht benötigt einen transportierbaren Record-Vertrag.');
   const data=node.ui.dataType;
   const inputs:Record<string,TypeRef>={page:pageType,data:Object.keys(data.fields).length?data:{kind:'optional',inner:data}};
@@ -29,3 +30,5 @@ export function pageNodes(host?:FlowInteractionHost,pages?:PageHost){
 
 import {registerGraphCatalogExtension} from '@adam-flow/core/flow-core/extensions.js';
 registerGraphCatalogExtension('presentation',pageCatalog);
+
+export function pageDefinition(node:FlowNode):NodeDefinition {return describeNode(pageDefinitionCore(node));}

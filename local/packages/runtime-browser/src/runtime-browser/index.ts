@@ -1,3 +1,4 @@
+import {describeNode} from '@adam-flow/core/flow-core/node-descriptions.js';
 import { nullLogger } from './trace.js';
 import type { FlowLogger } from './trace.js';
 import { configDefaults, validateConfig,requireFlowValues } from '@adam-flow/core/flow-core/index.js';
@@ -31,7 +32,7 @@ export class BrowserNodeRegistry {
   register(node: AuthoredNode): void;
   register(definition: NodeDefinition, execute: NodeImplementation): void;
   register(value: NodeDefinition | AuthoredNode, implementation?: NodeImplementation): void {
-    const definition = 'definition' in value ? value.definition : value;
+    const definition = describeNode('definition' in value ? value.definition : value);
     const execute = 'definition' in value ? value.execute : implementation!;
     const metadataKey=this.metadata?canonicalJson(definition):undefined;
     let prepared=metadataKey===undefined?undefined:this.metadata!.get(metadataKey);

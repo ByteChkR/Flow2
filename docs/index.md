@@ -8,11 +8,15 @@ Adam.Flow2 ist das portable, versionierte Flow-System für Browser- und Backend-
 
 ## Dokumentation
 
-- [Erste Schritte](user/getting-started.md)
-- [Flows erstellen](user/authoring-flows.md)
-- [Ausführung und Fehler](user/execution.md)
-- [Architektur](technical/architecture.md)
-- [Node-Entwicklung](technical/nodes.md)
+- [Erste Schritte](user/getting-started.html)
+- [Flows erstellen](user/authoring-flows.html)
+- [Ausführung und Fehler](user/execution.html)
+- [Architektur](technical/architecture.html)
+- [Laufzeit-Pipeline](technical/runtime-pipeline.html)
+- [Optimierungen und Benchmarks](technical/optimizations.html)
+- [Node-Entwicklung](technical/nodes.html)
+- [Editor, Workspace und Graphschnittstellen](technical/editor-workspace.html)
+- [Validierung und Fehlermodell](technical/validation.html)
 - [Flow2-Referenz](generated/index.html)
 
 Die Flow2-Referenz enthält die aus den tatsächlichen Registries generierten Node- und Typverträge.
