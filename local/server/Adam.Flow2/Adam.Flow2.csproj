@@ -3,4 +3,4 @@
 <EmbeddedResource Include="../../packages/core/src/contracts/*.schema.json" LogicalName="Schemas.%(Filename)%(Extension)"/>
 <EmbeddedResource Include="../../packages/core/src/contracts/regex-program.json" LogicalName="Data.regex-program.json"/>
 <EmbeddedResource Include="../../packages/core/src/contracts/unicode-casing.json" LogicalName="Data.unicode-casing.json"/>
-</ItemGroup><PropertyGroup><PackageReadmeFile>README.md</PackageReadmeFile></PropertyGroup><ItemGroup><None Include="../README.md" Pack="true" PackagePath="/" /></ItemGroup></Project>
+</ItemGroup><PropertyGroup><PackageReadmeFile>README.md</PackageReadmeFile></PropertyGroup><ItemGroup><None Include="../../../docs/technical/architecture.md" Pack="true" PackagePath="/README.md" /></ItemGroup></Project>
