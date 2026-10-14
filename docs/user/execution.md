@@ -1,6 +1,6 @@
 # Ausführung und Fehler
 
-[Home](../README.md) / **Ausführung und Fehler**
+[Home](../) / **Ausführung und Fehler**
 
 Der Editor bietet nur Ausführungsarten an, die der Graph erfüllen kann.
 

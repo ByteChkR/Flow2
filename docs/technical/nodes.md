@@ -1,6 +1,6 @@
 # Nodes entwickeln und dokumentieren
 
-[Home](../README.md) / **Nodes entwickeln und dokumentieren**
+[Home](../) / **Nodes entwickeln und dokumentieren**
 
 Eine Node-Definition enthält mindestens Typ, Version, Laufzeiten, Ein- und Ausgänge. `metadata` liefert Label, Beschreibung, Kategorie sowie Beschreibungen und Reihenfolge der Ports. `config` beschreibt editierbare Konfigurationsfelder mit Typ, Standardwert, Optionen und Metadaten. Kontrollfluss-, Graph-, Wert-, Query-, EF- und UI-Bindungen ergänzen die Definition für die jeweilige Node-Familie.
 

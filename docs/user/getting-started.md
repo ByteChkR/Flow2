@@ -1,6 +1,6 @@
 # Erste Schritte
 
-[Home](../README.md) / **Erste Schritte**
+[Home](../) / **Erste Schritte**
 
 Ein Flow ist ein Graph aus Nodes. Nodes haben Eingänge, Ausgänge und gegebenenfalls Kontrollflussanschlüsse. Verbinde kompatible Ausgänge mit Eingängen und starte den Graphen im Editor.
 

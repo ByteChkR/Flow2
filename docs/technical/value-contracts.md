@@ -1,6 +1,6 @@
 # Wertverträge und gemeinsame Testfälle
 
-[Home](../README.md) / **Wertverträge und gemeinsame Testfälle**
+[Home](../) / **Wertverträge und gemeinsame Testfälle**
 
 Die portablen Wertoperationen werden im Browser und im Backend gegen dieselben Fixtures geprüft. Die Fixture-Sammlung liegt unter `local/tests/ValueContracts/Fixtures` und umfasst Skalare, zeitliche Werte, Text, JSON, Records, Dictionaries, Listenoperationen, Listensteuerung, Join-Operationen, Graphsteuerung und reguläre Ausdrücke.
 

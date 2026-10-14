@@ -1,6 +1,6 @@
 # Ausführungsmodell
 
-[Home](../README.md) / **Ausführungsmodell**
+[Home](../) / **Ausführungsmodell**
 
 Vor jeder Ausführung prüfen Browser und Backend Graphschema, Node-Versionen, Ports, Typzuweisbarkeit, Pflichtverbindungen, Kontrollfluss und erlaubte Laufzeit. Das Backend wiederholt diese Prüfung mit seiner Registry; ein vom Browser vorgelegter Plan oder Quelltext gilt nie als vertrauenswürdig.
 

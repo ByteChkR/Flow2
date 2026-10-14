@@ -1,6 +1,6 @@
 # Architektur
 
-[Home](../README.md) / **Architektur**
+[Home](../) / **Architektur**
 
 Die produktiv verwendete, paketfähige Implementation liegt unter `local/`. Sie trennt den allgemeinen Dokumenteditor, Flow-Verträge, Browser-Runtime, Flow-Editor und .NET-Runtime. Adam bleibt Host für fachliche Daten, Berechtigungen und Geschäfts-Nodes.
 

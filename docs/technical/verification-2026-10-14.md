@@ -1,6 +1,6 @@
 # Prüfnachweis vom 14.10.2026
 
-[Home](../README.md) / **Prüfnachweis vom 14.10.2026**
+[Home](../) / **Prüfnachweis vom 14.10.2026**
 
 Dieser Nachweis beschreibt einen abgeschlossenen lokalen Stand und ist keine Zusage über den aktuellen Branchzustand.
 

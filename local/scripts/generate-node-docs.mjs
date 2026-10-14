@@ -41,8 +41,8 @@ try {
   await writeFile(resolve(nodeDirectory,'index.html'),page('Standard-Nodes',nodeIndex(nodes,types),breadcrumbs([{label:'Home',href:'../../'},{label:'Referenz',href:'../index.html'},{label:'Nodes'}]),referenceTree(nodes,types,'nodes')),'utf8');
   await writeFile(resolve(typeDirectory,'index.html'),page('Datentypen',typeIndex(types,nodes),breadcrumbs([{label:'Home',href:'../../'},{label:'Referenz',href:'../index.html'},{label:'Typen'}]),referenceTree(nodes,types,'types')),'utf8');
   await writeFile(resolve(generatedRoot,'index.html'),page('Flow2-Referenz',landingPage(nodes,types),breadcrumbs([{label:'Home',href:'../'},{label:'Referenz'}]),referenceTree(nodes,types,'landing'),'flow-docs.css'),'utf8');
-  await writeFile(resolve(generatedRoot,'nodes.md'),'# Standard-Node-Referenz\n\n[Home](../README.md) / Referenz / **Nodes**\n\n[Interaktive Node-Dokumentation öffnen](nodes/index.html)\n','utf8');
-  await writeFile(resolve(generatedRoot,'types.md'),'# Datentypen\n\n[Home](../README.md) / Referenz / **Typen**\n\n[Interaktive Typ-Dokumentation öffnen](types/index.html)\n','utf8');
+  await writeFile(resolve(generatedRoot,'nodes.md'),'# Standard-Node-Referenz\n\n[Home](../) / Referenz / **Nodes**\n\n[Interaktive Node-Dokumentation öffnen](nodes/index.html)\n','utf8');
+  await writeFile(resolve(generatedRoot,'types.md'),'# Datentypen\n\n[Home](../) / Referenz / **Typen**\n\n[Interaktive Typ-Dokumentation öffnen](types/index.html)\n','utf8');
   process.stdout.write(`Wrote ${nodeDirectory} (${nodes.length} nodes) and ${typeDirectory} (${staticTypes(types).length} static type contracts, ${types.size-staticTypes(types).length} dynamic specializations).\n`);
 } finally { await rm(temporary,{recursive:true,force:true}); }
 

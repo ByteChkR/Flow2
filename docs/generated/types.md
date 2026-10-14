@@ -1,5 +1,5 @@
 # Datentypen
 
-[Home](../README.md) / Referenz / **Typen**
+[Home](../) / Referenz / **Typen**
 
 [Interaktive Typ-Dokumentation öffnen](types/index.html)

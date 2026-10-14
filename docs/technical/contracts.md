@@ -1,6 +1,6 @@
 # Verträge und Kompatibilität
 
-[Home](../README.md) / **Verträge und Kompatibilität**
+[Home](../) / **Verträge und Kompatibilität**
 
 Die kanonischen JSON-Schemas liegen in `local/packages/core/src/contracts`. Sie werden vom npm-Kernpaket ausgeliefert und im .NET-Kernpaket eingebettet. Flow-Schema-Version ist aktuell `2`, Bundle-Schema-Version ist `1`.
 

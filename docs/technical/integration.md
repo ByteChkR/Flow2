@@ -1,6 +1,6 @@
 # Host-Integration
 
-[Home](../README.md) / **Host-Integration**
+[Home](../) / **Host-Integration**
 
 ## Browser
 

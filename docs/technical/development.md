@@ -1,6 +1,6 @@
 # Lokale Entwicklung
 
-[Home](../README.md) / **Lokale Entwicklung**
+[Home](../) / **Lokale Entwicklung**
 
 Alle Befehle für die aktuelle Paketbasis werden aus `local/` ausgeführt.
 

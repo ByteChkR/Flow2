@@ -1,5 +1,5 @@
 # Standard-Node-Referenz
 
-[Home](../README.md) / Referenz / **Nodes**
+[Home](../) / Referenz / **Nodes**
 
 [Interaktive Node-Dokumentation öffnen](nodes/index.html)
