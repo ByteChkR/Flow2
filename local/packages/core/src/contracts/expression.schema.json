@@ -1,0 +1,106 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://adam-flow.local/schemas/v1/expression.schema.json",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "parameter",
+    "nodes",
+    "result"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "parameter": {
+      "$ref": "https://adam-flow.local/schemas/v1/type.schema.json"
+    },
+    "result": {
+      "type": "string",
+      "minLength": 1
+    },
+    "nodes": {
+      "type": "array",
+      "minItems": 1,
+      "maxItems": 512,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "operation",
+          "inputs"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "operation": {
+            "enum": [
+              "parameter",
+              "record",
+              "property",
+              "optionalProperty",
+              "ternary",
+              "stringIsNullOrEmpty",
+              "stringIsNullOrWhiteSpace",
+              "stringContains",
+              "stringStartsWith",
+              "stringEndsWith",
+              "coalesce",
+              "stringLength",
+              "stringTrim",
+              "stringToLower",
+              "stringToUpper",
+              "stringReplace",
+              "stringSubstring",
+              "stringConcat",
+              "stringDefaultIfEmpty",
+              "stringDefaultIfWhiteSpace",
+              "stringIndexOf",
+              "stringTrimStart",
+              "stringTrimEnd",
+              "stringLike",
+              "constant",
+              "equal",
+              "notEqual",
+              "greaterThan",
+              "lessThan",
+              "greaterOrEqual",
+              "lessOrEqual",
+              "and",
+              "or",
+              "xor",
+              "not",
+              "isNull",
+              "groupKey",
+              "groupElements",
+              "count",
+              "sum",
+              "min",
+              "max",
+              "external"
+            ]
+          },
+          "inputs": {
+            "type": "object",
+            "additionalProperties": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "member": {
+            "type": "string",
+            "minLength": 1
+          },
+          "type": {
+            "$ref": "https://adam-flow.local/schemas/v1/type.schema.json"
+          },
+          "value": {}
+        }
+      }
+    }
+  }
+}

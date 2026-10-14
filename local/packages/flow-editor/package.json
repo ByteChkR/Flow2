@@ -1,0 +1,678 @@
+{
+  "name": "@adam-flow/editor",
+  "version": "0.1.0-local.1791959572118",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./editor/Annotations.svelte": {
+      "types": "./dist/editor/Annotations.svelte.d.ts",
+      "svelte": "./dist/editor/Annotations.svelte",
+      "default": "./dist/editor/Annotations.svelte"
+    },
+    "./editor/CatalogNameInput.svelte": {
+      "types": "./dist/editor/CatalogNameInput.svelte.d.ts",
+      "svelte": "./dist/editor/CatalogNameInput.svelte",
+      "default": "./dist/editor/CatalogNameInput.svelte"
+    },
+    "./editor/CommentInline.svelte": {
+      "types": "./dist/editor/CommentInline.svelte.d.ts",
+      "svelte": "./dist/editor/CommentInline.svelte",
+      "default": "./dist/editor/CommentInline.svelte"
+    },
+    "./editor/CommentMarkdown.svelte": {
+      "types": "./dist/editor/CommentMarkdown.svelte.d.ts",
+      "svelte": "./dist/editor/CommentMarkdown.svelte",
+      "default": "./dist/editor/CommentMarkdown.svelte"
+    },
+    "./editor/ContextMenuStyles.svelte": {
+      "types": "./dist/editor/ContextMenuStyles.svelte.d.ts",
+      "svelte": "./dist/editor/ContextMenuStyles.svelte",
+      "default": "./dist/editor/ContextMenuStyles.svelte"
+    },
+    "./editor/ControlSignatureEditor.svelte": {
+      "types": "./dist/editor/ControlSignatureEditor.svelte.d.ts",
+      "svelte": "./dist/editor/ControlSignatureEditor.svelte",
+      "default": "./dist/editor/ControlSignatureEditor.svelte"
+    },
+    "./editor/DateTimeOffsetInput.svelte": {
+      "types": "./dist/editor/DateTimeOffsetInput.svelte.d.ts",
+      "svelte": "./dist/editor/DateTimeOffsetInput.svelte",
+      "default": "./dist/editor/DateTimeOffsetInput.svelte"
+    },
+    "./editor/EfTargetSelect.svelte": {
+      "types": "./dist/editor/EfTargetSelect.svelte.d.ts",
+      "svelte": "./dist/editor/EfTargetSelect.svelte",
+      "default": "./dist/editor/EfTargetSelect.svelte"
+    },
+    "./editor/ExpressionEditor.svelte": {
+      "types": "./dist/editor/ExpressionEditor.svelte.d.ts",
+      "svelte": "./dist/editor/ExpressionEditor.svelte",
+      "default": "./dist/editor/ExpressionEditor.svelte"
+    },
+    "./editor/Flow2GraphTab.svelte": {
+      "types": "./dist/editor/Flow2GraphTab.svelte.d.ts",
+      "svelte": "./dist/editor/Flow2GraphTab.svelte",
+      "default": "./dist/editor/Flow2GraphTab.svelte"
+    },
+    "./editor/Flow2Provider.svelte": {
+      "types": "./dist/editor/Flow2Provider.svelte.d.ts",
+      "svelte": "./dist/editor/Flow2Provider.svelte",
+      "default": "./dist/editor/Flow2Provider.svelte"
+    },
+    "./editor/Flow2TreeTools.svelte": {
+      "types": "./dist/editor/Flow2TreeTools.svelte.d.ts",
+      "svelte": "./dist/editor/Flow2TreeTools.svelte",
+      "default": "./dist/editor/Flow2TreeTools.svelte"
+    },
+    "./editor/GraphContractComparison.svelte": {
+      "types": "./dist/editor/GraphContractComparison.svelte.d.ts",
+      "svelte": "./dist/editor/GraphContractComparison.svelte",
+      "default": "./dist/editor/GraphContractComparison.svelte"
+    },
+    "./editor/GraphEditor.svelte": {
+      "types": "./dist/editor/GraphEditor.svelte.d.ts",
+      "svelte": "./dist/editor/GraphEditor.svelte",
+      "default": "./dist/editor/GraphEditor.svelte"
+    },
+    "./editor/GraphInputContract.svelte": {
+      "types": "./dist/editor/GraphInputContract.svelte.d.ts",
+      "svelte": "./dist/editor/GraphInputContract.svelte",
+      "default": "./dist/editor/GraphInputContract.svelte"
+    },
+    "./editor/GraphTabs.svelte": {
+      "types": "./dist/editor/GraphTabs.svelte.d.ts",
+      "svelte": "./dist/editor/GraphTabs.svelte",
+      "default": "./dist/editor/GraphTabs.svelte"
+    },
+    "./editor/GraphWorkspace.svelte": {
+      "types": "./dist/editor/GraphWorkspace.svelte.d.ts",
+      "svelte": "./dist/editor/GraphWorkspace.svelte",
+      "default": "./dist/editor/GraphWorkspace.svelte"
+    },
+    "./editor/GroupDeleteDialog.svelte": {
+      "types": "./dist/editor/GroupDeleteDialog.svelte.d.ts",
+      "svelte": "./dist/editor/GroupDeleteDialog.svelte",
+      "default": "./dist/editor/GroupDeleteDialog.svelte"
+    },
+    "./editor/HtmlInput.svelte": {
+      "types": "./dist/editor/HtmlInput.svelte.d.ts",
+      "svelte": "./dist/editor/HtmlInput.svelte",
+      "default": "./dist/editor/HtmlInput.svelte"
+    },
+    "./editor/InlineInputs.svelte": {
+      "types": "./dist/editor/InlineInputs.svelte.d.ts",
+      "svelte": "./dist/editor/InlineInputs.svelte",
+      "default": "./dist/editor/InlineInputs.svelte"
+    },
+    "./editor/InputFieldsInput.svelte": {
+      "types": "./dist/editor/InputFieldsInput.svelte.d.ts",
+      "svelte": "./dist/editor/InputFieldsInput.svelte",
+      "default": "./dist/editor/InputFieldsInput.svelte"
+    },
+    "./editor/InputTypeEditor.svelte": {
+      "types": "./dist/editor/InputTypeEditor.svelte.d.ts",
+      "svelte": "./dist/editor/InputTypeEditor.svelte",
+      "default": "./dist/editor/InputTypeEditor.svelte"
+    },
+    "./editor/InternalGroupDialog.svelte": {
+      "types": "./dist/editor/InternalGroupDialog.svelte.d.ts",
+      "svelte": "./dist/editor/InternalGroupDialog.svelte",
+      "default": "./dist/editor/InternalGroupDialog.svelte"
+    },
+    "./editor/LogOverlay.svelte": {
+      "types": "./dist/editor/LogOverlay.svelte.d.ts",
+      "svelte": "./dist/editor/LogOverlay.svelte",
+      "default": "./dist/editor/LogOverlay.svelte"
+    },
+    "./editor/NodeDebug.svelte": {
+      "types": "./dist/editor/NodeDebug.svelte.d.ts",
+      "svelte": "./dist/editor/NodeDebug.svelte",
+      "default": "./dist/editor/NodeDebug.svelte"
+    },
+    "./editor/NodeTree.svelte": {
+      "types": "./dist/editor/NodeTree.svelte.d.ts",
+      "svelte": "./dist/editor/NodeTree.svelte",
+      "default": "./dist/editor/NodeTree.svelte"
+    },
+    "./editor/PageConfigInput.svelte": {
+      "types": "./dist/editor/PageConfigInput.svelte.d.ts",
+      "svelte": "./dist/editor/PageConfigInput.svelte",
+      "default": "./dist/editor/PageConfigInput.svelte"
+    },
+    "./editor/PageNameInput.svelte": {
+      "types": "./dist/editor/PageNameInput.svelte.d.ts",
+      "svelte": "./dist/editor/PageNameInput.svelte",
+      "default": "./dist/editor/PageNameInput.svelte"
+    },
+    "./editor/RecordEditDialog.svelte": {
+      "types": "./dist/editor/RecordEditDialog.svelte.d.ts",
+      "svelte": "./dist/editor/RecordEditDialog.svelte",
+      "default": "./dist/editor/RecordEditDialog.svelte"
+    },
+    "./editor/ScalarInput.svelte": {
+      "types": "./dist/editor/ScalarInput.svelte.d.ts",
+      "svelte": "./dist/editor/ScalarInput.svelte",
+      "default": "./dist/editor/ScalarInput.svelte"
+    },
+    "./editor/SelectionRectangle.svelte": {
+      "types": "./dist/editor/SelectionRectangle.svelte.d.ts",
+      "svelte": "./dist/editor/SelectionRectangle.svelte",
+      "default": "./dist/editor/SelectionRectangle.svelte"
+    },
+    "./editor/StatisticsView.svelte": {
+      "types": "./dist/editor/StatisticsView.svelte.d.ts",
+      "svelte": "./dist/editor/StatisticsView.svelte",
+      "default": "./dist/editor/StatisticsView.svelte"
+    },
+    "./editor/StepNameInput.svelte": {
+      "types": "./dist/editor/StepNameInput.svelte.d.ts",
+      "svelte": "./dist/editor/StepNameInput.svelte",
+      "default": "./dist/editor/StepNameInput.svelte"
+    },
+    "./editor/TableColumnsInput.svelte": {
+      "types": "./dist/editor/TableColumnsInput.svelte.d.ts",
+      "svelte": "./dist/editor/TableColumnsInput.svelte",
+      "default": "./dist/editor/TableColumnsInput.svelte"
+    },
+    "./editor/TemplateInput.svelte": {
+      "types": "./dist/editor/TemplateInput.svelte.d.ts",
+      "svelte": "./dist/editor/TemplateInput.svelte",
+      "default": "./dist/editor/TemplateInput.svelte"
+    },
+    "./editor/TextNameInput.svelte": {
+      "types": "./dist/editor/TextNameInput.svelte.d.ts",
+      "svelte": "./dist/editor/TextNameInput.svelte",
+      "default": "./dist/editor/TextNameInput.svelte"
+    },
+    "./editor/TimeSpanInput.svelte": {
+      "types": "./dist/editor/TimeSpanInput.svelte.d.ts",
+      "svelte": "./dist/editor/TimeSpanInput.svelte",
+      "default": "./dist/editor/TimeSpanInput.svelte"
+    },
+    "./editor/ValidationProgressDialog.svelte": {
+      "types": "./dist/editor/ValidationProgressDialog.svelte.d.ts",
+      "svelte": "./dist/editor/ValidationProgressDialog.svelte",
+      "default": "./dist/editor/ValidationProgressDialog.svelte"
+    },
+    "./editor/ValidationSaveDialog.svelte": {
+      "types": "./dist/editor/ValidationSaveDialog.svelte.d.ts",
+      "svelte": "./dist/editor/ValidationSaveDialog.svelte",
+      "default": "./dist/editor/ValidationSaveDialog.svelte"
+    },
+    "./editor/ValueBindingEditor.svelte": {
+      "types": "./dist/editor/ValueBindingEditor.svelte.d.ts",
+      "svelte": "./dist/editor/ValueBindingEditor.svelte",
+      "default": "./dist/editor/ValueBindingEditor.svelte"
+    },
+    "./editor/ValueInput.svelte": {
+      "types": "./dist/editor/ValueInput.svelte.d.ts",
+      "svelte": "./dist/editor/ValueInput.svelte",
+      "default": "./dist/editor/ValueInput.svelte"
+    },
+    "./editor/WorkspaceTree.svelte": {
+      "types": "./dist/editor/WorkspaceTree.svelte.d.ts",
+      "svelte": "./dist/editor/WorkspaceTree.svelte",
+      "default": "./dist/editor/WorkspaceTree.svelte"
+    },
+    "./editor/canvas-selection.js": {
+      "types": "./dist/editor/canvas-selection.d.ts",
+      "import": "./dist/editor/canvas-selection.js",
+      "default": "./dist/editor/canvas-selection.js"
+    },
+    "./editor/canvas-selection": {
+      "types": "./dist/editor/canvas-selection.d.ts",
+      "import": "./dist/editor/canvas-selection.js",
+      "default": "./dist/editor/canvas-selection.js"
+    },
+    "./editor/clipboard.js": {
+      "types": "./dist/editor/clipboard.d.ts",
+      "import": "./dist/editor/clipboard.js",
+      "default": "./dist/editor/clipboard.js"
+    },
+    "./editor/clipboard": {
+      "types": "./dist/editor/clipboard.d.ts",
+      "import": "./dist/editor/clipboard.js",
+      "default": "./dist/editor/clipboard.js"
+    },
+    "./editor/comment-markdown.js": {
+      "types": "./dist/editor/comment-markdown.d.ts",
+      "import": "./dist/editor/comment-markdown.js",
+      "default": "./dist/editor/comment-markdown.js"
+    },
+    "./editor/comment-markdown": {
+      "types": "./dist/editor/comment-markdown.d.ts",
+      "import": "./dist/editor/comment-markdown.js",
+      "default": "./dist/editor/comment-markdown.js"
+    },
+    "./editor/control-palette.js": {
+      "types": "./dist/editor/control-palette.d.ts",
+      "import": "./dist/editor/control-palette.js",
+      "default": "./dist/editor/control-palette.js"
+    },
+    "./editor/control-palette": {
+      "types": "./dist/editor/control-palette.d.ts",
+      "import": "./dist/editor/control-palette.js",
+      "default": "./dist/editor/control-palette.js"
+    },
+    "./editor/date-value.js": {
+      "types": "./dist/editor/date-value.d.ts",
+      "import": "./dist/editor/date-value.js",
+      "default": "./dist/editor/date-value.js"
+    },
+    "./editor/date-value": {
+      "types": "./dist/editor/date-value.d.ts",
+      "import": "./dist/editor/date-value.js",
+      "default": "./dist/editor/date-value.js"
+    },
+    "./editor/debug.js": {
+      "types": "./dist/editor/debug.d.ts",
+      "import": "./dist/editor/debug.js",
+      "default": "./dist/editor/debug.js"
+    },
+    "./editor/debug": {
+      "types": "./dist/editor/debug.d.ts",
+      "import": "./dist/editor/debug.js",
+      "default": "./dist/editor/debug.js"
+    },
+    "./editor/designations.js": {
+      "types": "./dist/editor/designations.d.ts",
+      "import": "./dist/editor/designations.js",
+      "default": "./dist/editor/designations.js"
+    },
+    "./editor/designations": {
+      "types": "./dist/editor/designations.d.ts",
+      "import": "./dist/editor/designations.js",
+      "default": "./dist/editor/designations.js"
+    },
+    "./editor/duration-value.js": {
+      "types": "./dist/editor/duration-value.d.ts",
+      "import": "./dist/editor/duration-value.js",
+      "default": "./dist/editor/duration-value.js"
+    },
+    "./editor/duration-value": {
+      "types": "./dist/editor/duration-value.d.ts",
+      "import": "./dist/editor/duration-value.js",
+      "default": "./dist/editor/duration-value.js"
+    },
+    "./editor/editor-preferences.js": {
+      "types": "./dist/editor/editor-preferences.d.ts",
+      "import": "./dist/editor/editor-preferences.js",
+      "default": "./dist/editor/editor-preferences.js"
+    },
+    "./editor/editor-preferences": {
+      "types": "./dist/editor/editor-preferences.d.ts",
+      "import": "./dist/editor/editor-preferences.js",
+      "default": "./dist/editor/editor-preferences.js"
+    },
+    "./editor/execution-bundle.js": {
+      "types": "./dist/editor/execution-bundle.d.ts",
+      "import": "./dist/editor/execution-bundle.js",
+      "default": "./dist/editor/execution-bundle.js"
+    },
+    "./editor/execution-bundle": {
+      "types": "./dist/editor/execution-bundle.d.ts",
+      "import": "./dist/editor/execution-bundle.js",
+      "default": "./dist/editor/execution-bundle.js"
+    },
+    "./editor/expression-clipboard.js": {
+      "types": "./dist/editor/expression-clipboard.d.ts",
+      "import": "./dist/editor/expression-clipboard.js",
+      "default": "./dist/editor/expression-clipboard.js"
+    },
+    "./editor/expression-clipboard": {
+      "types": "./dist/editor/expression-clipboard.d.ts",
+      "import": "./dist/editor/expression-clipboard.js",
+      "default": "./dist/editor/expression-clipboard.js"
+    },
+    "./editor/expression-model.js": {
+      "types": "./dist/editor/expression-model.d.ts",
+      "import": "./dist/editor/expression-model.js",
+      "default": "./dist/editor/expression-model.js"
+    },
+    "./editor/expression-model": {
+      "types": "./dist/editor/expression-model.d.ts",
+      "import": "./dist/editor/expression-model.js",
+      "default": "./dist/editor/expression-model.js"
+    },
+    "./editor/graph-references.js": {
+      "types": "./dist/editor/graph-references.d.ts",
+      "import": "./dist/editor/graph-references.js",
+      "default": "./dist/editor/graph-references.js"
+    },
+    "./editor/graph-references": {
+      "types": "./dist/editor/graph-references.d.ts",
+      "import": "./dist/editor/graph-references.js",
+      "default": "./dist/editor/graph-references.js"
+    },
+    "./editor/graph-workspace.js": {
+      "types": "./dist/editor/graph-workspace.d.ts",
+      "import": "./dist/editor/graph-workspace.js",
+      "default": "./dist/editor/graph-workspace.js"
+    },
+    "./editor/graph-workspace": {
+      "types": "./dist/editor/graph-workspace.d.ts",
+      "import": "./dist/editor/graph-workspace.js",
+      "default": "./dist/editor/graph-workspace.js"
+    },
+    "./editor/inline-graphs.js": {
+      "types": "./dist/editor/inline-graphs.d.ts",
+      "import": "./dist/editor/inline-graphs.js",
+      "default": "./dist/editor/inline-graphs.js"
+    },
+    "./editor/inline-graphs": {
+      "types": "./dist/editor/inline-graphs.d.ts",
+      "import": "./dist/editor/inline-graphs.js",
+      "default": "./dist/editor/inline-graphs.js"
+    },
+    "./editor/internal-flows.js": {
+      "types": "./dist/editor/internal-flows.d.ts",
+      "import": "./dist/editor/internal-flows.js",
+      "default": "./dist/editor/internal-flows.js"
+    },
+    "./editor/internal-flows": {
+      "types": "./dist/editor/internal-flows.d.ts",
+      "import": "./dist/editor/internal-flows.js",
+      "default": "./dist/editor/internal-flows.js"
+    },
+    "./editor/internal-groups.js": {
+      "types": "./dist/editor/internal-groups.d.ts",
+      "import": "./dist/editor/internal-groups.js",
+      "default": "./dist/editor/internal-groups.js"
+    },
+    "./editor/internal-groups": {
+      "types": "./dist/editor/internal-groups.d.ts",
+      "import": "./dist/editor/internal-groups.js",
+      "default": "./dist/editor/internal-groups.js"
+    },
+    "./editor/layout.js": {
+      "types": "./dist/editor/layout.d.ts",
+      "import": "./dist/editor/layout.js",
+      "default": "./dist/editor/layout.js"
+    },
+    "./editor/layout": {
+      "types": "./dist/editor/layout.d.ts",
+      "import": "./dist/editor/layout.js",
+      "default": "./dist/editor/layout.js"
+    },
+    "./editor/logs.js": {
+      "types": "./dist/editor/logs.d.ts",
+      "import": "./dist/editor/logs.js",
+      "default": "./dist/editor/logs.js"
+    },
+    "./editor/logs": {
+      "types": "./dist/editor/logs.d.ts",
+      "import": "./dist/editor/logs.js",
+      "default": "./dist/editor/logs.js"
+    },
+    "./editor/messages.js": {
+      "types": "./dist/editor/messages.d.ts",
+      "import": "./dist/editor/messages.js",
+      "default": "./dist/editor/messages.js"
+    },
+    "./editor/messages": {
+      "types": "./dist/editor/messages.d.ts",
+      "import": "./dist/editor/messages.js",
+      "default": "./dist/editor/messages.js"
+    },
+    "./editor/model.js": {
+      "types": "./dist/editor/model.d.ts",
+      "import": "./dist/editor/model.js",
+      "default": "./dist/editor/model.js"
+    },
+    "./editor/model": {
+      "types": "./dist/editor/model.d.ts",
+      "import": "./dist/editor/model.js",
+      "default": "./dist/editor/model.js"
+    },
+    "./editor/page-config/contracts.js": {
+      "types": "./dist/editor/page-config/contracts.d.ts",
+      "import": "./dist/editor/page-config/contracts.js",
+      "default": "./dist/editor/page-config/contracts.js"
+    },
+    "./editor/page-config/contracts": {
+      "types": "./dist/editor/page-config/contracts.d.ts",
+      "import": "./dist/editor/page-config/contracts.js",
+      "default": "./dist/editor/page-config/contracts.js"
+    },
+    "./editor/performance.js": {
+      "types": "./dist/editor/performance.d.ts",
+      "import": "./dist/editor/performance.js",
+      "default": "./dist/editor/performance.js"
+    },
+    "./editor/performance": {
+      "types": "./dist/editor/performance.d.ts",
+      "import": "./dist/editor/performance.js",
+      "default": "./dist/editor/performance.js"
+    },
+    "./editor/record-edit.js": {
+      "types": "./dist/editor/record-edit.d.ts",
+      "import": "./dist/editor/record-edit.js",
+      "default": "./dist/editor/record-edit.js"
+    },
+    "./editor/record-edit": {
+      "types": "./dist/editor/record-edit.d.ts",
+      "import": "./dist/editor/record-edit.js",
+      "default": "./dist/editor/record-edit.js"
+    },
+    "./editor/statistics.js": {
+      "types": "./dist/editor/statistics.d.ts",
+      "import": "./dist/editor/statistics.js",
+      "default": "./dist/editor/statistics.js"
+    },
+    "./editor/statistics": {
+      "types": "./dist/editor/statistics.d.ts",
+      "import": "./dist/editor/statistics.js",
+      "default": "./dist/editor/statistics.js"
+    },
+    "./editor/tab-state.js": {
+      "types": "./dist/editor/tab-state.d.ts",
+      "import": "./dist/editor/tab-state.js",
+      "default": "./dist/editor/tab-state.js"
+    },
+    "./editor/tab-state": {
+      "types": "./dist/editor/tab-state.d.ts",
+      "import": "./dist/editor/tab-state.js",
+      "default": "./dist/editor/tab-state.js"
+    },
+    "./editor/template-options.js": {
+      "types": "./dist/editor/template-options.d.ts",
+      "import": "./dist/editor/template-options.js",
+      "default": "./dist/editor/template-options.js"
+    },
+    "./editor/template-options": {
+      "types": "./dist/editor/template-options.d.ts",
+      "import": "./dist/editor/template-options.js",
+      "default": "./dist/editor/template-options.js"
+    },
+    "./editor/validation-progress.js": {
+      "types": "./dist/editor/validation-progress.d.ts",
+      "import": "./dist/editor/validation-progress.js",
+      "default": "./dist/editor/validation-progress.js"
+    },
+    "./editor/validation-progress": {
+      "types": "./dist/editor/validation-progress.d.ts",
+      "import": "./dist/editor/validation-progress.js",
+      "default": "./dist/editor/validation-progress.js"
+    },
+    "./editor/validation-results.js": {
+      "types": "./dist/editor/validation-results.d.ts",
+      "import": "./dist/editor/validation-results.js",
+      "default": "./dist/editor/validation-results.js"
+    },
+    "./editor/validation-results": {
+      "types": "./dist/editor/validation-results.d.ts",
+      "import": "./dist/editor/validation-results.js",
+      "default": "./dist/editor/validation-results.js"
+    },
+    "./editor/validation-state.js": {
+      "types": "./dist/editor/validation-state.d.ts",
+      "import": "./dist/editor/validation-state.js",
+      "default": "./dist/editor/validation-state.js"
+    },
+    "./editor/validation-state": {
+      "types": "./dist/editor/validation-state.d.ts",
+      "import": "./dist/editor/validation-state.js",
+      "default": "./dist/editor/validation-state.js"
+    },
+    "./editor/value-model.js": {
+      "types": "./dist/editor/value-model.d.ts",
+      "import": "./dist/editor/value-model.js",
+      "default": "./dist/editor/value-model.js"
+    },
+    "./editor/value-model": {
+      "types": "./dist/editor/value-model.d.ts",
+      "import": "./dist/editor/value-model.js",
+      "default": "./dist/editor/value-model.js"
+    },
+    "./editor/workspace-api.js": {
+      "types": "./dist/editor/workspace-api.d.ts",
+      "import": "./dist/editor/workspace-api.js",
+      "default": "./dist/editor/workspace-api.js"
+    },
+    "./editor/workspace-api": {
+      "types": "./dist/editor/workspace-api.d.ts",
+      "import": "./dist/editor/workspace-api.js",
+      "default": "./dist/editor/workspace-api.js"
+    },
+    "./editor/workspace-palette.js": {
+      "types": "./dist/editor/workspace-palette.d.ts",
+      "import": "./dist/editor/workspace-palette.js",
+      "default": "./dist/editor/workspace-palette.js"
+    },
+    "./editor/workspace-palette": {
+      "types": "./dist/editor/workspace-palette.d.ts",
+      "import": "./dist/editor/workspace-palette.js",
+      "default": "./dist/editor/workspace-palette.js"
+    },
+    "./editor/workspace-storage.js": {
+      "types": "./dist/editor/workspace-storage.d.ts",
+      "import": "./dist/editor/workspace-storage.js",
+      "default": "./dist/editor/workspace-storage.js"
+    },
+    "./editor/workspace-storage": {
+      "types": "./dist/editor/workspace-storage.d.ts",
+      "import": "./dist/editor/workspace-storage.js",
+      "default": "./dist/editor/workspace-storage.js"
+    },
+    "./host/Chevron.svelte": {
+      "types": "./dist/host/Chevron.svelte.d.ts",
+      "svelte": "./dist/host/Chevron.svelte",
+      "default": "./dist/host/Chevron.svelte"
+    },
+    "./host/HtmlEditorDialog.svelte": {
+      "types": "./dist/host/HtmlEditorDialog.svelte.d.ts",
+      "svelte": "./dist/host/HtmlEditorDialog.svelte",
+      "default": "./dist/host/HtmlEditorDialog.svelte"
+    },
+    "./host/InteractionContent.svelte": {
+      "types": "./dist/host/InteractionContent.svelte.d.ts",
+      "svelte": "./dist/host/InteractionContent.svelte",
+      "default": "./dist/host/InteractionContent.svelte"
+    },
+    "./host/LoadingAnimation.svelte": {
+      "types": "./dist/host/LoadingAnimation.svelte.d.ts",
+      "svelte": "./dist/host/LoadingAnimation.svelte",
+      "default": "./dist/host/LoadingAnimation.svelte"
+    },
+    "./host/LoadingLogo.svelte": {
+      "types": "./dist/host/LoadingLogo.svelte.d.ts",
+      "svelte": "./dist/host/LoadingLogo.svelte",
+      "default": "./dist/host/LoadingLogo.svelte"
+    },
+    "./host/PageConfigDialog.svelte": {
+      "types": "./dist/host/PageConfigDialog.svelte.d.ts",
+      "svelte": "./dist/host/PageConfigDialog.svelte",
+      "default": "./dist/host/PageConfigDialog.svelte"
+    },
+    "./host/RecentEntities.svelte": {
+      "types": "./dist/host/RecentEntities.svelte.d.ts",
+      "svelte": "./dist/host/RecentEntities.svelte",
+      "default": "./dist/host/RecentEntities.svelte"
+    },
+    "./host/Svg.svelte": {
+      "types": "./dist/host/Svg.svelte.d.ts",
+      "svelte": "./dist/host/Svg.svelte",
+      "default": "./dist/host/Svg.svelte"
+    },
+    "./host/ThemeControls.svelte": {
+      "types": "./dist/host/ThemeControls.svelte.d.ts",
+      "svelte": "./dist/host/ThemeControls.svelte",
+      "default": "./dist/host/ThemeControls.svelte"
+    },
+    "./host.js": {
+      "types": "./dist/host.d.ts",
+      "import": "./dist/host.js",
+      "default": "./dist/host.js"
+    },
+    "./host": {
+      "types": "./dist/host.d.ts",
+      "import": "./dist/host.js",
+      "default": "./dist/host.js"
+    },
+    "./index.js": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./index": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./ui/ExecutionOverlay.svelte": {
+      "types": "./dist/ui/ExecutionOverlay.svelte.d.ts",
+      "svelte": "./dist/ui/ExecutionOverlay.svelte",
+      "default": "./dist/ui/ExecutionOverlay.svelte"
+    },
+    "./ui/FlowFieldInput.svelte": {
+      "types": "./dist/ui/FlowFieldInput.svelte.d.ts",
+      "svelte": "./dist/ui/FlowFieldInput.svelte",
+      "default": "./dist/ui/FlowFieldInput.svelte"
+    },
+    "./ui/FlowFiles.svelte": {
+      "types": "./dist/ui/FlowFiles.svelte.d.ts",
+      "svelte": "./dist/ui/FlowFiles.svelte",
+      "default": "./dist/ui/FlowFiles.svelte"
+    },
+    "./ui/FlowImage.svelte": {
+      "types": "./dist/ui/FlowImage.svelte.d.ts",
+      "svelte": "./dist/ui/FlowImage.svelte",
+      "default": "./dist/ui/FlowImage.svelte"
+    },
+    "./ui/FlowOptions.svelte": {
+      "types": "./dist/ui/FlowOptions.svelte.d.ts",
+      "svelte": "./dist/ui/FlowOptions.svelte",
+      "default": "./dist/ui/FlowOptions.svelte"
+    },
+    "./ui/FlowSignature.svelte": {
+      "types": "./dist/ui/FlowSignature.svelte.d.ts",
+      "svelte": "./dist/ui/FlowSignature.svelte",
+      "default": "./dist/ui/FlowSignature.svelte"
+    },
+    "./ui/FlowTable.svelte": {
+      "types": "./dist/ui/FlowTable.svelte.d.ts",
+      "svelte": "./dist/ui/FlowTable.svelte",
+      "default": "./dist/ui/FlowTable.svelte"
+    },
+    "./ui/TemplatePreview.svelte": {
+      "types": "./dist/ui/TemplatePreview.svelte.d.ts",
+      "svelte": "./dist/ui/TemplatePreview.svelte",
+      "default": "./dist/ui/TemplatePreview.svelte"
+    }
+  },
+  "dependencies": {
+    "@adam-flow/core": "0.1.0-local.1791959572118",
+    "@adam/editor": "0.1.0-local.1791959572118",
+    "@adam-flow/runtime-browser": "0.1.0-local.1791959572118"
+  },
+  "peerDependencies": {
+    "svelte": "^4.2.0"
+  }
+}

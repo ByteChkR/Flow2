@@ -1,0 +1,5 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://adam-flow.local/schemas/v1/catalog.schema.json",
+  "$ref": "https://adam-flow.local/schemas/v1/type.schema.json#/$defs/catalog"
+}

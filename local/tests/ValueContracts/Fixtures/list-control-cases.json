@@ -1,0 +1,1020 @@
+[
+  {
+    "operation": "any",
+    "items": [],
+    "results": [],
+    "expected": {
+      "value": false
+    },
+    "calls": 0
+  },
+  {
+    "operation": "any",
+    "items": [
+      "a",
+      "b",
+      "c"
+    ],
+    "results": [
+      true,
+      false,
+      true
+    ],
+    "expected": {
+      "value": true
+    },
+    "calls": 1
+  },
+  {
+    "operation": "any",
+    "items": [
+      "a",
+      "b"
+    ],
+    "results": [
+      false,
+      false
+    ],
+    "expected": {
+      "value": false
+    },
+    "calls": 2
+  },
+  {
+    "operation": "any",
+    "items": [
+      "a",
+      "b"
+    ],
+    "results": [
+      true,
+      true
+    ],
+    "expected": {
+      "value": true
+    },
+    "calls": 1
+  },
+  {
+    "operation": "any",
+    "items": [
+      null
+    ],
+    "results": [
+      true
+    ],
+    "expected": {
+      "value": true
+    },
+    "calls": 1
+  },
+  {
+    "operation": "all",
+    "items": [],
+    "results": [],
+    "expected": {
+      "value": true
+    },
+    "calls": 0
+  },
+  {
+    "operation": "all",
+    "items": [
+      "a",
+      "b",
+      "c"
+    ],
+    "results": [
+      true,
+      false,
+      true
+    ],
+    "expected": {
+      "value": false
+    },
+    "calls": 2
+  },
+  {
+    "operation": "all",
+    "items": [
+      "a",
+      "b"
+    ],
+    "results": [
+      false,
+      false
+    ],
+    "expected": {
+      "value": false
+    },
+    "calls": 1
+  },
+  {
+    "operation": "all",
+    "items": [
+      "a",
+      "b"
+    ],
+    "results": [
+      true,
+      true
+    ],
+    "expected": {
+      "value": true
+    },
+    "calls": 2
+  },
+  {
+    "operation": "all",
+    "items": [
+      null
+    ],
+    "results": [
+      true
+    ],
+    "expected": {
+      "value": true
+    },
+    "calls": 1
+  },
+  {
+    "operation": "find",
+    "items": [],
+    "results": [],
+    "expected": {
+      "found": false
+    },
+    "calls": 0
+  },
+  {
+    "operation": "find",
+    "items": [
+      "a",
+      "b",
+      "c"
+    ],
+    "results": [
+      true,
+      false,
+      true
+    ],
+    "expected": {
+      "found": true,
+      "value": "a"
+    },
+    "calls": 1
+  },
+  {
+    "operation": "find",
+    "items": [
+      "a",
+      "b"
+    ],
+    "results": [
+      false,
+      false
+    ],
+    "expected": {
+      "found": false
+    },
+    "calls": 2
+  },
+  {
+    "operation": "find",
+    "items": [
+      "a",
+      "b"
+    ],
+    "results": [
+      true,
+      true
+    ],
+    "expected": {
+      "found": true,
+      "value": "a"
+    },
+    "calls": 1
+  },
+  {
+    "operation": "find",
+    "items": [
+      null
+    ],
+    "results": [
+      true
+    ],
+    "expected": {
+      "found": true,
+      "value": null
+    },
+    "calls": 1
+  },
+  {
+    "operation": "findIndex",
+    "items": [],
+    "results": [],
+    "expected": {
+      "value": -1
+    },
+    "calls": 0
+  },
+  {
+    "operation": "findIndex",
+    "items": [
+      "a",
+      "b",
+      "c"
+    ],
+    "results": [
+      true,
+      false,
+      true
+    ],
+    "expected": {
+      "value": 0
+    },
+    "calls": 1
+  },
+  {
+    "operation": "findIndex",
+    "items": [
+      "a",
+      "b"
+    ],
+    "results": [
+      false,
+      false
+    ],
+    "expected": {
+      "value": -1
+    },
+    "calls": 2
+  },
+  {
+    "operation": "findIndex",
+    "items": [
+      "a",
+      "b"
+    ],
+    "results": [
+      true,
+      true
+    ],
+    "expected": {
+      "value": 0
+    },
+    "calls": 1
+  },
+  {
+    "operation": "findIndex",
+    "items": [
+      null
+    ],
+    "results": [
+      true
+    ],
+    "expected": {
+      "value": 0
+    },
+    "calls": 1
+  },
+  {
+    "operation": "takeWhile",
+    "items": [],
+    "results": [],
+    "expected": {
+      "value": []
+    },
+    "calls": 0
+  },
+  {
+    "operation": "takeWhile",
+    "items": [
+      "a",
+      "b",
+      "c"
+    ],
+    "results": [
+      true,
+      false,
+      true
+    ],
+    "expected": {
+      "value": [
+        "a"
+      ]
+    },
+    "calls": 2
+  },
+  {
+    "operation": "takeWhile",
+    "items": [
+      "a",
+      "b"
+    ],
+    "results": [
+      false,
+      false
+    ],
+    "expected": {
+      "value": []
+    },
+    "calls": 1
+  },
+  {
+    "operation": "takeWhile",
+    "items": [
+      "a",
+      "b"
+    ],
+    "results": [
+      true,
+      true
+    ],
+    "expected": {
+      "value": [
+        "a",
+        "b"
+      ]
+    },
+    "calls": 2
+  },
+  {
+    "operation": "takeWhile",
+    "items": [
+      null
+    ],
+    "results": [
+      true
+    ],
+    "expected": {
+      "value": [
+        null
+      ]
+    },
+    "calls": 1
+  },
+  {
+    "operation": "skipWhile",
+    "items": [],
+    "results": [],
+    "expected": {
+      "value": []
+    },
+    "calls": 0
+  },
+  {
+    "operation": "skipWhile",
+    "items": [
+      "a",
+      "b",
+      "c"
+    ],
+    "results": [
+      true,
+      false,
+      true
+    ],
+    "expected": {
+      "value": [
+        "b",
+        "c"
+      ]
+    },
+    "calls": 2
+  },
+  {
+    "operation": "skipWhile",
+    "items": [
+      "a",
+      "b"
+    ],
+    "results": [
+      false,
+      false
+    ],
+    "expected": {
+      "value": [
+        "a",
+        "b"
+      ]
+    },
+    "calls": 1
+  },
+  {
+    "operation": "skipWhile",
+    "items": [
+      "a",
+      "b"
+    ],
+    "results": [
+      true,
+      true
+    ],
+    "expected": {
+      "value": []
+    },
+    "calls": 2
+  },
+  {
+    "operation": "skipWhile",
+    "items": [
+      null
+    ],
+    "results": [
+      true
+    ],
+    "expected": {
+      "value": []
+    },
+    "calls": 1
+  },
+  {
+    "operation": "partition",
+    "items": [],
+    "results": [],
+    "expected": {
+      "matching": [],
+      "nonMatching": []
+    },
+    "calls": 0
+  },
+  {
+    "operation": "partition",
+    "items": [
+      "a",
+      "b",
+      "c"
+    ],
+    "results": [
+      true,
+      false,
+      true
+    ],
+    "expected": {
+      "matching": [
+        "a",
+        "c"
+      ],
+      "nonMatching": [
+        "b"
+      ]
+    },
+    "calls": 3
+  },
+  {
+    "operation": "partition",
+    "items": [
+      "a",
+      "b"
+    ],
+    "results": [
+      false,
+      false
+    ],
+    "expected": {
+      "matching": [],
+      "nonMatching": [
+        "a",
+        "b"
+      ]
+    },
+    "calls": 2
+  },
+  {
+    "operation": "partition",
+    "items": [
+      "a",
+      "b"
+    ],
+    "results": [
+      true,
+      true
+    ],
+    "expected": {
+      "matching": [
+        "a",
+        "b"
+      ],
+      "nonMatching": []
+    },
+    "calls": 2
+  },
+  {
+    "operation": "partition",
+    "items": [
+      null
+    ],
+    "results": [
+      true
+    ],
+    "expected": {
+      "matching": [
+        null
+      ],
+      "nonMatching": []
+    },
+    "calls": 1
+  },
+  {
+    "operation": "filter",
+    "items": [],
+    "results": [],
+    "expected": {
+      "value": []
+    },
+    "calls": 0
+  },
+  {
+    "operation": "filter",
+    "items": [
+      "a",
+      "b",
+      "c"
+    ],
+    "results": [
+      true,
+      false,
+      true
+    ],
+    "expected": {
+      "value": [
+        "a",
+        "c"
+      ]
+    },
+    "calls": 3
+  },
+  {
+    "operation": "filter",
+    "items": [
+      "a",
+      "b"
+    ],
+    "results": [
+      false,
+      false
+    ],
+    "expected": {
+      "value": []
+    },
+    "calls": 2
+  },
+  {
+    "operation": "filter",
+    "items": [
+      "a",
+      "b"
+    ],
+    "results": [
+      true,
+      true
+    ],
+    "expected": {
+      "value": [
+        "a",
+        "b"
+      ]
+    },
+    "calls": 2
+  },
+  {
+    "operation": "filter",
+    "items": [
+      null
+    ],
+    "results": [
+      true
+    ],
+    "expected": {
+      "value": [
+        null
+      ]
+    },
+    "calls": 1
+  },
+  {
+    "operation": "map",
+    "items": [],
+    "results": [],
+    "expected": {
+      "value": []
+    },
+    "calls": 0
+  },
+  {
+    "operation": "map",
+    "items": [
+      "a",
+      "b",
+      "c"
+    ],
+    "results": [
+      "A",
+      "B",
+      "C"
+    ],
+    "expected": {
+      "value": [
+        "A",
+        "B",
+        "C"
+      ]
+    },
+    "calls": 3
+  },
+  {
+    "operation": "flatMap",
+    "items": [],
+    "results": [],
+    "expected": {
+      "value": []
+    },
+    "calls": 0
+  },
+  {
+    "operation": "flatMap",
+    "items": [
+      "a",
+      "b",
+      "c"
+    ],
+    "results": [
+      [
+        "a",
+        null
+      ],
+      [],
+      [
+        "c"
+      ]
+    ],
+    "expected": {
+      "value": [
+        "a",
+        null,
+        "c"
+      ]
+    },
+    "calls": 3
+  },
+  {
+    "operation": "forEach",
+    "items": [],
+    "results": [],
+    "expected": {},
+    "calls": 0
+  },
+  {
+    "operation": "forEach",
+    "items": [
+      "a",
+      "b",
+      "c"
+    ],
+    "results": [
+      "A",
+      "B",
+      "C"
+    ],
+    "expected": {},
+    "calls": 3
+  },
+  {
+    "operation": "sortBy",
+    "items": [],
+    "results": [],
+    "expected": {
+      "value": []
+    },
+    "calls": 0
+  },
+  {
+    "operation": "sortBy",
+    "items": [
+      "a",
+      "b",
+      "c"
+    ],
+    "results": [
+      "x",
+      "a",
+      "x"
+    ],
+    "expected": {
+      "value": [
+        "b",
+        "a",
+        "c"
+      ]
+    },
+    "calls": 3
+  },
+  {
+    "operation": "sortBy",
+    "items": [
+      null,
+      "b",
+      "c"
+    ],
+    "results": [
+      null,
+      "a",
+      null
+    ],
+    "expected": {
+      "value": [
+        null,
+        "c",
+        "b"
+      ]
+    },
+    "calls": 3
+  },
+  {
+    "operation": "distinctBy",
+    "items": [],
+    "results": [],
+    "expected": {
+      "value": []
+    },
+    "calls": 0
+  },
+  {
+    "operation": "distinctBy",
+    "items": [
+      "a",
+      "b",
+      "c"
+    ],
+    "results": [
+      "x",
+      "a",
+      "x"
+    ],
+    "expected": {
+      "value": [
+        "a",
+        "b"
+      ]
+    },
+    "calls": 3
+  },
+  {
+    "operation": "distinctBy",
+    "items": [
+      null,
+      "b",
+      "c"
+    ],
+    "results": [
+      null,
+      "a",
+      null
+    ],
+    "expected": {
+      "value": [
+        null,
+        "b"
+      ]
+    },
+    "calls": 3
+  },
+  {
+    "operation": "groupBy",
+    "items": [],
+    "results": [],
+    "expected": {
+      "value": []
+    },
+    "calls": 0
+  },
+  {
+    "operation": "groupBy",
+    "items": [
+      "a",
+      "b",
+      "c"
+    ],
+    "results": [
+      "x",
+      "a",
+      "x"
+    ],
+    "expected": {
+      "value": [
+        {
+          "key": "x",
+          "items": [
+            "a",
+            "c"
+          ]
+        },
+        {
+          "key": "a",
+          "items": [
+            "b"
+          ]
+        }
+      ]
+    },
+    "calls": 3
+  },
+  {
+    "operation": "groupBy",
+    "items": [
+      null,
+      "b",
+      "c"
+    ],
+    "results": [
+      null,
+      "a",
+      null
+    ],
+    "expected": {
+      "value": [
+        {
+          "key": null,
+          "items": [
+            null,
+            "c"
+          ]
+        },
+        {
+          "key": "a",
+          "items": [
+            "b"
+          ]
+        }
+      ]
+    },
+    "calls": 3
+  },
+  {
+    "operation": "minBy",
+    "items": [],
+    "results": [],
+    "expected": {},
+    "calls": 0
+  },
+  {
+    "operation": "minBy",
+    "items": [
+      "a",
+      "b",
+      "c"
+    ],
+    "results": [
+      "x",
+      "a",
+      "x"
+    ],
+    "expected": {
+      "value": "b"
+    },
+    "calls": 3
+  },
+  {
+    "operation": "minBy",
+    "items": [
+      null,
+      "b",
+      "c"
+    ],
+    "results": [
+      null,
+      "a",
+      null
+    ],
+    "expected": {
+      "value": null
+    },
+    "calls": 3
+  },
+  {
+    "operation": "maxBy",
+    "items": [],
+    "results": [],
+    "expected": {},
+    "calls": 0
+  },
+  {
+    "operation": "maxBy",
+    "items": [
+      "a",
+      "b",
+      "c"
+    ],
+    "results": [
+      "x",
+      "a",
+      "x"
+    ],
+    "expected": {
+      "value": "a"
+    },
+    "calls": 3
+  },
+  {
+    "operation": "maxBy",
+    "items": [
+      null,
+      "b",
+      "c"
+    ],
+    "results": [
+      null,
+      "a",
+      null
+    ],
+    "expected": {
+      "value": "b"
+    },
+    "calls": 3
+  },
+  {
+    "operation": "sortBy",
+    "items": [
+      "first",
+      "second",
+      "third",
+      "fourth"
+    ],
+    "results": [
+      {
+        "group": "a",
+        "rank": 1
+      },
+      {
+        "group": "b",
+        "rank": 9
+      },
+      {
+        "group": "a",
+        "rank": 2
+      },
+      {
+        "group": "a",
+        "rank": 2
+      }
+    ],
+    "keyType": {
+      "kind": "object",
+      "fields": {
+        "group": {
+          "kind": "string"
+        },
+        "rank": {
+          "kind": "scalar",
+          "name": "core.Integer"
+        }
+      }
+    },
+    "inputs": {
+      "orderBy": [
+        {
+          "field": "group",
+          "descending": false
+        },
+        {
+          "field": "rank",
+          "descending": true
+        }
+      ]
+    },
+    "expected": {
+      "value": [
+        "third",
+        "fourth",
+        "first",
+        "second"
+      ]
+    },
+    "calls": 4
+  },
+  {
+    "operation": "sortBy",
+    "items": [
+      "a",
+      "b",
+      "c"
+    ],
+    "results": [
+      "b",
+      "c",
+      "a"
+    ],
+    "inputs": {
+      "descending": true
+    },
+    "expected": {
+      "value": [
+        "b",
+        "a",
+        "c"
+      ]
+    },
+    "calls": 3
+  }
+]

@@ -1,3 +1,11 @@
-**/bin
-**/obj
-.idea/*
+**/bin/
+**/obj/
+.idea/
+node_modules/
+dist/
+coverage/
+TestResults/
+*.tsbuildinfo
+.env
+.env.*
+!.env.example

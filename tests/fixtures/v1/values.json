@@ -1,0 +1,279 @@
+[
+  {
+    "name": "string",
+    "type": {
+      "kind": "string"
+    },
+    "expected": true,
+    "value": "Grüße 👋"
+  },
+  {
+    "name": "wrong-string",
+    "type": {
+      "kind": "string"
+    },
+    "expected": false,
+    "value": 1
+  },
+  {
+    "name": "number",
+    "type": {
+      "kind": "number"
+    },
+    "expected": true,
+    "value": 42.5
+  },
+  {
+    "name": "wrong-number",
+    "type": {
+      "kind": "number"
+    },
+    "expected": false,
+    "value": "42"
+  },
+  {
+    "name": "boolean",
+    "type": {
+      "kind": "boolean"
+    },
+    "expected": true,
+    "value": true
+  },
+  {
+    "name": "null",
+    "type": {
+      "kind": "null"
+    },
+    "expected": true,
+    "value": null
+  },
+  {
+    "name": "required-absent",
+    "type": {
+      "kind": "string"
+    },
+    "expected": false
+  },
+  {
+    "name": "optional-absent",
+    "type": {
+      "kind": "optional",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "expected": true
+  },
+  {
+    "name": "optional-null-rejected",
+    "type": {
+      "kind": "optional",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "expected": false,
+    "value": null
+  },
+  {
+    "name": "optional-string",
+    "type": {
+      "kind": "optional",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "expected": true,
+    "value": "Ada"
+  },
+  {
+    "name": "array",
+    "type": {
+      "kind": "array",
+      "items": {
+        "kind": "number"
+      }
+    },
+    "expected": true,
+    "value": [
+      1,
+      2
+    ]
+  },
+  {
+    "name": "array-wrong",
+    "type": {
+      "kind": "array",
+      "items": {
+        "kind": "number"
+      }
+    },
+    "expected": false,
+    "value": [
+      1,
+      "2"
+    ]
+  },
+  {
+    "name": "dto",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "expected": true,
+    "value": {
+      "id": "1",
+      "name": "Ada"
+    }
+  },
+  {
+    "name": "dto-extra",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "expected": true,
+    "value": {
+      "id": "1",
+      "name": "Ada",
+      "extra": true
+    }
+  },
+  {
+    "name": "dto-missing",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "expected": false,
+    "value": {
+      "id": "1"
+    }
+  },
+  {
+    "name": "dto-age-null",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "expected": false,
+    "value": {
+      "id": "1",
+      "name": "Ada",
+      "age": null
+    }
+  },
+  {
+    "name": "entity-no-json",
+    "type": {
+      "kind": "entity",
+      "name": "crm.Contact@1"
+    },
+    "expected": false,
+    "value": {
+      "id": "1",
+      "name": "Ada"
+    }
+  },
+  {
+    "name": "ref",
+    "type": {
+      "kind": "entityRef",
+      "name": "crm.Contact@1"
+    },
+    "expected": true,
+    "value": {
+      "type": "crm.Contact@1",
+      "id": "1"
+    }
+  },
+  {
+    "name": "wrong-ref",
+    "type": {
+      "kind": "entityRef",
+      "name": "crm.Contact@1"
+    },
+    "expected": false,
+    "value": {
+      "type": "crm.Contact@2",
+      "id": "1"
+    }
+  },
+  {
+    "name": "extra-ref",
+    "type": {
+      "kind": "entityRef",
+      "name": "crm.Contact@1"
+    },
+    "expected": false,
+    "value": {
+      "type": "crm.Contact@1",
+      "id": "1",
+      "extra": true
+    }
+  },
+  {
+    "name": "empty-ref",
+    "type": {
+      "kind": "entityRef",
+      "name": "crm.Contact@1"
+    },
+    "expected": false,
+    "value": {
+      "type": "crm.Contact@1",
+      "id": ""
+    }
+  }
+]

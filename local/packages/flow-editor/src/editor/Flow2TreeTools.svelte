@@ -1,0 +1,2 @@
+<script>export let designations=[];export let value='';export let onChange;</script>
+<div class="resource-tools"><label>Kennzeichnung <select aria-label="Graphen nach Kennzeichnung filtern" {value} on:change={event=>onChange(event.target.value)}><option value="">Alle</option><option value="__none">Ohne Kennzeichnung</option>{#each designations as item}<option value={item.id}>{item.name}</option>{/each}</select></label></div>

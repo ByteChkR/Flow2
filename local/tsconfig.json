@@ -1,0 +1,43 @@
+{
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "allowJs": true,
+    "checkJs": false,
+    "declaration": true,
+    "outDir": ".build",
+    "rootDir": "packages",
+    "baseUrl": ".",
+    "paths": {
+      "@adam-flow/core/*": [
+        "packages/core/src/*"
+      ],
+      "@adam-flow/runtime-browser/*": [
+        "packages/runtime-browser/src/*"
+      ],
+      "@adam/editor/*": [
+        "packages/editor/src/*"
+      ],
+      "@adam-flow/editor/*": [
+        "packages/flow-editor/src/*"
+      ]
+    },
+    "lib": [
+      "ES2023",
+      "DOM",
+      "DOM.Iterable"
+    ]
+  },
+  "include": [
+    "packages/*/src/**/*.ts",
+    "packages/*/src/**/*.js",
+    "svelte.d.ts"
+  ]
+}

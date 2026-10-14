@@ -1,0 +1,430 @@
+{
+  "name": "@adam-flow/core",
+  "version": "0.1.0-local.1791959572118",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./contracts/bundle.schema.json": "./dist/contracts/bundle.schema.json",
+    "./contracts/catalog.schema.json": "./dist/contracts/catalog.schema.json",
+    "./contracts/codecs.schema.json": "./dist/contracts/codecs.schema.json",
+    "./contracts/envelope.schema.json": "./dist/contracts/envelope.schema.json",
+    "./contracts/expression.schema.json": "./dist/contracts/expression.schema.json",
+    "./contracts/flow.schema.json": "./dist/contracts/flow.schema.json",
+    "./contracts/page-config.schema.json": "./dist/contracts/page-config.schema.json",
+    "./contracts/regex-program.js": {
+      "types": "./dist/contracts/regex-program.d.ts",
+      "import": "./dist/contracts/regex-program.js",
+      "default": "./dist/contracts/regex-program.js"
+    },
+    "./contracts/regex-program": {
+      "types": "./dist/contracts/regex-program.d.ts",
+      "import": "./dist/contracts/regex-program.js",
+      "default": "./dist/contracts/regex-program.js"
+    },
+    "./contracts/regex-program.json": "./dist/contracts/regex-program.json",
+    "./contracts/type.schema.json": "./dist/contracts/type.schema.json",
+    "./contracts/types.schema.json": "./dist/contracts/types.schema.json",
+    "./contracts/unicode-casing.json": "./dist/contracts/unicode-casing.json",
+    "./flow-compiler/index.js": {
+      "types": "./dist/flow-compiler/index.d.ts",
+      "import": "./dist/flow-compiler/index.js",
+      "default": "./dist/flow-compiler/index.js"
+    },
+    "./flow-compiler/index": {
+      "types": "./dist/flow-compiler/index.d.ts",
+      "import": "./dist/flow-compiler/index.js",
+      "default": "./dist/flow-compiler/index.js"
+    },
+    "./flow-compiler/plan.js": {
+      "types": "./dist/flow-compiler/plan.d.ts",
+      "import": "./dist/flow-compiler/plan.js",
+      "default": "./dist/flow-compiler/plan.js"
+    },
+    "./flow-compiler/plan": {
+      "types": "./dist/flow-compiler/plan.d.ts",
+      "import": "./dist/flow-compiler/plan.js",
+      "default": "./dist/flow-compiler/plan.js"
+    },
+    "./flow-core/catalog.js": {
+      "types": "./dist/flow-core/catalog.d.ts",
+      "import": "./dist/flow-core/catalog.js",
+      "default": "./dist/flow-core/catalog.js"
+    },
+    "./flow-core/catalog": {
+      "types": "./dist/flow-core/catalog.d.ts",
+      "import": "./dist/flow-core/catalog.js",
+      "default": "./dist/flow-core/catalog.js"
+    },
+    "./flow-core/config.js": {
+      "types": "./dist/flow-core/config.d.ts",
+      "import": "./dist/flow-core/config.js",
+      "default": "./dist/flow-core/config.js"
+    },
+    "./flow-core/config": {
+      "types": "./dist/flow-core/config.d.ts",
+      "import": "./dist/flow-core/config.js",
+      "default": "./dist/flow-core/config.js"
+    },
+    "./flow-core/control.js": {
+      "types": "./dist/flow-core/control.d.ts",
+      "import": "./dist/flow-core/control.js",
+      "default": "./dist/flow-core/control.js"
+    },
+    "./flow-core/control": {
+      "types": "./dist/flow-core/control.d.ts",
+      "import": "./dist/flow-core/control.js",
+      "default": "./dist/flow-core/control.js"
+    },
+    "./flow-core/designations.js": {
+      "types": "./dist/flow-core/designations.d.ts",
+      "import": "./dist/flow-core/designations.js",
+      "default": "./dist/flow-core/designations.js"
+    },
+    "./flow-core/designations": {
+      "types": "./dist/flow-core/designations.d.ts",
+      "import": "./dist/flow-core/designations.js",
+      "default": "./dist/flow-core/designations.js"
+    },
+    "./flow-core/dictionaries.js": {
+      "types": "./dist/flow-core/dictionaries.d.ts",
+      "import": "./dist/flow-core/dictionaries.js",
+      "default": "./dist/flow-core/dictionaries.js"
+    },
+    "./flow-core/dictionaries": {
+      "types": "./dist/flow-core/dictionaries.d.ts",
+      "import": "./dist/flow-core/dictionaries.js",
+      "default": "./dist/flow-core/dictionaries.js"
+    },
+    "./flow-core/ef-nodes.js": {
+      "types": "./dist/flow-core/ef-nodes.d.ts",
+      "import": "./dist/flow-core/ef-nodes.js",
+      "default": "./dist/flow-core/ef-nodes.js"
+    },
+    "./flow-core/ef-nodes": {
+      "types": "./dist/flow-core/ef-nodes.d.ts",
+      "import": "./dist/flow-core/ef-nodes.js",
+      "default": "./dist/flow-core/ef-nodes.js"
+    },
+    "./flow-core/expressions.js": {
+      "types": "./dist/flow-core/expressions.d.ts",
+      "import": "./dist/flow-core/expressions.js",
+      "default": "./dist/flow-core/expressions.js"
+    },
+    "./flow-core/expressions": {
+      "types": "./dist/flow-core/expressions.d.ts",
+      "import": "./dist/flow-core/expressions.js",
+      "default": "./dist/flow-core/expressions.js"
+    },
+    "./flow-core/extensions.js": {
+      "types": "./dist/flow-core/extensions.d.ts",
+      "import": "./dist/flow-core/extensions.js",
+      "default": "./dist/flow-core/extensions.js"
+    },
+    "./flow-core/extensions": {
+      "types": "./dist/flow-core/extensions.d.ts",
+      "import": "./dist/flow-core/extensions.js",
+      "default": "./dist/flow-core/extensions.js"
+    },
+    "./flow-core/flow.js": {
+      "types": "./dist/flow-core/flow.d.ts",
+      "import": "./dist/flow-core/flow.js",
+      "default": "./dist/flow-core/flow.js"
+    },
+    "./flow-core/flow": {
+      "types": "./dist/flow-core/flow.d.ts",
+      "import": "./dist/flow-core/flow.js",
+      "default": "./dist/flow-core/flow.js"
+    },
+    "./flow-core/formatting.js": {
+      "types": "./dist/flow-core/formatting.d.ts",
+      "import": "./dist/flow-core/formatting.js",
+      "default": "./dist/flow-core/formatting.js"
+    },
+    "./flow-core/formatting": {
+      "types": "./dist/flow-core/formatting.d.ts",
+      "import": "./dist/flow-core/formatting.js",
+      "default": "./dist/flow-core/formatting.js"
+    },
+    "./flow-core/general-value-nodes.js": {
+      "types": "./dist/flow-core/general-value-nodes.d.ts",
+      "import": "./dist/flow-core/general-value-nodes.js",
+      "default": "./dist/flow-core/general-value-nodes.js"
+    },
+    "./flow-core/general-value-nodes": {
+      "types": "./dist/flow-core/general-value-nodes.d.ts",
+      "import": "./dist/flow-core/general-value-nodes.js",
+      "default": "./dist/flow-core/general-value-nodes.js"
+    },
+    "./flow-core/graph-controls.js": {
+      "types": "./dist/flow-core/graph-controls.d.ts",
+      "import": "./dist/flow-core/graph-controls.js",
+      "default": "./dist/flow-core/graph-controls.js"
+    },
+    "./flow-core/graph-controls": {
+      "types": "./dist/flow-core/graph-controls.d.ts",
+      "import": "./dist/flow-core/graph-controls.js",
+      "default": "./dist/flow-core/graph-controls.js"
+    },
+    "./flow-core/graph-joins.js": {
+      "types": "./dist/flow-core/graph-joins.d.ts",
+      "import": "./dist/flow-core/graph-joins.js",
+      "default": "./dist/flow-core/graph-joins.js"
+    },
+    "./flow-core/graph-joins": {
+      "types": "./dist/flow-core/graph-joins.d.ts",
+      "import": "./dist/flow-core/graph-joins.js",
+      "default": "./dist/flow-core/graph-joins.js"
+    },
+    "./flow-core/graph-nodes.js": {
+      "types": "./dist/flow-core/graph-nodes.d.ts",
+      "import": "./dist/flow-core/graph-nodes.js",
+      "default": "./dist/flow-core/graph-nodes.js"
+    },
+    "./flow-core/graph-nodes": {
+      "types": "./dist/flow-core/graph-nodes.d.ts",
+      "import": "./dist/flow-core/graph-nodes.js",
+      "default": "./dist/flow-core/graph-nodes.js"
+    },
+    "./flow-core/graphs.js": {
+      "types": "./dist/flow-core/graphs.d.ts",
+      "import": "./dist/flow-core/graphs.js",
+      "default": "./dist/flow-core/graphs.js"
+    },
+    "./flow-core/graphs": {
+      "types": "./dist/flow-core/graphs.d.ts",
+      "import": "./dist/flow-core/graphs.js",
+      "default": "./dist/flow-core/graphs.js"
+    },
+    "./flow-core/index.js": {
+      "types": "./dist/flow-core/index.d.ts",
+      "import": "./dist/flow-core/index.js",
+      "default": "./dist/flow-core/index.js"
+    },
+    "./flow-core/index": {
+      "types": "./dist/flow-core/index.d.ts",
+      "import": "./dist/flow-core/index.js",
+      "default": "./dist/flow-core/index.js"
+    },
+    "./flow-core/inline-inputs.js": {
+      "types": "./dist/flow-core/inline-inputs.d.ts",
+      "import": "./dist/flow-core/inline-inputs.js",
+      "default": "./dist/flow-core/inline-inputs.js"
+    },
+    "./flow-core/inline-inputs": {
+      "types": "./dist/flow-core/inline-inputs.d.ts",
+      "import": "./dist/flow-core/inline-inputs.js",
+      "default": "./dist/flow-core/inline-inputs.js"
+    },
+    "./flow-core/interface.js": {
+      "types": "./dist/flow-core/interface.d.ts",
+      "import": "./dist/flow-core/interface.js",
+      "default": "./dist/flow-core/interface.js"
+    },
+    "./flow-core/interface": {
+      "types": "./dist/flow-core/interface.d.ts",
+      "import": "./dist/flow-core/interface.js",
+      "default": "./dist/flow-core/interface.js"
+    },
+    "./flow-core/json-values.js": {
+      "types": "./dist/flow-core/json-values.d.ts",
+      "import": "./dist/flow-core/json-values.js",
+      "default": "./dist/flow-core/json-values.js"
+    },
+    "./flow-core/json-values": {
+      "types": "./dist/flow-core/json-values.d.ts",
+      "import": "./dist/flow-core/json-values.js",
+      "default": "./dist/flow-core/json-values.js"
+    },
+    "./flow-core/model.js": {
+      "types": "./dist/flow-core/model.d.ts",
+      "import": "./dist/flow-core/model.js",
+      "default": "./dist/flow-core/model.js"
+    },
+    "./flow-core/model": {
+      "types": "./dist/flow-core/model.d.ts",
+      "import": "./dist/flow-core/model.js",
+      "default": "./dist/flow-core/model.js"
+    },
+    "./flow-core/node-names.js": {
+      "types": "./dist/flow-core/node-names.d.ts",
+      "import": "./dist/flow-core/node-names.js",
+      "default": "./dist/flow-core/node-names.js"
+    },
+    "./flow-core/node-names": {
+      "types": "./dist/flow-core/node-names.d.ts",
+      "import": "./dist/flow-core/node-names.js",
+      "default": "./dist/flow-core/node-names.js"
+    },
+    "./flow-core/node-resolution.js": {
+      "types": "./dist/flow-core/node-resolution.d.ts",
+      "import": "./dist/flow-core/node-resolution.js",
+      "default": "./dist/flow-core/node-resolution.js"
+    },
+    "./flow-core/node-resolution": {
+      "types": "./dist/flow-core/node-resolution.d.ts",
+      "import": "./dist/flow-core/node-resolution.js",
+      "default": "./dist/flow-core/node-resolution.js"
+    },
+    "./flow-core/numeric.js": {
+      "types": "./dist/flow-core/numeric.d.ts",
+      "import": "./dist/flow-core/numeric.js",
+      "default": "./dist/flow-core/numeric.js"
+    },
+    "./flow-core/numeric": {
+      "types": "./dist/flow-core/numeric.d.ts",
+      "import": "./dist/flow-core/numeric.js",
+      "default": "./dist/flow-core/numeric.js"
+    },
+    "./flow-core/page-schema.js": {
+      "types": "./dist/flow-core/page-schema.d.ts",
+      "import": "./dist/flow-core/page-schema.js",
+      "default": "./dist/flow-core/page-schema.js"
+    },
+    "./flow-core/page-schema": {
+      "types": "./dist/flow-core/page-schema.d.ts",
+      "import": "./dist/flow-core/page-schema.js",
+      "default": "./dist/flow-core/page-schema.js"
+    },
+    "./flow-core/query-nodes.js": {
+      "types": "./dist/flow-core/query-nodes.d.ts",
+      "import": "./dist/flow-core/query-nodes.js",
+      "default": "./dist/flow-core/query-nodes.js"
+    },
+    "./flow-core/query-nodes": {
+      "types": "./dist/flow-core/query-nodes.d.ts",
+      "import": "./dist/flow-core/query-nodes.js",
+      "default": "./dist/flow-core/query-nodes.js"
+    },
+    "./flow-core/scalars.js": {
+      "types": "./dist/flow-core/scalars.d.ts",
+      "import": "./dist/flow-core/scalars.js",
+      "default": "./dist/flow-core/scalars.js"
+    },
+    "./flow-core/scalars": {
+      "types": "./dist/flow-core/scalars.d.ts",
+      "import": "./dist/flow-core/scalars.js",
+      "default": "./dist/flow-core/scalars.js"
+    },
+    "./flow-core/schema.js": {
+      "types": "./dist/flow-core/schema.d.ts",
+      "import": "./dist/flow-core/schema.js",
+      "default": "./dist/flow-core/schema.js"
+    },
+    "./flow-core/schema": {
+      "types": "./dist/flow-core/schema.d.ts",
+      "import": "./dist/flow-core/schema.js",
+      "default": "./dist/flow-core/schema.js"
+    },
+    "./flow-core/string-expressions.js": {
+      "types": "./dist/flow-core/string-expressions.d.ts",
+      "import": "./dist/flow-core/string-expressions.js",
+      "default": "./dist/flow-core/string-expressions.js"
+    },
+    "./flow-core/string-expressions": {
+      "types": "./dist/flow-core/string-expressions.d.ts",
+      "import": "./dist/flow-core/string-expressions.js",
+      "default": "./dist/flow-core/string-expressions.js"
+    },
+    "./flow-core/template-nodes.js": {
+      "types": "./dist/flow-core/template-nodes.d.ts",
+      "import": "./dist/flow-core/template-nodes.js",
+      "default": "./dist/flow-core/template-nodes.js"
+    },
+    "./flow-core/template-nodes": {
+      "types": "./dist/flow-core/template-nodes.d.ts",
+      "import": "./dist/flow-core/template-nodes.js",
+      "default": "./dist/flow-core/template-nodes.js"
+    },
+    "./flow-core/temporal.js": {
+      "types": "./dist/flow-core/temporal.d.ts",
+      "import": "./dist/flow-core/temporal.js",
+      "default": "./dist/flow-core/temporal.js"
+    },
+    "./flow-core/temporal": {
+      "types": "./dist/flow-core/temporal.d.ts",
+      "import": "./dist/flow-core/temporal.js",
+      "default": "./dist/flow-core/temporal.js"
+    },
+    "./flow-core/transport.js": {
+      "types": "./dist/flow-core/transport.d.ts",
+      "import": "./dist/flow-core/transport.js",
+      "default": "./dist/flow-core/transport.js"
+    },
+    "./flow-core/transport": {
+      "types": "./dist/flow-core/transport.d.ts",
+      "import": "./dist/flow-core/transport.js",
+      "default": "./dist/flow-core/transport.js"
+    },
+    "./flow-core/types.js": {
+      "types": "./dist/flow-core/types.d.ts",
+      "import": "./dist/flow-core/types.js",
+      "default": "./dist/flow-core/types.js"
+    },
+    "./flow-core/types": {
+      "types": "./dist/flow-core/types.d.ts",
+      "import": "./dist/flow-core/types.js",
+      "default": "./dist/flow-core/types.js"
+    },
+    "./flow-core/value-codecs.js": {
+      "types": "./dist/flow-core/value-codecs.d.ts",
+      "import": "./dist/flow-core/value-codecs.js",
+      "default": "./dist/flow-core/value-codecs.js"
+    },
+    "./flow-core/value-codecs": {
+      "types": "./dist/flow-core/value-codecs.d.ts",
+      "import": "./dist/flow-core/value-codecs.js",
+      "default": "./dist/flow-core/value-codecs.js"
+    },
+    "./flow-core/value-equality.js": {
+      "types": "./dist/flow-core/value-equality.d.ts",
+      "import": "./dist/flow-core/value-equality.js",
+      "default": "./dist/flow-core/value-equality.js"
+    },
+    "./flow-core/value-equality": {
+      "types": "./dist/flow-core/value-equality.d.ts",
+      "import": "./dist/flow-core/value-equality.js",
+      "default": "./dist/flow-core/value-equality.js"
+    },
+    "./flow-core/value-nodes.js": {
+      "types": "./dist/flow-core/value-nodes.d.ts",
+      "import": "./dist/flow-core/value-nodes.js",
+      "default": "./dist/flow-core/value-nodes.js"
+    },
+    "./flow-core/value-nodes": {
+      "types": "./dist/flow-core/value-nodes.d.ts",
+      "import": "./dist/flow-core/value-nodes.js",
+      "default": "./dist/flow-core/value-nodes.js"
+    },
+    "./flow-core/value-order.js": {
+      "types": "./dist/flow-core/value-order.d.ts",
+      "import": "./dist/flow-core/value-order.js",
+      "default": "./dist/flow-core/value-order.js"
+    },
+    "./flow-core/value-order": {
+      "types": "./dist/flow-core/value-order.d.ts",
+      "import": "./dist/flow-core/value-order.js",
+      "default": "./dist/flow-core/value-order.js"
+    },
+    "./index.js": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./index": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    }
+  },
+  "dependencies": {
+    "ajv": "8.20.0"
+  },
+  "peerDependencies": {}
+}

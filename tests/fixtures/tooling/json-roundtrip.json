@@ -1,0 +1,13 @@
+{
+  "purpose": "infrastructure-only",
+  "text": "Gr\u00fc\u00dfe \ud83d\udc4b",
+  "number": 42.5,
+  "optionalValue": null,
+  "items": [
+    true,
+    false,
+    {
+      "name": "Ada"
+    }
+  ]
+}

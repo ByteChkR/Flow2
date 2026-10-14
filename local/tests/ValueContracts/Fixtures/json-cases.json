@@ -1,0 +1,438 @@
+[
+  {
+    "type": "Standard.JSON.TryParse",
+    "inputs": {
+      "text": " {\"n\":900719925474099312345,\"d\":0.1234567890123456789} "
+    },
+    "expected": {
+      "found": true,
+      "value": {
+        "json": "{\"n\":900719925474099312345,\"d\":0.1234567890123456789}"
+      }
+    }
+  },
+  {
+    "type": "Standard.JSON.TryParse",
+    "inputs": {
+      "text": "null"
+    },
+    "expected": {
+      "found": true,
+      "value": {
+        "json": "null"
+      }
+    }
+  },
+  {
+    "type": "Standard.JSON.TryParse",
+    "inputs": {
+      "text": "bad"
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.JSON.TryParse",
+    "inputs": {
+      "text": "{\"a\":1,\"a\":2}"
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.JSON.TryParse",
+    "inputs": {
+      "text": "[1,]"
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.JSON.TryParse",
+    "inputs": {
+      "text": ""
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.JSON.HasField",
+    "inputs": {
+      "value": {
+        "json": "{\"n\":null,\"__proto__\":1,\"\":false}"
+      },
+      "name": "n"
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "type": "Standard.JSON.RemoveField",
+    "inputs": {
+      "value": {
+        "json": "{\"n\":null,\"__proto__\":1,\"\":false}"
+      },
+      "name": "n"
+    },
+    "expected": {
+      "removed": true,
+      "value": {
+        "json": "{\"__proto__\":1,\"\":false}"
+      }
+    }
+  },
+  {
+    "type": "Standard.JSON.HasField",
+    "inputs": {
+      "value": {
+        "json": "{\"n\":null,\"__proto__\":1,\"\":false}"
+      },
+      "name": "missing"
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "type": "Standard.JSON.RemoveField",
+    "inputs": {
+      "value": {
+        "json": "{\"n\":null,\"__proto__\":1,\"\":false}"
+      },
+      "name": "missing"
+    },
+    "expected": {
+      "removed": false,
+      "value": {
+        "json": "{\"n\":null,\"__proto__\":1,\"\":false}"
+      }
+    }
+  },
+  {
+    "type": "Standard.JSON.HasField",
+    "inputs": {
+      "value": {
+        "json": "{\"n\":null,\"__proto__\":1,\"\":false}"
+      },
+      "name": "__proto__"
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "type": "Standard.JSON.RemoveField",
+    "inputs": {
+      "value": {
+        "json": "{\"n\":null,\"__proto__\":1,\"\":false}"
+      },
+      "name": "__proto__"
+    },
+    "expected": {
+      "removed": true,
+      "value": {
+        "json": "{\"n\":null,\"\":false}"
+      }
+    }
+  },
+  {
+    "type": "Standard.JSON.HasField",
+    "inputs": {
+      "value": {
+        "json": "{\"n\":null,\"__proto__\":1,\"\":false}"
+      },
+      "name": ""
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "type": "Standard.JSON.RemoveField",
+    "inputs": {
+      "value": {
+        "json": "{\"n\":null,\"__proto__\":1,\"\":false}"
+      },
+      "name": ""
+    },
+    "expected": {
+      "removed": true,
+      "value": {
+        "json": "{\"n\":null,\"__proto__\":1}"
+      }
+    }
+  },
+  {
+    "type": "Standard.JSON.RemoveField",
+    "inputs": {
+      "value": {
+        "json": "{\"a\":900719925474099312345,\"b\":1e100}"
+      },
+      "name": "b"
+    },
+    "expected": {
+      "removed": true,
+      "value": {
+        "json": "{\"a\":900719925474099312345}"
+      }
+    }
+  },
+  {
+    "type": "Standard.JSON.GetPath",
+    "inputs": {
+      "value": {
+        "json": "{\"a/b\":{\"~key\":[null,900719925474099312345]},\"\":false,\"~1\":\"escaped\",\"01\":\"field\"}"
+      },
+      "path": ""
+    },
+    "expected": {
+      "found": true,
+      "value": {
+        "json": "{\"a/b\":{\"~key\":[null,900719925474099312345]},\"\":false,\"~1\":\"escaped\",\"01\":\"field\"}"
+      }
+    }
+  },
+  {
+    "type": "Standard.JSON.GetPath",
+    "inputs": {
+      "value": {
+        "json": "{\"a/b\":{\"~key\":[null,900719925474099312345]},\"\":false,\"~1\":\"escaped\",\"01\":\"field\"}"
+      },
+      "path": "/a~1b/~0key/0"
+    },
+    "expected": {
+      "found": true,
+      "value": {
+        "json": "null"
+      }
+    }
+  },
+  {
+    "type": "Standard.JSON.GetPath",
+    "inputs": {
+      "value": {
+        "json": "{\"a/b\":{\"~key\":[null,900719925474099312345]},\"\":false,\"~1\":\"escaped\",\"01\":\"field\"}"
+      },
+      "path": "/a~1b/~0key/1"
+    },
+    "expected": {
+      "found": true,
+      "value": {
+        "json": "900719925474099312345"
+      }
+    }
+  },
+  {
+    "type": "Standard.JSON.GetPath",
+    "inputs": {
+      "value": {
+        "json": "{\"a/b\":{\"~key\":[null,900719925474099312345]},\"\":false,\"~1\":\"escaped\",\"01\":\"field\"}"
+      },
+      "path": "/"
+    },
+    "expected": {
+      "found": true,
+      "value": {
+        "json": "false"
+      }
+    }
+  },
+  {
+    "type": "Standard.JSON.GetPath",
+    "inputs": {
+      "value": {
+        "json": "{\"a/b\":{\"~key\":[null,900719925474099312345]},\"\":false,\"~1\":\"escaped\",\"01\":\"field\"}"
+      },
+      "path": "/~01"
+    },
+    "expected": {
+      "found": true,
+      "value": {
+        "json": "\"escaped\""
+      }
+    }
+  },
+  {
+    "type": "Standard.JSON.GetPath",
+    "inputs": {
+      "value": {
+        "json": "{\"a/b\":{\"~key\":[null,900719925474099312345]},\"\":false,\"~1\":\"escaped\",\"01\":\"field\"}"
+      },
+      "path": "/01"
+    },
+    "expected": {
+      "found": true,
+      "value": {
+        "json": "\"field\""
+      }
+    }
+  },
+  {
+    "type": "Standard.JSON.GetPath",
+    "inputs": {
+      "value": {
+        "json": "{\"a/b\":{\"~key\":[null,900719925474099312345]},\"\":false,\"~1\":\"escaped\",\"01\":\"field\"}"
+      },
+      "path": "/missing"
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.JSON.GetPath",
+    "inputs": {
+      "value": {
+        "json": "{\"a/b\":{\"~key\":[null,900719925474099312345]},\"\":false,\"~1\":\"escaped\",\"01\":\"field\"}"
+      },
+      "path": "/a~1b/~0key/01"
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.JSON.GetPath",
+    "inputs": {
+      "value": {
+        "json": "{\"a/b\":{\"~key\":[null,900719925474099312345]},\"\":false,\"~1\":\"escaped\",\"01\":\"field\"}"
+      },
+      "path": "/a~1b/~0key/-"
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.JSON.GetPath",
+    "inputs": {
+      "value": {
+        "json": "{\"a/b\":{\"~key\":[null,900719925474099312345]},\"\":false,\"~1\":\"escaped\",\"01\":\"field\"}"
+      },
+      "path": "/a~1b/~0key/999999999999999999"
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.JSON.GetPath",
+    "inputs": {
+      "value": {
+        "json": "{\"a/b\":{\"~key\":[null,900719925474099312345]},\"\":false,\"~1\":\"escaped\",\"01\":\"field\"}"
+      },
+      "path": "/a~1b/~0key/0/foo"
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.JSON.GetPath",
+    "inputs": {
+      "value": {
+        "json": "{\"a/b\":{\"~key\":[null,900719925474099312345]},\"\":false,\"~1\":\"escaped\",\"01\":\"field\"}"
+      },
+      "path": "a"
+    },
+    "error": "path:"
+  },
+  {
+    "type": "Standard.JSON.GetPath",
+    "inputs": {
+      "value": {
+        "json": "{\"a/b\":{\"~key\":[null,900719925474099312345]},\"\":false,\"~1\":\"escaped\",\"01\":\"field\"}"
+      },
+      "path": "/~"
+    },
+    "error": "path:"
+  },
+  {
+    "type": "Standard.JSON.GetPath",
+    "inputs": {
+      "value": {
+        "json": "{\"a/b\":{\"~key\":[null,900719925474099312345]},\"\":false,\"~1\":\"escaped\",\"01\":\"field\"}"
+      },
+      "path": "/~2"
+    },
+    "error": "path:"
+  },
+  {
+    "type": "Standard.JSON.GetPath",
+    "inputs": {
+      "value": {
+        "json": "{\"a/b\":{\"~key\":[null,900719925474099312345]},\"\":false,\"~1\":\"escaped\",\"01\":\"field\"}"
+      },
+      "path": "/missing/~2"
+    },
+    "error": "path:"
+  },
+  {
+    "type": "Standard.JSON.HasField",
+    "inputs": {
+      "value": {
+        "json": "[]"
+      },
+      "name": "0"
+    },
+    "error": "Expected JSON object"
+  },
+  {
+    "type": "Standard.JSON.RemoveField",
+    "inputs": {
+      "value": {
+        "json": "[]"
+      },
+      "name": "0"
+    },
+    "error": "Expected JSON object"
+  },
+  {
+    "type": "Standard.JSON.RemoveField",
+    "inputs": {
+      "value": {
+        "json": "{\"\ud83d\ude00\":1,\"\u00fc\":\"\ud83d\ude00\",\"x\":0}"
+      },
+      "name": "x"
+    },
+    "expected": {
+      "value": {
+        "json": "{\"\ud83d\ude00\":1,\"\u00fc\":\"\ud83d\ude00\"}"
+      },
+      "removed": true
+    }
+  },
+  {
+    "type": "Standard.JSON.Stringify",
+    "inputs": {
+      "value": {
+        "json": "{\"\ud83d\ude00\":1,\"\u00fc\":\"\ud83d\ude00\"}"
+      }
+    },
+    "expected": {
+      "value": "{\"\ud83d\ude00\":1,\"\u00fc\":\"\ud83d\ude00\"}"
+    }
+  },
+  {
+    "type": "Standard.JSON.SetField",
+    "inputs": {
+      "value": {
+        "json": "{\"\ud83d\ude00\":1}"
+      },
+      "name": "\u00fc",
+      "field": {
+        "json": "\"\ud83d\ude00\""
+      }
+    },
+    "expected": {
+      "value": {
+        "json": "{\"\ud83d\ude00\":1,\"\u00fc\":\"\ud83d\ude00\"}"
+      }
+    }
+  }
+]

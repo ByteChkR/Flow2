@@ -1,0 +1,60 @@
+{
+  "schemaVersion": 1,
+  "environment": "server",
+  "codecs": [
+    {
+      "typeId": "core.String@1",
+      "version": 1,
+      "valueType": {
+        "kind": "string"
+      },
+      "wireSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "string"
+      }
+    },
+    {
+      "typeId": "crm.ContactDTO@1",
+      "version": 1,
+      "valueType": {
+        "kind": "object",
+        "fields": {
+          "id": {
+            "kind": "string"
+          },
+          "name": {
+            "kind": "string"
+          },
+          "age": {
+            "kind": "optional",
+            "inner": {
+              "kind": "number"
+            }
+          }
+        }
+      },
+      "wireSchema": {
+        "$schema": "https://json-schema.org/draft/2020-12/schema",
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string"
+          },
+          "name": {
+            "type": "string"
+          },
+          "age": {
+            "type": "number",
+            "minimum": -1.7976931348623157e+308,
+            "maximum": 1.7976931348623157e+308
+          }
+        },
+        "required": [
+          "id",
+          "name"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ]
+}

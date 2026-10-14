@@ -1,0 +1,688 @@
+[
+  {
+    "operation": "addItem",
+    "inputs": {
+      "items": [
+        "a",
+        "a"
+      ],
+      "item": "b"
+    },
+    "expected": {
+      "value": [
+        "a",
+        "a",
+        "b"
+      ]
+    }
+  },
+  {
+    "operation": "addItem",
+    "inputs": {
+      "items": [],
+      "item": "a"
+    },
+    "expected": {
+      "value": [
+        "a"
+      ]
+    }
+  },
+  {
+    "operation": "addRange",
+    "inputs": {
+      "items": [
+        "a"
+      ],
+      "additionalItems": [
+        "a",
+        "b"
+      ]
+    },
+    "expected": {
+      "value": [
+        "a",
+        "a",
+        "b"
+      ]
+    }
+  },
+  {
+    "operation": "addRange",
+    "inputs": {
+      "items": [],
+      "additionalItems": []
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "insertItem",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 0,
+      "item": "x"
+    },
+    "expected": {
+      "value": [
+        "x",
+        "a",
+        "b"
+      ]
+    }
+  },
+  {
+    "operation": "insertRange",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 0,
+      "additionalItems": [
+        "x",
+        "x"
+      ]
+    },
+    "expected": {
+      "value": [
+        "x",
+        "x",
+        "a",
+        "b"
+      ]
+    }
+  },
+  {
+    "operation": "insertItem",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 1,
+      "item": "x"
+    },
+    "expected": {
+      "value": [
+        "a",
+        "x",
+        "b"
+      ]
+    }
+  },
+  {
+    "operation": "insertRange",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 1,
+      "additionalItems": [
+        "x",
+        "x"
+      ]
+    },
+    "expected": {
+      "value": [
+        "a",
+        "x",
+        "x",
+        "b"
+      ]
+    }
+  },
+  {
+    "operation": "insertItem",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 2,
+      "item": "x"
+    },
+    "expected": {
+      "value": [
+        "a",
+        "b",
+        "x"
+      ]
+    }
+  },
+  {
+    "operation": "insertRange",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 2,
+      "additionalItems": [
+        "x",
+        "x"
+      ]
+    },
+    "expected": {
+      "value": [
+        "a",
+        "b",
+        "x",
+        "x"
+      ]
+    }
+  },
+  {
+    "operation": "insertRange",
+    "inputs": {
+      "items": [],
+      "index": 0,
+      "additionalItems": []
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "insertItem",
+    "inputs": {
+      "items": [],
+      "index": 0,
+      "item": "x"
+    },
+    "expected": {
+      "value": [
+        "x"
+      ]
+    }
+  },
+  {
+    "operation": "setItem",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 0,
+      "item": "x"
+    },
+    "expected": {
+      "value": [
+        "x",
+        "b"
+      ]
+    }
+  },
+  {
+    "operation": "setItem",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 1,
+      "item": "x"
+    },
+    "expected": {
+      "value": [
+        "a",
+        "x"
+      ]
+    }
+  },
+  {
+    "operation": "removeAt",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 0
+    },
+    "expected": {
+      "value": [
+        "b"
+      ],
+      "removedItem": "a"
+    }
+  },
+  {
+    "operation": "removeAt",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 1
+    },
+    "expected": {
+      "value": [
+        "a"
+      ],
+      "removedItem": "b"
+    }
+  },
+  {
+    "operation": "removeRange",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 0,
+      "length": 2
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "removeRange",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 1,
+      "length": 1
+    },
+    "expected": {
+      "value": [
+        "a"
+      ]
+    }
+  },
+  {
+    "operation": "removeRange",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 2,
+      "length": 0
+    },
+    "expected": {
+      "value": [
+        "a",
+        "b"
+      ]
+    }
+  },
+  {
+    "operation": "removeRange",
+    "inputs": {
+      "items": [],
+      "index": 0,
+      "length": 0
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "clear",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ]
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "clear",
+    "inputs": {
+      "items": []
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "insertItem",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": -1,
+      "item": "x"
+    },
+    "error": "index"
+  },
+  {
+    "operation": "insertItem",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 3,
+      "item": "x"
+    },
+    "error": "index"
+  },
+  {
+    "operation": "insertRange",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": -1,
+      "additionalItems": []
+    },
+    "error": "index"
+  },
+  {
+    "operation": "insertRange",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 3,
+      "additionalItems": []
+    },
+    "error": "index"
+  },
+  {
+    "operation": "setItem",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": -1,
+      "item": "x"
+    },
+    "error": "index"
+  },
+  {
+    "operation": "setItem",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 3,
+      "item": "x"
+    },
+    "error": "index"
+  },
+  {
+    "operation": "removeAt",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": -1
+    },
+    "error": "index"
+  },
+  {
+    "operation": "removeAt",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 3
+    },
+    "error": "index"
+  },
+  {
+    "operation": "removeRange",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": -1,
+      "length": 0
+    },
+    "error": "index"
+  },
+  {
+    "operation": "removeRange",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 3,
+      "length": 0
+    },
+    "error": "index"
+  },
+  {
+    "operation": "setItem",
+    "inputs": {
+      "items": [],
+      "index": 0,
+      "item": "x"
+    },
+    "error": "index"
+  },
+  {
+    "operation": "setItem",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 2,
+      "item": "x"
+    },
+    "error": "index"
+  },
+  {
+    "operation": "removeAt",
+    "inputs": {
+      "items": [],
+      "index": 0
+    },
+    "error": "index"
+  },
+  {
+    "operation": "removeAt",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 2
+    },
+    "error": "index"
+  },
+  {
+    "operation": "removeRange",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 0,
+      "length": -1
+    },
+    "error": "length"
+  },
+  {
+    "operation": "removeRange",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 0,
+      "length": 3
+    },
+    "error": "length"
+  },
+  {
+    "operation": "removeRange",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 1,
+      "length": 2
+    },
+    "error": "length"
+  },
+  {
+    "operation": "removeRange",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 2,
+      "length": 1
+    },
+    "error": "length"
+  },
+  {
+    "operation": "removeRange",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 1,
+      "length": 2147483647
+    },
+    "error": "length"
+  },
+  {
+    "operation": "removeItem",
+    "inputs": {
+      "items": [],
+      "item": "x"
+    },
+    "expected": {
+      "value": [],
+      "removed": false
+    }
+  },
+  {
+    "operation": "removeItem",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "item": "x"
+    },
+    "expected": {
+      "value": [
+        "a",
+        "b"
+      ],
+      "removed": false
+    }
+  },
+  {
+    "operation": "removeItem",
+    "inputs": {
+      "items": [
+        "a",
+        "b",
+        "a"
+      ],
+      "item": "a"
+    },
+    "expected": {
+      "value": [
+        "b",
+        "a"
+      ],
+      "removed": true
+    }
+  },
+  {
+    "operation": "removeItem",
+    "inputs": {
+      "items": [
+        "a",
+        "a"
+      ],
+      "item": "a"
+    },
+    "expected": {
+      "value": [
+        "a"
+      ],
+      "removed": true
+    }
+  },
+  {
+    "operation": "removeAll",
+    "inputs": {
+      "items": [],
+      "item": "x"
+    },
+    "expected": {
+      "value": [],
+      "removedCount": 0
+    }
+  },
+  {
+    "operation": "removeAll",
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "item": "x"
+    },
+    "expected": {
+      "value": [
+        "a",
+        "b"
+      ],
+      "removedCount": 0
+    }
+  },
+  {
+    "operation": "removeAll",
+    "inputs": {
+      "items": [
+        "a",
+        "b",
+        "a"
+      ],
+      "item": "a"
+    },
+    "expected": {
+      "value": [
+        "b"
+      ],
+      "removedCount": 2
+    }
+  },
+  {
+    "operation": "removeAll",
+    "inputs": {
+      "items": [
+        "a",
+        "a"
+      ],
+      "item": "a"
+    },
+    "expected": {
+      "value": [],
+      "removedCount": 2
+    }
+  }
+]

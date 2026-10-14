@@ -1,0 +1,12 @@
+{
+  "name": "flow-package-consumer",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "@adam-flow/core": "file:../../artifacts/npm/adam-flow-core-0.1.0-local.1791958539955.tgz",
+    "@adam-flow/editor": "file:../../artifacts/npm/adam-flow-editor-0.1.0-local.1791958539955.tgz",
+    "@adam-flow/runtime-browser": "file:../../artifacts/npm/adam-flow-runtime-browser-0.1.0-local.1791958539955.tgz",
+    "@adam/editor": "file:../../artifacts/npm/adam-editor-0.1.0-local.1791958539955.tgz",
+    "svelte": "4.2.19"
+  }
+}

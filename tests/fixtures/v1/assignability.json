@@ -1,0 +1,459 @@
+[
+  {
+    "name": "string",
+    "source": {
+      "kind": "string"
+    },
+    "target": {
+      "kind": "string"
+    },
+    "expected": true
+  },
+  {
+    "name": "string-number",
+    "source": {
+      "kind": "string"
+    },
+    "target": {
+      "kind": "number"
+    },
+    "expected": false
+  },
+  {
+    "name": "number-string",
+    "source": {
+      "kind": "number"
+    },
+    "target": {
+      "kind": "string"
+    },
+    "expected": false
+  },
+  {
+    "name": "boolean",
+    "source": {
+      "kind": "boolean"
+    },
+    "target": {
+      "kind": "boolean"
+    },
+    "expected": true
+  },
+  {
+    "name": "null",
+    "source": {
+      "kind": "null"
+    },
+    "target": {
+      "kind": "null"
+    },
+    "expected": true
+  },
+  {
+    "name": "null-string",
+    "source": {
+      "kind": "null"
+    },
+    "target": {
+      "kind": "string"
+    },
+    "expected": false
+  },
+  {
+    "name": "entity-same",
+    "source": {
+      "kind": "entity",
+      "name": "crm.Contact@1"
+    },
+    "target": {
+      "kind": "entity",
+      "name": "crm.Contact@1"
+    },
+    "expected": true
+  },
+  {
+    "name": "entity-other",
+    "source": {
+      "kind": "entity",
+      "name": "crm.Contact@1"
+    },
+    "target": {
+      "kind": "entity",
+      "name": "crm.Company@1"
+    },
+    "expected": false
+  },
+  {
+    "name": "entity-version",
+    "source": {
+      "kind": "entity",
+      "name": "crm.Contact@1"
+    },
+    "target": {
+      "kind": "entity",
+      "name": "crm.Contact@2"
+    },
+    "expected": false
+  },
+  {
+    "name": "entity-vs-ref",
+    "source": {
+      "kind": "entity",
+      "name": "crm.Contact@1"
+    },
+    "target": {
+      "kind": "entityRef",
+      "name": "crm.Contact@1"
+    },
+    "expected": false
+  },
+  {
+    "name": "ref-same",
+    "source": {
+      "kind": "entityRef",
+      "name": "crm.Contact@1"
+    },
+    "target": {
+      "kind": "entityRef",
+      "name": "crm.Contact@1"
+    },
+    "expected": true
+  },
+  {
+    "name": "ref-version",
+    "source": {
+      "kind": "entityRef",
+      "name": "crm.Contact@1"
+    },
+    "target": {
+      "kind": "entityRef",
+      "name": "crm.Contact@2"
+    },
+    "expected": false
+  },
+  {
+    "name": "unknown-entity",
+    "source": {
+      "kind": "entity",
+      "name": "missing.Type@1"
+    },
+    "target": {
+      "kind": "entity",
+      "name": "missing.Type@1"
+    },
+    "expected": false
+  },
+  {
+    "name": "required-optional",
+    "source": {
+      "kind": "string"
+    },
+    "target": {
+      "kind": "optional",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "expected": true
+  },
+  {
+    "name": "optional-required",
+    "source": {
+      "kind": "optional",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "target": {
+      "kind": "string"
+    },
+    "expected": false
+  },
+  {
+    "name": "optional-same",
+    "source": {
+      "kind": "optional",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "target": {
+      "kind": "optional",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "expected": true
+  },
+  {
+    "name": "null-not-optional",
+    "source": {
+      "kind": "null"
+    },
+    "target": {
+      "kind": "optional",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "expected": false
+  },
+  {
+    "name": "optional-null",
+    "source": {
+      "kind": "null"
+    },
+    "target": {
+      "kind": "optional",
+      "inner": {
+        "kind": "null"
+      }
+    },
+    "expected": true
+  },
+  {
+    "name": "optional-incompatible",
+    "source": {
+      "kind": "optional",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "target": {
+      "kind": "optional",
+      "inner": {
+        "kind": "number"
+      }
+    },
+    "expected": false
+  },
+  {
+    "name": "array",
+    "source": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "target": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "expected": true
+  },
+  {
+    "name": "array-mismatch",
+    "source": {
+      "kind": "array",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "target": {
+      "kind": "array",
+      "items": {
+        "kind": "number"
+      }
+    },
+    "expected": false
+  },
+  {
+    "name": "nested-array",
+    "source": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "entity",
+          "name": "crm.Contact@1"
+        }
+      }
+    },
+    "target": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "entity",
+          "name": "crm.Contact@1"
+        }
+      }
+    },
+    "expected": true
+  },
+  {
+    "name": "object-width",
+    "source": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        }
+      }
+    },
+    "target": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        }
+      }
+    },
+    "expected": true
+  },
+  {
+    "name": "object-required-missing",
+    "source": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        }
+      }
+    },
+    "target": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        }
+      }
+    },
+    "expected": false
+  },
+  {
+    "name": "object-optional-missing",
+    "source": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        }
+      }
+    },
+    "target": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "optional",
+          "inner": {
+            "kind": "string"
+          }
+        }
+      }
+    },
+    "expected": true
+  },
+  {
+    "name": "object-optional-required",
+    "source": {
+      "kind": "object",
+      "fields": {
+        "name": {
+          "kind": "optional",
+          "inner": {
+            "kind": "string"
+          }
+        }
+      }
+    },
+    "target": {
+      "kind": "object",
+      "fields": {
+        "name": {
+          "kind": "string"
+        }
+      }
+    },
+    "expected": false
+  },
+  {
+    "name": "object-optional-wrong",
+    "source": {
+      "kind": "object",
+      "fields": {
+        "name": {
+          "kind": "number"
+        }
+      }
+    },
+    "target": {
+      "kind": "object",
+      "fields": {
+        "name": {
+          "kind": "optional",
+          "inner": {
+            "kind": "string"
+          }
+        }
+      }
+    },
+    "expected": false
+  },
+  {
+    "name": "object-nested-array",
+    "source": {
+      "kind": "object",
+      "fields": {
+        "rows": {
+          "kind": "array",
+          "items": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "target": {
+      "kind": "object",
+      "fields": {
+        "rows": {
+          "kind": "array",
+          "items": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    "expected": false
+  },
+  {
+    "name": "entity-not-structural",
+    "source": {
+      "kind": "entity",
+      "name": "crm.Contact@1"
+    },
+    "target": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        }
+      }
+    },
+    "expected": false
+  }
+]

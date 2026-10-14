@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "types": [
+    {
+      "id": "crm.Contact@1",
+      "kind": "entity",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        },
+        "manager": {
+          "kind": "optional",
+          "inner": {
+            "kind": "entityRef",
+            "name": "crm.Contact@1"
+          }
+        }
+      }
+    },
+    {
+      "id": "crm.Company@1",
+      "kind": "entity",
+      "fields": {
+        "id": {
+          "kind": "string"
+        }
+      }
+    },
+    {
+      "id": "crm.Contact@2",
+      "kind": "entity",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        }
+      }
+    }
+  ]
+}

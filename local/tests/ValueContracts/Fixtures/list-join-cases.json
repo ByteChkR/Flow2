@@ -1,0 +1,547 @@
+[
+  {
+    "operation": "joinByKey",
+    "left": [],
+    "right": [],
+    "leftKeys": [],
+    "rightKeys": [],
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "joinByKey",
+    "left": [
+      "a"
+    ],
+    "right": [],
+    "leftKeys": [
+      "x"
+    ],
+    "rightKeys": [],
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "joinByKey",
+    "left": [],
+    "right": [
+      "b"
+    ],
+    "leftKeys": [],
+    "rightKeys": [
+      "x"
+    ],
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "joinByKey",
+    "left": [
+      "a",
+      "b",
+      "c"
+    ],
+    "right": [
+      "x",
+      "y",
+      "z"
+    ],
+    "leftKeys": [
+      "k",
+      "j",
+      "k"
+    ],
+    "rightKeys": [
+      "k",
+      "k",
+      "j"
+    ],
+    "expected": {
+      "value": [
+        {
+          "left": "a",
+          "right": "x"
+        },
+        {
+          "left": "a",
+          "right": "y"
+        },
+        {
+          "left": "b",
+          "right": "z"
+        },
+        {
+          "left": "c",
+          "right": "x"
+        },
+        {
+          "left": "c",
+          "right": "y"
+        }
+      ]
+    }
+  },
+  {
+    "operation": "joinByKey",
+    "left": [
+      "a",
+      "b"
+    ],
+    "right": [
+      null,
+      "x"
+    ],
+    "leftKeys": [
+      "k",
+      "missing"
+    ],
+    "rightKeys": [
+      "k",
+      "other"
+    ],
+    "expected": {
+      "value": [
+        {
+          "left": "a",
+          "right": null
+        }
+      ]
+    }
+  },
+  {
+    "operation": "joinByKey",
+    "left": [
+      null,
+      "a"
+    ],
+    "right": [
+      null,
+      "b"
+    ],
+    "leftKeys": [
+      null,
+      null
+    ],
+    "rightKeys": [
+      null,
+      null
+    ],
+    "expected": {
+      "value": [
+        {
+          "left": null,
+          "right": null
+        },
+        {
+          "left": null,
+          "right": "b"
+        },
+        {
+          "left": "a",
+          "right": null
+        },
+        {
+          "left": "a",
+          "right": "b"
+        }
+      ]
+    }
+  },
+  {
+    "operation": "leftJoinByKey",
+    "left": [],
+    "right": [],
+    "leftKeys": [],
+    "rightKeys": [],
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "leftJoinByKey",
+    "left": [
+      "a"
+    ],
+    "right": [],
+    "leftKeys": [
+      "x"
+    ],
+    "rightKeys": [],
+    "expected": {
+      "value": [
+        {
+          "left": "a",
+          "found": false
+        }
+      ]
+    }
+  },
+  {
+    "operation": "leftJoinByKey",
+    "left": [],
+    "right": [
+      "b"
+    ],
+    "leftKeys": [],
+    "rightKeys": [
+      "x"
+    ],
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "leftJoinByKey",
+    "left": [
+      "a",
+      "b",
+      "c"
+    ],
+    "right": [
+      "x",
+      "y",
+      "z"
+    ],
+    "leftKeys": [
+      "k",
+      "j",
+      "k"
+    ],
+    "rightKeys": [
+      "k",
+      "k",
+      "j"
+    ],
+    "expected": {
+      "value": [
+        {
+          "left": "a",
+          "right": "x",
+          "found": true
+        },
+        {
+          "left": "a",
+          "right": "y",
+          "found": true
+        },
+        {
+          "left": "b",
+          "right": "z",
+          "found": true
+        },
+        {
+          "left": "c",
+          "right": "x",
+          "found": true
+        },
+        {
+          "left": "c",
+          "right": "y",
+          "found": true
+        }
+      ]
+    }
+  },
+  {
+    "operation": "leftJoinByKey",
+    "left": [
+      "a",
+      "b"
+    ],
+    "right": [
+      null,
+      "x"
+    ],
+    "leftKeys": [
+      "k",
+      "missing"
+    ],
+    "rightKeys": [
+      "k",
+      "other"
+    ],
+    "expected": {
+      "value": [
+        {
+          "left": "a",
+          "right": null,
+          "found": true
+        },
+        {
+          "left": "b",
+          "found": false
+        }
+      ]
+    }
+  },
+  {
+    "operation": "leftJoinByKey",
+    "left": [
+      null,
+      "a"
+    ],
+    "right": [
+      null,
+      "b"
+    ],
+    "leftKeys": [
+      null,
+      null
+    ],
+    "rightKeys": [
+      null,
+      null
+    ],
+    "expected": {
+      "value": [
+        {
+          "left": null,
+          "right": null,
+          "found": true
+        },
+        {
+          "left": null,
+          "right": "b",
+          "found": true
+        },
+        {
+          "left": "a",
+          "right": null,
+          "found": true
+        },
+        {
+          "left": "a",
+          "right": "b",
+          "found": true
+        }
+      ]
+    }
+  },
+  {
+    "operation": "groupJoinByKey",
+    "left": [],
+    "right": [],
+    "leftKeys": [],
+    "rightKeys": [],
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "groupJoinByKey",
+    "left": [
+      "a"
+    ],
+    "right": [],
+    "leftKeys": [
+      "x"
+    ],
+    "rightKeys": [],
+    "expected": {
+      "value": [
+        {
+          "left": "a",
+          "right": []
+        }
+      ]
+    }
+  },
+  {
+    "operation": "groupJoinByKey",
+    "left": [],
+    "right": [
+      "b"
+    ],
+    "leftKeys": [],
+    "rightKeys": [
+      "x"
+    ],
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "groupJoinByKey",
+    "left": [
+      "a",
+      "b",
+      "c"
+    ],
+    "right": [
+      "x",
+      "y",
+      "z"
+    ],
+    "leftKeys": [
+      "k",
+      "j",
+      "k"
+    ],
+    "rightKeys": [
+      "k",
+      "k",
+      "j"
+    ],
+    "expected": {
+      "value": [
+        {
+          "left": "a",
+          "right": [
+            "x",
+            "y"
+          ]
+        },
+        {
+          "left": "b",
+          "right": [
+            "z"
+          ]
+        },
+        {
+          "left": "c",
+          "right": [
+            "x",
+            "y"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "operation": "groupJoinByKey",
+    "left": [
+      "a",
+      "b"
+    ],
+    "right": [
+      null,
+      "x"
+    ],
+    "leftKeys": [
+      "k",
+      "missing"
+    ],
+    "rightKeys": [
+      "k",
+      "other"
+    ],
+    "expected": {
+      "value": [
+        {
+          "left": "a",
+          "right": [
+            null
+          ]
+        },
+        {
+          "left": "b",
+          "right": []
+        }
+      ]
+    }
+  },
+  {
+    "operation": "groupJoinByKey",
+    "left": [
+      null,
+      "a"
+    ],
+    "right": [
+      null,
+      "b"
+    ],
+    "leftKeys": [
+      null,
+      null
+    ],
+    "rightKeys": [
+      null,
+      null
+    ],
+    "expected": {
+      "value": [
+        {
+          "left": null,
+          "right": [
+            null,
+            "b"
+          ]
+        },
+        {
+          "left": "a",
+          "right": [
+            null,
+            "b"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "operation": "joinByKey",
+    "left": [
+      "a",
+      "b"
+    ],
+    "right": [
+      1,
+      2,
+      3
+    ],
+    "leftKeys": [
+      {
+        "tenant": "A",
+        "id": 1
+      },
+      {
+        "tenant": "A",
+        "id": 2
+      }
+    ],
+    "rightKeys": [
+      {
+        "tenant": "B",
+        "id": 1
+      },
+      {
+        "tenant": "A",
+        "id": 1
+      },
+      {
+        "tenant": "A",
+        "id": 2
+      }
+    ],
+    "rightType": {
+      "kind": "scalar",
+      "name": "core.Integer"
+    },
+    "keyType": {
+      "kind": "object",
+      "fields": {
+        "tenant": {
+          "kind": "string"
+        },
+        "id": {
+          "kind": "scalar",
+          "name": "core.Integer"
+        }
+      }
+    },
+    "expected": {
+      "value": [
+        {
+          "left": "a",
+          "right": 2
+        },
+        {
+          "left": "b",
+          "right": 3
+        }
+      ]
+    }
+  }
+]

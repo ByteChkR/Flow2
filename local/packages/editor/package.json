@@ -1,0 +1,184 @@
+{
+  "name": "@adam/editor",
+  "version": "0.1.0-local.1791959572118",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./ContextMenuStyles.svelte": {
+      "types": "./dist/ContextMenuStyles.svelte.d.ts",
+      "svelte": "./dist/ContextMenuStyles.svelte",
+      "default": "./dist/ContextMenuStyles.svelte"
+    },
+    "./DirtyDialog.svelte": {
+      "types": "./dist/DirtyDialog.svelte.d.ts",
+      "svelte": "./dist/DirtyDialog.svelte",
+      "default": "./dist/DirtyDialog.svelte"
+    },
+    "./EditorCommands.svelte": {
+      "types": "./dist/EditorCommands.svelte.d.ts",
+      "svelte": "./dist/EditorCommands.svelte",
+      "default": "./dist/EditorCommands.svelte"
+    },
+    "./EditorOverlayContent.svelte": {
+      "types": "./dist/EditorOverlayContent.svelte.d.ts",
+      "svelte": "./dist/EditorOverlayContent.svelte",
+      "default": "./dist/EditorOverlayContent.svelte"
+    },
+    "./EditorOverlayHost.svelte": {
+      "types": "./dist/EditorOverlayHost.svelte.d.ts",
+      "svelte": "./dist/EditorOverlayHost.svelte",
+      "default": "./dist/EditorOverlayHost.svelte"
+    },
+    "./EditorResources.svelte": {
+      "types": "./dist/EditorResources.svelte.d.ts",
+      "svelte": "./dist/EditorResources.svelte",
+      "default": "./dist/EditorResources.svelte"
+    },
+    "./EditorTabHost.svelte": {
+      "types": "./dist/EditorTabHost.svelte.d.ts",
+      "svelte": "./dist/EditorTabHost.svelte",
+      "default": "./dist/EditorTabHost.svelte"
+    },
+    "./EditorTabs.svelte": {
+      "types": "./dist/EditorTabs.svelte.d.ts",
+      "svelte": "./dist/EditorTabs.svelte",
+      "default": "./dist/EditorTabs.svelte"
+    },
+    "./EditorTheme.svelte": {
+      "types": "./dist/EditorTheme.svelte.d.ts",
+      "svelte": "./dist/EditorTheme.svelte",
+      "default": "./dist/EditorTheme.svelte"
+    },
+    "./EditorWorkspace.svelte": {
+      "types": "./dist/EditorWorkspace.svelte.d.ts",
+      "svelte": "./dist/EditorWorkspace.svelte",
+      "default": "./dist/EditorWorkspace.svelte"
+    },
+    "./ResourceActions.svelte": {
+      "types": "./dist/ResourceActions.svelte.d.ts",
+      "svelte": "./dist/ResourceActions.svelte",
+      "default": "./dist/ResourceActions.svelte"
+    },
+    "./ResourceTree.svelte": {
+      "types": "./dist/ResourceTree.svelte.d.ts",
+      "svelte": "./dist/ResourceTree.svelte",
+      "default": "./dist/ResourceTree.svelte"
+    },
+    "./diagnostics/MessagePanel.svelte": {
+      "types": "./dist/diagnostics/MessagePanel.svelte.d.ts",
+      "svelte": "./dist/diagnostics/MessagePanel.svelte",
+      "default": "./dist/diagnostics/MessagePanel.svelte"
+    },
+    "./diagnostics/categories.js": {
+      "types": "./dist/diagnostics/categories.d.ts",
+      "import": "./dist/diagnostics/categories.js",
+      "default": "./dist/diagnostics/categories.js"
+    },
+    "./diagnostics/categories": {
+      "types": "./dist/diagnostics/categories.d.ts",
+      "import": "./dist/diagnostics/categories.js",
+      "default": "./dist/diagnostics/categories.js"
+    },
+    "./diagnostics/diagnostic-messages.js": {
+      "types": "./dist/diagnostics/diagnostic-messages.d.ts",
+      "import": "./dist/diagnostics/diagnostic-messages.js",
+      "default": "./dist/diagnostics/diagnostic-messages.js"
+    },
+    "./diagnostics/diagnostic-messages": {
+      "types": "./dist/diagnostics/diagnostic-messages.d.ts",
+      "import": "./dist/diagnostics/diagnostic-messages.js",
+      "default": "./dist/diagnostics/diagnostic-messages.js"
+    },
+    "./diagnostics/messages.js": {
+      "types": "./dist/diagnostics/messages.d.ts",
+      "import": "./dist/diagnostics/messages.js",
+      "default": "./dist/diagnostics/messages.js"
+    },
+    "./diagnostics/messages": {
+      "types": "./dist/diagnostics/messages.d.ts",
+      "import": "./dist/diagnostics/messages.js",
+      "default": "./dist/diagnostics/messages.js"
+    },
+    "./host/Svg.svelte": {
+      "types": "./dist/host/Svg.svelte.d.ts",
+      "svelte": "./dist/host/Svg.svelte",
+      "default": "./dist/host/Svg.svelte"
+    },
+    "./host/ThemeControls.svelte": {
+      "types": "./dist/host/ThemeControls.svelte.d.ts",
+      "svelte": "./dist/host/ThemeControls.svelte",
+      "default": "./dist/host/ThemeControls.svelte"
+    },
+    "./host.js": {
+      "types": "./dist/host.d.ts",
+      "import": "./dist/host.js",
+      "default": "./dist/host.js"
+    },
+    "./host": {
+      "types": "./dist/host.d.ts",
+      "import": "./dist/host.js",
+      "default": "./dist/host.js"
+    },
+    "./index.js": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./index": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./model.js": {
+      "types": "./dist/model.d.ts",
+      "import": "./dist/model.js",
+      "default": "./dist/model.js"
+    },
+    "./model": {
+      "types": "./dist/model.d.ts",
+      "import": "./dist/model.js",
+      "default": "./dist/model.js"
+    },
+    "./navigation.js": {
+      "types": "./dist/navigation.d.ts",
+      "import": "./dist/navigation.js",
+      "default": "./dist/navigation.js"
+    },
+    "./navigation": {
+      "types": "./dist/navigation.d.ts",
+      "import": "./dist/navigation.js",
+      "default": "./dist/navigation.js"
+    },
+    "./resource-colors.js": {
+      "types": "./dist/resource-colors.d.ts",
+      "import": "./dist/resource-colors.js",
+      "default": "./dist/resource-colors.js"
+    },
+    "./resource-colors": {
+      "types": "./dist/resource-colors.d.ts",
+      "import": "./dist/resource-colors.js",
+      "default": "./dist/resource-colors.js"
+    },
+    "./tab-state.js": {
+      "types": "./dist/tab-state.d.ts",
+      "import": "./dist/tab-state.js",
+      "default": "./dist/tab-state.js"
+    },
+    "./tab-state": {
+      "types": "./dist/tab-state.d.ts",
+      "import": "./dist/tab-state.js",
+      "default": "./dist/tab-state.js"
+    }
+  },
+  "dependencies": {},
+  "peerDependencies": {
+    "svelte": "^4.2.0"
+  }
+}

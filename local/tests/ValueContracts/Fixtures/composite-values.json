@@ -1,0 +1,197 @@
+[
+  {
+    "name": "decimal-list",
+    "type": {
+      "kind": "array",
+      "items": {
+        "kind": "scalar",
+        "name": "core.Decimal"
+      }
+    },
+    "valid": [
+      [],
+      [
+        "0.1",
+        "9007199254740993",
+        "79228162514264337593543950335"
+      ]
+    ],
+    "invalid": [
+      [
+        0.1
+      ],
+      [
+        "1.00"
+      ],
+      [
+        null
+      ]
+    ],
+    "typeId": "core.Value.375f31f5ae4125f7"
+  },
+  {
+    "name": "nullable-decimal",
+    "type": {
+      "kind": "nullable",
+      "inner": {
+        "kind": "scalar",
+        "name": "core.Decimal"
+      }
+    },
+    "valid": [
+      null,
+      "0.1"
+    ],
+    "invalid": [
+      "NaN",
+      0.1
+    ],
+    "typeId": "core.Value.6100fefdd275f71b"
+  },
+  {
+    "name": "record",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "amount": {
+          "kind": "scalar",
+          "name": "core.Decimal"
+        },
+        "at": {
+          "kind": "scalar",
+          "name": "core.DateTimeOffset"
+        },
+        "duration": {
+          "kind": "scalar",
+          "name": "core.TimeSpan"
+        },
+        "id": {
+          "kind": "nullable",
+          "inner": {
+            "kind": "scalar",
+            "name": "core.Guid"
+          }
+        },
+        "comment": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "valid": [
+      {
+        "amount": "9007199254740993",
+        "at": "2026-12-25T12:34:56.1234567+02:00",
+        "duration": "9223372036854775807",
+        "id": null
+      },
+      {
+        "amount": "0.1",
+        "at": "1970-01-01T00:00:00.0000000+00:00",
+        "duration": "-1",
+        "id": "01234567-89ab-cdef-0123-456789abcdef",
+        "comment": null
+      }
+    ],
+    "invalid": [
+      {
+        "amount": "0.1"
+      },
+      {
+        "amount": 0.1,
+        "at": "2026-12-25",
+        "duration": "0",
+        "id": null
+      }
+    ],
+    "typeId": "core.Value.c783125b5815ee5c"
+  },
+  {
+    "name": "nullable-records",
+    "type": {
+      "kind": "array",
+      "items": {
+        "kind": "nullable",
+        "inner": {
+          "kind": "object",
+          "fields": {
+            "active": {
+              "kind": "scalar",
+              "name": "core.Bool"
+            },
+            "count": {
+              "kind": "scalar",
+              "name": "core.Integer"
+            }
+          }
+        }
+      }
+    },
+    "valid": [
+      [
+        null,
+        {
+          "active": false,
+          "count": 0
+        },
+        {
+          "active": true,
+          "count": 2147483647
+        }
+      ]
+    ],
+    "invalid": [
+      [
+        {
+          "active": "false",
+          "count": 0
+        }
+      ],
+      [
+        {
+          "active": true,
+          "count": 2147483648
+        }
+      ]
+    ],
+    "typeId": "core.Value.822f848ac0e22e95"
+  },
+  {
+    "name": "entity-references",
+    "type": {
+      "kind": "array",
+      "items": {
+        "kind": "entityRef",
+        "name": "test.Customer@1"
+      }
+    },
+    "valid": [
+      [
+        {
+          "type": "test.Customer@1",
+          "id": "customer-1"
+        }
+      ]
+    ],
+    "invalid": [
+      [
+        {
+          "type": "other.Customer@1",
+          "id": "1"
+        }
+      ],
+      [
+        {
+          "type": "test.Customer@1",
+          "id": ""
+        }
+      ]
+    ],
+    "typeId": "core.Value.c9ab99ca87c41a18"
+  }
+]

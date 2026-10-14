@@ -1,0 +1,551 @@
+[
+  {
+    "name": "string case",
+    "type": {
+      "kind": "string"
+    },
+    "left": "A",
+    "right": "a",
+    "equal": false
+  },
+  {
+    "name": "string exact",
+    "type": {
+      "kind": "string"
+    },
+    "left": "\u00e4\ud83d\ude00",
+    "right": "\u00e4\ud83d\ude00",
+    "equal": true
+  },
+  {
+    "name": "no Unicode normalization",
+    "type": {
+      "kind": "string"
+    },
+    "left": "\u00e9",
+    "right": "e\u0301",
+    "equal": false
+  },
+  {
+    "name": "scalar core.Bool",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Bool"
+    },
+    "left": false,
+    "right": false,
+    "equal": true
+  },
+  {
+    "name": "scalar core.Integer",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Integer"
+    },
+    "left": 2147483647,
+    "right": 2147483646,
+    "equal": false
+  },
+  {
+    "name": "scalar core.Guid",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Guid"
+    },
+    "left": "01234567-89ab-cdef-0123-456789abcdef",
+    "right": "01234567-89ab-cdef-0123-456789abcdef",
+    "equal": true
+  },
+  {
+    "name": "scalar core.Decimal",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Decimal"
+    },
+    "left": "9007199254740993",
+    "right": "9007199254740992",
+    "equal": false
+  },
+  {
+    "name": "scalar core.Decimal",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Decimal"
+    },
+    "left": "0.1",
+    "right": "0.1",
+    "equal": true
+  },
+  {
+    "name": "scalar core.TimeSpan",
+    "type": {
+      "kind": "scalar",
+      "name": "core.TimeSpan"
+    },
+    "left": "9223372036854775807",
+    "right": "9223372036854775806",
+    "equal": false
+  },
+  {
+    "name": "scalar core.DateTimeOffset",
+    "type": {
+      "kind": "scalar",
+      "name": "core.DateTimeOffset"
+    },
+    "left": "2026-01-01T12:00:00.0000001+02:00",
+    "right": "2026-01-01T10:00:00.0000001+00:00",
+    "equal": true
+  },
+  {
+    "name": "scalar core.DateTimeOffset",
+    "type": {
+      "kind": "scalar",
+      "name": "core.DateTimeOffset"
+    },
+    "left": "2026-01-01T10:00:00.0000001+00:00",
+    "right": "2026-01-01T10:00:00.0000002+00:00",
+    "equal": false
+  },
+  {
+    "name": "scalar number",
+    "type": {
+      "kind": "number"
+    },
+    "left": 0,
+    "right": 0,
+    "equal": true
+  },
+  {
+    "name": "scalar boolean",
+    "type": {
+      "kind": "boolean"
+    },
+    "left": true,
+    "right": false,
+    "equal": false
+  },
+  {
+    "name": "scalar null",
+    "type": {
+      "kind": "null"
+    },
+    "left": null,
+    "right": null,
+    "equal": true
+  },
+  {
+    "name": "null",
+    "type": {
+      "kind": "nullable",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "left": null,
+    "right": null,
+    "equal": true
+  },
+  {
+    "name": "null vs empty",
+    "type": {
+      "kind": "nullable",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "left": null,
+    "right": "",
+    "equal": false
+  },
+  {
+    "name": "record missing",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "name": {
+          "kind": "string"
+        },
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "left": {
+      "name": "a"
+    },
+    "right": {
+      "name": "a"
+    },
+    "equal": true
+  },
+  {
+    "name": "missing vs null",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "name": {
+          "kind": "string"
+        },
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "left": {
+      "name": "a"
+    },
+    "right": {
+      "name": "a",
+      "note": null
+    },
+    "equal": false
+  },
+  {
+    "name": "property order",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "name": {
+          "kind": "string"
+        },
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "left": {
+      "name": "a",
+      "note": "x"
+    },
+    "right": {
+      "note": "x",
+      "name": "a"
+    },
+    "equal": true
+  },
+  {
+    "name": "declared fields only",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "name": {
+          "kind": "string"
+        },
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "left": {
+      "name": "a",
+      "extra": 1
+    },
+    "right": {
+      "name": "a",
+      "extra": 2
+    },
+    "equal": true
+  },
+  {
+    "name": "different record",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "name": {
+          "kind": "string"
+        },
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "left": {
+      "name": "a"
+    },
+    "right": {
+      "name": "b"
+    },
+    "equal": false
+  },
+  {
+    "name": "nested record lists",
+    "type": {
+      "kind": "array",
+      "items": {
+        "kind": "object",
+        "fields": {
+          "name": {
+            "kind": "string"
+          },
+          "note": {
+            "kind": "optional",
+            "inner": {
+              "kind": "nullable",
+              "inner": {
+                "kind": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "left": [
+      {
+        "name": "a"
+      },
+      {
+        "name": "b",
+        "note": null
+      }
+    ],
+    "right": [
+      {
+        "name": "a"
+      },
+      {
+        "name": "b",
+        "note": null
+      }
+    ],
+    "equal": true
+  },
+  {
+    "name": "list order",
+    "type": {
+      "kind": "array",
+      "items": {
+        "kind": "object",
+        "fields": {
+          "name": {
+            "kind": "string"
+          },
+          "note": {
+            "kind": "optional",
+            "inner": {
+              "kind": "nullable",
+              "inner": {
+                "kind": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "left": [
+      {
+        "name": "a"
+      },
+      {
+        "name": "b"
+      }
+    ],
+    "right": [
+      {
+        "name": "b"
+      },
+      {
+        "name": "a"
+      }
+    ],
+    "equal": false
+  },
+  {
+    "name": "list length",
+    "type": {
+      "kind": "array",
+      "items": {
+        "kind": "object",
+        "fields": {
+          "name": {
+            "kind": "string"
+          },
+          "note": {
+            "kind": "optional",
+            "inner": {
+              "kind": "nullable",
+              "inner": {
+                "kind": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "left": [],
+    "right": [
+      {
+        "name": "a"
+      }
+    ],
+    "equal": false
+  },
+  {
+    "name": "entity reference",
+    "type": {
+      "kind": "entityRef",
+      "name": "test.Customer@1"
+    },
+    "left": {
+      "type": "test.Customer@1",
+      "id": "x"
+    },
+    "right": {
+      "type": "test.Customer@1",
+      "id": "x"
+    },
+    "equal": true
+  },
+  {
+    "name": "entity reference ID",
+    "type": {
+      "kind": "entityRef",
+      "name": "test.Customer@1"
+    },
+    "left": {
+      "type": "test.Customer@1",
+      "id": "x"
+    },
+    "right": {
+      "type": "test.Customer@1",
+      "id": "y"
+    },
+    "equal": false
+  },
+  {
+    "name": "dictionary order independent",
+    "type": {
+      "kind": "dictionary",
+      "items": {
+        "kind": "string"
+      }
+    },
+    "left": [
+      {
+        "key": "10",
+        "value": "ten"
+      },
+      {
+        "key": "2",
+        "value": "two"
+      },
+      {
+        "key": "__proto__",
+        "value": "safe"
+      },
+      {
+        "key": "",
+        "value": "empty"
+      },
+      {
+        "key": "A",
+        "value": "upper"
+      },
+      {
+        "key": "a",
+        "value": "lower"
+      }
+    ],
+    "right": [
+      {
+        "key": "a",
+        "value": "lower"
+      },
+      {
+        "key": "A",
+        "value": "upper"
+      },
+      {
+        "key": "",
+        "value": "empty"
+      },
+      {
+        "key": "__proto__",
+        "value": "safe"
+      },
+      {
+        "key": "2",
+        "value": "two"
+      },
+      {
+        "key": "10",
+        "value": "ten"
+      }
+    ],
+    "equal": true
+  },
+  {
+    "name": "dictionary different values",
+    "type": {
+      "kind": "dictionary",
+      "items": {
+        "kind": "nullable",
+        "inner": {
+          "kind": "string"
+        }
+      }
+    },
+    "left": [
+      {
+        "key": "a",
+        "value": null
+      }
+    ],
+    "right": [
+      {
+        "key": "a",
+        "value": ""
+      }
+    ],
+    "equal": false
+  },
+  {
+    "name": "dictionary missing null key",
+    "type": {
+      "kind": "dictionary",
+      "items": {
+        "kind": "nullable",
+        "inner": {
+          "kind": "string"
+        }
+      }
+    },
+    "left": [
+      {
+        "key": "a",
+        "value": null
+      }
+    ],
+    "right": [],
+    "equal": false
+  }
+]

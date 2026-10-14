@@ -1,0 +1,3389 @@
+[
+  {
+    "operation": "count",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": []
+    },
+    "expected": {
+      "value": 0
+    }
+  },
+  {
+    "operation": "count",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "a"
+      ]
+    },
+    "expected": {
+      "value": 2
+    }
+  },
+  {
+    "operation": "getItem",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 0
+    },
+    "expected": {
+      "value": "a"
+    }
+  },
+  {
+    "operation": "getItem",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 1
+    },
+    "expected": {
+      "value": "b"
+    }
+  },
+  {
+    "operation": "getItem",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": -1
+    },
+    "error": "range"
+  },
+  {
+    "operation": "getItem",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 2
+    },
+    "error": "range"
+  },
+  {
+    "operation": "tryGetItem",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": -2147483648
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "operation": "tryGetItem",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": -1
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "operation": "tryGetItem",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 0
+    },
+    "expected": {
+      "found": true,
+      "value": "a"
+    }
+  },
+  {
+    "operation": "tryGetItem",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 1
+    },
+    "expected": {
+      "found": true,
+      "value": "b"
+    }
+  },
+  {
+    "operation": "tryGetItem",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 2
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "operation": "tryGetItem",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 2147483647
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "operation": "tryGetItem",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [],
+      "index": 0
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "operation": "first",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": []
+    },
+    "error": "items"
+  },
+  {
+    "operation": "first",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a"
+      ]
+    },
+    "expected": {
+      "value": "a"
+    }
+  },
+  {
+    "operation": "last",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": []
+    },
+    "error": "items"
+  },
+  {
+    "operation": "last",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a"
+      ]
+    },
+    "expected": {
+      "value": "a"
+    }
+  },
+  {
+    "operation": "single",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": []
+    },
+    "error": "items"
+  },
+  {
+    "operation": "single",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a"
+      ]
+    },
+    "expected": {
+      "value": "a"
+    }
+  },
+  {
+    "operation": "first",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ]
+    },
+    "expected": {
+      "value": "a"
+    }
+  },
+  {
+    "operation": "last",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ]
+    },
+    "expected": {
+      "value": "b"
+    }
+  },
+  {
+    "operation": "single",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "a"
+      ]
+    },
+    "error": "items"
+  },
+  {
+    "operation": "tryFirst",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": []
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "operation": "tryFirst",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a"
+      ]
+    },
+    "expected": {
+      "found": true,
+      "value": "a"
+    }
+  },
+  {
+    "operation": "tryFirst",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ]
+    },
+    "expected": {
+      "found": true,
+      "value": "a"
+    }
+  },
+  {
+    "operation": "tryLast",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": []
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "operation": "tryLast",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a"
+      ]
+    },
+    "expected": {
+      "found": true,
+      "value": "a"
+    }
+  },
+  {
+    "operation": "tryLast",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ]
+    },
+    "expected": {
+      "found": true,
+      "value": "b"
+    }
+  },
+  {
+    "operation": "trySingle",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": []
+    },
+    "expected": {
+      "found": false,
+      "status": "empty"
+    }
+  },
+  {
+    "operation": "trySingle",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a"
+      ]
+    },
+    "expected": {
+      "found": true,
+      "value": "a",
+      "status": "single"
+    }
+  },
+  {
+    "operation": "trySingle",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ]
+    },
+    "expected": {
+      "found": false,
+      "status": "multiple"
+    }
+  },
+  {
+    "operation": "first",
+    "type": {
+      "kind": "nullable",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "inputs": {
+      "items": [
+        null
+      ]
+    },
+    "expected": {
+      "value": null
+    }
+  },
+  {
+    "operation": "last",
+    "type": {
+      "kind": "nullable",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "inputs": {
+      "items": [
+        null
+      ]
+    },
+    "expected": {
+      "value": null
+    }
+  },
+  {
+    "operation": "single",
+    "type": {
+      "kind": "nullable",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "inputs": {
+      "items": [
+        null
+      ]
+    },
+    "expected": {
+      "value": null
+    }
+  },
+  {
+    "operation": "tryFirst",
+    "type": {
+      "kind": "nullable",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "inputs": {
+      "items": [
+        null
+      ]
+    },
+    "expected": {
+      "value": null,
+      "found": true
+    }
+  },
+  {
+    "operation": "tryLast",
+    "type": {
+      "kind": "nullable",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "inputs": {
+      "items": [
+        null
+      ]
+    },
+    "expected": {
+      "value": null,
+      "found": true
+    }
+  },
+  {
+    "operation": "trySingle",
+    "type": {
+      "kind": "nullable",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "inputs": {
+      "items": [
+        null
+      ]
+    },
+    "expected": {
+      "value": null,
+      "found": true,
+      "status": "single"
+    }
+  },
+  {
+    "operation": "tryGetItem",
+    "type": {
+      "kind": "nullable",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "inputs": {
+      "items": [
+        null
+      ],
+      "index": 0
+    },
+    "expected": {
+      "value": null,
+      "found": true
+    }
+  },
+  {
+    "operation": "trySingle",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "a"
+      ]
+    },
+    "expected": {
+      "found": false,
+      "status": "multiple"
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [],
+      "item": "x"
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [],
+      "item": "x"
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [],
+      "item": "x"
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b",
+        "a"
+      ],
+      "item": "a"
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b",
+        "a"
+      ],
+      "item": "a"
+    },
+    "expected": {
+      "value": 0
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b",
+        "a"
+      ],
+      "item": "a"
+    },
+    "expected": {
+      "value": 2
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "item": "x"
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "item": "x"
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "item": "x"
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "isEmpty",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": []
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "operation": "isEmpty",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a"
+      ]
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "operation": "skip",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "count": 0
+    },
+    "expected": {
+      "value": [
+        "a",
+        "b"
+      ]
+    }
+  },
+  {
+    "operation": "skip",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "count": 1
+    },
+    "expected": {
+      "value": [
+        "b"
+      ]
+    }
+  },
+  {
+    "operation": "skip",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "count": 2
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "skip",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "count": 3
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "skip",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "count": 2147483647
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "skip",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [],
+      "count": 2
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "skip",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a"
+      ],
+      "count": -1
+    },
+    "error": "count"
+  },
+  {
+    "operation": "take",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "count": 0
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "take",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "count": 1
+    },
+    "expected": {
+      "value": [
+        "a"
+      ]
+    }
+  },
+  {
+    "operation": "take",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "count": 2
+    },
+    "expected": {
+      "value": [
+        "a",
+        "b"
+      ]
+    }
+  },
+  {
+    "operation": "take",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "count": 3
+    },
+    "expected": {
+      "value": [
+        "a",
+        "b"
+      ]
+    }
+  },
+  {
+    "operation": "take",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "count": 2147483647
+    },
+    "expected": {
+      "value": [
+        "a",
+        "b"
+      ]
+    }
+  },
+  {
+    "operation": "take",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [],
+      "count": 2
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "take",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a"
+      ],
+      "count": -1
+    },
+    "error": "count"
+  },
+  {
+    "operation": "slice",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 0,
+      "length": 0
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "slice",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 0,
+      "length": 2
+    },
+    "expected": {
+      "value": [
+        "a",
+        "b"
+      ]
+    }
+  },
+  {
+    "operation": "slice",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 1,
+      "length": 1
+    },
+    "expected": {
+      "value": [
+        "b"
+      ]
+    }
+  },
+  {
+    "operation": "slice",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 2,
+      "length": 0
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "slice",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [],
+      "index": 0,
+      "length": 0
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "slice",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": -1,
+      "length": 0
+    },
+    "error": "index"
+  },
+  {
+    "operation": "slice",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 3,
+      "length": 0
+    },
+    "error": "index"
+  },
+  {
+    "operation": "slice",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 0,
+      "length": -1
+    },
+    "error": "length"
+  },
+  {
+    "operation": "slice",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 1,
+      "length": 2
+    },
+    "error": "length"
+  },
+  {
+    "operation": "slice",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b"
+      ],
+      "index": 1,
+      "length": 2147483647
+    },
+    "error": "length"
+  },
+  {
+    "operation": "reverse",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": []
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "reverse",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b",
+        "a",
+        "c"
+      ]
+    },
+    "expected": {
+      "value": [
+        "c",
+        "a",
+        "b",
+        "a"
+      ]
+    }
+  },
+  {
+    "operation": "chunk",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b",
+        "c"
+      ],
+      "size": 1
+    },
+    "expected": {
+      "value": [
+        [
+          "a"
+        ],
+        [
+          "b"
+        ],
+        [
+          "c"
+        ]
+      ]
+    }
+  },
+  {
+    "operation": "chunk",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b",
+        "c"
+      ],
+      "size": 2
+    },
+    "expected": {
+      "value": [
+        [
+          "a",
+          "b"
+        ],
+        [
+          "c"
+        ]
+      ]
+    }
+  },
+  {
+    "operation": "chunk",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b",
+        "c"
+      ],
+      "size": 3
+    },
+    "expected": {
+      "value": [
+        [
+          "a",
+          "b",
+          "c"
+        ]
+      ]
+    }
+  },
+  {
+    "operation": "chunk",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b",
+        "c"
+      ],
+      "size": 2147483647
+    },
+    "expected": {
+      "value": [
+        [
+          "a",
+          "b",
+          "c"
+        ]
+      ]
+    }
+  },
+  {
+    "operation": "chunk",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [],
+      "size": 1
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "chunk",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [],
+      "size": 0
+    },
+    "error": "size"
+  },
+  {
+    "operation": "chunk",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [],
+      "size": -1
+    },
+    "error": "size"
+  },
+  {
+    "operation": "flatten",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": []
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "flatten",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        [],
+        [
+          "a",
+          "b"
+        ],
+        [],
+        [
+          "a"
+        ]
+      ]
+    },
+    "expected": {
+      "value": [
+        "a",
+        "b",
+        "a"
+      ]
+    }
+  },
+  {
+    "operation": "flatten",
+    "type": {
+      "kind": "nullable",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "inputs": {
+      "items": [
+        [
+          null
+        ],
+        [],
+        [
+          "a",
+          null
+        ]
+      ]
+    },
+    "expected": {
+      "value": [
+        null,
+        "a",
+        null
+      ]
+    }
+  },
+  {
+    "operation": "flatten",
+    "type": {
+      "kind": "array",
+      "items": {
+        "kind": "array",
+        "items": {
+          "kind": "string"
+        }
+      }
+    },
+    "inputs": {
+      "items": [
+        [
+          [
+            [
+              "a"
+            ]
+          ]
+        ],
+        [
+          [
+            [
+              "b"
+            ]
+          ]
+        ]
+      ]
+    },
+    "expected": {
+      "value": [
+        [
+          [
+            "a"
+          ]
+        ],
+        [
+          [
+            "b"
+          ]
+        ]
+      ]
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "A",
+        "A"
+      ],
+      "item": "a"
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "A",
+        "A"
+      ],
+      "item": "a"
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "A",
+        "A"
+      ],
+      "item": "a"
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "ä😀",
+        "ä😀"
+      ],
+      "item": "ä😀"
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "ä😀",
+        "ä😀"
+      ],
+      "item": "ä😀"
+    },
+    "expected": {
+      "value": 0
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "ä😀",
+        "ä😀"
+      ],
+      "item": "ä😀"
+    },
+    "expected": {
+      "value": 1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "é",
+        "é"
+      ],
+      "item": "é"
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "é",
+        "é"
+      ],
+      "item": "é"
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "é",
+        "é"
+      ],
+      "item": "é"
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Bool"
+    },
+    "inputs": {
+      "items": [
+        false,
+        false
+      ],
+      "item": false
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Bool"
+    },
+    "inputs": {
+      "items": [
+        false,
+        false
+      ],
+      "item": false
+    },
+    "expected": {
+      "value": 0
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Bool"
+    },
+    "inputs": {
+      "items": [
+        false,
+        false
+      ],
+      "item": false
+    },
+    "expected": {
+      "value": 1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Integer"
+    },
+    "inputs": {
+      "items": [
+        2147483647,
+        2147483647
+      ],
+      "item": 2147483646
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Integer"
+    },
+    "inputs": {
+      "items": [
+        2147483647,
+        2147483647
+      ],
+      "item": 2147483646
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Integer"
+    },
+    "inputs": {
+      "items": [
+        2147483647,
+        2147483647
+      ],
+      "item": 2147483646
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Guid"
+    },
+    "inputs": {
+      "items": [
+        "01234567-89ab-cdef-0123-456789abcdef",
+        "01234567-89ab-cdef-0123-456789abcdef"
+      ],
+      "item": "01234567-89ab-cdef-0123-456789abcdef"
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Guid"
+    },
+    "inputs": {
+      "items": [
+        "01234567-89ab-cdef-0123-456789abcdef",
+        "01234567-89ab-cdef-0123-456789abcdef"
+      ],
+      "item": "01234567-89ab-cdef-0123-456789abcdef"
+    },
+    "expected": {
+      "value": 0
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Guid"
+    },
+    "inputs": {
+      "items": [
+        "01234567-89ab-cdef-0123-456789abcdef",
+        "01234567-89ab-cdef-0123-456789abcdef"
+      ],
+      "item": "01234567-89ab-cdef-0123-456789abcdef"
+    },
+    "expected": {
+      "value": 1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Decimal"
+    },
+    "inputs": {
+      "items": [
+        "9007199254740993",
+        "9007199254740993"
+      ],
+      "item": "9007199254740992"
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Decimal"
+    },
+    "inputs": {
+      "items": [
+        "9007199254740993",
+        "9007199254740993"
+      ],
+      "item": "9007199254740992"
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Decimal"
+    },
+    "inputs": {
+      "items": [
+        "9007199254740993",
+        "9007199254740993"
+      ],
+      "item": "9007199254740992"
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Decimal"
+    },
+    "inputs": {
+      "items": [
+        "0.1",
+        "0.1"
+      ],
+      "item": "0.1"
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Decimal"
+    },
+    "inputs": {
+      "items": [
+        "0.1",
+        "0.1"
+      ],
+      "item": "0.1"
+    },
+    "expected": {
+      "value": 0
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Decimal"
+    },
+    "inputs": {
+      "items": [
+        "0.1",
+        "0.1"
+      ],
+      "item": "0.1"
+    },
+    "expected": {
+      "value": 1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "scalar",
+      "name": "core.TimeSpan"
+    },
+    "inputs": {
+      "items": [
+        "9223372036854775807",
+        "9223372036854775807"
+      ],
+      "item": "9223372036854775806"
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "scalar",
+      "name": "core.TimeSpan"
+    },
+    "inputs": {
+      "items": [
+        "9223372036854775807",
+        "9223372036854775807"
+      ],
+      "item": "9223372036854775806"
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "scalar",
+      "name": "core.TimeSpan"
+    },
+    "inputs": {
+      "items": [
+        "9223372036854775807",
+        "9223372036854775807"
+      ],
+      "item": "9223372036854775806"
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "scalar",
+      "name": "core.DateTimeOffset"
+    },
+    "inputs": {
+      "items": [
+        "2026-01-01T12:00:00.0000001+02:00",
+        "2026-01-01T12:00:00.0000001+02:00"
+      ],
+      "item": "2026-01-01T10:00:00.0000001+00:00"
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "scalar",
+      "name": "core.DateTimeOffset"
+    },
+    "inputs": {
+      "items": [
+        "2026-01-01T12:00:00.0000001+02:00",
+        "2026-01-01T12:00:00.0000001+02:00"
+      ],
+      "item": "2026-01-01T10:00:00.0000001+00:00"
+    },
+    "expected": {
+      "value": 0
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "scalar",
+      "name": "core.DateTimeOffset"
+    },
+    "inputs": {
+      "items": [
+        "2026-01-01T12:00:00.0000001+02:00",
+        "2026-01-01T12:00:00.0000001+02:00"
+      ],
+      "item": "2026-01-01T10:00:00.0000001+00:00"
+    },
+    "expected": {
+      "value": 1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "scalar",
+      "name": "core.DateTimeOffset"
+    },
+    "inputs": {
+      "items": [
+        "2026-01-01T10:00:00.0000001+00:00",
+        "2026-01-01T10:00:00.0000001+00:00"
+      ],
+      "item": "2026-01-01T10:00:00.0000002+00:00"
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "scalar",
+      "name": "core.DateTimeOffset"
+    },
+    "inputs": {
+      "items": [
+        "2026-01-01T10:00:00.0000001+00:00",
+        "2026-01-01T10:00:00.0000001+00:00"
+      ],
+      "item": "2026-01-01T10:00:00.0000002+00:00"
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "scalar",
+      "name": "core.DateTimeOffset"
+    },
+    "inputs": {
+      "items": [
+        "2026-01-01T10:00:00.0000001+00:00",
+        "2026-01-01T10:00:00.0000001+00:00"
+      ],
+      "item": "2026-01-01T10:00:00.0000002+00:00"
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "number"
+    },
+    "inputs": {
+      "items": [
+        0,
+        0
+      ],
+      "item": 0
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "number"
+    },
+    "inputs": {
+      "items": [
+        0,
+        0
+      ],
+      "item": 0
+    },
+    "expected": {
+      "value": 0
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "number"
+    },
+    "inputs": {
+      "items": [
+        0,
+        0
+      ],
+      "item": 0
+    },
+    "expected": {
+      "value": 1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "boolean"
+    },
+    "inputs": {
+      "items": [
+        true,
+        true
+      ],
+      "item": false
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "boolean"
+    },
+    "inputs": {
+      "items": [
+        true,
+        true
+      ],
+      "item": false
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "boolean"
+    },
+    "inputs": {
+      "items": [
+        true,
+        true
+      ],
+      "item": false
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "null"
+    },
+    "inputs": {
+      "items": [
+        null,
+        null
+      ],
+      "item": null
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "null"
+    },
+    "inputs": {
+      "items": [
+        null,
+        null
+      ],
+      "item": null
+    },
+    "expected": {
+      "value": 0
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "null"
+    },
+    "inputs": {
+      "items": [
+        null,
+        null
+      ],
+      "item": null
+    },
+    "expected": {
+      "value": 1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "nullable",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "inputs": {
+      "items": [
+        null,
+        null
+      ],
+      "item": null
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "nullable",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "inputs": {
+      "items": [
+        null,
+        null
+      ],
+      "item": null
+    },
+    "expected": {
+      "value": 0
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "nullable",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "inputs": {
+      "items": [
+        null,
+        null
+      ],
+      "item": null
+    },
+    "expected": {
+      "value": 1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "nullable",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "inputs": {
+      "items": [
+        null,
+        null
+      ],
+      "item": ""
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "nullable",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "inputs": {
+      "items": [
+        null,
+        null
+      ],
+      "item": ""
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "nullable",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "inputs": {
+      "items": [
+        null,
+        null
+      ],
+      "item": ""
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "name": {
+          "kind": "string"
+        },
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "items": [
+        {
+          "name": "a"
+        },
+        {
+          "name": "a"
+        }
+      ],
+      "item": {
+        "name": "a"
+      }
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "name": {
+          "kind": "string"
+        },
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "items": [
+        {
+          "name": "a"
+        },
+        {
+          "name": "a"
+        }
+      ],
+      "item": {
+        "name": "a"
+      }
+    },
+    "expected": {
+      "value": 0
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "name": {
+          "kind": "string"
+        },
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "items": [
+        {
+          "name": "a"
+        },
+        {
+          "name": "a"
+        }
+      ],
+      "item": {
+        "name": "a"
+      }
+    },
+    "expected": {
+      "value": 1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "name": {
+          "kind": "string"
+        },
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "items": [
+        {
+          "name": "a"
+        },
+        {
+          "name": "a"
+        }
+      ],
+      "item": {
+        "name": "a",
+        "note": null
+      }
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "name": {
+          "kind": "string"
+        },
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "items": [
+        {
+          "name": "a"
+        },
+        {
+          "name": "a"
+        }
+      ],
+      "item": {
+        "name": "a",
+        "note": null
+      }
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "name": {
+          "kind": "string"
+        },
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "items": [
+        {
+          "name": "a"
+        },
+        {
+          "name": "a"
+        }
+      ],
+      "item": {
+        "name": "a",
+        "note": null
+      }
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "name": {
+          "kind": "string"
+        },
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "items": [
+        {
+          "name": "a",
+          "note": "x"
+        },
+        {
+          "name": "a",
+          "note": "x"
+        }
+      ],
+      "item": {
+        "note": "x",
+        "name": "a"
+      }
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "name": {
+          "kind": "string"
+        },
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "items": [
+        {
+          "name": "a",
+          "note": "x"
+        },
+        {
+          "name": "a",
+          "note": "x"
+        }
+      ],
+      "item": {
+        "note": "x",
+        "name": "a"
+      }
+    },
+    "expected": {
+      "value": 0
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "name": {
+          "kind": "string"
+        },
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "items": [
+        {
+          "name": "a",
+          "note": "x"
+        },
+        {
+          "name": "a",
+          "note": "x"
+        }
+      ],
+      "item": {
+        "note": "x",
+        "name": "a"
+      }
+    },
+    "expected": {
+      "value": 1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "name": {
+          "kind": "string"
+        },
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "items": [
+        {
+          "name": "a",
+          "extra": 1
+        },
+        {
+          "name": "a",
+          "extra": 1
+        }
+      ],
+      "item": {
+        "name": "a",
+        "extra": 2
+      }
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "name": {
+          "kind": "string"
+        },
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "items": [
+        {
+          "name": "a",
+          "extra": 1
+        },
+        {
+          "name": "a",
+          "extra": 1
+        }
+      ],
+      "item": {
+        "name": "a",
+        "extra": 2
+      }
+    },
+    "expected": {
+      "value": 0
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "name": {
+          "kind": "string"
+        },
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "items": [
+        {
+          "name": "a",
+          "extra": 1
+        },
+        {
+          "name": "a",
+          "extra": 1
+        }
+      ],
+      "item": {
+        "name": "a",
+        "extra": 2
+      }
+    },
+    "expected": {
+      "value": 1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "name": {
+          "kind": "string"
+        },
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "items": [
+        {
+          "name": "a"
+        },
+        {
+          "name": "a"
+        }
+      ],
+      "item": {
+        "name": "b"
+      }
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "name": {
+          "kind": "string"
+        },
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "items": [
+        {
+          "name": "a"
+        },
+        {
+          "name": "a"
+        }
+      ],
+      "item": {
+        "name": "b"
+      }
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "name": {
+          "kind": "string"
+        },
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "items": [
+        {
+          "name": "a"
+        },
+        {
+          "name": "a"
+        }
+      ],
+      "item": {
+        "name": "b"
+      }
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "array",
+      "items": {
+        "kind": "object",
+        "fields": {
+          "name": {
+            "kind": "string"
+          },
+          "note": {
+            "kind": "optional",
+            "inner": {
+              "kind": "nullable",
+              "inner": {
+                "kind": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "items": [
+        [
+          {
+            "name": "a"
+          },
+          {
+            "name": "b",
+            "note": null
+          }
+        ],
+        [
+          {
+            "name": "a"
+          },
+          {
+            "name": "b",
+            "note": null
+          }
+        ]
+      ],
+      "item": [
+        {
+          "name": "a"
+        },
+        {
+          "name": "b",
+          "note": null
+        }
+      ]
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "array",
+      "items": {
+        "kind": "object",
+        "fields": {
+          "name": {
+            "kind": "string"
+          },
+          "note": {
+            "kind": "optional",
+            "inner": {
+              "kind": "nullable",
+              "inner": {
+                "kind": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "items": [
+        [
+          {
+            "name": "a"
+          },
+          {
+            "name": "b",
+            "note": null
+          }
+        ],
+        [
+          {
+            "name": "a"
+          },
+          {
+            "name": "b",
+            "note": null
+          }
+        ]
+      ],
+      "item": [
+        {
+          "name": "a"
+        },
+        {
+          "name": "b",
+          "note": null
+        }
+      ]
+    },
+    "expected": {
+      "value": 0
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "array",
+      "items": {
+        "kind": "object",
+        "fields": {
+          "name": {
+            "kind": "string"
+          },
+          "note": {
+            "kind": "optional",
+            "inner": {
+              "kind": "nullable",
+              "inner": {
+                "kind": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "items": [
+        [
+          {
+            "name": "a"
+          },
+          {
+            "name": "b",
+            "note": null
+          }
+        ],
+        [
+          {
+            "name": "a"
+          },
+          {
+            "name": "b",
+            "note": null
+          }
+        ]
+      ],
+      "item": [
+        {
+          "name": "a"
+        },
+        {
+          "name": "b",
+          "note": null
+        }
+      ]
+    },
+    "expected": {
+      "value": 1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "array",
+      "items": {
+        "kind": "object",
+        "fields": {
+          "name": {
+            "kind": "string"
+          },
+          "note": {
+            "kind": "optional",
+            "inner": {
+              "kind": "nullable",
+              "inner": {
+                "kind": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "items": [
+        [
+          {
+            "name": "a"
+          },
+          {
+            "name": "b"
+          }
+        ],
+        [
+          {
+            "name": "a"
+          },
+          {
+            "name": "b"
+          }
+        ]
+      ],
+      "item": [
+        {
+          "name": "b"
+        },
+        {
+          "name": "a"
+        }
+      ]
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "array",
+      "items": {
+        "kind": "object",
+        "fields": {
+          "name": {
+            "kind": "string"
+          },
+          "note": {
+            "kind": "optional",
+            "inner": {
+              "kind": "nullable",
+              "inner": {
+                "kind": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "items": [
+        [
+          {
+            "name": "a"
+          },
+          {
+            "name": "b"
+          }
+        ],
+        [
+          {
+            "name": "a"
+          },
+          {
+            "name": "b"
+          }
+        ]
+      ],
+      "item": [
+        {
+          "name": "b"
+        },
+        {
+          "name": "a"
+        }
+      ]
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "array",
+      "items": {
+        "kind": "object",
+        "fields": {
+          "name": {
+            "kind": "string"
+          },
+          "note": {
+            "kind": "optional",
+            "inner": {
+              "kind": "nullable",
+              "inner": {
+                "kind": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "items": [
+        [
+          {
+            "name": "a"
+          },
+          {
+            "name": "b"
+          }
+        ],
+        [
+          {
+            "name": "a"
+          },
+          {
+            "name": "b"
+          }
+        ]
+      ],
+      "item": [
+        {
+          "name": "b"
+        },
+        {
+          "name": "a"
+        }
+      ]
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "array",
+      "items": {
+        "kind": "object",
+        "fields": {
+          "name": {
+            "kind": "string"
+          },
+          "note": {
+            "kind": "optional",
+            "inner": {
+              "kind": "nullable",
+              "inner": {
+                "kind": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "items": [
+        [],
+        []
+      ],
+      "item": [
+        {
+          "name": "a"
+        }
+      ]
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "array",
+      "items": {
+        "kind": "object",
+        "fields": {
+          "name": {
+            "kind": "string"
+          },
+          "note": {
+            "kind": "optional",
+            "inner": {
+              "kind": "nullable",
+              "inner": {
+                "kind": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "items": [
+        [],
+        []
+      ],
+      "item": [
+        {
+          "name": "a"
+        }
+      ]
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "array",
+      "items": {
+        "kind": "object",
+        "fields": {
+          "name": {
+            "kind": "string"
+          },
+          "note": {
+            "kind": "optional",
+            "inner": {
+              "kind": "nullable",
+              "inner": {
+                "kind": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "items": [
+        [],
+        []
+      ],
+      "item": [
+        {
+          "name": "a"
+        }
+      ]
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "entityRef",
+      "name": "test.Customer@1"
+    },
+    "inputs": {
+      "items": [
+        {
+          "type": "test.Customer@1",
+          "id": "x"
+        },
+        {
+          "type": "test.Customer@1",
+          "id": "x"
+        }
+      ],
+      "item": {
+        "type": "test.Customer@1",
+        "id": "x"
+      }
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "entityRef",
+      "name": "test.Customer@1"
+    },
+    "inputs": {
+      "items": [
+        {
+          "type": "test.Customer@1",
+          "id": "x"
+        },
+        {
+          "type": "test.Customer@1",
+          "id": "x"
+        }
+      ],
+      "item": {
+        "type": "test.Customer@1",
+        "id": "x"
+      }
+    },
+    "expected": {
+      "value": 0
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "entityRef",
+      "name": "test.Customer@1"
+    },
+    "inputs": {
+      "items": [
+        {
+          "type": "test.Customer@1",
+          "id": "x"
+        },
+        {
+          "type": "test.Customer@1",
+          "id": "x"
+        }
+      ],
+      "item": {
+        "type": "test.Customer@1",
+        "id": "x"
+      }
+    },
+    "expected": {
+      "value": 1
+    }
+  },
+  {
+    "operation": "contains",
+    "type": {
+      "kind": "entityRef",
+      "name": "test.Customer@1"
+    },
+    "inputs": {
+      "items": [
+        {
+          "type": "test.Customer@1",
+          "id": "x"
+        },
+        {
+          "type": "test.Customer@1",
+          "id": "x"
+        }
+      ],
+      "item": {
+        "type": "test.Customer@1",
+        "id": "y"
+      }
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "operation": "indexOf",
+    "type": {
+      "kind": "entityRef",
+      "name": "test.Customer@1"
+    },
+    "inputs": {
+      "items": [
+        {
+          "type": "test.Customer@1",
+          "id": "x"
+        },
+        {
+          "type": "test.Customer@1",
+          "id": "x"
+        }
+      ],
+      "item": {
+        "type": "test.Customer@1",
+        "id": "y"
+      }
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "operation": "lastIndexOf",
+    "type": {
+      "kind": "entityRef",
+      "name": "test.Customer@1"
+    },
+    "inputs": {
+      "items": [
+        {
+          "type": "test.Customer@1",
+          "id": "x"
+        },
+        {
+          "type": "test.Customer@1",
+          "id": "x"
+        }
+      ],
+      "item": {
+        "type": "test.Customer@1",
+        "id": "y"
+      }
+    },
+    "expected": {
+      "value": -1
+    }
+  }
+]

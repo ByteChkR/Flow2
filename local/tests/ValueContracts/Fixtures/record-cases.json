@@ -1,0 +1,386 @@
+[
+  {
+    "operation": "hasField",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "value": {},
+      "name": "note"
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "operation": "removeField",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "value": {}
+    },
+    "expected": {
+      "value": {},
+      "removed": false
+    },
+    "member": "note"
+  },
+  {
+    "operation": "hasField",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "value": {
+        "note": null
+      },
+      "name": "note"
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "operation": "removeField",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "value": {
+        "note": null
+      }
+    },
+    "expected": {
+      "value": {},
+      "removed": true
+    },
+    "member": "note"
+  },
+  {
+    "operation": "hasField",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "value": {
+        "note": "yes"
+      },
+      "name": "note"
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "operation": "removeField",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "value": {
+        "note": "yes"
+      }
+    },
+    "expected": {
+      "value": {},
+      "removed": true
+    },
+    "member": "note"
+  },
+  {
+    "operation": "hasField",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "text": {
+          "kind": "string"
+        }
+      }
+    },
+    "inputs": {
+      "value": {
+        "text": "a"
+      },
+      "name": "toString"
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "operation": "removeField",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "text": {
+          "kind": "string"
+        },
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "string"
+          }
+        }
+      }
+    },
+    "inputs": {
+      "value": {
+        "text": "a",
+        "note": "b"
+      }
+    },
+    "expected": {
+      "value": {
+        "note": "b"
+      },
+      "removed": true
+    },
+    "member": "text"
+  },
+  {
+    "operation": "merge",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "text": {
+          "kind": "string"
+        }
+      }
+    },
+    "inputs": {
+      "left": {
+        "text": "left"
+      },
+      "right": {}
+    },
+    "expected": {
+      "value": {
+        "text": "left"
+      }
+    },
+    "result": {
+      "kind": "object",
+      "fields": {
+        "text": {
+          "kind": "optional",
+          "inner": {
+            "kind": "string"
+          }
+        }
+      }
+    }
+  },
+  {
+    "operation": "merge",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "text": {
+          "kind": "string"
+        }
+      }
+    },
+    "inputs": {
+      "left": {
+        "text": "left"
+      },
+      "right": {
+        "text": "right"
+      }
+    },
+    "expected": {
+      "value": {
+        "text": "right"
+      }
+    },
+    "result": {
+      "kind": "object",
+      "fields": {
+        "text": {
+          "kind": "optional",
+          "inner": {
+            "kind": "string"
+          }
+        }
+      }
+    }
+  },
+  {
+    "operation": "merge",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "note": {
+          "kind": "optional",
+          "inner": {
+            "kind": "nullable",
+            "inner": {
+              "kind": "string"
+            }
+          }
+        }
+      }
+    },
+    "inputs": {
+      "left": {
+        "note": "left"
+      },
+      "right": {
+        "note": null
+      }
+    },
+    "expected": {
+      "value": {
+        "note": null
+      }
+    },
+    "result": {
+      "kind": "object",
+      "fields": {
+        "note": {
+          "kind": "nullable",
+          "inner": {
+            "kind": "string"
+          }
+        }
+      }
+    }
+  },
+  {
+    "operation": "merge",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "text": {
+          "kind": "optional",
+          "inner": {
+            "kind": "string"
+          }
+        }
+      }
+    },
+    "inputs": {
+      "left": {},
+      "right": {}
+    },
+    "expected": {
+      "value": {}
+    },
+    "result": {
+      "kind": "object",
+      "fields": {
+        "text": {
+          "kind": "optional",
+          "inner": {
+            "kind": "string"
+          }
+        }
+      }
+    }
+  },
+  {
+    "operation": "merge",
+    "type": {
+      "kind": "object",
+      "fields": {
+        "a": {
+          "kind": "string"
+        }
+      }
+    },
+    "inputs": {
+      "left": {
+        "a": "a"
+      },
+      "right": {
+        "__proto__": "safe",
+        "toString": "safe too"
+      }
+    },
+    "expected": {
+      "value": {
+        "a": "a",
+        "__proto__": "safe",
+        "toString": "safe too"
+      }
+    },
+    "result": {
+      "kind": "object",
+      "fields": {
+        "__proto__": {
+          "kind": "string"
+        },
+        "toString": {
+          "kind": "string"
+        }
+      }
+    }
+  }
+]

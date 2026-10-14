@@ -1,0 +1,579 @@
+[
+  {
+    "operation": "sort",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": []
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "distinct",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": []
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "union",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [],
+      "other": []
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "intersect",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [],
+      "other": []
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "except",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [],
+      "other": []
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "zip",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [],
+      "other": []
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "sort",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "z",
+        "A",
+        "a",
+        "A",
+        "\u00e4"
+      ]
+    },
+    "expected": {
+      "value": [
+        "A",
+        "A",
+        "a",
+        "z",
+        "\u00e4"
+      ]
+    }
+  },
+  {
+    "operation": "sort",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Integer"
+    },
+    "inputs": {
+      "items": [
+        2,
+        -1,
+        2,
+        0
+      ],
+      "descending": true
+    },
+    "expected": {
+      "value": [
+        2,
+        2,
+        0,
+        -1
+      ]
+    }
+  },
+  {
+    "operation": "sort",
+    "type": {
+      "kind": "nullable",
+      "inner": {
+        "kind": "scalar",
+        "name": "core.Integer"
+      }
+    },
+    "inputs": {
+      "items": [
+        2,
+        null,
+        0,
+        null
+      ]
+    },
+    "expected": {
+      "value": [
+        null,
+        null,
+        0,
+        2
+      ]
+    }
+  },
+  {
+    "operation": "distinct",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "b",
+        "a",
+        "b"
+      ]
+    },
+    "expected": {
+      "value": [
+        "b",
+        "a"
+      ]
+    }
+  },
+  {
+    "operation": "union",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "b",
+        "a",
+        "b"
+      ],
+      "other": [
+        "c",
+        "b",
+        "c"
+      ]
+    },
+    "expected": {
+      "value": [
+        "b",
+        "a",
+        "c"
+      ]
+    }
+  },
+  {
+    "operation": "intersect",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "b",
+        "a",
+        "b"
+      ],
+      "other": [
+        "c",
+        "b",
+        "c"
+      ]
+    },
+    "expected": {
+      "value": [
+        "b"
+      ]
+    }
+  },
+  {
+    "operation": "except",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "b",
+        "a",
+        "b"
+      ],
+      "other": [
+        "c",
+        "b",
+        "c"
+      ]
+    },
+    "expected": {
+      "value": [
+        "a"
+      ]
+    }
+  },
+  {
+    "operation": "distinct",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Decimal"
+    },
+    "inputs": {
+      "items": [
+        "1",
+        "1",
+        "1",
+        "2"
+      ]
+    },
+    "expected": {
+      "value": [
+        "1",
+        "2"
+      ]
+    }
+  },
+  {
+    "operation": "zip",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a",
+        "b",
+        "c"
+      ],
+      "other": [
+        1,
+        2
+      ]
+    },
+    "expected": {
+      "value": [
+        {
+          "left": "a",
+          "right": 1
+        },
+        {
+          "left": "b",
+          "right": 2
+        }
+      ]
+    },
+    "result": {
+      "kind": "scalar",
+      "name": "core.Integer"
+    }
+  },
+  {
+    "operation": "zip",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "items": [
+        "a"
+      ],
+      "other": [
+        "x",
+        "y"
+      ]
+    },
+    "expected": {
+      "value": [
+        {
+          "left": "a",
+          "right": "x"
+        }
+      ]
+    }
+  },
+  {
+    "operation": "min",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Integer"
+    },
+    "inputs": {
+      "items": []
+    },
+    "expected": {}
+  },
+  {
+    "operation": "min",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Integer"
+    },
+    "inputs": {
+      "items": [
+        4,
+        -2,
+        4
+      ]
+    },
+    "expected": {
+      "value": -2
+    }
+  },
+  {
+    "operation": "max",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Integer"
+    },
+    "inputs": {
+      "items": []
+    },
+    "expected": {}
+  },
+  {
+    "operation": "max",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Integer"
+    },
+    "inputs": {
+      "items": [
+        4,
+        -2,
+        4
+      ]
+    },
+    "expected": {
+      "value": 4
+    }
+  },
+  {
+    "operation": "sum",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Integer"
+    },
+    "inputs": {
+      "items": []
+    },
+    "expected": {
+      "value": 0
+    }
+  },
+  {
+    "operation": "sum",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Integer"
+    },
+    "inputs": {
+      "items": [
+        4,
+        -2,
+        4
+      ]
+    },
+    "expected": {
+      "value": 6
+    }
+  },
+  {
+    "operation": "average",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Integer"
+    },
+    "inputs": {
+      "items": []
+    },
+    "expected": {}
+  },
+  {
+    "operation": "average",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Integer"
+    },
+    "inputs": {
+      "items": [
+        4,
+        -2,
+        4
+      ]
+    },
+    "expected": {
+      "value": "2"
+    }
+  },
+  {
+    "operation": "sum",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Decimal"
+    },
+    "inputs": {
+      "items": [
+        "0.1",
+        "0.2"
+      ]
+    },
+    "expected": {
+      "value": "0.3"
+    }
+  },
+  {
+    "operation": "average",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Decimal"
+    },
+    "inputs": {
+      "items": [
+        "1",
+        "2"
+      ]
+    },
+    "expected": {
+      "value": "1.5"
+    }
+  },
+  {
+    "operation": "sum",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Integer"
+    },
+    "inputs": {
+      "items": [
+        2147483647,
+        1
+      ]
+    },
+    "error": "overflow"
+  },
+  {
+    "operation": "min",
+    "type": {
+      "kind": "nullable",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "inputs": {
+      "items": [
+        "a",
+        null,
+        "b"
+      ]
+    },
+    "expected": {
+      "value": null
+    }
+  },
+  {
+    "operation": "average",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Integer"
+    },
+    "inputs": {
+      "items": [
+        2147483647,
+        2147483647
+      ]
+    },
+    "expected": {
+      "value": "2147483647"
+    }
+  },
+  {
+    "operation": "average",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Decimal"
+    },
+    "inputs": {
+      "items": [
+        "1",
+        "0",
+        "0"
+      ]
+    },
+    "expected": {
+      "value": "0.3333333333333333333333333333"
+    }
+  },
+  {
+    "operation": "sum",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Decimal"
+    },
+    "inputs": {
+      "items": [
+        "79228162514264337593543950335",
+        "1"
+      ]
+    },
+    "error": "overflow"
+  },
+  {
+    "operation": "min",
+    "type": {
+      "kind": "scalar",
+      "name": "core.DateTimeOffset"
+    },
+    "inputs": {
+      "items": [
+        "2026-10-13T12:00:00.0000000+02:00",
+        "2026-10-13T10:00:00.0000000+00:00"
+      ]
+    },
+    "expected": {
+      "value": "2026-10-13T12:00:00.0000000+02:00"
+    }
+  },
+  {
+    "operation": "distinct",
+    "type": {
+      "kind": "scalar",
+      "name": "core.DateTimeOffset"
+    },
+    "inputs": {
+      "items": [
+        "2026-10-13T12:00:00.0000000+02:00",
+        "2026-10-13T10:00:00.0000000+00:00"
+      ]
+    },
+    "expected": {
+      "value": [
+        "2026-10-13T12:00:00.0000000+02:00"
+      ]
+    }
+  }
+]

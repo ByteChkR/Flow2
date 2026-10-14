@@ -1,0 +1,73 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://adam-flow.local/schemas/v1/codecs.schema.json",
+  "type": "object",
+  "properties": {
+    "schemaVersion": {
+      "const": 1
+    },
+    "environment": {
+      "enum": [
+        "server",
+        "browser"
+      ]
+    },
+    "codecs": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "typeId": {
+            "type": "string",
+            "minLength": 1
+          },
+          "version": {
+            "type": "integer",
+            "minimum": 1,
+            "maximum": 2147483647
+          },
+          "valueType": {
+            "$ref": "https://adam-flow.local/schemas/v1/type.schema.json"
+          },
+          "wireSchema": {
+            "type": "object",
+            "required": [
+              "$schema",
+              "type"
+            ],
+            "properties": {
+              "$schema": {
+                "const": "https://json-schema.org/draft/2020-12/schema"
+              },
+              "type": {
+                "enum": [
+                  "object",
+                  "array",
+                  "string",
+                  "number",
+                  "boolean",
+                  "null",
+                  "integer"
+                ]
+              }
+            },
+            "additionalProperties": true
+          }
+        },
+        "required": [
+          "typeId",
+          "version",
+          "valueType",
+          "wireSchema"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schemaVersion",
+    "environment",
+    "codecs"
+  ],
+  "additionalProperties": false
+}

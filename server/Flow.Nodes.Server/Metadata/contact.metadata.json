@@ -1,0 +1,10 @@
+{
+  "typeId": "crm.Contact@1",
+  "getNodeType": "crm.contact.get",
+  "nodeVersion": 1,
+  "fields": {
+    "id": { "kind": "string" },
+    "name": { "kind": "string" },
+    "age": { "kind": "optional", "inner": { "kind": "number" } }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "name": "@adam-flow/runtime-browser",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@adam-flow/flow-core": "0.0.0",
+    "@adam-flow/flow-compiler": "0.0.0"
+  }
+}

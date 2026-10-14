@@ -1,0 +1,38 @@
+import type { ConfigField, NodeDefinition, PortMetadata, TypeRef } from '@adam-flow/flow-core';
+import type { NodeImplementation } from './index.js';
+
+export interface Port<T> { readonly type: TypeRef; readonly metadata: PortMetadata; readonly valueType?: T }
+type Ports = Record<string, Port<unknown>>;
+export type PortValue<P> = P extends Port<infer T> ? T : never;
+export type PortValues<P extends Ports> = { [K in keyof P as undefined extends PortValue<P[K]> ? never : K]: PortValue<P[K]> } &
+  { [K in keyof P as undefined extends PortValue<P[K]> ? K : never]?: Exclude<PortValue<P[K]>, undefined> };
+const descriptor = <T>(type: TypeRef, metadata: PortMetadata = {}): Port<T> => ({type,metadata});
+export const port = {
+  string: (metadata?: PortMetadata) => descriptor<string>({kind:'string'},metadata),
+  number: (metadata?: PortMetadata) => descriptor<number>({kind:'number'},metadata),
+  boolean: (metadata?: PortMetadata) => descriptor<boolean>({kind:'boolean'},metadata),
+  optional: <T>(inner:Port<T>,metadata:PortMetadata=inner.metadata) => descriptor<T|undefined>({kind:'optional',inner:inner.type},metadata),
+  array: <T>(items:Port<T>,metadata?:PortMetadata) => descriptor<T[]>({kind:'array',items:items.type},metadata),
+  object: <P extends Ports>(fields:P,metadata?:PortMetadata) => descriptor<PortValues<P>>({kind:'object',fields:Object.fromEntries(Object.entries(fields).map(([key,value])=>[key,value.type]))},metadata),
+  /** Explicit escape hatch for registered domain types; normal DTOs use object(). */
+  custom: <T>(type:TypeRef,metadata?:PortMetadata) => descriptor<T>(type,metadata),
+};
+export const field = {
+  string: (defaultValue:string,options:PortMetadata & {options?:string[]} = {}):ConfigField & {type:'string'} => ({...options,type:'string',default:defaultValue}),
+  number: (defaultValue:number,options:PortMetadata = {}):ConfigField & {type:'number'} => ({...options,type:'number',default:defaultValue}),
+  boolean: (defaultValue:boolean,options:PortMetadata = {}):ConfigField & {type:'boolean'} => ({...options,type:'boolean',default:defaultValue}),
+};
+type ConfigValues<C extends Record<string,ConfigField>> = {[K in keyof C]: C[K]['default']};
+export interface AuthoredNode { definition:NodeDefinition; execute:NodeImplementation }
+export function defineNode<I extends Ports,O extends Ports,C extends Record<string,ConfigField> = {}>(spec:{
+  type:string;version:number;label?:string;description?:string;category?:string;
+  inputs:I;outputs:O;config?:C;
+  execute:(inputs:PortValues<I>,context:{nodeId:string;config:ConfigValues<C>})=>PortValues<O>;
+}):AuthoredNode {
+  const types=(ports:Ports)=>Object.fromEntries(Object.entries(ports).map(([key,value])=>[key,value.type]));
+  const labels=(ports:Ports)=>Object.fromEntries(Object.entries(ports).map(([key,value])=>[key,value.metadata]));
+  const definition:NodeDefinition={type:spec.type,version:spec.version,environments:['browser'],inputs:types(spec.inputs),outputs:types(spec.outputs),
+    metadata:{...(spec.label===undefined?{}:{label:spec.label}),...(spec.description===undefined?{}:{description:spec.description}),...(spec.category===undefined?{}:{category:spec.category}),inputs:labels(spec.inputs),outputs:labels(spec.outputs)},
+    ...(spec.config===undefined?{}:{config:spec.config})};
+  return {definition:structuredClone(definition),execute:(inputs,context)=>spec.execute(inputs as PortValues<I>,context as {nodeId:string;config:ConfigValues<C>})};
+}

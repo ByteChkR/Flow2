@@ -1,0 +1,9 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup><TargetFramework>net10.0</TargetFramework></PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="JsonSchema.Net" Version="9.4.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="../../contracts/schemas/v1/*.schema.json" LogicalName="Schemas.%(Filename)%(Extension)" />
+  </ItemGroup>
+</Project>

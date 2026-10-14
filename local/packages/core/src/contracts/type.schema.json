@@ -1,0 +1,1295 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://adam-flow.local/schemas/v1/type.schema.json",
+  "$ref": "#/$defs/type",
+  "$defs": {
+    "type": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "enum": [
+                "string",
+                "number",
+                "boolean",
+                "null"
+              ]
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "array"
+            },
+            "items": {
+              "$ref": "#/$defs/type"
+            }
+          },
+          "required": [
+            "kind",
+            "items"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "object"
+            },
+            "fields": {
+              "type": "object",
+              "propertyNames": {
+                "type": "string",
+                "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$"
+              },
+              "additionalProperties": {
+                "$ref": "#/$defs/type"
+              }
+            }
+          },
+          "required": [
+            "kind",
+            "fields"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "optional"
+            },
+            "inner": {
+              "$ref": "#/$defs/type"
+            }
+          },
+          "required": [
+            "kind",
+            "inner"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "enum": [
+                "entity",
+                "entityRef"
+              ]
+            },
+            "name": {
+              "type": "string",
+              "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*@[1-9][0-9]*$"
+            }
+          },
+          "required": [
+            "kind",
+            "name"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "graph"
+            },
+            "signature": {
+              "$ref": "#/$defs/flowInterface"
+            }
+          },
+          "required": [
+            "kind",
+            "signature"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "scalar"
+            },
+            "name": {
+              "enum": [
+                "core.Bool",
+                "core.Decimal",
+                "core.Integer",
+                "core.DateTimeOffset",
+                "core.TimeSpan",
+                "core.Guid"
+              ]
+            }
+          },
+          "required": [
+            "kind",
+            "name"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "nullable"
+            },
+            "inner": {
+              "$ref": "#/$defs/type"
+            }
+          },
+          "required": [
+            "kind",
+            "inner"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "enum": [
+                "queryable",
+                "orderedQueryable",
+                "enumerable"
+              ]
+            },
+            "items": {
+              "$ref": "#/$defs/type"
+            }
+          },
+          "required": [
+            "kind",
+            "items"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "grouping"
+            },
+            "key": {
+              "$ref": "#/$defs/type"
+            },
+            "items": {
+              "$ref": "#/$defs/type"
+            }
+          },
+          "required": [
+            "kind",
+            "key",
+            "items"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "pageConfig"
+            }
+          },
+          "required": [
+            "kind"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "dictionary"
+            },
+            "items": {
+              "$ref": "#/$defs/type"
+            }
+          },
+          "required": [
+            "kind",
+            "items"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "entityDefinition": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*@[1-9][0-9]*$"
+        },
+        "kind": {
+          "const": "entity"
+        },
+        "fields": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/type"
+          }
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "fields"
+      ],
+      "additionalProperties": false
+    },
+    "types": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "types": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/entityDefinition"
+          }
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "types"
+      ],
+      "additionalProperties": false
+    },
+    "nodeDefinition": {
+      "type": "object",
+      "properties": {
+        "type": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$"
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "environments": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": {
+            "enum": [
+              "server",
+              "browser"
+            ]
+          }
+        },
+        "inputs": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/type"
+          }
+        },
+        "outputs": {
+          "type": "object",
+          "propertyNames": {
+            "type": "string",
+            "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/type"
+          }
+        },
+        "metadata": {
+          "$ref": "#/$defs/nodeMetadata"
+        },
+        "config": {
+          "type": "object",
+          "propertyNames": {
+            "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$"
+          },
+          "additionalProperties": {
+            "$ref": "#/$defs/configField"
+          }
+        },
+        "control": {
+          "type": "object",
+          "properties": {
+            "input": {
+              "type": "boolean"
+            },
+            "output": {
+              "type": "boolean"
+            },
+            "start": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "input",
+            "output",
+            "start"
+          ],
+          "additionalProperties": false
+        },
+        "flowPort": {
+          "enum": [
+            "input",
+            "output"
+          ]
+        },
+        "graph": {
+          "$ref": "#/$defs/graphNodeBinding"
+        },
+        "query": {
+          "$ref": "#/$defs/queryNodeBinding"
+        },
+        "value": {
+          "$ref": "#/$defs/valueNodeBinding"
+        },
+        "nodeId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "ef": {
+          "$ref": "#/$defs/efBinding"
+        },
+        "ui": {
+          "$ref": "#/$defs/uiBinding"
+        }
+      },
+      "required": [
+        "type",
+        "version",
+        "environments",
+        "inputs",
+        "outputs"
+      ],
+      "additionalProperties": false
+    },
+    "catalog": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "nodes": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/nodeDefinition"
+          }
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "nodes"
+      ],
+      "additionalProperties": false
+    },
+    "flow": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 2
+        },
+        "id": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$"
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        },
+        "mode": {
+          "enum": [
+            "backend",
+            "interactive",
+            "hybrid"
+          ]
+        },
+        "nodes": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string",
+                "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$"
+              },
+              "type": {
+                "type": "string",
+                "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$"
+              },
+              "typeVersion": {
+                "type": "integer",
+                "minimum": 1,
+                "maximum": 2147483647
+              },
+              "environment": {
+                "enum": [
+                  "server",
+                  "browser"
+                ]
+              },
+              "config": {
+                "type": "object"
+              },
+              "graph": {
+                "$ref": "#/$defs/graphNodeBinding"
+              },
+              "query": {
+                "$ref": "#/$defs/queryNodeBinding"
+              },
+              "value": {
+                "$ref": "#/$defs/valueNodeBinding"
+              },
+              "inlineInputs": {
+                "type": "object",
+                "additionalProperties": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean"
+                    },
+                    "value": {}
+                  },
+                  "required": [
+                    "enabled"
+                  ],
+                  "additionalProperties": false
+                }
+              },
+              "ef": {
+                "$ref": "#/$defs/efBinding"
+              },
+              "ui": {
+                "$ref": "#/$defs/uiBinding"
+              }
+            },
+            "required": [
+              "id",
+              "type",
+              "typeVersion",
+              "environment",
+              "config"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "connections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "source": {
+                "type": "object",
+                "properties": {
+                  "nodeId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$"
+                  },
+                  "port": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$"
+                  }
+                },
+                "required": [
+                  "nodeId",
+                  "port"
+                ],
+                "additionalProperties": false
+              },
+              "target": {
+                "type": "object",
+                "properties": {
+                  "nodeId": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$"
+                  },
+                  "port": {
+                    "type": "string",
+                    "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$"
+                  }
+                },
+                "required": [
+                  "nodeId",
+                  "port"
+                ],
+                "additionalProperties": false
+              },
+              "codec": {
+                "$ref": "#/$defs/codecReference"
+              },
+              "kind": {
+                "enum": [
+                  "data",
+                  "control"
+                ]
+              }
+            },
+            "required": [
+              "source",
+              "target"
+            ],
+            "additionalProperties": false
+          }
+        },
+        "designation": {
+          "type": "string",
+          "minLength": 1,
+          "maxLength": 128
+        },
+        "entryNodeId": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$"
+        },
+        "control": {
+          "description": "Public control ports of the flow. Without an input the caller evaluates the flow as a data dependency. The output is released only after the whole execution succeeds.",
+          "type": "object",
+          "properties": {
+            "input": {
+              "type": "boolean"
+            },
+            "output": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "input",
+            "output"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "id",
+        "version",
+        "mode",
+        "nodes",
+        "connections"
+      ],
+      "additionalProperties": false
+    },
+    "codecReference": {
+      "type": "object",
+      "properties": {
+        "typeId": {
+          "type": "string",
+          "minLength": 1
+        },
+        "version": {
+          "type": "integer",
+          "minimum": 1,
+          "maximum": 2147483647
+        }
+      },
+      "required": [
+        "typeId",
+        "version"
+      ],
+      "additionalProperties": false
+    },
+    "portMetadata": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "order": {
+          "type": "integer"
+        },
+        "requiredWhen": {
+          "type": "object",
+          "properties": {
+            "config": {
+              "type": "string",
+              "minLength": 1
+            },
+            "value": {
+              "type": "string"
+            }
+          },
+          "required": [
+            "config",
+            "value"
+          ],
+          "additionalProperties": false
+        },
+        "editor": {
+          "type": "object",
+          "properties": {
+            "kind": {
+              "const": "html"
+            },
+            "editors": {
+              "type": "array",
+              "items": {
+                "enum": [
+                  "monaco",
+                  "tinymce"
+                ]
+              },
+              "minItems": 1,
+              "uniqueItems": true
+            }
+          },
+          "required": [
+            "kind",
+            "editors"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "additionalProperties": false
+    },
+    "nodeMetadata": {
+      "type": "object",
+      "properties": {
+        "label": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "inputs": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/portMetadata"
+          }
+        },
+        "outputs": {
+          "type": "object",
+          "additionalProperties": {
+            "$ref": "#/$defs/portMetadata"
+          }
+        },
+        "efTargets": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/efBinding"
+          }
+        },
+        "efInputs": {
+          "type": "object",
+          "additionalProperties": {
+            "type": "object",
+            "additionalProperties": {
+              "$ref": "#/$defs/type"
+            }
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "configField": {
+      "oneOf": [
+        {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "order": {
+              "type": "integer"
+            },
+            "type": {
+              "const": "string"
+            },
+            "default": {
+              "type": "string"
+            },
+            "options": {
+              "type": "array",
+              "minItems": 1,
+              "uniqueItems": true,
+              "items": {
+                "type": "string"
+              }
+            }
+          },
+          "required": [
+            "type",
+            "default"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "order": {
+              "type": "integer"
+            },
+            "type": {
+              "const": "number"
+            },
+            "default": {
+              "type": "number"
+            }
+          },
+          "required": [
+            "type",
+            "default"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "order": {
+              "type": "integer"
+            },
+            "type": {
+              "const": "boolean"
+            },
+            "default": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "type",
+            "default"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "order": {
+              "type": "integer"
+            },
+            "type": {
+              "const": "scalar"
+            },
+            "default": {
+              "type": "boolean"
+            },
+            "scalar": {
+              "const": "core.Bool"
+            }
+          },
+          "required": [
+            "type",
+            "default",
+            "scalar"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "order": {
+              "type": "integer"
+            },
+            "type": {
+              "const": "scalar"
+            },
+            "default": {
+              "type": "integer"
+            },
+            "scalar": {
+              "const": "core.Integer"
+            }
+          },
+          "required": [
+            "type",
+            "default",
+            "scalar"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "order": {
+              "type": "integer"
+            },
+            "type": {
+              "const": "scalar"
+            },
+            "default": {
+              "type": "string"
+            },
+            "scalar": {
+              "const": "core.Decimal"
+            }
+          },
+          "required": [
+            "type",
+            "default",
+            "scalar"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "order": {
+              "type": "integer"
+            },
+            "type": {
+              "const": "scalar"
+            },
+            "default": {
+              "type": "string"
+            },
+            "scalar": {
+              "const": "core.DateTimeOffset"
+            }
+          },
+          "required": [
+            "type",
+            "default",
+            "scalar"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "order": {
+              "type": "integer"
+            },
+            "type": {
+              "const": "scalar"
+            },
+            "default": {
+              "type": "string"
+            },
+            "scalar": {
+              "const": "core.TimeSpan"
+            }
+          },
+          "required": [
+            "type",
+            "default",
+            "scalar"
+          ],
+          "additionalProperties": false
+        },
+        {
+          "type": "object",
+          "properties": {
+            "label": {
+              "type": "string"
+            },
+            "description": {
+              "type": "string"
+            },
+            "order": {
+              "type": "integer"
+            },
+            "type": {
+              "const": "scalar"
+            },
+            "default": {
+              "type": "string"
+            },
+            "scalar": {
+              "const": "core.Guid"
+            }
+          },
+          "required": [
+            "type",
+            "default",
+            "scalar"
+          ],
+          "additionalProperties": false
+        }
+      ]
+    },
+    "flowParameter": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_]*$"
+        },
+        "nodeId": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$"
+        },
+        "type": {
+          "$ref": "#/$defs/type"
+        }
+      },
+      "required": [
+        "name",
+        "nodeId",
+        "type"
+      ],
+      "additionalProperties": false
+    },
+    "flowInterface": {
+      "type": "object",
+      "properties": {
+        "inputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/flowParameter"
+          }
+        },
+        "outputs": {
+          "type": "array",
+          "items": {
+            "$ref": "#/$defs/flowParameter"
+          }
+        },
+        "control": {
+          "type": "object",
+          "properties": {
+            "input": {
+              "type": "boolean"
+            },
+            "output": {
+              "type": "boolean"
+            }
+          },
+          "required": [
+            "input",
+            "output"
+          ],
+          "additionalProperties": false
+        }
+      },
+      "required": [
+        "inputs",
+        "outputs",
+        "control"
+      ],
+      "additionalProperties": false
+    },
+    "graphBundle": {
+      "type": "object",
+      "properties": {
+        "schemaVersion": {
+          "const": 1
+        },
+        "rootGraphId": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$"
+        },
+        "graphs": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 256,
+          "items": {
+            "$ref": "#/$defs/flow"
+          }
+        }
+      },
+      "required": [
+        "schemaVersion",
+        "rootGraphId",
+        "graphs"
+      ],
+      "additionalProperties": false
+    },
+    "graphNodeBinding": {
+      "type": "object",
+      "properties": {
+        "operation": {
+          "enum": [
+            "reference",
+            "invoke",
+            "if",
+            "ifElse",
+            "switch",
+            "while",
+            "aggregate",
+            "flatMap",
+            "any",
+            "all",
+            "find",
+            "findIndex",
+            "takeWhile",
+            "skipWhile",
+            "partition",
+            "forEach",
+            "map",
+            "filter",
+            "try",
+            "sortBy",
+            "distinctBy",
+            "groupBy",
+            "minBy",
+            "maxBy",
+            "joinByKey",
+            "leftJoinByKey",
+            "groupJoinByKey",
+            "repeat",
+            "retry",
+            "timeout",
+            "parallelMap"
+          ]
+        },
+        "signature": {
+          "$ref": "#/$defs/flowInterface"
+        },
+        "graphId": {
+          "type": "string",
+          "pattern": "^[A-Za-z_][A-Za-z0-9_.-]*$"
+        },
+        "cases": {
+          "type": "array",
+          "minItems": 1,
+          "maxItems": 64,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "required": [
+        "operation",
+        "signature"
+      ],
+      "additionalProperties": false
+    },
+    "queryNodeBinding": {
+      "type": "object",
+      "properties": {
+        "operation": {
+          "enum": [
+            "any",
+            "first",
+            "firstOrDefault",
+            "toList",
+            "where",
+            "all",
+            "orderBy",
+            "thenBy",
+            "select",
+            "groupBy",
+            "skip",
+            "take",
+            "count"
+          ]
+        },
+        "element": {
+          "$ref": "#/$defs/type"
+        },
+        "result": {
+          "$ref": "#/$defs/type"
+        },
+        "parameters": {
+          "type": "object",
+          "maxProperties": 64,
+          "propertyNames": {
+            "pattern": "^[A-Za-z_][A-Za-z0-9_]{0,63}$"
+          },
+          "additionalProperties": {
+            "$ref": "https://adam-flow.local/schemas/v1/type.schema.json"
+          }
+        },
+        "predicate": {
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "operation",
+        "element"
+      ],
+      "additionalProperties": false
+    },
+    "valueNodeBinding": {
+      "type": "object",
+      "required": [
+        "operation",
+        "type"
+      ],
+      "properties": {
+        "operation": {
+          "enum": [
+            "coalesce",
+            "ternary",
+            "input",
+            "output",
+            "null",
+            "isNull",
+            "isMissing",
+            "require",
+            "getProperty",
+            "record",
+            "withFields",
+            "list",
+            "count",
+            "getItem",
+            "addItem",
+            "addRange",
+            "insertItem",
+            "insertRange",
+            "setItem",
+            "removeAt",
+            "removeRange",
+            "clear",
+            "removeItem",
+            "removeAll",
+            "tryGetItem",
+            "first",
+            "last",
+            "tryFirst",
+            "tryLast",
+            "single",
+            "trySingle",
+            "contains",
+            "indexOf",
+            "lastIndexOf",
+            "isEmpty",
+            "skip",
+            "take",
+            "slice",
+            "reverse",
+            "chunk",
+            "flatten",
+            "sort",
+            "distinct",
+            "union",
+            "intersect",
+            "except",
+            "zip",
+            "sum",
+            "average",
+            "min",
+            "max",
+            "jsonFrom",
+            "jsonTo",
+            "hasField",
+            "removeField",
+            "merge",
+            "dictCreate",
+            "dictGet",
+            "dictTryGet",
+            "dictSet",
+            "dictRemove",
+            "dictContainsKey",
+            "dictKeys",
+            "dictValues"
+          ]
+        },
+        "type": {
+          "$ref": "#/$defs/type"
+        },
+        "member": {
+          "type": "string",
+          "minLength": 1
+        },
+        "result": {
+          "$ref": "#/$defs/type"
+        },
+        "fields": {
+          "type": "array",
+          "maxItems": 64,
+          "uniqueItems": true,
+          "items": {
+            "type": "string"
+          }
+        },
+        "count": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 256
+        }
+      },
+      "additionalProperties": false
+    },
+    "efBinding": {
+      "type": "object",
+      "properties": {
+        "context": {
+          "type": "string",
+          "minLength": 1
+        },
+        "entity": {
+          "type": "string",
+          "minLength": 1
+        },
+        "collection": {
+          "type": "string",
+          "minLength": 1
+        }
+      },
+      "required": [
+        "context"
+      ],
+      "additionalProperties": false
+    },
+    "uiBinding": {
+      "type": "object",
+      "properties": {
+        "dataType": {
+          "$ref": "#/$defs/type"
+        }
+      },
+      "required": [
+        "dataType"
+      ],
+      "additionalProperties": false
+    }
+  }
+}

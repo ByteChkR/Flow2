@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 1,
+  "nodes": [
+    {
+      "type": "input.contactId",
+      "version": 1,
+      "environments": [
+        "browser",
+        "server"
+      ],
+      "inputs": {},
+      "outputs": {
+        "id": {
+          "kind": "string"
+        }
+      }
+    },
+    {
+      "type": "crm.contact.get",
+      "version": 1,
+      "environments": [
+        "server"
+      ],
+      "inputs": {
+        "id": {
+          "kind": "string"
+        }
+      },
+      "outputs": {
+        "contact": {
+          "kind": "entity",
+          "name": "crm.Contact@1"
+        }
+      }
+    },
+    {
+      "type": "crm.contact.inspect",
+      "version": 1,
+      "environments": [
+        "server"
+      ],
+      "inputs": {
+        "contact": {
+          "kind": "entity",
+          "name": "crm.Contact@1"
+        }
+      },
+      "outputs": {
+        "contact": {
+          "kind": "entity",
+          "name": "crm.Contact@1"
+        }
+      }
+    },
+    {
+      "type": "crm.contact.toDto",
+      "version": 1,
+      "environments": [
+        "server"
+      ],
+      "inputs": {
+        "contact": {
+          "kind": "entity",
+          "name": "crm.Contact@1"
+        }
+      },
+      "outputs": {
+        "dto": {
+          "kind": "object",
+          "fields": {
+            "id": {
+              "kind": "string"
+            },
+            "name": {
+              "kind": "string"
+            },
+            "age": {
+              "kind": "optional",
+              "inner": {
+                "kind": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "type": "ui.displayContact",
+      "version": 1,
+      "environments": [
+        "browser"
+      ],
+      "inputs": {
+        "value": {
+          "kind": "object",
+          "fields": {
+            "id": {
+              "kind": "string"
+            },
+            "name": {
+              "kind": "string"
+            },
+            "age": {
+              "kind": "optional",
+              "inner": {
+                "kind": "number"
+              }
+            }
+          }
+        }
+      },
+      "outputs": {}
+    },
+    {
+      "type": "test.number",
+      "version": 1,
+      "environments": [
+        "server"
+      ],
+      "inputs": {
+        "value": {
+          "kind": "number"
+        }
+      },
+      "outputs": {}
+    },
+    {
+      "type": "test.echo",
+      "version": 1,
+      "environments": [
+        "server"
+      ],
+      "inputs": {
+        "value": {
+          "kind": "string"
+        }
+      },
+      "outputs": {
+        "value": {
+          "kind": "string"
+        }
+      }
+    },
+    {
+      "type": "test.optional",
+      "version": 1,
+      "environments": [
+        "server"
+      ],
+      "inputs": {
+        "value": {
+          "kind": "optional",
+          "inner": {
+            "kind": "string"
+          }
+        }
+      },
+      "outputs": {}
+    }
+  ]
+}

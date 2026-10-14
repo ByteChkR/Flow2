@@ -1,0 +1,997 @@
+{
+  "src/lib/flow2/vendor/contracts/envelope.schema.json": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/contracts/envelope.schema.json",
+    "specifier": "@adam-flow/core/contracts/envelope.schema.json"
+  },
+  "src/lib/flow2/vendor/contracts/regex-program.json": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/contracts/regex-program.json",
+    "specifier": "@adam-flow/core/contracts/regex-program.json"
+  },
+  "src/lib/flow2/vendor/contracts/expression.schema.json": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/contracts/expression.schema.json",
+    "specifier": "@adam-flow/core/contracts/expression.schema.json"
+  },
+  "src/lib/flow2/vendor/contracts/codecs.schema.json": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/contracts/codecs.schema.json",
+    "specifier": "@adam-flow/core/contracts/codecs.schema.json"
+  },
+  "src/lib/flow2/vendor/contracts/catalog.schema.json": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/contracts/catalog.schema.json",
+    "specifier": "@adam-flow/core/contracts/catalog.schema.json"
+  },
+  "src/lib/flow2/vendor/contracts/type.schema.json": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/contracts/type.schema.json",
+    "specifier": "@adam-flow/core/contracts/type.schema.json"
+  },
+  "src/lib/flow2/vendor/contracts/types.schema.json": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/contracts/types.schema.json",
+    "specifier": "@adam-flow/core/contracts/types.schema.json"
+  },
+  "src/lib/flow2/vendor/contracts/unicode-casing.json": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/contracts/unicode-casing.json",
+    "specifier": "@adam-flow/core/contracts/unicode-casing.json"
+  },
+  "src/lib/flow2/vendor/contracts/page-config.schema.json": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/contracts/page-config.schema.json",
+    "specifier": "@adam-flow/core/contracts/page-config.schema.json"
+  },
+  "src/lib/flow2/vendor/contracts/bundle.schema.json": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/contracts/bundle.schema.json",
+    "specifier": "@adam-flow/core/contracts/bundle.schema.json"
+  },
+  "src/lib/flow2/vendor/contracts/flow.schema.json": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/contracts/flow.schema.json",
+    "specifier": "@adam-flow/core/contracts/flow.schema.json"
+  },
+  "src/lib/flow2/vendor/contracts/regex-program.js": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/contracts/regex-program.js",
+    "specifier": "@adam-flow/core/contracts/regex-program.js"
+  },
+  "src/lib/flow2/vendor/flow-core/transport.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/transport.ts",
+    "specifier": "@adam-flow/core/flow-core/transport.js"
+  },
+  "src/lib/flow2/vendor/flow-core/value-nodes.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/value-nodes.ts",
+    "specifier": "@adam-flow/core/flow-core/value-nodes.js"
+  },
+  "src/lib/flow2/vendor/flow-core/catalog.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/catalog.ts",
+    "specifier": "@adam-flow/core/flow-core/catalog.js"
+  },
+  "src/lib/flow2/vendor/flow-core/graph-joins.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/graph-joins.ts",
+    "specifier": "@adam-flow/core/flow-core/graph-joins.js"
+  },
+  "src/lib/flow2/vendor/flow-core/numeric.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/numeric.ts",
+    "specifier": "@adam-flow/core/flow-core/numeric.js"
+  },
+  "src/lib/flow2/vendor/flow-core/model.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/model.ts",
+    "specifier": "@adam-flow/core/flow-core/model.js"
+  },
+  "src/lib/flow2/vendor/flow-core/graph-nodes.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/graph-nodes.ts",
+    "specifier": "@adam-flow/core/flow-core/graph-nodes.js"
+  },
+  "src/lib/flow2/vendor/flow-core/control.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/control.ts",
+    "specifier": "@adam-flow/core/flow-core/control.js"
+  },
+  "src/lib/flow2/vendor/flow-core/node-names.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/node-names.ts",
+    "specifier": "@adam-flow/core/flow-core/node-names.js"
+  },
+  "src/lib/flow2/vendor/flow-core/dictionaries.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/dictionaries.ts",
+    "specifier": "@adam-flow/core/flow-core/dictionaries.js"
+  },
+  "src/lib/flow2/vendor/flow-core/string-expressions.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/string-expressions.ts",
+    "specifier": "@adam-flow/core/flow-core/string-expressions.js"
+  },
+  "src/lib/flow2/vendor/flow-core/node-resolution.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/node-resolution.ts",
+    "specifier": "@adam-flow/core/flow-core/node-resolution.js"
+  },
+  "src/lib/flow2/vendor/flow-core/config.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/config.ts",
+    "specifier": "@adam-flow/core/flow-core/config.js"
+  },
+  "src/lib/flow2/vendor/flow-core/inline-inputs.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/inline-inputs.ts",
+    "specifier": "@adam-flow/core/flow-core/inline-inputs.js"
+  },
+  "src/lib/flow2/vendor/flow-core/formatting.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/formatting.ts",
+    "specifier": "@adam-flow/core/flow-core/formatting.js"
+  },
+  "src/lib/flow2/vendor/flow-core/general-value-nodes.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/general-value-nodes.ts",
+    "specifier": "@adam-flow/core/flow-core/general-value-nodes.js"
+  },
+  "src/lib/flow2/vendor/flow-core/expressions.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/expressions.ts",
+    "specifier": "@adam-flow/core/flow-core/expressions.js"
+  },
+  "src/lib/flow2/vendor/flow-core/value-order.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/value-order.ts",
+    "specifier": "@adam-flow/core/flow-core/value-order.js"
+  },
+  "src/lib/flow2/vendor/flow-core/query-nodes.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/query-nodes.ts",
+    "specifier": "@adam-flow/core/flow-core/query-nodes.js"
+  },
+  "src/lib/flow2/vendor/flow-core/flow.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/flow.ts",
+    "specifier": "@adam-flow/core/flow-core/flow.js"
+  },
+  "src/lib/flow2/vendor/flow-core/graphs.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/graphs.ts",
+    "specifier": "@adam-flow/core/flow-core/graphs.js"
+  },
+  "src/lib/flow2/vendor/flow-core/designations.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/designations.ts",
+    "specifier": "@adam-flow/core/flow-core/designations.js"
+  },
+  "src/lib/flow2/vendor/flow-core/scalars.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/scalars.ts",
+    "specifier": "@adam-flow/core/flow-core/scalars.js"
+  },
+  "src/lib/flow2/vendor/flow-core/schema.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/schema.ts",
+    "specifier": "@adam-flow/core/flow-core/schema.js"
+  },
+  "src/lib/flow2/vendor/flow-core/temporal.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/temporal.ts",
+    "specifier": "@adam-flow/core/flow-core/temporal.js"
+  },
+  "src/lib/flow2/vendor/flow-core/types.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/types.ts",
+    "specifier": "@adam-flow/core/flow-core/types.js"
+  },
+  "src/lib/flow2/vendor/flow-core/value-equality.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/value-equality.ts",
+    "specifier": "@adam-flow/core/flow-core/value-equality.js"
+  },
+  "src/lib/flow2/vendor/flow-core/ef-nodes.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/ef-nodes.ts",
+    "specifier": "@adam-flow/core/flow-core/ef-nodes.js"
+  },
+  "src/lib/flow2/vendor/flow-core/value-codecs.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/value-codecs.ts",
+    "specifier": "@adam-flow/core/flow-core/value-codecs.js"
+  },
+  "src/lib/flow2/vendor/flow-core/graph-controls.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/graph-controls.ts",
+    "specifier": "@adam-flow/core/flow-core/graph-controls.js"
+  },
+  "src/lib/flow2/vendor/flow-core/template-nodes.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/template-nodes.ts",
+    "specifier": "@adam-flow/core/flow-core/template-nodes.js"
+  },
+  "src/lib/flow2/vendor/flow-core/json-values.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/json-values.ts",
+    "specifier": "@adam-flow/core/flow-core/json-values.js"
+  },
+  "src/lib/flow2/vendor/flow-core/index.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/index.ts",
+    "specifier": "@adam-flow/core/flow-core/index.js"
+  },
+  "src/lib/flow2/vendor/flow-core/page-schema.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/page-schema.ts",
+    "specifier": "@adam-flow/core/flow-core/page-schema.js"
+  },
+  "src/lib/flow2/vendor/flow-core/interface.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-core/interface.ts",
+    "specifier": "@adam-flow/core/flow-core/interface.js"
+  },
+  "src/lib/flow2/vendor/flow-compiler/plan.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-compiler/plan.ts",
+    "specifier": "@adam-flow/core/flow-compiler/plan.js"
+  },
+  "src/lib/flow2/vendor/flow-compiler/index.ts": {
+    "package": "@adam-flow/core",
+    "source": "packages/core/src/flow-compiler/index.ts",
+    "specifier": "@adam-flow/core/flow-compiler/index.js"
+  },
+  "src/lib/flow2/vendor/runtime-browser/value-nodes.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/runtime-browser/value-nodes.ts",
+    "specifier": "@adam-flow/runtime-browser/runtime-browser/value-nodes.js"
+  },
+  "src/lib/flow2/vendor/runtime-browser/local.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/runtime-browser/local.ts",
+    "specifier": "@adam-flow/runtime-browser/runtime-browser/local.js"
+  },
+  "src/lib/flow2/vendor/runtime-browser/parallel-map.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/runtime-browser/parallel-map.ts",
+    "specifier": "@adam-flow/runtime-browser/runtime-browser/parallel-map.js"
+  },
+  "src/lib/flow2/vendor/runtime-browser/dictionary-nodes.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/runtime-browser/dictionary-nodes.ts",
+    "specifier": "@adam-flow/runtime-browser/runtime-browser/dictionary-nodes.js"
+  },
+  "src/lib/flow2/vendor/runtime-browser/editor.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/runtime-browser/editor.ts",
+    "specifier": "@adam-flow/runtime-browser/runtime-browser/editor.js"
+  },
+  "src/lib/flow2/vendor/runtime-browser/execution-wakeup.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/runtime-browser/execution-wakeup.ts",
+    "specifier": "@adam-flow/runtime-browser/runtime-browser/execution-wakeup.js"
+  },
+  "src/lib/flow2/vendor/runtime-browser/graph-nodes.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/runtime-browser/graph-nodes.ts",
+    "specifier": "@adam-flow/runtime-browser/runtime-browser/graph-nodes.js"
+  },
+  "src/lib/flow2/vendor/runtime-browser/segments.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/runtime-browser/segments.ts",
+    "specifier": "@adam-flow/runtime-browser/runtime-browser/segments.js"
+  },
+  "src/lib/flow2/vendor/runtime-browser/authoring.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/runtime-browser/authoring.ts",
+    "specifier": "@adam-flow/runtime-browser/runtime-browser/authoring.js"
+  },
+  "src/lib/flow2/vendor/runtime-browser/invocation-tracker.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/runtime-browser/invocation-tracker.ts",
+    "specifier": "@adam-flow/runtime-browser/runtime-browser/invocation-tracker.js"
+  },
+  "src/lib/flow2/vendor/runtime-browser/orchestrator.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/runtime-browser/orchestrator.ts",
+    "specifier": "@adam-flow/runtime-browser/runtime-browser/orchestrator.js"
+  },
+  "src/lib/flow2/vendor/runtime-browser/codecs.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/runtime-browser/codecs.ts",
+    "specifier": "@adam-flow/runtime-browser/runtime-browser/codecs.js"
+  },
+  "src/lib/flow2/vendor/runtime-browser/workspace.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/runtime-browser/workspace.ts",
+    "specifier": "@adam-flow/runtime-browser/runtime-browser/workspace.js"
+  },
+  "src/lib/flow2/vendor/runtime-browser/list-joins.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/runtime-browser/list-joins.ts",
+    "specifier": "@adam-flow/runtime-browser/runtime-browser/list-joins.js"
+  },
+  "src/lib/flow2/vendor/runtime-browser/node-failure.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/runtime-browser/node-failure.ts",
+    "specifier": "@adam-flow/runtime-browser/runtime-browser/node-failure.js"
+  },
+  "src/lib/flow2/vendor/runtime-browser/list-advanced.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/runtime-browser/list-advanced.ts",
+    "specifier": "@adam-flow/runtime-browser/runtime-browser/list-advanced.js"
+  },
+  "src/lib/flow2/vendor/runtime-browser/list-selection.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/runtime-browser/list-selection.ts",
+    "specifier": "@adam-flow/runtime-browser/runtime-browser/list-selection.js"
+  },
+  "src/lib/flow2/vendor/runtime-browser/failure.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/runtime-browser/failure.ts",
+    "specifier": "@adam-flow/runtime-browser/runtime-browser/failure.js"
+  },
+  "src/lib/flow2/vendor/runtime-browser/scalar-codecs.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/runtime-browser/scalar-codecs.ts",
+    "specifier": "@adam-flow/runtime-browser/runtime-browser/scalar-codecs.js"
+  },
+  "src/lib/flow2/vendor/runtime-browser/list-selectors.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/runtime-browser/list-selectors.ts",
+    "specifier": "@adam-flow/runtime-browser/runtime-browser/list-selectors.js"
+  },
+  "src/lib/flow2/vendor/runtime-browser/value-codecs.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/runtime-browser/value-codecs.ts",
+    "specifier": "@adam-flow/runtime-browser/runtime-browser/value-codecs.js"
+  },
+  "src/lib/flow2/vendor/runtime-browser/graph-controls.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/runtime-browser/graph-controls.ts",
+    "specifier": "@adam-flow/runtime-browser/runtime-browser/graph-controls.js"
+  },
+  "src/lib/flow2/vendor/runtime-browser/index.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/runtime-browser/index.ts",
+    "specifier": "@adam-flow/runtime-browser/runtime-browser/index.js"
+  },
+  "src/lib/flow2/vendor/runtime-browser/trace.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/runtime-browser/trace.ts",
+    "specifier": "@adam-flow/runtime-browser/runtime-browser/trace.js"
+  },
+  "src/lib/editor/EditorTabHost.svelte": {
+    "package": "@adam/editor",
+    "source": "packages/editor/src/EditorTabHost.svelte",
+    "specifier": "@adam/editor/EditorTabHost.svelte"
+  },
+  "src/lib/editor/EditorTheme.svelte": {
+    "package": "@adam/editor",
+    "source": "packages/editor/src/EditorTheme.svelte",
+    "specifier": "@adam/editor/EditorTheme.svelte"
+  },
+  "src/lib/editor/model.ts": {
+    "package": "@adam/editor",
+    "source": "packages/editor/src/model.ts",
+    "specifier": "@adam/editor/model.js"
+  },
+  "src/lib/editor/ContextMenuStyles.svelte": {
+    "package": "@adam/editor",
+    "source": "packages/editor/src/ContextMenuStyles.svelte",
+    "specifier": "@adam/editor/ContextMenuStyles.svelte"
+  },
+  "src/lib/editor/ResourceActions.svelte": {
+    "package": "@adam/editor",
+    "source": "packages/editor/src/ResourceActions.svelte",
+    "specifier": "@adam/editor/ResourceActions.svelte"
+  },
+  "src/lib/editor/DirtyDialog.svelte": {
+    "package": "@adam/editor",
+    "source": "packages/editor/src/DirtyDialog.svelte",
+    "specifier": "@adam/editor/DirtyDialog.svelte"
+  },
+  "src/lib/editor/EditorResources.svelte": {
+    "package": "@adam/editor",
+    "source": "packages/editor/src/EditorResources.svelte",
+    "specifier": "@adam/editor/EditorResources.svelte"
+  },
+  "src/lib/editor/EditorOverlayHost.svelte": {
+    "package": "@adam/editor",
+    "source": "packages/editor/src/EditorOverlayHost.svelte",
+    "specifier": "@adam/editor/EditorOverlayHost.svelte"
+  },
+  "src/lib/editor/navigation.ts": {
+    "package": "@adam/editor",
+    "source": "packages/editor/src/navigation.ts",
+    "specifier": "@adam/editor/navigation.js"
+  },
+  "src/lib/editor/EditorWorkspace.svelte": {
+    "package": "@adam/editor",
+    "source": "packages/editor/src/EditorWorkspace.svelte",
+    "specifier": "@adam/editor/EditorWorkspace.svelte"
+  },
+  "src/lib/editor/ResourceTree.svelte": {
+    "package": "@adam/editor",
+    "source": "packages/editor/src/ResourceTree.svelte",
+    "specifier": "@adam/editor/ResourceTree.svelte"
+  },
+  "src/lib/editor/resource-colors.ts": {
+    "package": "@adam/editor",
+    "source": "packages/editor/src/resource-colors.ts",
+    "specifier": "@adam/editor/resource-colors.js"
+  },
+  "src/lib/editor/EditorTabs.svelte": {
+    "package": "@adam/editor",
+    "source": "packages/editor/src/EditorTabs.svelte",
+    "specifier": "@adam/editor/EditorTabs.svelte"
+  },
+  "src/lib/editor/tab-state.ts": {
+    "package": "@adam/editor",
+    "source": "packages/editor/src/tab-state.ts",
+    "specifier": "@adam/editor/tab-state.js"
+  },
+  "src/lib/editor/EditorCommands.svelte": {
+    "package": "@adam/editor",
+    "source": "packages/editor/src/EditorCommands.svelte",
+    "specifier": "@adam/editor/EditorCommands.svelte"
+  },
+  "src/lib/editor/EditorOverlayContent.svelte": {
+    "package": "@adam/editor",
+    "source": "packages/editor/src/EditorOverlayContent.svelte",
+    "specifier": "@adam/editor/EditorOverlayContent.svelte"
+  },
+  "src/lib/diagnostics/categories.js": {
+    "package": "@adam/editor",
+    "source": "packages/editor/src/diagnostics/categories.js",
+    "specifier": "@adam/editor/diagnostics/categories.js"
+  },
+  "src/lib/diagnostics/MessagePanel.svelte": {
+    "package": "@adam/editor",
+    "source": "packages/editor/src/diagnostics/MessagePanel.svelte",
+    "specifier": "@adam/editor/diagnostics/MessagePanel.svelte"
+  },
+  "src/lib/diagnostics/messages.d.ts": {
+    "package": "@adam/editor",
+    "source": "packages/editor/src/diagnostics/messages.d.ts",
+    "specifier": "@adam/editor/diagnostics/messages.d.js"
+  },
+  "src/lib/diagnostics/messages.js": {
+    "package": "@adam/editor",
+    "source": "packages/editor/src/diagnostics/messages.js",
+    "specifier": "@adam/editor/diagnostics/messages.js"
+  },
+  "src/lib/schema-library/diagnostic-messages.js": {
+    "package": "@adam/editor",
+    "source": "packages/editor/src/diagnostics/diagnostic-messages.js",
+    "specifier": "@adam/editor/diagnostics/diagnostic-messages.js"
+  },
+  "src/lib/flow2/editor/NodeTree.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/NodeTree.svelte",
+    "specifier": "@adam-flow/editor/editor/NodeTree.svelte"
+  },
+  "src/lib/flow2/editor/internal-groups.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/internal-groups.ts",
+    "specifier": "@adam-flow/editor/editor/internal-groups.js"
+  },
+  "src/lib/flow2/editor/StatisticsView.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/StatisticsView.svelte",
+    "specifier": "@adam-flow/editor/editor/StatisticsView.svelte"
+  },
+  "src/lib/flow2/editor/workspace-storage.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/workspace-storage.ts",
+    "specifier": "@adam-flow/editor/editor/workspace-storage.js"
+  },
+  "src/lib/flow2/editor/ControlSignatureEditor.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/ControlSignatureEditor.svelte",
+    "specifier": "@adam-flow/editor/editor/ControlSignatureEditor.svelte"
+  },
+  "src/lib/flow2/editor/GroupDeleteDialog.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/GroupDeleteDialog.svelte",
+    "specifier": "@adam-flow/editor/editor/GroupDeleteDialog.svelte"
+  },
+  "src/lib/flow2/editor/control-palette.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/control-palette.ts",
+    "specifier": "@adam-flow/editor/editor/control-palette.js"
+  },
+  "src/lib/flow2/editor/CatalogNameInput.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/CatalogNameInput.svelte",
+    "specifier": "@adam-flow/editor/editor/CatalogNameInput.svelte"
+  },
+  "src/lib/flow2/editor/editor-preferences.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/editor-preferences.ts",
+    "specifier": "@adam-flow/editor/editor/editor-preferences.js"
+  },
+  "src/lib/flow2/editor/PageNameInput.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/PageNameInput.svelte",
+    "specifier": "@adam-flow/editor/editor/PageNameInput.svelte"
+  },
+  "src/lib/flow2/editor/graph-references.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/graph-references.ts",
+    "specifier": "@adam-flow/editor/editor/graph-references.js"
+  },
+  "src/lib/flow2/editor/PageConfigInput.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/PageConfigInput.svelte",
+    "specifier": "@adam-flow/editor/editor/PageConfigInput.svelte"
+  },
+  "src/lib/flow2/editor/InputFieldsInput.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/InputFieldsInput.svelte",
+    "specifier": "@adam-flow/editor/editor/InputFieldsInput.svelte"
+  },
+  "src/lib/flow2/editor/GraphEditor.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/GraphEditor.svelte",
+    "specifier": "@adam-flow/editor/editor/GraphEditor.svelte"
+  },
+  "src/lib/flow2/editor/execution-bundle.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/execution-bundle.ts",
+    "specifier": "@adam-flow/editor/editor/execution-bundle.js"
+  },
+  "src/lib/flow2/editor/model.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/model.ts",
+    "specifier": "@adam-flow/editor/editor/model.js"
+  },
+  "src/lib/flow2/editor/validation-state.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/validation-state.ts",
+    "specifier": "@adam-flow/editor/editor/validation-state.js"
+  },
+  "src/lib/flow2/editor/ValueInput.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/ValueInput.svelte",
+    "specifier": "@adam-flow/editor/editor/ValueInput.svelte"
+  },
+  "src/lib/flow2/editor/Annotations.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/Annotations.svelte",
+    "specifier": "@adam-flow/editor/editor/Annotations.svelte"
+  },
+  "src/lib/flow2/editor/SelectionRectangle.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/SelectionRectangle.svelte",
+    "specifier": "@adam-flow/editor/editor/SelectionRectangle.svelte"
+  },
+  "src/lib/flow2/editor/WorkspaceTree.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/WorkspaceTree.svelte",
+    "specifier": "@adam-flow/editor/editor/WorkspaceTree.svelte"
+  },
+  "src/lib/flow2/editor/internal-flows.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/internal-flows.ts",
+    "specifier": "@adam-flow/editor/editor/internal-flows.js"
+  },
+  "src/lib/flow2/editor/NodeDebug.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/NodeDebug.svelte",
+    "specifier": "@adam-flow/editor/editor/NodeDebug.svelte"
+  },
+  "src/lib/flow2/editor/Flow2TreeTools.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/Flow2TreeTools.svelte",
+    "specifier": "@adam-flow/editor/editor/Flow2TreeTools.svelte"
+  },
+  "src/lib/flow2/editor/graph-workspace.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/graph-workspace.ts",
+    "specifier": "@adam-flow/editor/editor/graph-workspace.js"
+  },
+  "src/lib/flow2/editor/TemplateInput.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/TemplateInput.svelte",
+    "specifier": "@adam-flow/editor/editor/TemplateInput.svelte"
+  },
+  "src/lib/flow2/editor/layout.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/layout.ts",
+    "specifier": "@adam-flow/editor/editor/layout.js"
+  },
+  "src/lib/flow2/editor/expression-model.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/expression-model.ts",
+    "specifier": "@adam-flow/editor/editor/expression-model.js"
+  },
+  "src/lib/flow2/editor/ContextMenuStyles.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/ContextMenuStyles.svelte",
+    "specifier": "@adam-flow/editor/editor/ContextMenuStyles.svelte"
+  },
+  "src/lib/flow2/editor/GraphContractComparison.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/GraphContractComparison.svelte",
+    "specifier": "@adam-flow/editor/editor/GraphContractComparison.svelte"
+  },
+  "src/lib/flow2/editor/workspace-palette.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/workspace-palette.ts",
+    "specifier": "@adam-flow/editor/editor/workspace-palette.js"
+  },
+  "src/lib/flow2/editor/InternalGroupDialog.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/InternalGroupDialog.svelte",
+    "specifier": "@adam-flow/editor/editor/InternalGroupDialog.svelte"
+  },
+  "src/lib/flow2/editor/workspace-api.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/workspace-api.ts",
+    "specifier": "@adam-flow/editor/editor/workspace-api.js"
+  },
+  "src/lib/flow2/editor/value-model.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/value-model.ts",
+    "specifier": "@adam-flow/editor/editor/value-model.js"
+  },
+  "src/lib/flow2/editor/statistics.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/statistics.ts",
+    "specifier": "@adam-flow/editor/editor/statistics.js"
+  },
+  "src/lib/flow2/editor/GraphInputContract.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/GraphInputContract.svelte",
+    "specifier": "@adam-flow/editor/editor/GraphInputContract.svelte"
+  },
+  "src/lib/flow2/editor/inline-graphs.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/inline-graphs.ts",
+    "specifier": "@adam-flow/editor/editor/inline-graphs.js"
+  },
+  "src/lib/flow2/editor/clipboard.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/clipboard.ts",
+    "specifier": "@adam-flow/editor/editor/clipboard.js"
+  },
+  "src/lib/flow2/editor/EfTargetSelect.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/EfTargetSelect.svelte",
+    "specifier": "@adam-flow/editor/editor/EfTargetSelect.svelte"
+  },
+  "src/lib/flow2/editor/GraphTabs.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/GraphTabs.svelte",
+    "specifier": "@adam-flow/editor/editor/GraphTabs.svelte"
+  },
+  "src/lib/flow2/editor/validation-progress.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/validation-progress.ts",
+    "specifier": "@adam-flow/editor/editor/validation-progress.js"
+  },
+  "src/lib/flow2/editor/TimeSpanInput.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/TimeSpanInput.svelte",
+    "specifier": "@adam-flow/editor/editor/TimeSpanInput.svelte"
+  },
+  "src/lib/flow2/editor/TextNameInput.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/TextNameInput.svelte",
+    "specifier": "@adam-flow/editor/editor/TextNameInput.svelte"
+  },
+  "src/lib/flow2/editor/CommentInline.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/CommentInline.svelte",
+    "specifier": "@adam-flow/editor/editor/CommentInline.svelte"
+  },
+  "src/lib/flow2/editor/template-options.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/template-options.ts",
+    "specifier": "@adam-flow/editor/editor/template-options.js"
+  },
+  "src/lib/flow2/editor/StepNameInput.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/StepNameInput.svelte",
+    "specifier": "@adam-flow/editor/editor/StepNameInput.svelte"
+  },
+  "src/lib/flow2/editor/record-edit.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/record-edit.ts",
+    "specifier": "@adam-flow/editor/editor/record-edit.js"
+  },
+  "src/lib/flow2/editor/RecordEditDialog.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/RecordEditDialog.svelte",
+    "specifier": "@adam-flow/editor/editor/RecordEditDialog.svelte"
+  },
+  "src/lib/flow2/editor/logs.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/logs.ts",
+    "specifier": "@adam-flow/editor/editor/logs.js"
+  },
+  "src/lib/flow2/editor/ValidationProgressDialog.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/ValidationProgressDialog.svelte",
+    "specifier": "@adam-flow/editor/editor/ValidationProgressDialog.svelte"
+  },
+  "src/lib/flow2/editor/date-value.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/date-value.ts",
+    "specifier": "@adam-flow/editor/editor/date-value.js"
+  },
+  "src/lib/flow2/editor/Flow2Provider.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/Flow2Provider.svelte",
+    "specifier": "@adam-flow/editor/editor/Flow2Provider.svelte"
+  },
+  "src/lib/flow2/editor/TableColumnsInput.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/TableColumnsInput.svelte",
+    "specifier": "@adam-flow/editor/editor/TableColumnsInput.svelte"
+  },
+  "src/lib/flow2/editor/ScalarInput.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/ScalarInput.svelte",
+    "specifier": "@adam-flow/editor/editor/ScalarInput.svelte"
+  },
+  "src/lib/flow2/editor/Flow2GraphTab.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/Flow2GraphTab.svelte",
+    "specifier": "@adam-flow/editor/editor/Flow2GraphTab.svelte"
+  },
+  "src/lib/flow2/editor/performance.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/performance.ts",
+    "specifier": "@adam-flow/editor/editor/performance.js"
+  },
+  "src/lib/flow2/editor/InlineInputs.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/InlineInputs.svelte",
+    "specifier": "@adam-flow/editor/editor/InlineInputs.svelte"
+  },
+  "src/lib/flow2/editor/canvas-selection.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/canvas-selection.ts",
+    "specifier": "@adam-flow/editor/editor/canvas-selection.js"
+  },
+  "src/lib/flow2/editor/GraphWorkspace.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/GraphWorkspace.svelte",
+    "specifier": "@adam-flow/editor/editor/GraphWorkspace.svelte"
+  },
+  "src/lib/flow2/editor/validation-results.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/validation-results.ts",
+    "specifier": "@adam-flow/editor/editor/validation-results.js"
+  },
+  "src/lib/flow2/editor/designations.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/designations.ts",
+    "specifier": "@adam-flow/editor/editor/designations.js"
+  },
+  "src/lib/flow2/editor/expression-clipboard.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/expression-clipboard.ts",
+    "specifier": "@adam-flow/editor/editor/expression-clipboard.js"
+  },
+  "src/lib/flow2/editor/CommentMarkdown.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/CommentMarkdown.svelte",
+    "specifier": "@adam-flow/editor/editor/CommentMarkdown.svelte"
+  },
+  "src/lib/flow2/editor/comment-markdown.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/comment-markdown.ts",
+    "specifier": "@adam-flow/editor/editor/comment-markdown.js"
+  },
+  "src/lib/flow2/editor/duration-value.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/duration-value.ts",
+    "specifier": "@adam-flow/editor/editor/duration-value.js"
+  },
+  "src/lib/flow2/editor/messages.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/messages.ts",
+    "specifier": "@adam-flow/editor/editor/messages.js"
+  },
+  "src/lib/flow2/editor/LogOverlay.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/LogOverlay.svelte",
+    "specifier": "@adam-flow/editor/editor/LogOverlay.svelte"
+  },
+  "src/lib/flow2/editor/HtmlInput.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/HtmlInput.svelte",
+    "specifier": "@adam-flow/editor/editor/HtmlInput.svelte"
+  },
+  "src/lib/flow2/editor/DateTimeOffsetInput.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/DateTimeOffsetInput.svelte",
+    "specifier": "@adam-flow/editor/editor/DateTimeOffsetInput.svelte"
+  },
+  "src/lib/flow2/editor/ValidationSaveDialog.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/ValidationSaveDialog.svelte",
+    "specifier": "@adam-flow/editor/editor/ValidationSaveDialog.svelte"
+  },
+  "src/lib/flow2/editor/ExpressionEditor.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/ExpressionEditor.svelte",
+    "specifier": "@adam-flow/editor/editor/ExpressionEditor.svelte"
+  },
+  "src/lib/flow2/editor/debug.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/debug.ts",
+    "specifier": "@adam-flow/editor/editor/debug.js"
+  },
+  "src/lib/flow2/editor/InputTypeEditor.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/InputTypeEditor.svelte",
+    "specifier": "@adam-flow/editor/editor/InputTypeEditor.svelte"
+  },
+  "src/lib/flow2/editor/tab-state.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/tab-state.ts",
+    "specifier": "@adam-flow/editor/editor/tab-state.js"
+  },
+  "src/lib/flow2/editor/ValueBindingEditor.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/ValueBindingEditor.svelte",
+    "specifier": "@adam-flow/editor/editor/ValueBindingEditor.svelte"
+  },
+  "src/lib/flow2/ui/step-values.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/ui/step-values.ts",
+    "specifier": "@adam-flow/runtime-browser/ui/step-values.js"
+  },
+  "src/lib/flow2/ui/template-preview.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/ui/template-preview.ts",
+    "specifier": "@adam-flow/runtime-browser/ui/template-preview.js"
+  },
+  "src/lib/flow2/ui/page-contract.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/ui/page-contract.ts",
+    "specifier": "@adam-flow/runtime-browser/ui/page-contract.js"
+  },
+  "src/lib/flow2/ui/table-model.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/ui/table-model.ts",
+    "specifier": "@adam-flow/runtime-browser/ui/table-model.js"
+  },
+  "src/lib/flow2/ui/presentation.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/ui/presentation.ts",
+    "specifier": "@adam-flow/runtime-browser/ui/presentation.js"
+  },
+  "src/lib/flow2/ui/input-fields.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/ui/input-fields.ts",
+    "specifier": "@adam-flow/runtime-browser/ui/input-fields.js"
+  },
+  "src/lib/flow2/ui/interactions.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/ui/interactions.ts",
+    "specifier": "@adam-flow/runtime-browser/ui/interactions.js"
+  },
+  "src/lib/flow2/ui/active-nodes.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/ui/active-nodes.ts",
+    "specifier": "@adam-flow/runtime-browser/ui/active-nodes.js"
+  },
+  "src/lib/flow2/ui/FlowSignature.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/ui/FlowSignature.svelte",
+    "specifier": "@adam-flow/editor/ui/FlowSignature.svelte"
+  },
+  "src/lib/flow2/ui/FlowOptions.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/ui/FlowOptions.svelte",
+    "specifier": "@adam-flow/editor/ui/FlowOptions.svelte"
+  },
+  "src/lib/flow2/ui/FlowFiles.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/ui/FlowFiles.svelte",
+    "specifier": "@adam-flow/editor/ui/FlowFiles.svelte"
+  },
+  "src/lib/flow2/ui/TemplatePreview.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/ui/TemplatePreview.svelte",
+    "specifier": "@adam-flow/editor/ui/TemplatePreview.svelte"
+  },
+  "src/lib/flow2/ui/FlowImage.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/ui/FlowImage.svelte",
+    "specifier": "@adam-flow/editor/ui/FlowImage.svelte"
+  },
+  "src/lib/flow2/ui/FlowTable.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/ui/FlowTable.svelte",
+    "specifier": "@adam-flow/editor/ui/FlowTable.svelte"
+  },
+  "src/lib/flow2/ui/ExecutionOverlay.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/ui/ExecutionOverlay.svelte",
+    "specifier": "@adam-flow/editor/ui/ExecutionOverlay.svelte"
+  },
+  "src/lib/flow2/ui/FlowFieldInput.svelte": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/ui/FlowFieldInput.svelte",
+    "specifier": "@adam-flow/editor/ui/FlowFieldInput.svelte"
+  },
+  "src/lib/flow2/editor/page-config/contracts.ts": {
+    "package": "@adam-flow/editor",
+    "source": "packages/flow-editor/src/editor/page-config/contracts.ts",
+    "specifier": "@adam-flow/editor/editor/page-config/contracts.js"
+  },
+  "src/lib/flow2/nodes/steps.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/nodes/steps.ts",
+    "specifier": "@adam-flow/runtime-browser/nodes/steps.js"
+  },
+  "src/lib/flow2/nodes/pages.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/nodes/pages.ts",
+    "specifier": "@adam-flow/runtime-browser/nodes/pages.js"
+  },
+  "src/lib/flow2/nodes/assert.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/nodes/assert.ts",
+    "specifier": "@adam-flow/runtime-browser/nodes/assert.js"
+  },
+  "src/lib/flow2/nodes/binary.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/nodes/binary.ts",
+    "specifier": "@adam-flow/runtime-browser/nodes/binary.js"
+  },
+  "src/lib/flow2/nodes/decimal.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/nodes/decimal.ts",
+    "specifier": "@adam-flow/runtime-browser/nodes/decimal.js"
+  },
+  "src/lib/flow2/nodes/extended-scalars.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/nodes/extended-scalars.ts",
+    "specifier": "@adam-flow/runtime-browser/nodes/extended-scalars.js"
+  },
+  "src/lib/flow2/nodes/formatting.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/nodes/formatting.ts",
+    "specifier": "@adam-flow/runtime-browser/nodes/formatting.js"
+  },
+  "src/lib/flow2/nodes/json.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/nodes/json.ts",
+    "specifier": "@adam-flow/runtime-browser/nodes/json.js"
+  },
+  "src/lib/flow2/nodes/regex.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/nodes/regex.ts",
+    "specifier": "@adam-flow/runtime-browser/nodes/regex.js"
+  },
+  "src/lib/flow2/nodes/scalars.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/nodes/scalars.ts",
+    "specifier": "@adam-flow/runtime-browser/nodes/scalars.js"
+  },
+  "src/lib/flow2/nodes/temporal.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/nodes/temporal.ts",
+    "specifier": "@adam-flow/runtime-browser/nodes/temporal.js"
+  },
+  "src/lib/flow2/nodes/text.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/nodes/text.ts",
+    "specifier": "@adam-flow/runtime-browser/nodes/text.js"
+  },
+  "src/lib/flow2/nodes/input-types.ts": {
+    "package": "@adam-flow/runtime-browser",
+    "source": "packages/runtime-browser/src/nodes/input-types.ts",
+    "specifier": "@adam-flow/runtime-browser/nodes/input-types.js"
+  }
+}

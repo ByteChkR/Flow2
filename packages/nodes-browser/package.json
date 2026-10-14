@@ -1,0 +1,17 @@
+{
+  "name": "@adam-flow/nodes-browser",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@adam-flow/flow-core": "0.0.0",
+    "@adam-flow/runtime-browser": "0.0.0",
+    "@adam-flow/contracts": "0.0.0"
+  }
+}

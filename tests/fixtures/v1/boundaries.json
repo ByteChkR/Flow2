@@ -1,0 +1,2616 @@
+[
+  {
+    "name": "dto-valid",
+    "source": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "target": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "codec": {
+      "typeId": "crm.ContactDTO@1",
+      "version": 1
+    },
+    "sender": {
+      "schemaVersion": 1,
+      "environment": "server",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "receiver": {
+      "schemaVersion": 1,
+      "environment": "browser",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "codes": []
+  },
+  {
+    "name": "string-valid",
+    "source": {
+      "kind": "string"
+    },
+    "target": {
+      "kind": "string"
+    },
+    "codec": {
+      "typeId": "core.String@1",
+      "version": 1
+    },
+    "sender": {
+      "schemaVersion": 1,
+      "environment": "server",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "receiver": {
+      "schemaVersion": 1,
+      "environment": "browser",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "codes": []
+  },
+  {
+    "name": "missing-reference",
+    "source": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "target": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "codec": null,
+    "sender": {
+      "schemaVersion": 1,
+      "environment": "server",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "receiver": {
+      "schemaVersion": 1,
+      "environment": "browser",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "codes": [
+      "missing_codec"
+    ]
+  },
+  {
+    "name": "missing-sender",
+    "source": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "target": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "codec": {
+      "typeId": "crm.ContactDTO@1",
+      "version": 1
+    },
+    "sender": {
+      "schemaVersion": 1,
+      "environment": "server",
+      "codecs": []
+    },
+    "receiver": {
+      "schemaVersion": 1,
+      "environment": "browser",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "codes": [
+      "missing_codec"
+    ]
+  },
+  {
+    "name": "missing-receiver",
+    "source": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "target": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "codec": {
+      "typeId": "crm.ContactDTO@1",
+      "version": 1
+    },
+    "sender": {
+      "schemaVersion": 1,
+      "environment": "server",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "receiver": {
+      "schemaVersion": 1,
+      "environment": "browser",
+      "codecs": []
+    },
+    "codes": [
+      "missing_codec"
+    ]
+  },
+  {
+    "name": "unsupported-codec-version",
+    "source": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "target": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "codec": {
+      "typeId": "crm.ContactDTO@1",
+      "version": 2
+    },
+    "sender": {
+      "schemaVersion": 1,
+      "environment": "server",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "receiver": {
+      "schemaVersion": 1,
+      "environment": "browser",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "codes": [
+      "missing_codec"
+    ]
+  },
+  {
+    "name": "wire-schema-mismatch",
+    "source": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "target": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "codec": {
+      "typeId": "crm.ContactDTO@1",
+      "version": 1
+    },
+    "sender": {
+      "schemaVersion": 1,
+      "environment": "server",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "receiver": {
+      "schemaVersion": 1,
+      "environment": "browser",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": true
+          }
+        }
+      ]
+    },
+    "codes": [
+      "codec_mismatch"
+    ]
+  },
+  {
+    "name": "native-type-mismatch",
+    "source": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "target": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "codec": {
+      "typeId": "crm.ContactDTO@1",
+      "version": 1
+    },
+    "sender": {
+      "schemaVersion": 1,
+      "environment": "server",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "receiver": {
+      "schemaVersion": 1,
+      "environment": "browser",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "number"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "codes": [
+      "codec_mismatch"
+    ]
+  },
+  {
+    "name": "port-mismatch",
+    "source": {
+      "kind": "string"
+    },
+    "target": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "codec": {
+      "typeId": "crm.ContactDTO@1",
+      "version": 1
+    },
+    "sender": {
+      "schemaVersion": 1,
+      "environment": "server",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "receiver": {
+      "schemaVersion": 1,
+      "environment": "browser",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "codes": [
+      "type_mismatch"
+    ]
+  },
+  {
+    "name": "wrong-codec",
+    "source": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "target": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "codec": {
+      "typeId": "core.String@1",
+      "version": 1
+    },
+    "sender": {
+      "schemaVersion": 1,
+      "environment": "server",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "receiver": {
+      "schemaVersion": 1,
+      "environment": "browser",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "codes": [
+      "codec_type"
+    ]
+  },
+  {
+    "name": "local-entity",
+    "source": {
+      "kind": "entity",
+      "name": "crm.Contact@1"
+    },
+    "target": {
+      "kind": "entity",
+      "name": "crm.Contact@1"
+    },
+    "codec": {
+      "typeId": "crm.ContactDTO@1",
+      "version": 1
+    },
+    "sender": {
+      "schemaVersion": 1,
+      "environment": "server",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "receiver": {
+      "schemaVersion": 1,
+      "environment": "browser",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "codes": [
+      "not_transportable"
+    ]
+  },
+  {
+    "name": "nested-entity-array",
+    "source": {
+      "kind": "array",
+      "items": {
+        "kind": "entity",
+        "name": "crm.Contact@1"
+      }
+    },
+    "target": {
+      "kind": "array",
+      "items": {
+        "kind": "entity",
+        "name": "crm.Contact@1"
+      }
+    },
+    "codec": {
+      "typeId": "crm.ContactDTO@1",
+      "version": 1
+    },
+    "sender": {
+      "schemaVersion": 1,
+      "environment": "server",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "receiver": {
+      "schemaVersion": 1,
+      "environment": "browser",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "codes": [
+      "not_transportable"
+    ]
+  },
+  {
+    "name": "nested-entity-object",
+    "source": {
+      "kind": "object",
+      "fields": {
+        "contact": {
+          "kind": "entity",
+          "name": "crm.Contact@1"
+        }
+      }
+    },
+    "target": {
+      "kind": "object",
+      "fields": {
+        "contact": {
+          "kind": "entity",
+          "name": "crm.Contact@1"
+        }
+      }
+    },
+    "codec": {
+      "typeId": "crm.ContactDTO@1",
+      "version": 1
+    },
+    "sender": {
+      "schemaVersion": 1,
+      "environment": "server",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "receiver": {
+      "schemaVersion": 1,
+      "environment": "browser",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "codes": [
+      "not_transportable"
+    ]
+  },
+  {
+    "name": "nested-entity-optional",
+    "source": {
+      "kind": "optional",
+      "inner": {
+        "kind": "entity",
+        "name": "crm.Contact@1"
+      }
+    },
+    "target": {
+      "kind": "optional",
+      "inner": {
+        "kind": "entity",
+        "name": "crm.Contact@1"
+      }
+    },
+    "codec": {
+      "typeId": "crm.ContactDTO@1",
+      "version": 1
+    },
+    "sender": {
+      "schemaVersion": 1,
+      "environment": "server",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "receiver": {
+      "schemaVersion": 1,
+      "environment": "browser",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "codes": [
+      "not_transportable"
+    ]
+  },
+  {
+    "name": "duplicate-codec",
+    "source": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "target": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "codec": {
+      "typeId": "crm.ContactDTO@1",
+      "version": 1
+    },
+    "sender": {
+      "schemaVersion": 1,
+      "environment": "server",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        },
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        }
+      ]
+    },
+    "receiver": {
+      "schemaVersion": 1,
+      "environment": "browser",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "codes": [
+      "duplicate_codec"
+    ]
+  },
+  {
+    "name": "remote-schema-ref",
+    "source": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "target": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "codec": {
+      "typeId": "crm.ContactDTO@1",
+      "version": 1
+    },
+    "sender": {
+      "schemaVersion": 1,
+      "environment": "server",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string",
+            "$ref": "https://untrusted.invalid/schema"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "receiver": {
+      "schemaVersion": 1,
+      "environment": "browser",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "codes": [
+      "wire_schema"
+    ]
+  },
+  {
+    "name": "structural-target-subset",
+    "source": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        },
+        "name": {
+          "kind": "string"
+        },
+        "age": {
+          "kind": "optional",
+          "inner": {
+            "kind": "number"
+          }
+        }
+      }
+    },
+    "target": {
+      "kind": "object",
+      "fields": {
+        "id": {
+          "kind": "string"
+        }
+      }
+    },
+    "codec": {
+      "typeId": "crm.ContactDTO@1",
+      "version": 1
+    },
+    "sender": {
+      "schemaVersion": 1,
+      "environment": "server",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "receiver": {
+      "schemaVersion": 1,
+      "environment": "browser",
+      "codecs": [
+        {
+          "typeId": "core.String@1",
+          "version": 1,
+          "valueType": {
+            "kind": "string"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "string"
+          }
+        },
+        {
+          "typeId": "crm.ContactDTO@1",
+          "version": 1,
+          "valueType": {
+            "kind": "object",
+            "fields": {
+              "id": {
+                "kind": "string"
+              },
+              "name": {
+                "kind": "string"
+              },
+              "age": {
+                "kind": "optional",
+                "inner": {
+                  "kind": "number"
+                }
+              }
+            }
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "age": {
+                "type": "number",
+                "minimum": -1.7976931348623157e+308,
+                "maximum": 1.7976931348623157e+308
+              }
+            },
+            "required": [
+              "id",
+              "name"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "codes": []
+  },
+  {
+    "name": "entity-ref",
+    "source": {
+      "kind": "entityRef",
+      "name": "crm.Contact@1"
+    },
+    "target": {
+      "kind": "entityRef",
+      "name": "crm.Contact@1"
+    },
+    "codec": {
+      "typeId": "crm.ContactRef@1",
+      "version": 1
+    },
+    "sender": {
+      "schemaVersion": 1,
+      "environment": "server",
+      "codecs": [
+        {
+          "typeId": "crm.ContactRef@1",
+          "version": 1,
+          "valueType": {
+            "kind": "entityRef",
+            "name": "crm.Contact@1"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "type": {
+                "const": "crm.Contact@1"
+              },
+              "id": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "type",
+              "id"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "receiver": {
+      "schemaVersion": 1,
+      "environment": "browser",
+      "codecs": [
+        {
+          "typeId": "crm.ContactRef@1",
+          "version": 1,
+          "valueType": {
+            "kind": "entityRef",
+            "name": "crm.Contact@1"
+          },
+          "wireSchema": {
+            "$schema": "https://json-schema.org/draft/2020-12/schema",
+            "type": "object",
+            "properties": {
+              "type": {
+                "const": "crm.Contact@1"
+              },
+              "id": {
+                "type": "string",
+                "minLength": 1
+              }
+            },
+            "required": [
+              "type",
+              "id"
+            ],
+            "additionalProperties": false
+          }
+        }
+      ]
+    },
+    "codes": []
+  }
+]

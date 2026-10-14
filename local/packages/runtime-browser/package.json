@@ -1,0 +1,501 @@
+{
+  "name": "@adam-flow/runtime-browser",
+  "version": "0.1.0-local.1791959572118",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./index.js": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./index": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./nodes/assert.js": {
+      "types": "./dist/nodes/assert.d.ts",
+      "import": "./dist/nodes/assert.js",
+      "default": "./dist/nodes/assert.js"
+    },
+    "./nodes/assert": {
+      "types": "./dist/nodes/assert.d.ts",
+      "import": "./dist/nodes/assert.js",
+      "default": "./dist/nodes/assert.js"
+    },
+    "./nodes/basic.js": {
+      "types": "./dist/nodes/basic.d.ts",
+      "import": "./dist/nodes/basic.js",
+      "default": "./dist/nodes/basic.js"
+    },
+    "./nodes/basic": {
+      "types": "./dist/nodes/basic.d.ts",
+      "import": "./dist/nodes/basic.js",
+      "default": "./dist/nodes/basic.js"
+    },
+    "./nodes/binary.js": {
+      "types": "./dist/nodes/binary.d.ts",
+      "import": "./dist/nodes/binary.js",
+      "default": "./dist/nodes/binary.js"
+    },
+    "./nodes/binary": {
+      "types": "./dist/nodes/binary.d.ts",
+      "import": "./dist/nodes/binary.js",
+      "default": "./dist/nodes/binary.js"
+    },
+    "./nodes/decimal.js": {
+      "types": "./dist/nodes/decimal.d.ts",
+      "import": "./dist/nodes/decimal.js",
+      "default": "./dist/nodes/decimal.js"
+    },
+    "./nodes/decimal": {
+      "types": "./dist/nodes/decimal.d.ts",
+      "import": "./dist/nodes/decimal.js",
+      "default": "./dist/nodes/decimal.js"
+    },
+    "./nodes/extended-scalars.js": {
+      "types": "./dist/nodes/extended-scalars.d.ts",
+      "import": "./dist/nodes/extended-scalars.js",
+      "default": "./dist/nodes/extended-scalars.js"
+    },
+    "./nodes/extended-scalars": {
+      "types": "./dist/nodes/extended-scalars.d.ts",
+      "import": "./dist/nodes/extended-scalars.js",
+      "default": "./dist/nodes/extended-scalars.js"
+    },
+    "./nodes/formatting.js": {
+      "types": "./dist/nodes/formatting.d.ts",
+      "import": "./dist/nodes/formatting.js",
+      "default": "./dist/nodes/formatting.js"
+    },
+    "./nodes/formatting": {
+      "types": "./dist/nodes/formatting.d.ts",
+      "import": "./dist/nodes/formatting.js",
+      "default": "./dist/nodes/formatting.js"
+    },
+    "./nodes/input-types.js": {
+      "types": "./dist/nodes/input-types.d.ts",
+      "import": "./dist/nodes/input-types.js",
+      "default": "./dist/nodes/input-types.js"
+    },
+    "./nodes/input-types": {
+      "types": "./dist/nodes/input-types.d.ts",
+      "import": "./dist/nodes/input-types.js",
+      "default": "./dist/nodes/input-types.js"
+    },
+    "./nodes/json.js": {
+      "types": "./dist/nodes/json.d.ts",
+      "import": "./dist/nodes/json.js",
+      "default": "./dist/nodes/json.js"
+    },
+    "./nodes/json": {
+      "types": "./dist/nodes/json.d.ts",
+      "import": "./dist/nodes/json.js",
+      "default": "./dist/nodes/json.js"
+    },
+    "./nodes/pages.js": {
+      "types": "./dist/nodes/pages.d.ts",
+      "import": "./dist/nodes/pages.js",
+      "default": "./dist/nodes/pages.js"
+    },
+    "./nodes/pages": {
+      "types": "./dist/nodes/pages.d.ts",
+      "import": "./dist/nodes/pages.js",
+      "default": "./dist/nodes/pages.js"
+    },
+    "./nodes/regex.js": {
+      "types": "./dist/nodes/regex.d.ts",
+      "import": "./dist/nodes/regex.js",
+      "default": "./dist/nodes/regex.js"
+    },
+    "./nodes/regex": {
+      "types": "./dist/nodes/regex.d.ts",
+      "import": "./dist/nodes/regex.js",
+      "default": "./dist/nodes/regex.js"
+    },
+    "./nodes/scalars.js": {
+      "types": "./dist/nodes/scalars.d.ts",
+      "import": "./dist/nodes/scalars.js",
+      "default": "./dist/nodes/scalars.js"
+    },
+    "./nodes/scalars": {
+      "types": "./dist/nodes/scalars.d.ts",
+      "import": "./dist/nodes/scalars.js",
+      "default": "./dist/nodes/scalars.js"
+    },
+    "./nodes/steps.js": {
+      "types": "./dist/nodes/steps.d.ts",
+      "import": "./dist/nodes/steps.js",
+      "default": "./dist/nodes/steps.js"
+    },
+    "./nodes/steps": {
+      "types": "./dist/nodes/steps.d.ts",
+      "import": "./dist/nodes/steps.js",
+      "default": "./dist/nodes/steps.js"
+    },
+    "./nodes/temporal.js": {
+      "types": "./dist/nodes/temporal.d.ts",
+      "import": "./dist/nodes/temporal.js",
+      "default": "./dist/nodes/temporal.js"
+    },
+    "./nodes/temporal": {
+      "types": "./dist/nodes/temporal.d.ts",
+      "import": "./dist/nodes/temporal.js",
+      "default": "./dist/nodes/temporal.js"
+    },
+    "./nodes/text.js": {
+      "types": "./dist/nodes/text.d.ts",
+      "import": "./dist/nodes/text.js",
+      "default": "./dist/nodes/text.js"
+    },
+    "./nodes/text": {
+      "types": "./dist/nodes/text.d.ts",
+      "import": "./dist/nodes/text.js",
+      "default": "./dist/nodes/text.js"
+    },
+    "./registry.js": {
+      "types": "./dist/registry.d.ts",
+      "import": "./dist/registry.js",
+      "default": "./dist/registry.js"
+    },
+    "./registry": {
+      "types": "./dist/registry.d.ts",
+      "import": "./dist/registry.js",
+      "default": "./dist/registry.js"
+    },
+    "./runtime-browser/authoring.js": {
+      "types": "./dist/runtime-browser/authoring.d.ts",
+      "import": "./dist/runtime-browser/authoring.js",
+      "default": "./dist/runtime-browser/authoring.js"
+    },
+    "./runtime-browser/authoring": {
+      "types": "./dist/runtime-browser/authoring.d.ts",
+      "import": "./dist/runtime-browser/authoring.js",
+      "default": "./dist/runtime-browser/authoring.js"
+    },
+    "./runtime-browser/codecs.js": {
+      "types": "./dist/runtime-browser/codecs.d.ts",
+      "import": "./dist/runtime-browser/codecs.js",
+      "default": "./dist/runtime-browser/codecs.js"
+    },
+    "./runtime-browser/codecs": {
+      "types": "./dist/runtime-browser/codecs.d.ts",
+      "import": "./dist/runtime-browser/codecs.js",
+      "default": "./dist/runtime-browser/codecs.js"
+    },
+    "./runtime-browser/dictionary-nodes.js": {
+      "types": "./dist/runtime-browser/dictionary-nodes.d.ts",
+      "import": "./dist/runtime-browser/dictionary-nodes.js",
+      "default": "./dist/runtime-browser/dictionary-nodes.js"
+    },
+    "./runtime-browser/dictionary-nodes": {
+      "types": "./dist/runtime-browser/dictionary-nodes.d.ts",
+      "import": "./dist/runtime-browser/dictionary-nodes.js",
+      "default": "./dist/runtime-browser/dictionary-nodes.js"
+    },
+    "./runtime-browser/editor.js": {
+      "types": "./dist/runtime-browser/editor.d.ts",
+      "import": "./dist/runtime-browser/editor.js",
+      "default": "./dist/runtime-browser/editor.js"
+    },
+    "./runtime-browser/editor": {
+      "types": "./dist/runtime-browser/editor.d.ts",
+      "import": "./dist/runtime-browser/editor.js",
+      "default": "./dist/runtime-browser/editor.js"
+    },
+    "./runtime-browser/execution-wakeup.js": {
+      "types": "./dist/runtime-browser/execution-wakeup.d.ts",
+      "import": "./dist/runtime-browser/execution-wakeup.js",
+      "default": "./dist/runtime-browser/execution-wakeup.js"
+    },
+    "./runtime-browser/execution-wakeup": {
+      "types": "./dist/runtime-browser/execution-wakeup.d.ts",
+      "import": "./dist/runtime-browser/execution-wakeup.js",
+      "default": "./dist/runtime-browser/execution-wakeup.js"
+    },
+    "./runtime-browser/failure.js": {
+      "types": "./dist/runtime-browser/failure.d.ts",
+      "import": "./dist/runtime-browser/failure.js",
+      "default": "./dist/runtime-browser/failure.js"
+    },
+    "./runtime-browser/failure": {
+      "types": "./dist/runtime-browser/failure.d.ts",
+      "import": "./dist/runtime-browser/failure.js",
+      "default": "./dist/runtime-browser/failure.js"
+    },
+    "./runtime-browser/graph-controls.js": {
+      "types": "./dist/runtime-browser/graph-controls.d.ts",
+      "import": "./dist/runtime-browser/graph-controls.js",
+      "default": "./dist/runtime-browser/graph-controls.js"
+    },
+    "./runtime-browser/graph-controls": {
+      "types": "./dist/runtime-browser/graph-controls.d.ts",
+      "import": "./dist/runtime-browser/graph-controls.js",
+      "default": "./dist/runtime-browser/graph-controls.js"
+    },
+    "./runtime-browser/graph-nodes.js": {
+      "types": "./dist/runtime-browser/graph-nodes.d.ts",
+      "import": "./dist/runtime-browser/graph-nodes.js",
+      "default": "./dist/runtime-browser/graph-nodes.js"
+    },
+    "./runtime-browser/graph-nodes": {
+      "types": "./dist/runtime-browser/graph-nodes.d.ts",
+      "import": "./dist/runtime-browser/graph-nodes.js",
+      "default": "./dist/runtime-browser/graph-nodes.js"
+    },
+    "./runtime-browser/index.js": {
+      "types": "./dist/runtime-browser/index.d.ts",
+      "import": "./dist/runtime-browser/index.js",
+      "default": "./dist/runtime-browser/index.js"
+    },
+    "./runtime-browser/index": {
+      "types": "./dist/runtime-browser/index.d.ts",
+      "import": "./dist/runtime-browser/index.js",
+      "default": "./dist/runtime-browser/index.js"
+    },
+    "./runtime-browser/invocation-tracker.js": {
+      "types": "./dist/runtime-browser/invocation-tracker.d.ts",
+      "import": "./dist/runtime-browser/invocation-tracker.js",
+      "default": "./dist/runtime-browser/invocation-tracker.js"
+    },
+    "./runtime-browser/invocation-tracker": {
+      "types": "./dist/runtime-browser/invocation-tracker.d.ts",
+      "import": "./dist/runtime-browser/invocation-tracker.js",
+      "default": "./dist/runtime-browser/invocation-tracker.js"
+    },
+    "./runtime-browser/list-advanced.js": {
+      "types": "./dist/runtime-browser/list-advanced.d.ts",
+      "import": "./dist/runtime-browser/list-advanced.js",
+      "default": "./dist/runtime-browser/list-advanced.js"
+    },
+    "./runtime-browser/list-advanced": {
+      "types": "./dist/runtime-browser/list-advanced.d.ts",
+      "import": "./dist/runtime-browser/list-advanced.js",
+      "default": "./dist/runtime-browser/list-advanced.js"
+    },
+    "./runtime-browser/list-joins.js": {
+      "types": "./dist/runtime-browser/list-joins.d.ts",
+      "import": "./dist/runtime-browser/list-joins.js",
+      "default": "./dist/runtime-browser/list-joins.js"
+    },
+    "./runtime-browser/list-joins": {
+      "types": "./dist/runtime-browser/list-joins.d.ts",
+      "import": "./dist/runtime-browser/list-joins.js",
+      "default": "./dist/runtime-browser/list-joins.js"
+    },
+    "./runtime-browser/list-selection.js": {
+      "types": "./dist/runtime-browser/list-selection.d.ts",
+      "import": "./dist/runtime-browser/list-selection.js",
+      "default": "./dist/runtime-browser/list-selection.js"
+    },
+    "./runtime-browser/list-selection": {
+      "types": "./dist/runtime-browser/list-selection.d.ts",
+      "import": "./dist/runtime-browser/list-selection.js",
+      "default": "./dist/runtime-browser/list-selection.js"
+    },
+    "./runtime-browser/list-selectors.js": {
+      "types": "./dist/runtime-browser/list-selectors.d.ts",
+      "import": "./dist/runtime-browser/list-selectors.js",
+      "default": "./dist/runtime-browser/list-selectors.js"
+    },
+    "./runtime-browser/list-selectors": {
+      "types": "./dist/runtime-browser/list-selectors.d.ts",
+      "import": "./dist/runtime-browser/list-selectors.js",
+      "default": "./dist/runtime-browser/list-selectors.js"
+    },
+    "./runtime-browser/local.js": {
+      "types": "./dist/runtime-browser/local.d.ts",
+      "import": "./dist/runtime-browser/local.js",
+      "default": "./dist/runtime-browser/local.js"
+    },
+    "./runtime-browser/local": {
+      "types": "./dist/runtime-browser/local.d.ts",
+      "import": "./dist/runtime-browser/local.js",
+      "default": "./dist/runtime-browser/local.js"
+    },
+    "./runtime-browser/node-failure.js": {
+      "types": "./dist/runtime-browser/node-failure.d.ts",
+      "import": "./dist/runtime-browser/node-failure.js",
+      "default": "./dist/runtime-browser/node-failure.js"
+    },
+    "./runtime-browser/node-failure": {
+      "types": "./dist/runtime-browser/node-failure.d.ts",
+      "import": "./dist/runtime-browser/node-failure.js",
+      "default": "./dist/runtime-browser/node-failure.js"
+    },
+    "./runtime-browser/orchestrator.js": {
+      "types": "./dist/runtime-browser/orchestrator.d.ts",
+      "import": "./dist/runtime-browser/orchestrator.js",
+      "default": "./dist/runtime-browser/orchestrator.js"
+    },
+    "./runtime-browser/orchestrator": {
+      "types": "./dist/runtime-browser/orchestrator.d.ts",
+      "import": "./dist/runtime-browser/orchestrator.js",
+      "default": "./dist/runtime-browser/orchestrator.js"
+    },
+    "./runtime-browser/parallel-map.js": {
+      "types": "./dist/runtime-browser/parallel-map.d.ts",
+      "import": "./dist/runtime-browser/parallel-map.js",
+      "default": "./dist/runtime-browser/parallel-map.js"
+    },
+    "./runtime-browser/parallel-map": {
+      "types": "./dist/runtime-browser/parallel-map.d.ts",
+      "import": "./dist/runtime-browser/parallel-map.js",
+      "default": "./dist/runtime-browser/parallel-map.js"
+    },
+    "./runtime-browser/scalar-codecs.js": {
+      "types": "./dist/runtime-browser/scalar-codecs.d.ts",
+      "import": "./dist/runtime-browser/scalar-codecs.js",
+      "default": "./dist/runtime-browser/scalar-codecs.js"
+    },
+    "./runtime-browser/scalar-codecs": {
+      "types": "./dist/runtime-browser/scalar-codecs.d.ts",
+      "import": "./dist/runtime-browser/scalar-codecs.js",
+      "default": "./dist/runtime-browser/scalar-codecs.js"
+    },
+    "./runtime-browser/segments.js": {
+      "types": "./dist/runtime-browser/segments.d.ts",
+      "import": "./dist/runtime-browser/segments.js",
+      "default": "./dist/runtime-browser/segments.js"
+    },
+    "./runtime-browser/segments": {
+      "types": "./dist/runtime-browser/segments.d.ts",
+      "import": "./dist/runtime-browser/segments.js",
+      "default": "./dist/runtime-browser/segments.js"
+    },
+    "./runtime-browser/trace.js": {
+      "types": "./dist/runtime-browser/trace.d.ts",
+      "import": "./dist/runtime-browser/trace.js",
+      "default": "./dist/runtime-browser/trace.js"
+    },
+    "./runtime-browser/trace": {
+      "types": "./dist/runtime-browser/trace.d.ts",
+      "import": "./dist/runtime-browser/trace.js",
+      "default": "./dist/runtime-browser/trace.js"
+    },
+    "./runtime-browser/value-codecs.js": {
+      "types": "./dist/runtime-browser/value-codecs.d.ts",
+      "import": "./dist/runtime-browser/value-codecs.js",
+      "default": "./dist/runtime-browser/value-codecs.js"
+    },
+    "./runtime-browser/value-codecs": {
+      "types": "./dist/runtime-browser/value-codecs.d.ts",
+      "import": "./dist/runtime-browser/value-codecs.js",
+      "default": "./dist/runtime-browser/value-codecs.js"
+    },
+    "./runtime-browser/value-nodes.js": {
+      "types": "./dist/runtime-browser/value-nodes.d.ts",
+      "import": "./dist/runtime-browser/value-nodes.js",
+      "default": "./dist/runtime-browser/value-nodes.js"
+    },
+    "./runtime-browser/value-nodes": {
+      "types": "./dist/runtime-browser/value-nodes.d.ts",
+      "import": "./dist/runtime-browser/value-nodes.js",
+      "default": "./dist/runtime-browser/value-nodes.js"
+    },
+    "./runtime-browser/workspace.js": {
+      "types": "./dist/runtime-browser/workspace.d.ts",
+      "import": "./dist/runtime-browser/workspace.js",
+      "default": "./dist/runtime-browser/workspace.js"
+    },
+    "./runtime-browser/workspace": {
+      "types": "./dist/runtime-browser/workspace.d.ts",
+      "import": "./dist/runtime-browser/workspace.js",
+      "default": "./dist/runtime-browser/workspace.js"
+    },
+    "./ui/active-nodes.js": {
+      "types": "./dist/ui/active-nodes.d.ts",
+      "import": "./dist/ui/active-nodes.js",
+      "default": "./dist/ui/active-nodes.js"
+    },
+    "./ui/active-nodes": {
+      "types": "./dist/ui/active-nodes.d.ts",
+      "import": "./dist/ui/active-nodes.js",
+      "default": "./dist/ui/active-nodes.js"
+    },
+    "./ui/input-fields.js": {
+      "types": "./dist/ui/input-fields.d.ts",
+      "import": "./dist/ui/input-fields.js",
+      "default": "./dist/ui/input-fields.js"
+    },
+    "./ui/input-fields": {
+      "types": "./dist/ui/input-fields.d.ts",
+      "import": "./dist/ui/input-fields.js",
+      "default": "./dist/ui/input-fields.js"
+    },
+    "./ui/interactions.js": {
+      "types": "./dist/ui/interactions.d.ts",
+      "import": "./dist/ui/interactions.js",
+      "default": "./dist/ui/interactions.js"
+    },
+    "./ui/interactions": {
+      "types": "./dist/ui/interactions.d.ts",
+      "import": "./dist/ui/interactions.js",
+      "default": "./dist/ui/interactions.js"
+    },
+    "./ui/page-contract.js": {
+      "types": "./dist/ui/page-contract.d.ts",
+      "import": "./dist/ui/page-contract.js",
+      "default": "./dist/ui/page-contract.js"
+    },
+    "./ui/page-contract": {
+      "types": "./dist/ui/page-contract.d.ts",
+      "import": "./dist/ui/page-contract.js",
+      "default": "./dist/ui/page-contract.js"
+    },
+    "./ui/presentation.js": {
+      "types": "./dist/ui/presentation.d.ts",
+      "import": "./dist/ui/presentation.js",
+      "default": "./dist/ui/presentation.js"
+    },
+    "./ui/presentation": {
+      "types": "./dist/ui/presentation.d.ts",
+      "import": "./dist/ui/presentation.js",
+      "default": "./dist/ui/presentation.js"
+    },
+    "./ui/step-values.js": {
+      "types": "./dist/ui/step-values.d.ts",
+      "import": "./dist/ui/step-values.js",
+      "default": "./dist/ui/step-values.js"
+    },
+    "./ui/step-values": {
+      "types": "./dist/ui/step-values.d.ts",
+      "import": "./dist/ui/step-values.js",
+      "default": "./dist/ui/step-values.js"
+    },
+    "./ui/table-model.js": {
+      "types": "./dist/ui/table-model.d.ts",
+      "import": "./dist/ui/table-model.js",
+      "default": "./dist/ui/table-model.js"
+    },
+    "./ui/table-model": {
+      "types": "./dist/ui/table-model.d.ts",
+      "import": "./dist/ui/table-model.js",
+      "default": "./dist/ui/table-model.js"
+    },
+    "./ui/template-preview.js": {
+      "types": "./dist/ui/template-preview.d.ts",
+      "import": "./dist/ui/template-preview.js",
+      "default": "./dist/ui/template-preview.js"
+    },
+    "./ui/template-preview": {
+      "types": "./dist/ui/template-preview.d.ts",
+      "import": "./dist/ui/template-preview.js",
+      "default": "./dist/ui/template-preview.js"
+    }
+  },
+  "dependencies": {
+    "@adam-flow/core": "0.1.0-local.1791959572118"
+  },
+  "peerDependencies": {
+    "svelte": "^4.2.0"
+  }
+}

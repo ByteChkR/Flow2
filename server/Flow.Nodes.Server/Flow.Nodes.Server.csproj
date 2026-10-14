@@ -1,0 +1,10 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+  <ItemGroup><ProjectReference Include="../../Adam.Flow2/Adam.Flow2.csproj" /></ItemGroup>
+  <ItemGroup><EmbeddedResource Include="Metadata/*.json" WithCulture="false" LogicalName="Metadata.%(Filename)%(Extension)" /></ItemGroup>
+  <ItemGroup><EmbeddedResource Include="../../contracts/examples/v1/codecs.json" WithCulture="false" LogicalName="Demo.codecs.json" /></ItemGroup>
+</Project>

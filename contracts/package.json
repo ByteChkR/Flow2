@@ -1,0 +1,15 @@
+{
+  "name": "@adam-flow/contracts",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    "./type": "./schemas/v1/type.schema.json",
+    "./types": "./schemas/v1/types.schema.json",
+    "./catalog": "./schemas/v1/catalog.schema.json",
+    "./flow": "./schemas/v1/flow.schema.json",
+    "./examples/*": "./examples/v1/*.json",
+    "./codecs": "./schemas/v1/codecs.schema.json",
+    "./envelope": "./schemas/v1/envelope.schema.json"
+  }
+}

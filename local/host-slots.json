@@ -1,0 +1,11 @@
+{
+  "ThemeControls": "src/lib/components/header/ThemeControls.svelte",
+  "Svg": "src/lib/components/Svg.svelte",
+  "Chevron": "src/lib/components/flowbite/utils/Chevron.svelte",
+  "PageConfigDialog": "src/lib/flow2/editor/page-config/PageConfigDialog.svelte",
+  "RecentEntities": "src/lib/editor/entities/RecentEntities.svelte",
+  "LoadingAnimation": "src/lib/components/loading/LoadingAnimation.svelte",
+  "HtmlEditorDialog": "src/lib/flow2/editor/HtmlEditorDialog.svelte",
+  "LoadingLogo": "src/lib/components/loading/LoadingLogo.svelte",
+  "InteractionContent": "src/lib/flow2/ui/InteractionContent.svelte"
+}

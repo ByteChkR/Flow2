@@ -1,0 +1,675 @@
+[
+  {
+    "type": "Standard.Text.Length",
+    "inputs": {
+      "value": ""
+    },
+    "expected": {
+      "value": 0
+    }
+  },
+  {
+    "type": "Standard.Text.Length",
+    "inputs": {
+      "value": "Hello"
+    },
+    "expected": {
+      "value": 5
+    }
+  },
+  {
+    "type": "Standard.Text.Length",
+    "inputs": {
+      "value": "A\ud83d\ude00B"
+    },
+    "expected": {
+      "value": 3
+    }
+  },
+  {
+    "type": "Standard.Text.Length",
+    "inputs": {
+      "value": "e\u0301"
+    },
+    "expected": {
+      "value": 2
+    }
+  },
+  {
+    "type": "Standard.Text.Length",
+    "inputs": {
+      "value": "\ud801\udc00"
+    },
+    "expected": {
+      "value": 1
+    }
+  },
+  {
+    "type": "Standard.Text.Substring",
+    "inputs": {
+      "value": "A\ud83d\ude00B",
+      "index": 0,
+      "length": 0
+    },
+    "expected": {
+      "value": ""
+    }
+  },
+  {
+    "type": "Standard.Text.Substring",
+    "inputs": {
+      "value": "A\ud83d\ude00B",
+      "index": 1,
+      "length": 1
+    },
+    "expected": {
+      "value": "\ud83d\ude00"
+    }
+  },
+  {
+    "type": "Standard.Text.Substring",
+    "inputs": {
+      "value": "A\ud83d\ude00B",
+      "index": 1,
+      "length": 2
+    },
+    "expected": {
+      "value": "\ud83d\ude00B"
+    }
+  },
+  {
+    "type": "Standard.Text.Substring",
+    "inputs": {
+      "value": "A\ud83d\ude00B",
+      "index": 3,
+      "length": 0
+    },
+    "expected": {
+      "value": ""
+    }
+  },
+  {
+    "type": "Standard.Text.Substring",
+    "inputs": {
+      "value": "A\ud83d\ude00B",
+      "index": -1,
+      "length": 1
+    },
+    "error": "out of bounds"
+  },
+  {
+    "type": "Standard.Text.Substring",
+    "inputs": {
+      "value": "A\ud83d\ude00B",
+      "index": 0,
+      "length": -1
+    },
+    "error": "out of bounds"
+  },
+  {
+    "type": "Standard.Text.Substring",
+    "inputs": {
+      "value": "A\ud83d\ude00B",
+      "index": 3,
+      "length": 1
+    },
+    "error": "out of bounds"
+  },
+  {
+    "type": "Standard.Text.Substring",
+    "inputs": {
+      "value": "A\ud83d\ude00B",
+      "index": 4,
+      "length": 0
+    },
+    "error": "out of bounds"
+  },
+  {
+    "type": "Standard.Text.Substring",
+    "inputs": {
+      "value": "A\ud83d\ude00B",
+      "index": 1,
+      "length": 2147483647
+    },
+    "error": "out of bounds"
+  },
+  {
+    "type": "Standard.Text.IndexOf",
+    "inputs": {
+      "value": "A\ud83d\ude00B\ud83d\ude00",
+      "search": "\ud83d\ude00",
+      "start": 0
+    },
+    "expected": {
+      "value": 1
+    }
+  },
+  {
+    "type": "Standard.Text.IndexOf",
+    "inputs": {
+      "value": "A\ud83d\ude00B\ud83d\ude00",
+      "search": "\ud83d\ude00",
+      "start": 2
+    },
+    "expected": {
+      "value": 3
+    }
+  },
+  {
+    "type": "Standard.Text.IndexOf",
+    "inputs": {
+      "value": "aAa",
+      "search": "A",
+      "start": 0
+    },
+    "expected": {
+      "value": 1
+    }
+  },
+  {
+    "type": "Standard.Text.IndexOf",
+    "inputs": {
+      "value": "abc",
+      "search": "x",
+      "start": 0
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "type": "Standard.Text.IndexOf",
+    "inputs": {
+      "value": "A\ud83d\ude00",
+      "search": "",
+      "start": 2
+    },
+    "expected": {
+      "value": 2
+    }
+  },
+  {
+    "type": "Standard.Text.IndexOf",
+    "inputs": {
+      "value": "e\u0301",
+      "search": "\u00e9",
+      "start": 0
+    },
+    "expected": {
+      "value": -1
+    }
+  },
+  {
+    "type": "Standard.Text.IndexOf",
+    "inputs": {
+      "value": "abc",
+      "search": "a"
+    },
+    "expected": {
+      "value": 0
+    }
+  },
+  {
+    "type": "Standard.Text.IndexOf",
+    "inputs": {
+      "value": "abc",
+      "search": "a",
+      "start": 4
+    },
+    "error": "out of bounds"
+  },
+  {
+    "type": "Standard.Text.IsNullOrWhiteSpace",
+    "inputs": {
+      "value": ""
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "type": "Standard.Text.IsNullOrWhiteSpace",
+    "inputs": {
+      "value": null
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "type": "Standard.Text.IsNullOrWhiteSpace",
+    "inputs": {
+      "value": " \t\r\n\ufeff\u2000"
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "type": "Standard.Text.IsNullOrWhiteSpace",
+    "inputs": {
+      "value": "\u0085"
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "type": "Standard.Text.IsNullOrWhiteSpace",
+    "inputs": {
+      "value": "\u200b"
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "type": "Standard.Text.IsNullOrWhiteSpace",
+    "inputs": {
+      "value": "a"
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "type": "Standard.Text.IsEmpty",
+    "inputs": {
+      "value": ""
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "type": "Standard.Text.IsEmpty",
+    "inputs": {
+      "value": "a"
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "type": "Standard.Text.IsEmpty",
+    "inputs": {
+      "value": " "
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "type": "Standard.Text.Split",
+    "inputs": {
+      "value": ",a,,b,",
+      "separator": ",",
+      "removeEmpty": false
+    },
+    "expected": {
+      "value": [
+        "",
+        "a",
+        "",
+        "b",
+        ""
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Split",
+    "inputs": {
+      "value": ",a,,b,",
+      "separator": ",",
+      "removeEmpty": true
+    },
+    "expected": {
+      "value": [
+        "a",
+        "b"
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Split",
+    "inputs": {
+      "value": "",
+      "separator": ","
+    },
+    "expected": {
+      "value": [
+        ""
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Split",
+    "inputs": {
+      "value": "a\ud83d\ude00b\ud83d\ude00",
+      "separator": "\ud83d\ude00"
+    },
+    "expected": {
+      "value": [
+        "a",
+        "b",
+        ""
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Split",
+    "inputs": {
+      "value": "abc",
+      "separator": ""
+    },
+    "error": "Must not be empty"
+  },
+  {
+    "type": "Standard.Text.ToUpper",
+    "inputs": {
+      "value": "Stra\u00dfe \ufb03 \ud801\udc28"
+    },
+    "expected": {
+      "value": "STRASSE FFI \ud801\udc00"
+    }
+  },
+  {
+    "type": "Standard.Text.ToLower",
+    "inputs": {
+      "value": "\u0130 \u03a3\u039f\u03a3 \ud801\udc00"
+    },
+    "expected": {
+      "value": "i\u0307 \u03c3\u03bf\u03c3 \ud801\udc28"
+    }
+  },
+  {
+    "type": "Standard.Convert.Bool.TryParse",
+    "inputs": {
+      "value": "true"
+    },
+    "expected": {
+      "found": true,
+      "value": true
+    }
+  },
+  {
+    "type": "Standard.Convert.Bool.TryParse",
+    "inputs": {
+      "value": "false"
+    },
+    "expected": {
+      "found": true,
+      "value": false
+    }
+  },
+  {
+    "type": "Standard.Convert.Bool.TryParse",
+    "inputs": {
+      "value": "TRUE"
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.Convert.Bool.TryParse",
+    "inputs": {
+      "value": ""
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.Convert.Bool.TryParse",
+    "inputs": {
+      "value": " true"
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.Convert.Integer.TryParse",
+    "inputs": {
+      "value": "+001"
+    },
+    "expected": {
+      "found": true,
+      "value": 1
+    }
+  },
+  {
+    "type": "Standard.Convert.Integer.TryParse",
+    "inputs": {
+      "value": "-2147483648"
+    },
+    "expected": {
+      "found": true,
+      "value": -2147483648
+    }
+  },
+  {
+    "type": "Standard.Convert.Integer.TryParse",
+    "inputs": {
+      "value": "-0"
+    },
+    "expected": {
+      "found": true,
+      "value": 0
+    }
+  },
+  {
+    "type": "Standard.Convert.Integer.TryParse",
+    "inputs": {
+      "value": "2147483648"
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.Convert.Integer.TryParse",
+    "inputs": {
+      "value": " 1"
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.Convert.Integer.TryParse",
+    "inputs": {
+      "value": "1.0"
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.Convert.Integer.TryParse",
+    "inputs": {
+      "value": "1e2"
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.Convert.Integer.TryParse",
+    "inputs": {
+      "value": ""
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.Convert.Decimal.TryParse",
+    "inputs": {
+      "value": "1.2300"
+    },
+    "expected": {
+      "found": true,
+      "value": "1.23"
+    }
+  },
+  {
+    "type": "Standard.Convert.Decimal.TryParse",
+    "inputs": {
+      "value": "-0"
+    },
+    "expected": {
+      "found": true,
+      "value": "0"
+    }
+  },
+  {
+    "type": "Standard.Convert.Decimal.TryParse",
+    "inputs": {
+      "value": ""
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.Convert.Decimal.TryParse",
+    "inputs": {
+      "value": "1,2"
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.Convert.Decimal.TryParse",
+    "inputs": {
+      "value": "1e3"
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.Convert.Decimal.TryParse",
+    "inputs": {
+      "value": "79228162514264337593543950336"
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.Convert.Guid.TryParse",
+    "inputs": {
+      "value": "ABCDEFAB-1234-5678-90AB-ABCDEFABCDEF"
+    },
+    "expected": {
+      "found": true,
+      "value": "abcdefab-1234-5678-90ab-abcdefabcdef"
+    }
+  },
+  {
+    "type": "Standard.Convert.Guid.TryParse",
+    "inputs": {
+      "value": ""
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.Convert.Guid.TryParse",
+    "inputs": {
+      "value": "not-a-guid"
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.Convert.DateTimeOffset.TryParse",
+    "inputs": {
+      "value": "2026-10-13T12:00:00+02:00"
+    },
+    "expected": {
+      "found": true,
+      "value": "2026-10-13T12:00:00.0000000+02:00"
+    }
+  },
+  {
+    "type": "Standard.Convert.DateTimeOffset.TryParse",
+    "inputs": {
+      "value": "2026-02-30T00:00:00Z"
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.Convert.DateTimeOffset.TryParse",
+    "inputs": {
+      "value": ""
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.Convert.DateTimeOffset.TryParse",
+    "inputs": {
+      "value": "yesterday"
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.Convert.TimeSpan.TryParse",
+    "inputs": {
+      "value": "123"
+    },
+    "expected": {
+      "found": true,
+      "value": "123"
+    }
+  },
+  {
+    "type": "Standard.Convert.TimeSpan.TryParse",
+    "inputs": {
+      "value": "-9223372036854775808"
+    },
+    "expected": {
+      "found": true,
+      "value": "-9223372036854775808"
+    }
+  },
+  {
+    "type": "Standard.Convert.TimeSpan.TryParse",
+    "inputs": {
+      "value": ""
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.Convert.TimeSpan.TryParse",
+    "inputs": {
+      "value": "1.5"
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "type": "Standard.Convert.TimeSpan.TryParse",
+    "inputs": {
+      "value": "9223372036854775808"
+    },
+    "expected": {
+      "found": false
+    }
+  }
+]

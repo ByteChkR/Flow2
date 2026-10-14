@@ -1,0 +1,3101 @@
+[
+  {
+    "name": "interactive-valid",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "contact-demo",
+      "version": 1,
+      "mode": "interactive",
+      "nodes": [
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {
+            "initialValue": "contact-1",
+            "label": "Kontakt wählen 👋",
+            "nullable": null,
+            "flags": [
+              true,
+              false
+            ]
+          }
+        },
+        {
+          "id": "get",
+          "type": "crm.contact.get",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "inspect",
+          "type": "crm.contact.inspect",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "project",
+          "type": "crm.contact.toDto",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "display",
+          "type": "ui.displayContact",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "input",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "get",
+            "port": "id"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "get",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "inspect",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "inspect",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "project",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "project",
+            "port": "dto"
+          },
+          "target": {
+            "nodeId": "display",
+            "port": "value"
+          }
+        }
+      ],
+      "entryNodeId": "input"
+    },
+    "codes": []
+  },
+  {
+    "name": "backend-valid",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "backend-contact",
+      "version": 1,
+      "mode": "backend",
+      "nodes": [
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {
+            "initialValue": "contact-1",
+            "label": "Kontakt wählen 👋",
+            "nullable": null,
+            "flags": [
+              true,
+              false
+            ]
+          }
+        },
+        {
+          "id": "get",
+          "type": "crm.contact.get",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "inspect",
+          "type": "crm.contact.inspect",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "project",
+          "type": "crm.contact.toDto",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "input",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "get",
+            "port": "id"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "get",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "inspect",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "inspect",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "project",
+            "port": "contact"
+          }
+        }
+      ],
+      "entryNodeId": "input"
+    },
+    "codes": []
+  },
+  {
+    "name": "entry-omitted",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "contact-demo",
+      "version": 1,
+      "mode": "interactive",
+      "nodes": [
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {
+            "initialValue": "contact-1",
+            "label": "Kontakt wählen 👋",
+            "nullable": null,
+            "flags": [
+              true,
+              false
+            ]
+          }
+        },
+        {
+          "id": "get",
+          "type": "crm.contact.get",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "inspect",
+          "type": "crm.contact.inspect",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "project",
+          "type": "crm.contact.toDto",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "display",
+          "type": "ui.displayContact",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "input",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "get",
+            "port": "id"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "get",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "inspect",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "inspect",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "project",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "project",
+            "port": "dto"
+          },
+          "target": {
+            "nodeId": "display",
+            "port": "value"
+          }
+        }
+      ]
+    },
+    "codes": []
+  },
+  {
+    "name": "wrong-version",
+    "flow": {
+      "schemaVersion": 2,
+      "id": "contact-demo",
+      "version": 1,
+      "mode": "interactive",
+      "nodes": [
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {
+            "initialValue": "contact-1",
+            "label": "Kontakt wählen 👋",
+            "nullable": null,
+            "flags": [
+              true,
+              false
+            ]
+          }
+        },
+        {
+          "id": "get",
+          "type": "crm.contact.get",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "inspect",
+          "type": "crm.contact.inspect",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "project",
+          "type": "crm.contact.toDto",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "display",
+          "type": "ui.displayContact",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "input",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "get",
+            "port": "id"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "get",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "inspect",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "inspect",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "project",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "project",
+            "port": "dto"
+          },
+          "target": {
+            "nodeId": "display",
+            "port": "value"
+          }
+        }
+      ],
+      "entryNodeId": "input"
+    },
+    "codes": [
+      "schema"
+    ]
+  },
+  {
+    "name": "unknown-property",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "contact-demo",
+      "version": 1,
+      "mode": "interactive",
+      "nodes": [
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {
+            "initialValue": "contact-1",
+            "label": "Kontakt wählen 👋",
+            "nullable": null,
+            "flags": [
+              true,
+              false
+            ]
+          }
+        },
+        {
+          "id": "get",
+          "type": "crm.contact.get",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "inspect",
+          "type": "crm.contact.inspect",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "project",
+          "type": "crm.contact.toDto",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "display",
+          "type": "ui.displayContact",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "input",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "get",
+            "port": "id"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "get",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "inspect",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "inspect",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "project",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "project",
+            "port": "dto"
+          },
+          "target": {
+            "nodeId": "display",
+            "port": "value"
+          }
+        }
+      ],
+      "entryNodeId": "input",
+      "script": "throw new Error()"
+    },
+    "codes": [
+      "schema"
+    ]
+  },
+  {
+    "name": "missing-config",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "contact-demo",
+      "version": 1,
+      "mode": "interactive",
+      "nodes": [
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "browser"
+        },
+        {
+          "id": "get",
+          "type": "crm.contact.get",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "inspect",
+          "type": "crm.contact.inspect",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "project",
+          "type": "crm.contact.toDto",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "display",
+          "type": "ui.displayContact",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "input",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "get",
+            "port": "id"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "get",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "inspect",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "inspect",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "project",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "project",
+            "port": "dto"
+          },
+          "target": {
+            "nodeId": "display",
+            "port": "value"
+          }
+        }
+      ],
+      "entryNodeId": "input"
+    },
+    "codes": [
+      "schema"
+    ]
+  },
+  {
+    "name": "config-not-object",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "contact-demo",
+      "version": 1,
+      "mode": "interactive",
+      "nodes": [
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": "code"
+        },
+        {
+          "id": "get",
+          "type": "crm.contact.get",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "inspect",
+          "type": "crm.contact.inspect",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "project",
+          "type": "crm.contact.toDto",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "display",
+          "type": "ui.displayContact",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "input",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "get",
+            "port": "id"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "get",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "inspect",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "inspect",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "project",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "project",
+            "port": "dto"
+          },
+          "target": {
+            "nodeId": "display",
+            "port": "value"
+          }
+        }
+      ],
+      "entryNodeId": "input"
+    },
+    "codes": [
+      "schema"
+    ]
+  },
+  {
+    "name": "version-zero",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "contact-demo",
+      "version": 0,
+      "mode": "interactive",
+      "nodes": [
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {
+            "initialValue": "contact-1",
+            "label": "Kontakt wählen 👋",
+            "nullable": null,
+            "flags": [
+              true,
+              false
+            ]
+          }
+        },
+        {
+          "id": "get",
+          "type": "crm.contact.get",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "inspect",
+          "type": "crm.contact.inspect",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "project",
+          "type": "crm.contact.toDto",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "display",
+          "type": "ui.displayContact",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "input",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "get",
+            "port": "id"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "get",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "inspect",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "inspect",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "project",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "project",
+            "port": "dto"
+          },
+          "target": {
+            "nodeId": "display",
+            "port": "value"
+          }
+        }
+      ],
+      "entryNodeId": "input"
+    },
+    "codes": [
+      "schema"
+    ]
+  },
+  {
+    "name": "version-too-large",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "contact-demo",
+      "version": 2147483648,
+      "mode": "interactive",
+      "nodes": [
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {
+            "initialValue": "contact-1",
+            "label": "Kontakt wählen 👋",
+            "nullable": null,
+            "flags": [
+              true,
+              false
+            ]
+          }
+        },
+        {
+          "id": "get",
+          "type": "crm.contact.get",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "inspect",
+          "type": "crm.contact.inspect",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "project",
+          "type": "crm.contact.toDto",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "display",
+          "type": "ui.displayContact",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "input",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "get",
+            "port": "id"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "get",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "inspect",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "inspect",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "project",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "project",
+            "port": "dto"
+          },
+          "target": {
+            "nodeId": "display",
+            "port": "value"
+          }
+        }
+      ],
+      "entryNodeId": "input"
+    },
+    "codes": [
+      "schema"
+    ]
+  },
+  {
+    "name": "unknown-node-type",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "contact-demo",
+      "version": 1,
+      "mode": "interactive",
+      "nodes": [
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {
+            "initialValue": "contact-1",
+            "label": "Kontakt wählen 👋",
+            "nullable": null,
+            "flags": [
+              true,
+              false
+            ]
+          }
+        },
+        {
+          "id": "get",
+          "type": "missing",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "inspect",
+          "type": "crm.contact.inspect",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "project",
+          "type": "crm.contact.toDto",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "display",
+          "type": "ui.displayContact",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "input",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "get",
+            "port": "id"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "get",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "inspect",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "inspect",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "project",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "project",
+            "port": "dto"
+          },
+          "target": {
+            "nodeId": "display",
+            "port": "value"
+          }
+        }
+      ],
+      "entryNodeId": "input"
+    },
+    "codes": [
+      "unknown_node_type",
+      "missing_input"
+    ]
+  },
+  {
+    "name": "unknown-node-version",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "contact-demo",
+      "version": 1,
+      "mode": "interactive",
+      "nodes": [
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {
+            "initialValue": "contact-1",
+            "label": "Kontakt wählen 👋",
+            "nullable": null,
+            "flags": [
+              true,
+              false
+            ]
+          }
+        },
+        {
+          "id": "get",
+          "type": "crm.contact.get",
+          "typeVersion": 2,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "inspect",
+          "type": "crm.contact.inspect",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "project",
+          "type": "crm.contact.toDto",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "display",
+          "type": "ui.displayContact",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "input",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "get",
+            "port": "id"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "get",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "inspect",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "inspect",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "project",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "project",
+            "port": "dto"
+          },
+          "target": {
+            "nodeId": "display",
+            "port": "value"
+          }
+        }
+      ],
+      "entryNodeId": "input"
+    },
+    "codes": [
+      "unknown_node_type",
+      "missing_input"
+    ]
+  },
+  {
+    "name": "duplicate-node",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "contact-demo",
+      "version": 1,
+      "mode": "interactive",
+      "nodes": [
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {
+            "initialValue": "contact-1",
+            "label": "Kontakt wählen 👋",
+            "nullable": null,
+            "flags": [
+              true,
+              false
+            ]
+          }
+        },
+        {
+          "id": "get",
+          "type": "crm.contact.get",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "inspect",
+          "type": "crm.contact.inspect",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "project",
+          "type": "crm.contact.toDto",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "display",
+          "type": "ui.displayContact",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {}
+        },
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {
+            "initialValue": "contact-1",
+            "label": "Kontakt wählen 👋",
+            "nullable": null,
+            "flags": [
+              true,
+              false
+            ]
+          }
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "input",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "get",
+            "port": "id"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "get",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "inspect",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "inspect",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "project",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "project",
+            "port": "dto"
+          },
+          "target": {
+            "nodeId": "display",
+            "port": "value"
+          }
+        }
+      ],
+      "entryNodeId": "input"
+    },
+    "codes": [
+      "duplicate_node"
+    ]
+  },
+  {
+    "name": "unknown-port",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "contact-demo",
+      "version": 1,
+      "mode": "interactive",
+      "nodes": [
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {
+            "initialValue": "contact-1",
+            "label": "Kontakt wählen 👋",
+            "nullable": null,
+            "flags": [
+              true,
+              false
+            ]
+          }
+        },
+        {
+          "id": "get",
+          "type": "crm.contact.get",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "inspect",
+          "type": "crm.contact.inspect",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "project",
+          "type": "crm.contact.toDto",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "display",
+          "type": "ui.displayContact",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "input",
+            "port": "missing"
+          },
+          "target": {
+            "nodeId": "get",
+            "port": "id"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "get",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "inspect",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "inspect",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "project",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "project",
+            "port": "dto"
+          },
+          "target": {
+            "nodeId": "display",
+            "port": "value"
+          }
+        }
+      ],
+      "entryNodeId": "input"
+    },
+    "codes": [
+      "unknown_port",
+      "missing_input"
+    ]
+  },
+  {
+    "name": "unknown-node",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "contact-demo",
+      "version": 1,
+      "mode": "interactive",
+      "nodes": [
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {
+            "initialValue": "contact-1",
+            "label": "Kontakt wählen 👋",
+            "nullable": null,
+            "flags": [
+              true,
+              false
+            ]
+          }
+        },
+        {
+          "id": "get",
+          "type": "crm.contact.get",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "inspect",
+          "type": "crm.contact.inspect",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "project",
+          "type": "crm.contact.toDto",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "display",
+          "type": "ui.displayContact",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "missing",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "get",
+            "port": "id"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "get",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "inspect",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "inspect",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "project",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "project",
+            "port": "dto"
+          },
+          "target": {
+            "nodeId": "display",
+            "port": "value"
+          }
+        }
+      ],
+      "entryNodeId": "input"
+    },
+    "codes": [
+      "unknown_node",
+      "missing_input"
+    ]
+  },
+  {
+    "name": "multiple-inputs",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "contact-demo",
+      "version": 1,
+      "mode": "interactive",
+      "nodes": [
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {
+            "initialValue": "contact-1",
+            "label": "Kontakt wählen 👋",
+            "nullable": null,
+            "flags": [
+              true,
+              false
+            ]
+          }
+        },
+        {
+          "id": "get",
+          "type": "crm.contact.get",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "inspect",
+          "type": "crm.contact.inspect",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "project",
+          "type": "crm.contact.toDto",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "display",
+          "type": "ui.displayContact",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "input",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "get",
+            "port": "id"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "get",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "inspect",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "inspect",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "project",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "project",
+            "port": "dto"
+          },
+          "target": {
+            "nodeId": "display",
+            "port": "value"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "input",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "get",
+            "port": "id"
+          }
+        }
+      ],
+      "entryNodeId": "input"
+    },
+    "codes": [
+      "multiple_inputs"
+    ]
+  },
+  {
+    "name": "missing-input",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "contact-demo",
+      "version": 1,
+      "mode": "interactive",
+      "nodes": [
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {
+            "initialValue": "contact-1",
+            "label": "Kontakt wählen 👋",
+            "nullable": null,
+            "flags": [
+              true,
+              false
+            ]
+          }
+        },
+        {
+          "id": "get",
+          "type": "crm.contact.get",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "inspect",
+          "type": "crm.contact.inspect",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "project",
+          "type": "crm.contact.toDto",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "display",
+          "type": "ui.displayContact",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "get",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "inspect",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "inspect",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "project",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "project",
+            "port": "dto"
+          },
+          "target": {
+            "nodeId": "display",
+            "port": "value"
+          }
+        }
+      ],
+      "entryNodeId": "input"
+    },
+    "codes": [
+      "missing_input"
+    ]
+  },
+  {
+    "name": "wrong-environment",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "contact-demo",
+      "version": 1,
+      "mode": "interactive",
+      "nodes": [
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {
+            "initialValue": "contact-1",
+            "label": "Kontakt wählen 👋",
+            "nullable": null,
+            "flags": [
+              true,
+              false
+            ]
+          }
+        },
+        {
+          "id": "get",
+          "type": "crm.contact.get",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {}
+        },
+        {
+          "id": "inspect",
+          "type": "crm.contact.inspect",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "project",
+          "type": "crm.contact.toDto",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "display",
+          "type": "ui.displayContact",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "input",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "get",
+            "port": "id"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "get",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "inspect",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "inspect",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "project",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "project",
+            "port": "dto"
+          },
+          "target": {
+            "nodeId": "display",
+            "port": "value"
+          }
+        }
+      ],
+      "entryNodeId": "input"
+    },
+    "codes": [
+      "environment"
+    ]
+  },
+  {
+    "name": "backend-browser",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "contact-demo",
+      "version": 1,
+      "mode": "backend",
+      "nodes": [
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {
+            "initialValue": "contact-1",
+            "label": "Kontakt wählen 👋",
+            "nullable": null,
+            "flags": [
+              true,
+              false
+            ]
+          }
+        },
+        {
+          "id": "get",
+          "type": "crm.contact.get",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "inspect",
+          "type": "crm.contact.inspect",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "project",
+          "type": "crm.contact.toDto",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "display",
+          "type": "ui.displayContact",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "input",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "get",
+            "port": "id"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "get",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "inspect",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "inspect",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "project",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "project",
+            "port": "dto"
+          },
+          "target": {
+            "nodeId": "display",
+            "port": "value"
+          }
+        }
+      ],
+      "entryNodeId": "input"
+    },
+    "codes": [
+      "mode"
+    ]
+  },
+  {
+    "name": "entry-missing",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "contact-demo",
+      "version": 1,
+      "mode": "interactive",
+      "nodes": [
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {
+            "initialValue": "contact-1",
+            "label": "Kontakt wählen 👋",
+            "nullable": null,
+            "flags": [
+              true,
+              false
+            ]
+          }
+        },
+        {
+          "id": "get",
+          "type": "crm.contact.get",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "inspect",
+          "type": "crm.contact.inspect",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "project",
+          "type": "crm.contact.toDto",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "display",
+          "type": "ui.displayContact",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "input",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "get",
+            "port": "id"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "get",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "inspect",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "inspect",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "project",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "project",
+            "port": "dto"
+          },
+          "target": {
+            "nodeId": "display",
+            "port": "value"
+          }
+        }
+      ],
+      "entryNodeId": "missing"
+    },
+    "codes": [
+      "entry"
+    ]
+  },
+  {
+    "name": "entry-not-root",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "contact-demo",
+      "version": 1,
+      "mode": "interactive",
+      "nodes": [
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {
+            "initialValue": "contact-1",
+            "label": "Kontakt wählen 👋",
+            "nullable": null,
+            "flags": [
+              true,
+              false
+            ]
+          }
+        },
+        {
+          "id": "get",
+          "type": "crm.contact.get",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "inspect",
+          "type": "crm.contact.inspect",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "project",
+          "type": "crm.contact.toDto",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "display",
+          "type": "ui.displayContact",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "input",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "get",
+            "port": "id"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "get",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "inspect",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "inspect",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "project",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "project",
+            "port": "dto"
+          },
+          "target": {
+            "nodeId": "display",
+            "port": "value"
+          }
+        }
+      ],
+      "entryNodeId": "get"
+    },
+    "codes": [
+      "entry"
+    ]
+  },
+  {
+    "name": "type-mismatch",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "contact-demo",
+      "version": 1,
+      "mode": "interactive",
+      "nodes": [
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {
+            "initialValue": "contact-1",
+            "label": "Kontakt wählen 👋",
+            "nullable": null,
+            "flags": [
+              true,
+              false
+            ]
+          }
+        },
+        {
+          "id": "get",
+          "type": "crm.contact.get",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "inspect",
+          "type": "crm.contact.inspect",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "project",
+          "type": "crm.contact.toDto",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "display",
+          "type": "ui.displayContact",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "input",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "get",
+            "port": "id"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "input",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "inspect",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "inspect",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "project",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "project",
+            "port": "dto"
+          },
+          "target": {
+            "nodeId": "display",
+            "port": "value"
+          }
+        }
+      ],
+      "entryNodeId": "input"
+    },
+    "codes": [
+      "type_mismatch"
+    ]
+  },
+  {
+    "name": "cycle",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "cycle",
+      "version": 1,
+      "mode": "backend",
+      "nodes": [
+        {
+          "id": "a",
+          "type": "test.echo",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "b",
+          "type": "test.echo",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "a",
+            "port": "value"
+          },
+          "target": {
+            "nodeId": "b",
+            "port": "value"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "b",
+            "port": "value"
+          },
+          "target": {
+            "nodeId": "a",
+            "port": "value"
+          }
+        }
+      ]
+    },
+    "codes": [
+      "cycle"
+    ]
+  },
+  {
+    "name": "self-cycle",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "cycle",
+      "version": 1,
+      "mode": "backend",
+      "nodes": [
+        {
+          "id": "a",
+          "type": "test.echo",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "a",
+            "port": "value"
+          },
+          "target": {
+            "nodeId": "a",
+            "port": "value"
+          }
+        }
+      ]
+    },
+    "codes": [
+      "cycle"
+    ]
+  },
+  {
+    "name": "optional-input-absent",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "optional",
+      "version": 1,
+      "mode": "backend",
+      "nodes": [
+        {
+          "id": "a",
+          "type": "test.optional",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        }
+      ],
+      "connections": []
+    },
+    "codes": []
+  },
+  {
+    "name": "duplicate-catalog-node",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "contact-demo",
+      "version": 1,
+      "mode": "interactive",
+      "nodes": [
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {
+            "initialValue": "contact-1",
+            "label": "Kontakt wählen 👋",
+            "nullable": null,
+            "flags": [
+              true,
+              false
+            ]
+          }
+        },
+        {
+          "id": "get",
+          "type": "crm.contact.get",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "inspect",
+          "type": "crm.contact.inspect",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "project",
+          "type": "crm.contact.toDto",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "display",
+          "type": "ui.displayContact",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "input",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "get",
+            "port": "id"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "get",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "inspect",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "inspect",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "project",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "project",
+            "port": "dto"
+          },
+          "target": {
+            "nodeId": "display",
+            "port": "value"
+          }
+        }
+      ],
+      "entryNodeId": "input"
+    },
+    "codes": [
+      "duplicate_node_type"
+    ],
+    "catalog": {
+      "schemaVersion": 1,
+      "nodes": [
+        {
+          "type": "input.contactId",
+          "version": 1,
+          "environments": [
+            "browser",
+            "server"
+          ],
+          "inputs": {},
+          "outputs": {
+            "id": {
+              "kind": "string"
+            }
+          }
+        },
+        {
+          "type": "crm.contact.get",
+          "version": 1,
+          "environments": [
+            "server"
+          ],
+          "inputs": {
+            "id": {
+              "kind": "string"
+            }
+          },
+          "outputs": {
+            "contact": {
+              "kind": "entity",
+              "name": "crm.Contact@1"
+            }
+          }
+        },
+        {
+          "type": "crm.contact.inspect",
+          "version": 1,
+          "environments": [
+            "server"
+          ],
+          "inputs": {
+            "contact": {
+              "kind": "entity",
+              "name": "crm.Contact@1"
+            }
+          },
+          "outputs": {
+            "contact": {
+              "kind": "entity",
+              "name": "crm.Contact@1"
+            }
+          }
+        },
+        {
+          "type": "crm.contact.toDto",
+          "version": 1,
+          "environments": [
+            "server"
+          ],
+          "inputs": {
+            "contact": {
+              "kind": "entity",
+              "name": "crm.Contact@1"
+            }
+          },
+          "outputs": {
+            "dto": {
+              "kind": "object",
+              "fields": {
+                "id": {
+                  "kind": "string"
+                },
+                "name": {
+                  "kind": "string"
+                },
+                "age": {
+                  "kind": "optional",
+                  "inner": {
+                    "kind": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "ui.displayContact",
+          "version": 1,
+          "environments": [
+            "browser"
+          ],
+          "inputs": {
+            "value": {
+              "kind": "object",
+              "fields": {
+                "id": {
+                  "kind": "string"
+                },
+                "name": {
+                  "kind": "string"
+                },
+                "age": {
+                  "kind": "optional",
+                  "inner": {
+                    "kind": "number"
+                  }
+                }
+              }
+            }
+          },
+          "outputs": {}
+        },
+        {
+          "type": "test.number",
+          "version": 1,
+          "environments": [
+            "server"
+          ],
+          "inputs": {
+            "value": {
+              "kind": "number"
+            }
+          },
+          "outputs": {}
+        },
+        {
+          "type": "test.echo",
+          "version": 1,
+          "environments": [
+            "server"
+          ],
+          "inputs": {
+            "value": {
+              "kind": "string"
+            }
+          },
+          "outputs": {
+            "value": {
+              "kind": "string"
+            }
+          }
+        },
+        {
+          "type": "test.optional",
+          "version": 1,
+          "environments": [
+            "server"
+          ],
+          "inputs": {
+            "value": {
+              "kind": "optional",
+              "inner": {
+                "kind": "string"
+              }
+            }
+          },
+          "outputs": {}
+        },
+        {
+          "type": "input.contactId",
+          "version": 1,
+          "environments": [
+            "browser",
+            "server"
+          ],
+          "inputs": {},
+          "outputs": {
+            "id": {
+              "kind": "string"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "name": "duplicate-type",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "contact-demo",
+      "version": 1,
+      "mode": "interactive",
+      "nodes": [
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {
+            "initialValue": "contact-1",
+            "label": "Kontakt wählen 👋",
+            "nullable": null,
+            "flags": [
+              true,
+              false
+            ]
+          }
+        },
+        {
+          "id": "get",
+          "type": "crm.contact.get",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "inspect",
+          "type": "crm.contact.inspect",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "project",
+          "type": "crm.contact.toDto",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "display",
+          "type": "ui.displayContact",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "input",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "get",
+            "port": "id"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "get",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "inspect",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "inspect",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "project",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "project",
+            "port": "dto"
+          },
+          "target": {
+            "nodeId": "display",
+            "port": "value"
+          }
+        }
+      ],
+      "entryNodeId": "input"
+    },
+    "codes": [
+      "duplicate_type"
+    ],
+    "types": {
+      "schemaVersion": 1,
+      "types": [
+        {
+          "id": "crm.Contact@1",
+          "kind": "entity",
+          "fields": {
+            "id": {
+              "kind": "string"
+            },
+            "name": {
+              "kind": "string"
+            },
+            "age": {
+              "kind": "optional",
+              "inner": {
+                "kind": "number"
+              }
+            },
+            "manager": {
+              "kind": "optional",
+              "inner": {
+                "kind": "entityRef",
+                "name": "crm.Contact@1"
+              }
+            }
+          }
+        },
+        {
+          "id": "crm.Company@1",
+          "kind": "entity",
+          "fields": {
+            "id": {
+              "kind": "string"
+            }
+          }
+        },
+        {
+          "id": "crm.Contact@2",
+          "kind": "entity",
+          "fields": {
+            "id": {
+              "kind": "string"
+            },
+            "name": {
+              "kind": "string"
+            }
+          }
+        },
+        {
+          "id": "crm.Contact@1",
+          "kind": "entity",
+          "fields": {
+            "id": {
+              "kind": "string"
+            },
+            "name": {
+              "kind": "string"
+            },
+            "age": {
+              "kind": "optional",
+              "inner": {
+                "kind": "number"
+              }
+            },
+            "manager": {
+              "kind": "optional",
+              "inner": {
+                "kind": "entityRef",
+                "name": "crm.Contact@1"
+              }
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "name": "unknown-entity-reference",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "contact-demo",
+      "version": 1,
+      "mode": "interactive",
+      "nodes": [
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {
+            "initialValue": "contact-1",
+            "label": "Kontakt wählen 👋",
+            "nullable": null,
+            "flags": [
+              true,
+              false
+            ]
+          }
+        },
+        {
+          "id": "get",
+          "type": "crm.contact.get",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "inspect",
+          "type": "crm.contact.inspect",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "project",
+          "type": "crm.contact.toDto",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "display",
+          "type": "ui.displayContact",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "input",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "get",
+            "port": "id"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "get",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "inspect",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "inspect",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "project",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "project",
+            "port": "dto"
+          },
+          "target": {
+            "nodeId": "display",
+            "port": "value"
+          }
+        }
+      ],
+      "entryNodeId": "input"
+    },
+    "codes": [
+      "unknown_type"
+    ],
+    "types": {
+      "schemaVersion": 1,
+      "types": [
+        {
+          "id": "crm.Contact@1",
+          "kind": "entity",
+          "fields": {
+            "id": {
+              "kind": "string"
+            },
+            "name": {
+              "kind": "string"
+            },
+            "age": {
+              "kind": "optional",
+              "inner": {
+                "kind": "number"
+              }
+            },
+            "manager": {
+              "kind": "entityRef",
+              "name": "missing.Type@1"
+            }
+          }
+        },
+        {
+          "id": "crm.Company@1",
+          "kind": "entity",
+          "fields": {
+            "id": {
+              "kind": "string"
+            }
+          }
+        },
+        {
+          "id": "crm.Contact@2",
+          "kind": "entity",
+          "fields": {
+            "id": {
+              "kind": "string"
+            },
+            "name": {
+              "kind": "string"
+            }
+          }
+        }
+      ]
+    }
+  },
+  {
+    "name": "unknown-catalog-type",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "contact-demo",
+      "version": 1,
+      "mode": "interactive",
+      "nodes": [
+        {
+          "id": "input",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {
+            "initialValue": "contact-1",
+            "label": "Kontakt wählen 👋",
+            "nullable": null,
+            "flags": [
+              true,
+              false
+            ]
+          }
+        },
+        {
+          "id": "get",
+          "type": "crm.contact.get",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "inspect",
+          "type": "crm.contact.inspect",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "project",
+          "type": "crm.contact.toDto",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "display",
+          "type": "ui.displayContact",
+          "typeVersion": 1,
+          "environment": "browser",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "input",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "get",
+            "port": "id"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "get",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "inspect",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "inspect",
+            "port": "contact"
+          },
+          "target": {
+            "nodeId": "project",
+            "port": "contact"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "project",
+            "port": "dto"
+          },
+          "target": {
+            "nodeId": "display",
+            "port": "value"
+          }
+        }
+      ],
+      "entryNodeId": "input"
+    },
+    "codes": [
+      "unknown_type",
+      "type_mismatch"
+    ],
+    "catalog": {
+      "schemaVersion": 1,
+      "nodes": [
+        {
+          "type": "input.contactId",
+          "version": 1,
+          "environments": [
+            "browser",
+            "server"
+          ],
+          "inputs": {},
+          "outputs": {
+            "id": {
+              "kind": "entity",
+              "name": "missing.Type@1"
+            }
+          }
+        },
+        {
+          "type": "crm.contact.get",
+          "version": 1,
+          "environments": [
+            "server"
+          ],
+          "inputs": {
+            "id": {
+              "kind": "string"
+            }
+          },
+          "outputs": {
+            "contact": {
+              "kind": "entity",
+              "name": "crm.Contact@1"
+            }
+          }
+        },
+        {
+          "type": "crm.contact.inspect",
+          "version": 1,
+          "environments": [
+            "server"
+          ],
+          "inputs": {
+            "contact": {
+              "kind": "entity",
+              "name": "crm.Contact@1"
+            }
+          },
+          "outputs": {
+            "contact": {
+              "kind": "entity",
+              "name": "crm.Contact@1"
+            }
+          }
+        },
+        {
+          "type": "crm.contact.toDto",
+          "version": 1,
+          "environments": [
+            "server"
+          ],
+          "inputs": {
+            "contact": {
+              "kind": "entity",
+              "name": "crm.Contact@1"
+            }
+          },
+          "outputs": {
+            "dto": {
+              "kind": "object",
+              "fields": {
+                "id": {
+                  "kind": "string"
+                },
+                "name": {
+                  "kind": "string"
+                },
+                "age": {
+                  "kind": "optional",
+                  "inner": {
+                    "kind": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        {
+          "type": "ui.displayContact",
+          "version": 1,
+          "environments": [
+            "browser"
+          ],
+          "inputs": {
+            "value": {
+              "kind": "object",
+              "fields": {
+                "id": {
+                  "kind": "string"
+                },
+                "name": {
+                  "kind": "string"
+                },
+                "age": {
+                  "kind": "optional",
+                  "inner": {
+                    "kind": "number"
+                  }
+                }
+              }
+            }
+          },
+          "outputs": {}
+        },
+        {
+          "type": "test.number",
+          "version": 1,
+          "environments": [
+            "server"
+          ],
+          "inputs": {
+            "value": {
+              "kind": "number"
+            }
+          },
+          "outputs": {}
+        },
+        {
+          "type": "test.echo",
+          "version": 1,
+          "environments": [
+            "server"
+          ],
+          "inputs": {
+            "value": {
+              "kind": "string"
+            }
+          },
+          "outputs": {
+            "value": {
+              "kind": "string"
+            }
+          }
+        },
+        {
+          "type": "test.optional",
+          "version": 1,
+          "environments": [
+            "server"
+          ],
+          "inputs": {
+            "value": {
+              "kind": "optional",
+              "inner": {
+                "kind": "string"
+              }
+            }
+          },
+          "outputs": {}
+        }
+      ]
+    }
+  },
+  {
+    "name": "fan-out-dag",
+    "flow": {
+      "schemaVersion": 1,
+      "id": "diamond",
+      "version": 1,
+      "mode": "backend",
+      "nodes": [
+        {
+          "id": "root",
+          "type": "input.contactId",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "a",
+          "type": "test.echo",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        },
+        {
+          "id": "b",
+          "type": "test.echo",
+          "typeVersion": 1,
+          "environment": "server",
+          "config": {}
+        }
+      ],
+      "connections": [
+        {
+          "source": {
+            "nodeId": "root",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "a",
+            "port": "value"
+          }
+        },
+        {
+          "source": {
+            "nodeId": "root",
+            "port": "id"
+          },
+          "target": {
+            "nodeId": "b",
+            "port": "value"
+          }
+        }
+      ]
+    },
+    "codes": []
+  }
+]

@@ -1,0 +1,298 @@
+{
+  "schemaVersion": 1,
+  "flowId": "contact-demo",
+  "flowVersion": 1,
+  "mode": "interactive",
+  "nodes": [
+    {
+      "id": "input",
+      "type": "input.contactId",
+      "typeVersion": 1,
+      "environment": "browser",
+      "config": {
+        "initialValue": "contact-1",
+        "label": "Kontakt w\u00e4hlen \ud83d\udc4b",
+        "nullable": null,
+        "flags": [
+          true,
+          false
+        ]
+      },
+      "dependencies": [],
+      "inputs": {},
+      "outputs": {
+        "id": {
+          "kind": "string"
+        }
+      }
+    },
+    {
+      "id": "get",
+      "type": "crm.contact.get",
+      "typeVersion": 1,
+      "environment": "server",
+      "config": {},
+      "dependencies": [
+        "input"
+      ],
+      "inputs": {
+        "id": {
+          "kind": "string"
+        }
+      },
+      "outputs": {
+        "contact": {
+          "kind": "entity",
+          "name": "crm.Contact@1"
+        }
+      }
+    },
+    {
+      "id": "inspect",
+      "type": "crm.contact.inspect",
+      "typeVersion": 1,
+      "environment": "server",
+      "config": {},
+      "dependencies": [
+        "get"
+      ],
+      "inputs": {
+        "contact": {
+          "kind": "entity",
+          "name": "crm.Contact@1"
+        }
+      },
+      "outputs": {
+        "contact": {
+          "kind": "entity",
+          "name": "crm.Contact@1"
+        }
+      }
+    },
+    {
+      "id": "project",
+      "type": "crm.contact.toDto",
+      "typeVersion": 1,
+      "environment": "server",
+      "config": {},
+      "dependencies": [
+        "inspect"
+      ],
+      "inputs": {
+        "contact": {
+          "kind": "entity",
+          "name": "crm.Contact@1"
+        }
+      },
+      "outputs": {
+        "dto": {
+          "kind": "object",
+          "fields": {
+            "id": {
+              "kind": "string"
+            },
+            "name": {
+              "kind": "string"
+            },
+            "age": {
+              "kind": "optional",
+              "inner": {
+                "kind": "number"
+              }
+            }
+          }
+        }
+      }
+    },
+    {
+      "id": "display",
+      "type": "ui.displayContact",
+      "typeVersion": 1,
+      "environment": "browser",
+      "config": {},
+      "dependencies": [
+        "project"
+      ],
+      "inputs": {
+        "value": {
+          "kind": "object",
+          "fields": {
+            "id": {
+              "kind": "string"
+            },
+            "name": {
+              "kind": "string"
+            },
+            "age": {
+              "kind": "optional",
+              "inner": {
+                "kind": "number"
+              }
+            }
+          }
+        }
+      },
+      "outputs": {}
+    }
+  ],
+  "connections": [
+    {
+      "source": {
+        "nodeId": "input",
+        "port": "id"
+      },
+      "target": {
+        "nodeId": "get",
+        "port": "id"
+      },
+      "codec": {
+        "typeId": "core.String@1",
+        "version": 1
+      },
+      "index": 0,
+      "sourceType": {
+        "kind": "string"
+      },
+      "targetType": {
+        "kind": "string"
+      },
+      "boundary": true
+    },
+    {
+      "source": {
+        "nodeId": "get",
+        "port": "contact"
+      },
+      "target": {
+        "nodeId": "inspect",
+        "port": "contact"
+      },
+      "index": 1,
+      "sourceType": {
+        "kind": "entity",
+        "name": "crm.Contact@1"
+      },
+      "targetType": {
+        "kind": "entity",
+        "name": "crm.Contact@1"
+      },
+      "boundary": false
+    },
+    {
+      "source": {
+        "nodeId": "inspect",
+        "port": "contact"
+      },
+      "target": {
+        "nodeId": "project",
+        "port": "contact"
+      },
+      "index": 2,
+      "sourceType": {
+        "kind": "entity",
+        "name": "crm.Contact@1"
+      },
+      "targetType": {
+        "kind": "entity",
+        "name": "crm.Contact@1"
+      },
+      "boundary": false
+    },
+    {
+      "source": {
+        "nodeId": "project",
+        "port": "dto"
+      },
+      "target": {
+        "nodeId": "display",
+        "port": "value"
+      },
+      "codec": {
+        "typeId": "crm.ContactDTO@1",
+        "version": 1
+      },
+      "index": 3,
+      "sourceType": {
+        "kind": "object",
+        "fields": {
+          "id": {
+            "kind": "string"
+          },
+          "name": {
+            "kind": "string"
+          },
+          "age": {
+            "kind": "optional",
+            "inner": {
+              "kind": "number"
+            }
+          }
+        }
+      },
+      "targetType": {
+        "kind": "object",
+        "fields": {
+          "id": {
+            "kind": "string"
+          },
+          "name": {
+            "kind": "string"
+          },
+          "age": {
+            "kind": "optional",
+            "inner": {
+              "kind": "number"
+            }
+          }
+        }
+      },
+      "boundary": true
+    }
+  ],
+  "segments": [
+    {
+      "id": "segment-0",
+      "environment": "browser",
+      "nodeIds": [
+        "input"
+      ],
+      "dependencies": [],
+      "incoming": [],
+      "outgoing": [
+        0
+      ]
+    },
+    {
+      "id": "segment-1",
+      "environment": "server",
+      "nodeIds": [
+        "get",
+        "inspect",
+        "project"
+      ],
+      "dependencies": [
+        "segment-0"
+      ],
+      "incoming": [
+        0
+      ],
+      "outgoing": [
+        3
+      ]
+    },
+    {
+      "id": "segment-2",
+      "environment": "browser",
+      "nodeIds": [
+        "display"
+      ],
+      "dependencies": [
+        "segment-1"
+      ],
+      "incoming": [
+        3
+      ],
+      "outgoing": []
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "suiteId": "2026-10-14T05:40:15.647Z",
+  "version": 1,
+  "complete": true,
+  "startedAt": "2026-10-14T05:40:15.647Z",
+  "profile": "standard",
+  "jobs": 16,
+  "options": {
+    "profile": "standard",
+    "cases": "empty,subgraph-repeat,map,default-values",
+    "samples": "1",
+    "warmups": "0",
+    "profiling": "false",
+    "out": "artifacts/benchmarks/final-packages"
+  },
+  "cpu": "Intel(R) Core(TM) i9-14900HX",
+  "node": "v26.7.0",
+  "packageVersion": "0.1.0-local.1791956257180",
+  "backendBuild": "Release",
+  "transport": "same-origin HTTP proxy; 25ms polling (no SignalR)",
+  "cacheDefinition": "cold = first root after fresh browser/backend and catalog load; warm follows explicit warmups",
+  "sourceFingerprint": "588e972a68225620a7b128782756dea67e0c28a016478499768503cc0856a92a",
+  "backendVersion": "10.0.112",
+  "failed": 0,
+  "finishedAt": "2026-10-14T05:40:48.445Z"
+}

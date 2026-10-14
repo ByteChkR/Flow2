@@ -1,0 +1,395 @@
+[
+  {
+    "name": "core.Bool",
+    "input": true,
+    "canonical": true,
+    "wire": true
+  },
+  {
+    "name": "core.Bool",
+    "input": false,
+    "canonical": false,
+    "wire": true
+  },
+  {
+    "name": "core.Bool",
+    "input": null,
+    "invalid": true
+  },
+  {
+    "name": "core.Bool",
+    "input": 0,
+    "invalid": true
+  },
+  {
+    "name": "core.Bool",
+    "input": 1,
+    "invalid": true
+  },
+  {
+    "name": "core.Bool",
+    "input": "true",
+    "invalid": true
+  },
+  {
+    "name": "core.Bool",
+    "input": "false",
+    "invalid": true
+  },
+  {
+    "name": "core.Integer",
+    "input": 0,
+    "canonical": 0,
+    "wire": true
+  },
+  {
+    "name": "core.Integer",
+    "input": -1,
+    "canonical": -1,
+    "wire": true
+  },
+  {
+    "name": "core.Integer",
+    "input": 2147483647,
+    "canonical": 2147483647,
+    "wire": true
+  },
+  {
+    "name": "core.Integer",
+    "input": -2147483648,
+    "canonical": -2147483648,
+    "wire": true
+  },
+  {
+    "name": "core.Integer",
+    "input": 2147483648,
+    "invalid": true
+  },
+  {
+    "name": "core.Integer",
+    "input": -2147483649,
+    "invalid": true
+  },
+  {
+    "name": "core.Integer",
+    "input": 1.5,
+    "invalid": true
+  },
+  {
+    "name": "core.Integer",
+    "input": "1",
+    "invalid": true
+  },
+  {
+    "name": "core.Integer",
+    "input": null,
+    "invalid": true
+  },
+  {
+    "name": "core.Decimal",
+    "input": "0",
+    "canonical": "0",
+    "wire": true
+  },
+  {
+    "name": "core.Decimal",
+    "input": "-1",
+    "canonical": "-1",
+    "wire": true
+  },
+  {
+    "name": "core.Decimal",
+    "input": "0.1",
+    "canonical": "0.1",
+    "wire": true
+  },
+  {
+    "name": "core.Decimal",
+    "input": "0.0000000000000000000000000001",
+    "canonical": "0.0000000000000000000000000001",
+    "wire": true
+  },
+  {
+    "name": "core.Decimal",
+    "input": "79228162514264337593543950335",
+    "canonical": "79228162514264337593543950335",
+    "wire": true
+  },
+  {
+    "name": "core.Decimal",
+    "input": "-79228162514264337593543950335",
+    "canonical": "-79228162514264337593543950335",
+    "wire": true
+  },
+  {
+    "name": "core.Decimal",
+    "input": "9007199254740993",
+    "canonical": "9007199254740993",
+    "wire": true
+  },
+  {
+    "name": "core.Decimal",
+    "input": "1.2345678901234567890123456789",
+    "canonical": "1.2345678901234567890123456789",
+    "wire": true
+  },
+  {
+    "name": "core.Decimal",
+    "input": "79228162514264337593543950336",
+    "invalid": true
+  },
+  {
+    "name": "core.Decimal",
+    "input": "0.00000000000000000000000000001",
+    "invalid": true
+  },
+  {
+    "name": "core.Decimal",
+    "input": "1.23456789012345678901234567891",
+    "invalid": true
+  },
+  {
+    "name": "core.Decimal",
+    "input": "1e3",
+    "invalid": true
+  },
+  {
+    "name": "core.Decimal",
+    "input": "NaN",
+    "invalid": true
+  },
+  {
+    "name": "core.Decimal",
+    "input": "Infinity",
+    "invalid": true
+  },
+  {
+    "name": "core.Decimal",
+    "input": 0.1,
+    "invalid": true
+  },
+  {
+    "name": "core.Decimal",
+    "input": null,
+    "invalid": true
+  },
+  {
+    "name": "core.Decimal",
+    "input": "١",
+    "invalid": true
+  },
+  {
+    "name": "core.Decimal",
+    "input": " +0001.2300 ",
+    "canonical": "1.23",
+    "wire": false
+  },
+  {
+    "name": "core.Decimal",
+    "input": "-0.000",
+    "canonical": "0",
+    "wire": false
+  },
+  {
+    "name": "core.Decimal",
+    "input": "1.00000000000000000000000000000",
+    "canonical": "1",
+    "wire": false
+  },
+  {
+    "name": "core.TimeSpan",
+    "input": "0",
+    "canonical": "0",
+    "wire": true
+  },
+  {
+    "name": "core.TimeSpan",
+    "input": "1",
+    "canonical": "1",
+    "wire": true
+  },
+  {
+    "name": "core.TimeSpan",
+    "input": "-1",
+    "canonical": "-1",
+    "wire": true
+  },
+  {
+    "name": "core.TimeSpan",
+    "input": "9223372036854775807",
+    "canonical": "9223372036854775807",
+    "wire": true
+  },
+  {
+    "name": "core.TimeSpan",
+    "input": "-9223372036854775808",
+    "canonical": "-9223372036854775808",
+    "wire": true
+  },
+  {
+    "name": "core.TimeSpan",
+    "input": "9223372036854775808",
+    "invalid": true
+  },
+  {
+    "name": "core.TimeSpan",
+    "input": "-9223372036854775809",
+    "invalid": true
+  },
+  {
+    "name": "core.TimeSpan",
+    "input": "1.1",
+    "invalid": true
+  },
+  {
+    "name": "core.TimeSpan",
+    "input": 1,
+    "invalid": true
+  },
+  {
+    "name": "core.TimeSpan",
+    "input": null,
+    "invalid": true
+  },
+  {
+    "name": "core.TimeSpan",
+    "input": "+0001",
+    "canonical": "1",
+    "wire": false
+  },
+  {
+    "name": "core.TimeSpan",
+    "input": "-00",
+    "canonical": "0",
+    "wire": false
+  },
+  {
+    "name": "core.Guid",
+    "input": "00000000-0000-0000-0000-000000000000",
+    "canonical": "00000000-0000-0000-0000-000000000000",
+    "wire": true
+  },
+  {
+    "name": "core.Guid",
+    "input": "abcdef12-3456-7890-abcd-ef1234567890",
+    "canonical": "abcdef12-3456-7890-abcd-ef1234567890",
+    "wire": true
+  },
+  {
+    "name": "core.Guid",
+    "input": "abcdef1234567890abcdef1234567890",
+    "invalid": true
+  },
+  {
+    "name": "core.Guid",
+    "input": "{abcdef12-3456-7890-abcd-ef1234567890}",
+    "invalid": true
+  },
+  {
+    "name": "core.Guid",
+    "input": "zbcdef12-3456-7890-abcd-ef1234567890",
+    "invalid": true
+  },
+  {
+    "name": "core.Guid",
+    "input": null,
+    "invalid": true
+  },
+  {
+    "name": "core.Guid",
+    "input": "ABCDEF12-3456-7890-ABCD-EF1234567890",
+    "canonical": "abcdef12-3456-7890-abcd-ef1234567890",
+    "wire": false
+  },
+  {
+    "name": "core.DateTimeOffset",
+    "input": "0001-01-01T00:00:00.0000000+00:00",
+    "canonical": "0001-01-01T00:00:00.0000000+00:00",
+    "wire": true
+  },
+  {
+    "name": "core.DateTimeOffset",
+    "input": "9999-12-31T23:59:59.9999999+00:00",
+    "canonical": "9999-12-31T23:59:59.9999999+00:00",
+    "wire": true
+  },
+  {
+    "name": "core.DateTimeOffset",
+    "input": "2024-02-29T12:13:14.1234567+02:00",
+    "canonical": "2024-02-29T12:13:14.1234567+02:00",
+    "wire": true
+  },
+  {
+    "name": "core.DateTimeOffset",
+    "input": "2024-01-01T14:00:00.0000001+14:00",
+    "canonical": "2024-01-01T14:00:00.0000001+14:00",
+    "wire": true
+  },
+  {
+    "name": "core.DateTimeOffset",
+    "input": "0000-01-01T00:00:00Z",
+    "invalid": true
+  },
+  {
+    "name": "core.DateTimeOffset",
+    "input": "2023-02-29T00:00:00Z",
+    "invalid": true
+  },
+  {
+    "name": "core.DateTimeOffset",
+    "input": "2024-01-01T24:00:00Z",
+    "invalid": true
+  },
+  {
+    "name": "core.DateTimeOffset",
+    "input": "2024-01-01T00:00:60Z",
+    "invalid": true
+  },
+  {
+    "name": "core.DateTimeOffset",
+    "input": "2024-01-01T00:00:00+14:01",
+    "invalid": true
+  },
+  {
+    "name": "core.DateTimeOffset",
+    "input": "2024-01-01T00:00:00+01:60",
+    "invalid": true
+  },
+  {
+    "name": "core.DateTimeOffset",
+    "input": "2024-01-01T00:00:00",
+    "invalid": true
+  },
+  {
+    "name": "core.DateTimeOffset",
+    "input": "2024-01-01T00:00:00.12345678Z",
+    "invalid": true
+  },
+  {
+    "name": "core.DateTimeOffset",
+    "input": "0001-01-01T00:00:00+01:00",
+    "invalid": true
+  },
+  {
+    "name": "core.DateTimeOffset",
+    "input": "9999-12-31T23:59:59-01:00",
+    "invalid": true
+  },
+  {
+    "name": "core.DateTimeOffset",
+    "input": null,
+    "invalid": true
+  },
+  {
+    "name": "core.DateTimeOffset",
+    "input": "2024-02-29T12:13:14Z",
+    "canonical": "2024-02-29T12:13:14.0000000+00:00",
+    "wire": false
+  },
+  {
+    "name": "core.DateTimeOffset",
+    "input": "2024-02-29T12:13:14.1-00:00",
+    "canonical": "2024-02-29T12:13:14.1000000+00:00",
+    "wire": false
+  }
+]

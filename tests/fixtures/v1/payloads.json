@@ -1,0 +1,84 @@
+[
+  {
+    "name": "valid",
+    "json": "{\"schemaVersion\": 1, \"typeId\": \"crm.ContactDTO@1\", \"codecVersion\": 1, \"payload\": {\"id\": \"contact-1\", \"name\": \"Ada\", \"age\": 37}}",
+    "codes": []
+  },
+  {
+    "name": "missing-required-field",
+    "json": "{\"schemaVersion\": 1, \"typeId\": \"crm.ContactDTO@1\", \"codecVersion\": 1, \"payload\": {\"id\": \"contact-1\", \"age\": 37}}",
+    "codes": [
+      "wire_payload"
+    ]
+  },
+  {
+    "name": "wrong-field-type",
+    "json": "{\"schemaVersion\": 1, \"typeId\": \"crm.ContactDTO@1\", \"codecVersion\": 1, \"payload\": {\"id\": \"contact-1\", \"name\": 42, \"age\": 37}}",
+    "codes": [
+      "wire_payload"
+    ]
+  },
+  {
+    "name": "unexpected-field",
+    "json": "{\"schemaVersion\": 1, \"typeId\": \"crm.ContactDTO@1\", \"codecVersion\": 1, \"payload\": {\"id\": \"contact-1\", \"name\": \"Ada\", \"age\": 37, \"handle\": \"forged\"}}",
+    "codes": [
+      "wire_payload"
+    ]
+  },
+  {
+    "name": "null-age",
+    "json": "{\"schemaVersion\": 1, \"typeId\": \"crm.ContactDTO@1\", \"codecVersion\": 1, \"payload\": {\"id\": \"contact-1\", \"name\": \"Ada\", \"age\": null}}",
+    "codes": [
+      "wire_payload"
+    ]
+  },
+  {
+    "name": "forged-handle",
+    "json": "{\"schemaVersion\": 1, \"typeId\": \"crm.ContactDTO@1\", \"codecVersion\": 1, \"payload\": \"opaque-handle\"}",
+    "codes": [
+      "wire_payload"
+    ]
+  },
+  {
+    "name": "wrong-codec-id",
+    "json": "{\"schemaVersion\": 1, \"typeId\": \"core.String@1\", \"codecVersion\": 1, \"payload\": {\"id\": \"contact-1\", \"name\": \"Ada\", \"age\": 37}}",
+    "codes": [
+      "codec_mismatch"
+    ]
+  },
+  {
+    "name": "wrong-codec-version",
+    "json": "{\"schemaVersion\": 1, \"typeId\": \"crm.ContactDTO@1\", \"codecVersion\": 2, \"payload\": {\"id\": \"contact-1\", \"name\": \"Ada\", \"age\": 37}}",
+    "codes": [
+      "codec_mismatch"
+    ]
+  },
+  {
+    "name": "wrong-envelope-version",
+    "json": "{\"schemaVersion\": 2, \"typeId\": \"crm.ContactDTO@1\", \"codecVersion\": 1, \"payload\": {\"id\": \"contact-1\", \"name\": \"Ada\", \"age\": 37}}",
+    "codes": [
+      "schema"
+    ]
+  },
+  {
+    "name": "unknown-envelope-field",
+    "json": "{\"schemaVersion\": 1, \"typeId\": \"crm.ContactDTO@1\", \"codecVersion\": 1, \"payload\": {\"id\": \"contact-1\", \"name\": \"Ada\", \"age\": 37}, \"execute\": \"doSomething\"}",
+    "codes": [
+      "schema"
+    ]
+  },
+  {
+    "name": "missing-payload",
+    "json": "{\"schemaVersion\": 1, \"typeId\": \"crm.ContactDTO@1\", \"codecVersion\": 1}",
+    "codes": [
+      "schema"
+    ]
+  },
+  {
+    "name": "invalid-json",
+    "json": "{",
+    "codes": [
+      "json"
+    ]
+  }
+]

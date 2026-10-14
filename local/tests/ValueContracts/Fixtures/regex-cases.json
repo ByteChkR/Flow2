@@ -1,0 +1,1112 @@
+[
+  {
+    "type": "Standard.Text.Regex.Test",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "abc",
+      "pattern": "b",
+      "flags": ""
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Test",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "abc",
+      "pattern": "z",
+      "flags": ""
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Test",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "a\nb",
+      "pattern": "^b",
+      "flags": "m"
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Test",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "a\nb",
+      "pattern": "a.b",
+      "flags": "s"
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Test",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "a\rb",
+      "pattern": "a.b",
+      "flags": ""
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Test",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "a\u2028b",
+      "pattern": "a.b",
+      "flags": ""
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Test",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "\u00c4",
+      "pattern": "\u00e4",
+      "flags": "i"
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Test",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "\ud83d\ude00",
+      "pattern": "^.$",
+      "flags": ""
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Test",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "abc123",
+      "pattern": "\\d+",
+      "flags": ""
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "a1 b22",
+      "pattern": "([a-z])(\\d+)",
+      "flags": ""
+    },
+    "expected": {
+      "value": [
+        {
+          "value": "a1",
+          "index": 0,
+          "length": 2,
+          "groups": [
+            "a",
+            "1"
+          ]
+        },
+        {
+          "value": "b22",
+          "index": 3,
+          "length": 3,
+          "groups": [
+            "b",
+            "22"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "A\ud83d\ude00B",
+      "pattern": ".",
+      "flags": ""
+    },
+    "expected": {
+      "value": [
+        {
+          "value": "A",
+          "index": 0,
+          "length": 1,
+          "groups": []
+        },
+        {
+          "value": "\ud83d\ude00",
+          "index": 1,
+          "length": 1,
+          "groups": []
+        },
+        {
+          "value": "B",
+          "index": 2,
+          "length": 1,
+          "groups": []
+        }
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "ab a",
+      "pattern": "(a)(b)?",
+      "flags": ""
+    },
+    "expected": {
+      "value": [
+        {
+          "value": "ab",
+          "index": 0,
+          "length": 2,
+          "groups": [
+            "a",
+            "b"
+          ]
+        },
+        {
+          "value": "a",
+          "index": 3,
+          "length": 1,
+          "groups": [
+            "a",
+            null
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "\ud83d\ude00",
+      "pattern": "(?:)",
+      "flags": ""
+    },
+    "expected": {
+      "value": [
+        {
+          "value": "",
+          "index": 0,
+          "length": 0,
+          "groups": []
+        },
+        {
+          "value": "",
+          "index": 1,
+          "length": 0,
+          "groups": []
+        }
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "a\nb",
+      "pattern": "^|$",
+      "flags": "m"
+    },
+    "expected": {
+      "value": [
+        {
+          "value": "",
+          "index": 0,
+          "length": 0,
+          "groups": []
+        },
+        {
+          "value": "",
+          "index": 1,
+          "length": 0,
+          "groups": []
+        },
+        {
+          "value": "",
+          "index": 2,
+          "length": 0,
+          "groups": []
+        },
+        {
+          "value": "",
+          "index": 3,
+          "length": 0,
+          "groups": []
+        }
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "\u00e9abc",
+      "pattern": "[a-z]+",
+      "flags": ""
+    },
+    "expected": {
+      "value": [
+        {
+          "value": "abc",
+          "index": 1,
+          "length": 3,
+          "groups": []
+        }
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "x",
+      "pattern": "z",
+      "flags": ""
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Replace",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "a1 b22",
+      "pattern": "([a-z])(\\d+)",
+      "replacement": "$2:$1"
+    },
+    "expected": {
+      "value": "1:a 22:b"
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Replace",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "aaa",
+      "pattern": "a",
+      "replacement": "$$&"
+    },
+    "expected": {
+      "value": "$&$&$&"
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Replace",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "ab a",
+      "pattern": "(a)(b)?",
+      "replacement": "$2"
+    },
+    "expected": {
+      "value": "b "
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Replace",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "\ud83d\ude00",
+      "pattern": "(?:)",
+      "replacement": "-"
+    },
+    "expected": {
+      "value": "-\ud83d\ude00-"
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Replace",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "abc",
+      "pattern": "z",
+      "replacement": "x"
+    },
+    "expected": {
+      "value": "abc"
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Replace",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "a",
+      "pattern": "(a)",
+      "replacement": "$10"
+    },
+    "expected": {
+      "value": "a0"
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Replace",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "a",
+      "pattern": "a",
+      "replacement": "$1"
+    },
+    "expected": {
+      "value": "$1"
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Test",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "x",
+      "pattern": "x",
+      "flags": "g"
+    },
+    "error": "flags:"
+  },
+  {
+    "type": "Standard.Text.Regex.Test",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "x",
+      "pattern": "x",
+      "flags": "ii"
+    },
+    "error": "flags:"
+  },
+  {
+    "type": "Standard.Text.Regex.Replace",
+    "inputs": {
+      "timeoutMilliseconds": 1000,
+      "value": "x",
+      "pattern": "x",
+      "replacement": "$'"
+    },
+    "error": "replacement:"
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "value": "aba",
+      "pattern": "(a|(b))+",
+      "timeoutMilliseconds": 1000
+    },
+    "error": "pattern:"
+  },
+  {
+    "type": "Standard.Text.Regex.Test",
+    "inputs": {
+      "value": "a",
+      "pattern": "(a|(b))\\2",
+      "timeoutMilliseconds": 1000
+    },
+    "error": "pattern:"
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "value": "ab",
+      "pattern": "(?<first>a)(b)",
+      "timeoutMilliseconds": 1000
+    },
+    "error": "pattern:"
+  },
+  {
+    "type": "Standard.Text.Regex.Test",
+    "inputs": {
+      "value": "\u212a",
+      "pattern": "k",
+      "flags": "i",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Test",
+    "inputs": {
+      "value": "\u017f",
+      "pattern": "s",
+      "flags": "i",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Test",
+    "inputs": {
+      "value": "\u0130",
+      "pattern": "i",
+      "flags": "i",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Test",
+    "inputs": {
+      "value": "\u0131",
+      "pattern": "i",
+      "flags": "i",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Test",
+    "inputs": {
+      "value": "\u212a",
+      "pattern": "\\w",
+      "flags": "i",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Test",
+    "inputs": {
+      "value": "\u017f",
+      "pattern": "\\w",
+      "flags": "i",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Test",
+    "inputs": {
+      "value": "\u0130",
+      "pattern": "\\w",
+      "flags": "i",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Test",
+    "inputs": {
+      "value": "\u0661",
+      "pattern": "\\d",
+      "flags": "i",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Test",
+    "inputs": {
+      "value": "\u0085",
+      "pattern": "\\s",
+      "flags": "i",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Test",
+    "inputs": {
+      "value": "\ufeff",
+      "pattern": "\\s",
+      "flags": "i",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "value": "ABC abc \u212a \u017f",
+      "pattern": "([a-z]+)",
+      "flags": "i",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": [
+        {
+          "value": "ABC",
+          "index": 0,
+          "length": 3,
+          "groups": [
+            "ABC"
+          ]
+        },
+        {
+          "value": "abc",
+          "index": 4,
+          "length": 3,
+          "groups": [
+            "abc"
+          ]
+        },
+        {
+          "value": "\u212a",
+          "index": 8,
+          "length": 1,
+          "groups": [
+            "\u212a"
+          ]
+        },
+        {
+          "value": "\u017f",
+          "index": 10,
+          "length": 1,
+          "groups": [
+            "\u017f"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "value": "A_`aZz",
+      "pattern": "[A-z]+",
+      "flags": "i",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": [
+        {
+          "value": "A_`aZz",
+          "index": 0,
+          "length": 6,
+          "groups": []
+        }
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "value": "A_`aZz",
+      "pattern": "[^A-Z]+",
+      "flags": "i",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": [
+        {
+          "value": "_`",
+          "index": 1,
+          "length": 2,
+          "groups": []
+        }
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "value": "A\ud83d\ude00\n",
+      "pattern": "[\\s\\S]",
+      "flags": "",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": [
+        {
+          "value": "A",
+          "index": 0,
+          "length": 1,
+          "groups": []
+        },
+        {
+          "value": "\ud83d\ude00",
+          "index": 1,
+          "length": 1,
+          "groups": []
+        },
+        {
+          "value": "\n",
+          "index": 2,
+          "length": 1,
+          "groups": []
+        }
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "value": "Ab c\t",
+      "pattern": "[^\\W\\d]+",
+      "flags": "i",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": [
+        {
+          "value": "Ab",
+          "index": 0,
+          "length": 2,
+          "groups": []
+        },
+        {
+          "value": "c",
+          "index": 3,
+          "length": 1,
+          "groups": []
+        }
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "value": "a1 a2",
+      "pattern": "a(?=1)",
+      "flags": "",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": [
+        {
+          "value": "a",
+          "index": 0,
+          "length": 1,
+          "groups": []
+        }
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "value": "ab ac",
+      "pattern": "a(?!b)",
+      "flags": "",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": [
+        {
+          "value": "a",
+          "index": 3,
+          "length": 1,
+          "groups": []
+        }
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "value": "abc",
+      "pattern": "(a)?(b)?(d)?",
+      "flags": "",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": [
+        {
+          "value": "ab",
+          "index": 0,
+          "length": 2,
+          "groups": [
+            "a",
+            "b",
+            null
+          ]
+        },
+        {
+          "value": "",
+          "index": 2,
+          "length": 0,
+          "groups": [
+            null,
+            null,
+            null
+          ]
+        },
+        {
+          "value": "",
+          "index": 3,
+          "length": 0,
+          "groups": [
+            null,
+            null,
+            null
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "value": "!a!\u0130!\u212a!",
+      "pattern": "\\b",
+      "flags": "i",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": [
+        {
+          "value": "",
+          "index": 1,
+          "length": 0,
+          "groups": []
+        },
+        {
+          "value": "",
+          "index": 2,
+          "length": 0,
+          "groups": []
+        },
+        {
+          "value": "",
+          "index": 5,
+          "length": 0,
+          "groups": []
+        },
+        {
+          "value": "",
+          "index": 6,
+          "length": 0,
+          "groups": []
+        }
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "value": "!a!\u0130!\u212a!",
+      "pattern": "\\B",
+      "flags": "i",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": [
+        {
+          "value": "",
+          "index": 0,
+          "length": 0,
+          "groups": []
+        },
+        {
+          "value": "",
+          "index": 3,
+          "length": 0,
+          "groups": []
+        },
+        {
+          "value": "",
+          "index": 4,
+          "length": 0,
+          "groups": []
+        },
+        {
+          "value": "",
+          "index": 7,
+          "length": 0,
+          "groups": []
+        }
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "value": "\ud83d\ude00A",
+      "pattern": "\\u{1F600}",
+      "flags": "",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": [
+        {
+          "value": "\ud83d\ude00",
+          "index": 0,
+          "length": 1,
+          "groups": []
+        }
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "value": "\ud83d\ude00A",
+      "pattern": "\\uD83D\\uDE00",
+      "flags": "",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": [
+        {
+          "value": "\ud83d\ude00",
+          "index": 0,
+          "length": 1,
+          "groups": []
+        }
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "value": "\u03a3\u03c2\u03c3",
+      "pattern": "([\u03a3])",
+      "flags": "i",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": [
+        {
+          "value": "\u03a3",
+          "index": 0,
+          "length": 1,
+          "groups": [
+            "\u03a3"
+          ]
+        },
+        {
+          "value": "\u03c2",
+          "index": 1,
+          "length": 1,
+          "groups": [
+            "\u03c2"
+          ]
+        },
+        {
+          "value": "\u03c3",
+          "index": 2,
+          "length": 1,
+          "groups": [
+            "\u03c3"
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "value": "a\rb\nc\u2028d\u2029",
+      "pattern": "^.$",
+      "flags": "m",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": [
+        {
+          "value": "a",
+          "index": 0,
+          "length": 1,
+          "groups": []
+        },
+        {
+          "value": "b",
+          "index": 2,
+          "length": 1,
+          "groups": []
+        },
+        {
+          "value": "c",
+          "index": 4,
+          "length": 1,
+          "groups": []
+        },
+        {
+          "value": "d",
+          "index": 6,
+          "length": 1,
+          "groups": []
+        }
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "value": "x",
+      "pattern": "(())",
+      "flags": "",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": [
+        {
+          "value": "",
+          "index": 0,
+          "length": 0,
+          "groups": [
+            "",
+            ""
+          ]
+        },
+        {
+          "value": "",
+          "index": 1,
+          "length": 0,
+          "groups": [
+            "",
+            ""
+          ]
+        }
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "value": "x",
+      "pattern": "[]",
+      "flags": "",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "value": "\ud83d\ude00",
+      "pattern": "[^]",
+      "flags": "",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": [
+        {
+          "value": "\ud83d\ude00",
+          "index": 0,
+          "length": 1,
+          "groups": []
+        }
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "value": "A\ud83d\ude00B",
+      "pattern": "[^a-z]",
+      "flags": "i",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": [
+        {
+          "value": "\ud83d\ude00",
+          "index": 1,
+          "length": 1,
+          "groups": []
+        }
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "value": "a-z_",
+      "pattern": "[-a]",
+      "flags": "",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": [
+        {
+          "value": "a",
+          "index": 0,
+          "length": 1,
+          "groups": []
+        },
+        {
+          "value": "-",
+          "index": 1,
+          "length": 1,
+          "groups": []
+        }
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Extract",
+    "inputs": {
+      "value": "ABC",
+      "pattern": "[\\u0041-\\x5a]",
+      "flags": "i",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": [
+        {
+          "value": "A",
+          "index": 0,
+          "length": 1,
+          "groups": []
+        },
+        {
+          "value": "B",
+          "index": 1,
+          "length": 1,
+          "groups": []
+        },
+        {
+          "value": "C",
+          "index": 2,
+          "length": 1,
+          "groups": []
+        }
+      ]
+    }
+  },
+  {
+    "type": "Standard.Text.Regex.Replace",
+    "inputs": {
+      "value": "a",
+      "pattern": "a",
+      "replacement": "$$' $$<name> $$`",
+      "timeoutMilliseconds": 1000
+    },
+    "expected": {
+      "value": "$' $<name> $`"
+    }
+  }
+]

@@ -1,0 +1,22 @@
+[
+  {
+    "name": "integer-decimal-spelling",
+    "json": "{\"schemaVersion\": 1.0, \"id\": \"backend-contact\", \"version\": 1.0, \"mode\": \"backend\", \"nodes\": [{\"id\": \"input\", \"type\": \"input.contactId\", \"typeVersion\": 1.0, \"environment\": \"server\", \"config\": {\"initialValue\": \"contact-1\", \"label\": \"Kontakt w\\u00e4hlen \\ud83d\\udc4b\", \"nullable\": null, \"flags\": [true, false]}}, {\"id\": \"get\", \"type\": \"crm.contact.get\", \"typeVersion\": 1.0, \"environment\": \"server\", \"config\": {}}, {\"id\": \"inspect\", \"type\": \"crm.contact.inspect\", \"typeVersion\": 1.0, \"environment\": \"server\", \"config\": {}}, {\"id\": \"project\", \"type\": \"crm.contact.toDto\", \"typeVersion\": 1.0, \"environment\": \"server\", \"config\": {}}], \"connections\": [{\"source\": {\"nodeId\": \"input\", \"port\": \"id\"}, \"target\": {\"nodeId\": \"get\", \"port\": \"id\"}}, {\"source\": {\"nodeId\": \"get\", \"port\": \"contact\"}, \"target\": {\"nodeId\": \"inspect\", \"port\": \"contact\"}}, {\"source\": {\"nodeId\": \"inspect\", \"port\": \"contact\"}, \"target\": {\"nodeId\": \"project\", \"port\": \"contact\"}}], \"entryNodeId\": \"input\"}",
+    "valid": true
+  },
+  {
+    "name": "integer-exponent-spelling",
+    "json": "{\"schemaVersion\": 1e0, \"id\": \"backend-contact\", \"version\": 1e0, \"mode\": \"backend\", \"nodes\": [{\"id\": \"input\", \"type\": \"input.contactId\", \"typeVersion\": 1e0, \"environment\": \"server\", \"config\": {\"initialValue\": \"contact-1\", \"label\": \"Kontakt w\\u00e4hlen \\ud83d\\udc4b\", \"nullable\": null, \"flags\": [true, false]}}, {\"id\": \"get\", \"type\": \"crm.contact.get\", \"typeVersion\": 1e0, \"environment\": \"server\", \"config\": {}}, {\"id\": \"inspect\", \"type\": \"crm.contact.inspect\", \"typeVersion\": 1e0, \"environment\": \"server\", \"config\": {}}, {\"id\": \"project\", \"type\": \"crm.contact.toDto\", \"typeVersion\": 1e0, \"environment\": \"server\", \"config\": {}}], \"connections\": [{\"source\": {\"nodeId\": \"input\", \"port\": \"id\"}, \"target\": {\"nodeId\": \"get\", \"port\": \"id\"}}, {\"source\": {\"nodeId\": \"get\", \"port\": \"contact\"}, \"target\": {\"nodeId\": \"inspect\", \"port\": \"contact\"}}, {\"source\": {\"nodeId\": \"inspect\", \"port\": \"contact\"}, \"target\": {\"nodeId\": \"project\", \"port\": \"contact\"}}], \"entryNodeId\": \"input\"}",
+    "valid": true
+  },
+  {
+    "name": "fractional-version",
+    "json": "{\"schemaVersion\": 1, \"id\": \"backend-contact\", \"version\": 1.5, \"mode\": \"backend\", \"nodes\": [{\"id\": \"input\", \"type\": \"input.contactId\", \"typeVersion\": 1, \"environment\": \"server\", \"config\": {\"initialValue\": \"contact-1\", \"label\": \"Kontakt w\\u00e4hlen \\ud83d\\udc4b\", \"nullable\": null, \"flags\": [true, false]}}, {\"id\": \"get\", \"type\": \"crm.contact.get\", \"typeVersion\": 1, \"environment\": \"server\", \"config\": {}}, {\"id\": \"inspect\", \"type\": \"crm.contact.inspect\", \"typeVersion\": 1, \"environment\": \"server\", \"config\": {}}, {\"id\": \"project\", \"type\": \"crm.contact.toDto\", \"typeVersion\": 1, \"environment\": \"server\", \"config\": {}}], \"connections\": [{\"source\": {\"nodeId\": \"input\", \"port\": \"id\"}, \"target\": {\"nodeId\": \"get\", \"port\": \"id\"}}, {\"source\": {\"nodeId\": \"get\", \"port\": \"contact\"}, \"target\": {\"nodeId\": \"inspect\", \"port\": \"contact\"}}, {\"source\": {\"nodeId\": \"inspect\", \"port\": \"contact\"}, \"target\": {\"nodeId\": \"project\", \"port\": \"contact\"}}], \"entryNodeId\": \"input\"}",
+    "valid": false
+  },
+  {
+    "name": "invalid-json",
+    "json": "{\"schemaVersion\":",
+    "valid": false
+  }
+]

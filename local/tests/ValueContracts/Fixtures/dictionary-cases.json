@@ -1,0 +1,1601 @@
+[
+  {
+    "operation": "dictCreate",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "entries": []
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "dictKeys",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": []
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "dictValues",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": []
+    },
+    "expected": {
+      "value": []
+    }
+  },
+  {
+    "operation": "dictContainsKey",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [],
+      "key": "2"
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "operation": "dictTryGet",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [],
+      "key": "2"
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "operation": "dictGet",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [],
+      "key": "2"
+    },
+    "error": "Dictionary key not found"
+  },
+  {
+    "operation": "dictRemove",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [],
+      "key": "2"
+    },
+    "expected": {
+      "value": [],
+      "removed": false
+    }
+  },
+  {
+    "operation": "dictSet",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [],
+      "key": "2",
+      "item": "new"
+    },
+    "expected": {
+      "value": [
+        {
+          "key": "2",
+          "value": "new"
+        }
+      ]
+    }
+  },
+  {
+    "operation": "dictContainsKey",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [],
+      "key": "__proto__"
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "operation": "dictTryGet",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [],
+      "key": "__proto__"
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "operation": "dictGet",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [],
+      "key": "__proto__"
+    },
+    "error": "Dictionary key not found"
+  },
+  {
+    "operation": "dictRemove",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [],
+      "key": "__proto__"
+    },
+    "expected": {
+      "value": [],
+      "removed": false
+    }
+  },
+  {
+    "operation": "dictSet",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [],
+      "key": "__proto__",
+      "item": "new"
+    },
+    "expected": {
+      "value": [
+        {
+          "key": "__proto__",
+          "value": "new"
+        }
+      ]
+    }
+  },
+  {
+    "operation": "dictContainsKey",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [],
+      "key": "missing"
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "operation": "dictTryGet",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [],
+      "key": "missing"
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "operation": "dictGet",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [],
+      "key": "missing"
+    },
+    "error": "Dictionary key not found"
+  },
+  {
+    "operation": "dictRemove",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [],
+      "key": "missing"
+    },
+    "expected": {
+      "value": [],
+      "removed": false
+    }
+  },
+  {
+    "operation": "dictSet",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [],
+      "key": "missing",
+      "item": "new"
+    },
+    "expected": {
+      "value": [
+        {
+          "key": "missing",
+          "value": "new"
+        }
+      ]
+    }
+  },
+  {
+    "operation": "dictContainsKey",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [],
+      "key": ""
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "operation": "dictTryGet",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [],
+      "key": ""
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "operation": "dictGet",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [],
+      "key": ""
+    },
+    "error": "Dictionary key not found"
+  },
+  {
+    "operation": "dictRemove",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [],
+      "key": ""
+    },
+    "expected": {
+      "value": [],
+      "removed": false
+    }
+  },
+  {
+    "operation": "dictSet",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [],
+      "key": "",
+      "item": "new"
+    },
+    "expected": {
+      "value": [
+        {
+          "key": "",
+          "value": "new"
+        }
+      ]
+    }
+  },
+  {
+    "operation": "dictCreate",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "entries": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ]
+    },
+    "expected": {
+      "value": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ]
+    }
+  },
+  {
+    "operation": "dictKeys",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ]
+    },
+    "expected": {
+      "value": [
+        "10",
+        "2",
+        "__proto__",
+        "",
+        "A",
+        "a"
+      ]
+    }
+  },
+  {
+    "operation": "dictValues",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ]
+    },
+    "expected": {
+      "value": [
+        "ten",
+        "two",
+        "safe",
+        "empty",
+        "upper",
+        "lower"
+      ]
+    }
+  },
+  {
+    "operation": "dictContainsKey",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ],
+      "key": "2"
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "operation": "dictTryGet",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ],
+      "key": "2"
+    },
+    "expected": {
+      "found": true,
+      "value": "two"
+    }
+  },
+  {
+    "operation": "dictGet",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ],
+      "key": "2"
+    },
+    "expected": {
+      "value": "two"
+    }
+  },
+  {
+    "operation": "dictRemove",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ],
+      "key": "2"
+    },
+    "expected": {
+      "value": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ],
+      "removed": true
+    }
+  },
+  {
+    "operation": "dictSet",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ],
+      "key": "2",
+      "item": "new"
+    },
+    "expected": {
+      "value": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "new"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ]
+    }
+  },
+  {
+    "operation": "dictContainsKey",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ],
+      "key": "__proto__"
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "operation": "dictTryGet",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ],
+      "key": "__proto__"
+    },
+    "expected": {
+      "found": true,
+      "value": "safe"
+    }
+  },
+  {
+    "operation": "dictGet",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ],
+      "key": "__proto__"
+    },
+    "expected": {
+      "value": "safe"
+    }
+  },
+  {
+    "operation": "dictRemove",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ],
+      "key": "__proto__"
+    },
+    "expected": {
+      "value": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ],
+      "removed": true
+    }
+  },
+  {
+    "operation": "dictSet",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ],
+      "key": "__proto__",
+      "item": "new"
+    },
+    "expected": {
+      "value": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "new"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ]
+    }
+  },
+  {
+    "operation": "dictContainsKey",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ],
+      "key": "missing"
+    },
+    "expected": {
+      "value": false
+    }
+  },
+  {
+    "operation": "dictTryGet",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ],
+      "key": "missing"
+    },
+    "expected": {
+      "found": false
+    }
+  },
+  {
+    "operation": "dictGet",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ],
+      "key": "missing"
+    },
+    "error": "Dictionary key not found"
+  },
+  {
+    "operation": "dictRemove",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ],
+      "key": "missing"
+    },
+    "expected": {
+      "value": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ],
+      "removed": false
+    }
+  },
+  {
+    "operation": "dictSet",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ],
+      "key": "missing",
+      "item": "new"
+    },
+    "expected": {
+      "value": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        },
+        {
+          "key": "missing",
+          "value": "new"
+        }
+      ]
+    }
+  },
+  {
+    "operation": "dictContainsKey",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ],
+      "key": ""
+    },
+    "expected": {
+      "value": true
+    }
+  },
+  {
+    "operation": "dictTryGet",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ],
+      "key": ""
+    },
+    "expected": {
+      "found": true,
+      "value": "empty"
+    }
+  },
+  {
+    "operation": "dictGet",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ],
+      "key": ""
+    },
+    "expected": {
+      "value": "empty"
+    }
+  },
+  {
+    "operation": "dictRemove",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ],
+      "key": ""
+    },
+    "expected": {
+      "value": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ],
+      "removed": true
+    }
+  },
+  {
+    "operation": "dictSet",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "dictionary": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "empty"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ],
+      "key": "",
+      "item": "new"
+    },
+    "expected": {
+      "value": [
+        {
+          "key": "10",
+          "value": "ten"
+        },
+        {
+          "key": "2",
+          "value": "two"
+        },
+        {
+          "key": "__proto__",
+          "value": "safe"
+        },
+        {
+          "key": "",
+          "value": "new"
+        },
+        {
+          "key": "A",
+          "value": "upper"
+        },
+        {
+          "key": "a",
+          "value": "lower"
+        }
+      ]
+    }
+  },
+  {
+    "operation": "dictCreate",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "entries": [
+        {
+          "key": "a",
+          "value": "first"
+        },
+        {
+          "key": "a",
+          "value": "second"
+        }
+      ]
+    },
+    "error": "Duplicate dictionary key"
+  },
+  {
+    "operation": "dictTryGet",
+    "type": {
+      "kind": "nullable",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "inputs": {
+      "dictionary": [
+        {
+          "key": "null",
+          "value": null
+        }
+      ],
+      "key": "null"
+    },
+    "expected": {
+      "found": true,
+      "value": null
+    }
+  },
+  {
+    "operation": "dictSet",
+    "type": {
+      "kind": "nullable",
+      "inner": {
+        "kind": "string"
+      }
+    },
+    "inputs": {
+      "dictionary": [
+        {
+          "key": "a",
+          "value": "first"
+        }
+      ],
+      "key": "a",
+      "item": null
+    },
+    "expected": {
+      "value": [
+        {
+          "key": "a",
+          "value": null
+        }
+      ]
+    }
+  },
+  {
+    "operation": "dictGet",
+    "type": {
+      "kind": "scalar",
+      "name": "core.Decimal"
+    },
+    "inputs": {
+      "dictionary": [
+        {
+          "key": "big",
+          "value": "12345678901234567890.123456789"
+        }
+      ],
+      "key": "big"
+    },
+    "expected": {
+      "value": "12345678901234567890.123456789"
+    }
+  },
+  {
+    "operation": "jsonFrom",
+    "type": {
+      "kind": "dictionary",
+      "items": {
+        "kind": "scalar",
+        "name": "core.Decimal"
+      }
+    },
+    "inputs": {
+      "value": [
+        {
+          "key": "big",
+          "value": "12345678901234567890.123456789"
+        }
+      ]
+    },
+    "expected": {
+      "value": {
+        "json": "[{\"key\":\"big\",\"value\":12345678901234567890.123456789}]"
+      }
+    }
+  },
+  {
+    "operation": "jsonTo",
+    "type": {
+      "kind": "dictionary",
+      "items": {
+        "kind": "scalar",
+        "name": "core.Decimal"
+      }
+    },
+    "inputs": {
+      "value": {
+        "json": "[{\"key\":\"big\",\"value\":12345678901234567890.123456789}]"
+      }
+    },
+    "expected": {
+      "value": [
+        {
+          "key": "big",
+          "value": "12345678901234567890.123456789"
+        }
+      ]
+    }
+  },
+  {
+    "operation": "jsonTo",
+    "type": {
+      "kind": "dictionary",
+      "items": {
+        "kind": "scalar",
+        "name": "core.Decimal"
+      }
+    },
+    "inputs": {
+      "value": {
+        "json": "[{\"key\":\"a\",\"value\":1},{\"key\":\"a\",\"value\":2}]"
+      }
+    },
+    "error": "Duplicate dictionary key"
+  },
+  {
+    "operation": "dictCreate",
+    "type": {
+      "kind": "string"
+    },
+    "inputs": {
+      "entries": [
+        {
+          "key": "a",
+          "value": "kept",
+          "extra": "ignored"
+        }
+      ]
+    },
+    "expected": {
+      "value": [
+        {
+          "key": "a",
+          "value": "kept"
+        }
+      ]
+    }
+  }
+]
