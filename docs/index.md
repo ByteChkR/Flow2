@@ -15,6 +15,8 @@ Adam.Flow2 ist das portable, versionierte Flow-System für Browser- und Backend-
 - [Laufzeit-Pipeline](technical/runtime-pipeline.html)
 - [Optimierungen und Benchmarks](technical/optimizations.html)
 - [Node-Entwicklung](technical/nodes.html)
+- [Debugger-Plan](technical/flow-debugger-plan.html)
+- [Plan: zusätzliche Standard-Nodes](technical/standard-node-expansion-plan.html)
 - [Editor, Workspace und Graphschnittstellen](technical/editor-workspace.html)
 - [Validierung und Fehlermodell](technical/validation.html)
 - [Flow2-Referenz](generated/index.html)

@@ -21,10 +21,12 @@
 - [Editor, Workspace und Graphschnittstellen](technical/editor-workspace.md): Entwürfe, Gruppen, Subgraphen, Kennzeichnungen und Layout.
 - [Validierung und Fehlermodell](technical/validation.md): Prüfstufen, Boundaries, Freigaben und Fehlerherkunft.
 - [Node-Entwicklung](technical/nodes.md): Verträge, Metadaten und die generierte Referenz.
+- [Debugger-Plan](technical/flow-debugger-plan.md): Inspector, Breakpoints, Stepping und hybride Debug-Sessions.
+- [Plan: zusätzliche Standard-Nodes](technical/standard-node-expansion-plan.md): Verträge, Umsetzungsetappen und Tests für 22 neue Nodes.
 - [Ausführungsmodell](technical/execution-model.md): Validierung, Compiler, Segmentierung und Runtime.
 - [Laufzeit-Pipeline](technical/runtime-pipeline.md): Koordination, Zustände, Subgraph-Aufrufe und Vertrauensgrenzen.
 - [Optimierungen und Benchmarks](technical/optimizations.md): Caches, Feature-Flags, Profiler und Messmethodik.
 - [Verträge und Kompatibilität](technical/contracts.md): Versionierte JSON-Verträge und Persistenzregeln.
 - [Wertverträge](technical/value-contracts.md): Gemeinsame Semantik und Fixtures für portable Werte.
 - [Historischer Prototyp](technical/legacy-prototype.md): Abgrenzung der nicht mehr maßgeblichen Quellen.
-- [Prüfnachweis vom 14.10.2026](technical/verification-2026-10-14.md): Historische Abnahme mit reproduzierbaren Befehlen.
+- [Prüfnachweis vom 14.10.2022](technical/verification-2022-10-14.md): Historische Abnahme mit reproduzierbaren Befehlen.
