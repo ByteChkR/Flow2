@@ -1,4 +1,5 @@
 import {withWireSchemaCache} from '@adam-flow/core/flow-core/schema.js';
+import {BrowserPlanCache} from './plan-cache.js';
 import {resolveDefinition} from '@adam-flow/core/flow-core/node-resolution.js';
 import {flowDesignations} from '@adam-flow/core/flow-core/designations.js';
 import {inferQueryNodes,queryCodecs} from '@adam-flow/core/flow-core/query-nodes.js';
@@ -18,9 +19,13 @@ import type { PortAddress } from '@adam-flow/core/flow-core/index.js';
 export interface WorkspaceDiagnostic extends Diagnostic { node?: string; port?: string; type?: string; environment?: string }
 export interface Inspection { flow?: Flow; plan?: ExecutionPlan; diagnostics: WorkspaceDiagnostic[]; preview: string }
 export class FlowWorkspace {
+  private preparedFlows=new Map<string,Flow>();
+  private planCache=new BrowserPlanCache();
   private loaded: {catalog:Catalog;types:TypeDocument;serverCodecs:CodecCatalog;nodes:BrowserNodeRegistry;codecs:BrowserCodecRegistry} | undefined;
-  constructor(private readonly factory:(types:TypeDocument)=>{nodes:BrowserNodeRegistry;codecs:BrowserCodecRegistry},private readonly fetcher:typeof fetch=fetch,private readonly subscribeChanges?:OrchestratorOptions['subscribeChanges']) {}
+  constructor(private readonly factory:(types:TypeDocument)=>{nodes:BrowserNodeRegistry;codecs:BrowserCodecRegistry},private readonly fetcher:typeof fetch=fetch,private readonly subscribeChanges?:OrchestratorOptions['subscribeChanges'],private readonly transportFactory?:(signal?:AbortSignal)=>Promise<OrchestratorOptions['transport']>) {}
   async load(signal?:AbortSignal):Promise<{catalog:Catalog;types:TypeDocument;serverCount:number;browserCount:number}> {
+    this.planCache.clear();
+    this.preparedFlows.clear();
     this.loaded=undefined;
     const server=await loadServerCatalog(this.fetcher,signal),browser=this.factory(server.types);
     const catalog=mergeCatalogs(new TypeRegistry(server.types),server.catalog,browser.nodes.catalog);
@@ -30,6 +35,8 @@ export class FlowWorkspace {
   }
   /** Initialize supplied, trusted types and browser implementations without HTTP. */
   loadLocal(types:TypeDocument={schemaVersion:1,types:[]}) {
+    this.planCache.clear();
+    this.preparedFlows.clear();
     const browser=this.factory(types),catalog=browser.nodes.catalog;
     registerCatalogValueCodecs(browser.codecs,catalog);
     this.loaded={catalog,types,serverCodecs:{schemaVersion:1,environment:'server',codecs:[]},...browser};
@@ -37,6 +44,8 @@ export class FlowWorkspace {
   }
   /** Add trusted application-authored browser definitions before session creation. */
   addBrowserNodes(items:import('./authoring.js').AuthoredNode[]):void {
+    this.planCache.clear();
+    this.preparedFlows.clear();
     if(!this.loaded)throw new Error('Katalog ist noch nicht geladen.');
     for(const item of items){
       if(this.loaded.catalog.nodes.some(node=>node.type===item.definition.type&&node.version===item.definition.version))continue;
@@ -49,7 +58,7 @@ export class FlowWorkspace {
     if(!this.loaded)throw new Error('Server-Katalog ist noch nicht geladen.');
     this.loaded.nodes.requireFlowValues(parameters,values);
   }
-  inspect(json:string,bundle?:GraphBundle,environment:'server'|'browser'='server'):Inspection {
+  inspect(json:string,bundle?:GraphBundle,environment:'server'|'browser'='server',preparePlan:typeof compileFlow=compileFlow):Inspection {
     let value:unknown;
     try {value=JSON.parse(json);} catch {return {diagnostics:[{code:'json',path:'',message:'Ungültiges JSON. Bitte Syntax prüfen.'}],preview:''};}
     if(!this.loaded) return {diagnostics:[{code:'catalog',path:'',message:'Server-Katalog ist noch nicht geladen.'}],preview:''};
@@ -66,7 +75,7 @@ export class FlowWorkspace {
       }
       const graphs=snapshot?.document.graphs??[flow];
       const extra=mergeCodecDefinitions(snapshot?graphCodecs(snapshot.document):[],queryCodecs(graphs,this.loaded.serverCodecs.codecs));
-      const plan=compileFlow(materializeHybrid(flow,environment),catalog,this.loaded.types,{server:{...this.loaded.serverCodecs,codecs:[...this.loaded.serverCodecs.codecs,...extra.filter(codec=>!this.loaded!.serverCodecs.codecs.some(existing=>existing.typeId===codec.typeId&&existing.version===codec.version))]},browser:{...this.loaded.codecs.catalog,codecs:[...this.loaded.codecs.catalog.codecs,...extra.filter(codec=>!this.loaded!.codecs.catalog.codecs.some(existing=>existing.typeId===codec.typeId&&existing.version===codec.version))]}});
+      const plan=preparePlan(materializeHybrid(flow,environment),catalog,this.loaded.types,{server:{...this.loaded.serverCodecs,codecs:[...this.loaded.serverCodecs.codecs,...extra.filter(codec=>!this.loaded!.serverCodecs.codecs.some(existing=>existing.typeId===codec.typeId&&existing.version===codec.version))]},browser:{...this.loaded.codecs.catalog,codecs:[...this.loaded.codecs.catalog.codecs,...extra.filter(codec=>!this.loaded!.codecs.catalog.codecs.some(existing=>existing.typeId===codec.typeId&&existing.version===codec.version))]}});
       return {flow,plan,diagnostics:[],preview:plan.segments.map(segment=>`${segment.id} · ${segment.environment} · ${segment.nodeIds.join(' → ')}\n${generateSegment(segment)}`).join('\n\n')};
     } catch(error) {
       const diagnostics=error instanceof ContractError?error.diagnostics:[{code:'validation',path:'',message:error instanceof Error?error.message:String(error)}];
@@ -105,15 +114,25 @@ export class FlowWorkspace {
       return true;
     }catch{return false;}
   }
-  run(json:string,options:Pick<OrchestratorOptions,'signal'|'onProgress'|'onTrace'|'inputs'|'bundle'|'profiling'|'processTaskId'|'allowUnknownInputs'|'subgraphOptimizations'> & {executionMode?:'coordinated'|'local'}={}) {
+  run(json:string,options:Pick<OrchestratorOptions,'transport'|'fetcher'|'signal'|'onProgress'|'onTrace'|'inputs'|'bundle'|'profiling'|'processTaskId'|'allowUnknownInputs'|'subgraphOptimizations'> & {executionMode?:'coordinated'|'local';cachePreparation?:boolean}={}) {
     const started=options.profiling?performance.now():0;
+    const preparation=options.cachePreparation?{preparePlan:this.planCache.prepare}:{};
     if(options.executionMode==='local'){
       if(!this.loaded)throw new Error('Katalog ist noch nicht geladen.');
-      return runLocalFlow({...this.loaded,flow:parseContract('flow',json),registryFactory:this.factory,...options});
+      return runLocalFlow({...this.loaded,flow:parseContract('flow',json),registryFactory:this.factory,...options,...preparation});
     }
-    const inspection=withWireSchemaCache(options.subgraphOptimizations?.browserWireSchemaCache!==false,()=>this.inspect(json,options.bundle));
+    // Cache successful static workspace inspection only. Orchestrator preflight,
+    // designation/input checks and per-execution runtimes still run every time.
+    const key=options.cachePreparation?JSON.stringify([json,options.bundle??null]):undefined;
+    const cached=key===undefined?undefined:this.preparedFlows.get(key);
+    const inspection:Inspection=cached?{flow:structuredClone(cached),diagnostics:[],preview:''}:withWireSchemaCache(options.subgraphOptimizations?.browserWireSchemaCache!==false,()=>this.inspect(json,options.bundle,'server',preparation.preparePlan));
     if(!inspection.flow || inspection.diagnostics.length) throw new ContractError(inspection.diagnostics);
-    return runOrchestratedFlow({...this.loaded!,flow:inspection.flow,fetcher:this.fetcher,registryFactory:this.factory,...(this.subscribeChanges?{subscribeChanges:this.subscribeChanges}:{}),...options,...(options.profiling?{preparationMs:performance.now()-started}:{})});
+    if(key!==undefined&&!cached){
+      if(this.preparedFlows.size>=16)this.preparedFlows.delete(this.preparedFlows.keys().next().value!);
+      this.preparedFlows.set(key,structuredClone(inspection.flow));
+    }
+    const execute=(transport:OrchestratorOptions['transport'])=>runOrchestratedFlow({...this.loaded!,flow:inspection.flow!,fetcher:this.fetcher,registryFactory:this.factory,...(this.subscribeChanges?{subscribeChanges:this.subscribeChanges}:{}),...options,transport,...preparation,...(options.profiling?{preparationMs:performance.now()-started}:{})});
+    return !options.transport&&this.transportFactory?this.transportFactory(options.signal).then(execute):execute(options.transport);
   }
   private portType(node:Flow['nodes'][number]|undefined,port:string,direction:'inputs'|'outputs'):string {
     const type=(node&&this.loaded?resolveDefinition(this.loaded.catalog,node):undefined)?.[direction][port];

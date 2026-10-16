@@ -16,10 +16,12 @@ import { compileFlow } from '@adam-flow/core/flow-compiler/index.js';
 import { BrowserExecution, SegmentExecutionError } from './segments.js';
 import { BrowserNodeRegistry } from './index.js';
 import { BrowserCodecRegistry } from './codecs.js';
+import {HttpExecutionTransport,ExecutionTransportError} from './execution-transport.js';
+import type {ExecutionTransport,ExecutionCommand,BrowserResultItem} from './execution-transport.js';
 
 export interface ExecutionFailure { code: string; message: string; nodeId: string | null; graphId?:string|null; executionId?:string|null }
 export interface InvocationInfo {executionId:string;graphId:string;parentInvocationId:string|null;callNodeId:string|null;state:string;error:ExecutionFailure|null;skippedNodeIds:string[];outputs?:Record<string,JsonValue>;callKey?:string|null;hybridEnvironment?:'server'|'browser'|null}
-export interface ExecutionSnapshot { executionId: string; state: 'created'|'running'|'waiting_for_browser'|'completed'|'failed'; error: ExecutionFailure|null; completedSegments: string[]; events?: ExecutionTrace[]; outputs:Record<string,JsonValue>; controlOutput:boolean;invocations?:InvocationInfo[] }
+export interface ExecutionSnapshot { executionId: string; state: 'created'|'running'|'waiting_for_browser'|'completed'|'failed'; error: ExecutionFailure|null; completedSegments: string[]; events?: ExecutionTrace[]; outputs:Record<string,JsonValue>; controlOutput:boolean;invocations?:InvocationInfo[];transport?:'http'|'signalr' }
 /** Opt-in experiments; never read from graph JSON. Defaults preserve the baseline. */
 export interface SubgraphOptimizations {
   localCatalogSnapshot?:boolean;
@@ -36,6 +38,10 @@ export interface BrowserRegistry {
   prepareMetadataFactory?:()=> (()=>BrowserRegistry)|undefined;
 }
 export interface OrchestratorOptions {
+  /** Host-selected transport, fixed for the lifetime of this run. */
+  transport?:ExecutionTransport;
+  /** Trusted host-owned compiler cache; never accepted from graph JSON. */
+  preparePlan?:typeof compileFlow;
   subgraphOptimizations?:SubgraphOptimizations;
   /** Server-prepared productive process task; editor previews leave this unset. */
   processTaskId?:string;
@@ -69,12 +75,12 @@ export class FlowSessionLostError extends Error {
 export async function runOrchestratedFlow(options: OrchestratorOptions): Promise<ExecutionSnapshot> {
   const runStarted=performance.now()-(options.preparationMs??0);
   const {flow,catalog,types,nodes,codecs,serverCodecs,signal}=options;
-  const fetcher=options.fetcher ?? fetch;
+  const transport:ExecutionTransport=options.transport??new HttpExecutionTransport(options.fetcher??fetch);
   const stop=new AbortController();
   const runSignal=AbortSignal.any([stop.signal,...(signal?[signal]:[])]);
   const workers=new Map<string,Promise<void>>();
   const invocations=new InvocationTracker(runSignal);
-  const pendingResults:{executionId:string;result:unknown}[]=[];
+  const pendingResults:BrowserResultItem[]=[];
   let workerError:unknown;
   let runProfileRecorded=false;
   const finishProfile=()=>{if(!runProfileRecorded){runProfileRecorded=true;profile('run',runStarted,{invocationId:executionId??null});}};
@@ -102,7 +108,7 @@ export async function runOrchestratedFlow(options: OrchestratorOptions): Promise
   const extraCodecs=mergeCodecDefinitions(bundle?graphCodecs(bundle.document):[],queryCodecs(queryFlows,serverCodecs.codecs));
   const serverCapabilities={...serverCodecs,codecs:[...serverCodecs.codecs,...extraCodecs.filter(codec=>!serverCodecs.codecs.some(existing=>existing.typeId===codec.typeId&&existing.version===codec.version))]};
   const executionFlow=materializeHybrid(flow);
-  const plan=compileFlow(executionFlow,graphCatalog(executionFlow,catalog,types),types,{server:serverCapabilities,browser:{...codecs.catalog,codecs:[...codecs.catalog.codecs,...extraCodecs.filter(codec=>!codecs.catalog.codecs.some(existing=>existing.typeId===codec.typeId&&existing.version===codec.version))]}});
+  const plan=(options.preparePlan??compileFlow)(executionFlow,graphCatalog(executionFlow,catalog,types),types,{server:serverCapabilities,browser:{...codecs.catalog,codecs:[...codecs.catalog.codecs,...extraCodecs.filter(codec=>!codecs.catalog.codecs.some(existing=>existing.typeId===codec.typeId&&existing.version===codec.version))]}});
   const inputs=structuredClone(options.inputs??{});
   requireFlowValues(plan.interface.inputs,inputs,'/inputs',new TypeRegistry(types),!!options.allowUnknownInputs);
   const designationErrors=flowDesignations.validateUse(executionFlow,catalog,{inputs,...(options.bundle?{graphs:options.bundle.graphs}:{})});
@@ -112,26 +118,26 @@ export async function runOrchestratedFlow(options: OrchestratorOptions): Promise
   let sessionId:string|undefined;
   let processHeartbeat:ReturnType<typeof setInterval>|undefined;
   const runtimes=new Map<string,{runtime:BrowserExecution;invocation:InvocationInfo;attempts:Map<string,{segmentId:string;attemptId:string}>;stop:AbortController}>();
-  const request=async(path:string,method:string,body?:unknown):Promise<any>=>{
+  const request=async(command:ExecutionCommand):Promise<any>=>{
     const requestStart=options.profiling?performance.now():0;
     // Capability validation and graph preflight can take longer with Adam's full entity catalog.
     // Only task-bound, idempotent requests may be retried. Keep the same payload
     // and attempt IDs; never execute a browser node again to recover a response.
-    const retryable=!!options.processTaskId&&(method==='GET'||/\/(?:start|heartbeat|complete|results|invoke)$/.test(path));
-    const payload=body===undefined?undefined:JSON.stringify(body);
+    const retryable=!!options.processTaskId&&['next','startProcess','heartbeatProcess','completeProcess','results','invoke'].includes(command.kind);
     let retryUntil:number|undefined;
-    let response:Response;
     let result:any;
     for(;;){
       const deadline=AbortSignal.timeout(retryUntil?Math.max(1,retryUntil-Date.now()):120000);
       try {
-        response=await fetcher(path,{method,credentials:'same-origin',headers:{'Content-Type':'application/json',...(sessionId?{'X-Flow-Session':sessionId}:{})},
-          ...(payload===undefined?{}:{body:payload}),signal:AbortSignal.any([runSignal,deadline])});
-        if(retryable&&[502,503,504].includes(response.status))throw new Error(`Flow2: HTTP ${response.status}`);
-        result=await response.json();
+        result=await transport.send(command,{sessionId,signal:AbortSignal.any([runSignal,deadline])});
         break;
       } catch(error) {
         runSignal.throwIfAborted();
+        if(error instanceof ExecutionTransportError && ![502,503,504].includes(error.status)) {
+          if((error.status===404&&error.code==='execution')||(error.status===409&&error.code==='session_required'))throw new FlowSessionLostError();
+          if(error.diagnostics)throw new ContractError(error.diagnostics as ConstructorParameters<typeof ContractError>[0]);
+          throw error;
+        }
         if(!retryable||deadline.aborted){if(deadline.aborted)throw deadline.reason;if(error instanceof TypeError)throw Object.assign(new Error('Backend-Verbindung nicht verfügbar.'),{code:'ERR_NETWORK'});throw error;}
       }
       retryUntil??=Date.now()+20000;
@@ -143,17 +149,11 @@ export async function runOrchestratedFlow(options: OrchestratorOptions): Promise
         if(runSignal.aborted){runSignal.removeEventListener('abort',abort);abort();}
       });
     }
-    profile('http',requestStart,{message:`${method} ${path.replace(/executions\/[^/]+/,'executions/:id')}`});
-    if(!response.ok&&((response.status===404&&result?.code==='execution')||(response.status===409&&result?.code==='session_required')))throw new FlowSessionLostError();
-    if(!response.ok){
-      if(Array.isArray(result?.errors))throw new ContractError(result.errors);
-      const error=new Error(result?.message??`HTTP ${response.status}`);
-      Object.assign(error,{code:result?.code,status:response.status});throw error;
-    }
-    if(method==='POST'&&(path.endsWith('/invoke')||path.endsWith('/result')))wakeup.pulse();
+    profile(transport.kind,requestStart,{message:transport.describe(command)});
+    if(command.kind==='invoke')wakeup.pulse();
     return result;
   };
-  const wakeup=new ExecutionWakeup(runSignal);
+  const wakeup=new ExecutionWakeup(runSignal,transport.pollIntervalMs??null);
   let unsubscribe:(()=>void)|undefined;
   const invocationInputs=new Map<string,{invocation:InvocationInfo;inputs:Record<string,JsonValue>}>();
   const runtimeFor=(invocation:InvocationInfo,args:Record<string,JsonValue>)=>withWireSchemaCache(options.subgraphOptimizations?.browserWireSchemaCache!==false,()=>{
@@ -174,11 +174,11 @@ export async function runOrchestratedFlow(options: OrchestratorOptions): Promise
       const childStart=options.profiling?performance.now():0;
       try {
       const attempt=attempts.get(nodeId);if(!attempt)throw new Error('Graph call has no active browser attempt.');
-      const child=await request(`/api/executions/${invocation.executionId}/invoke`,'POST',{...attempt,reference,inputs:arguments_,callKey});
+      const child=await request({kind:'invoke',executionId:invocation.executionId,body:{...attempt,reference,inputs:arguments_,callKey}});
       if(typeof child.executionId!=='string')throw new Error('Missing child invocation ID.');
       invocations.observe(child.invocations??[]);
       let cancelTask:Promise<unknown>|undefined;
-      const cancelChild=()=>{runtimes.get(child.executionId)?.stop.abort(new DOMException("Invocation cancelled.","AbortError"));cancelTask??=request(`/api/executions/${child.executionId}`,'DELETE').then(snapshot=>{invocations.observe(snapshot.invocations??[]);wakeup.pulse();});void cancelTask.catch(()=>wakeup.pulse());};
+      const cancelChild=()=>{runtimes.get(child.executionId)?.stop.abort(new DOMException("Invocation cancelled.","AbortError"));cancelTask??=request({kind:'cancel',executionId:child.executionId}).then(snapshot=>{invocations.observe(snapshot.invocations??[]);wakeup.pulse();});void cancelTask.catch(()=>wakeup.pulse());};
       _signal?.addEventListener('abort',cancelChild,{once:true});
       if(_signal?.aborted)cancelChild();
       let state:InvocationInfo;
@@ -194,21 +194,21 @@ export async function runOrchestratedFlow(options: OrchestratorOptions): Promise
       return outputs;
       } finally {profile('childWait',childStart,{graphId:invocation.graphId,invocationId:invocation.executionId,nodeId,profile:{startMs:childStart}});}
     });
-    const runtime=new BrowserExecution(invocation.executionId,target,graphCatalog(target,catalog,types),types,{server:serverCapabilities,browser:local.codecs.catalog},local.nodes,local.codecs,args,{runtimeIndexes:options.subgraphOptimizations?.browserRuntimeIndexes!==false});
+    const runtime=new BrowserExecution(invocation.executionId,target,graphCatalog(target,catalog,types),types,{server:serverCapabilities,browser:local.codecs.catalog},local.nodes,local.codecs,args,{preparePlan:options.preparePlan,runtimeIndexes:options.subgraphOptimizations?.browserRuntimeIndexes!==false});
     profile('runtime',runtimeStart,{graphId:invocation.graphId,invocationId:invocation.executionId});
     const context={runtime,invocation,attempts,stop:new AbortController()};runtimes.set(invocation.executionId,context);return context;
   });
   try {
-    try{unsubscribe=options.subscribeChanges?.(id=>{if(!id||id===executionId)wakeup.pulse();});}catch{/* HTTP polling remains available without SignalR. */}
+    try{unsubscribe=(transport.subscribeChanges?.bind(transport)??options.subscribeChanges)?.(id=>{if(!id||id===executionId)wakeup.pulse();});}catch(error){if(transport.kind==='signalr')throw error;/* HTTP polling remains available without wakeup hints. */}
     if(options.processTaskId||flow.mode==='interactive'||flow.mode==='hybrid'||bundle?.document.graphs.some(graph=>graph.mode==='hybrid')) {
-      const session=await request('/api/sessions','POST',{browserCatalog:nodes.catalog,browserCodecs:codecs.catalog});
+      const session=await request({kind:'openSession',body:{browserCatalog:nodes.catalog,browserCodecs:codecs.catalog}});
       if(typeof session.sessionId!=='string') throw new Error('Missing session ID.');
       sessionId=session.sessionId;
     }
     let state=snapshot(options.processTaskId
-      ?await request(`/api/processes/${options.processTaskId}/start`,'POST',{sessionId})
-      :await request('/api/executions','POST',{flow,inputs,...(options.profiling?{profiling:true}:{}),...(sessionId?{sessionId}:{}),...(bundle?{bundle:bundle.document}:{})}));
-    if(options.processTaskId)processHeartbeat=setInterval(()=>{void request(`/api/processes/${options.processTaskId}/heartbeat`,'POST').catch(()=>{/* Session expiry and the next coordinator request report loss. */});},10000);
+      ?await request({kind:'startProcess',taskId:options.processTaskId,body:{sessionId}})
+      :await request({kind:'start',body:{flow,inputs,...(options.profiling?{profiling:true}:{}),...(sessionId?{sessionId}:{}),...(bundle?{bundle:bundle.document}:{})}}));
+    if(options.processTaskId)processHeartbeat=setInterval(()=>{void request({kind:'heartbeatProcess',taskId:options.processTaskId!}).catch(()=>{/* Session expiry and the next coordinator request report loss. */});},10000);
     executionId=state.executionId;
     invocationInputs.set(executionId,{invocation:{executionId,graphId:flow.id,parentInvocationId:null,callNodeId:null,state:state.state,error:null,skippedNodeIds:plan.skippedNodeIds},inputs});
     invocations.observe(state.invocations??[]);
@@ -222,8 +222,8 @@ export async function runOrchestratedFlow(options: OrchestratorOptions): Promise
       if(workerError)throw workerError;
       const batch=pendingResults.splice(0,256);
       const work=batch.length
-        ?await request(`/api/executions/${executionId}/results`,'POST',{results:batch})
-        :await request(`/api/executions/${executionId}/next`,'GET');
+        ?await request({kind:'results',executionId,body:{results:batch}})
+        :await request({kind:'next',executionId});
       state=snapshot(work.execution);
       if(state.executionId!==executionId) throw new Error('Unexpected execution ID.');
       invocations.observe(state.invocations??[]);
@@ -262,14 +262,14 @@ export async function runOrchestratedFlow(options: OrchestratorOptions): Promise
       if(!pendingResults.length)await wakeup.wait(revision);
     }
     if(options.processTaskId) {
-      const persisted=await request(`/api/processes/${options.processTaskId}/complete`,'POST');
+      const persisted=await request({kind:'completeProcess',taskId:options.processTaskId});
       if(state.state==='completed'&&persisted.status!=='erledigt')throw new Error('Der Prozessabschluss wurde nicht als erfolgreich gespeichert.');
     }
     if(state.state==='failed'&&state.error?.code==='session_lost')throw new FlowSessionLostError();
     if(state.controlOutput!==(state.state==='completed'&&plan.interface.control.output))throw new Error('Control output does not match the flow interface.');
     if(state.state==='completed'){requireFlowValues(plan.interface.outputs,state.outputs,'/outputs',new TypeRegistry(types));const errors=flowDesignations.validateOutputs(executionFlow,catalog,state.outputs);if(errors.length)throw new ContractError(errors);}
     finishProfile();
-    return {...state,events:[...(state.events??[]),...browserEvents].sort((a,b)=>Date.parse(a.timestamp)-Date.parse(b.timestamp))};
+    return {...state,transport:transport.kind,events:[...(state.events??[]),...browserEvents].sort((a,b)=>Date.parse(a.timestamp)-Date.parse(b.timestamp))};
   } finally {
     if(processHeartbeat)clearInterval(processHeartbeat);
     finishProfile();
@@ -279,18 +279,17 @@ export async function runOrchestratedFlow(options: OrchestratorOptions): Promise
     for(const context of runtimes.values())context.runtime.dispose();
     if(executionId) {
       try {
-        const closed=await fetcher(`/api/executions/${executionId}`,{method:'DELETE',credentials:'same-origin',
-          headers:sessionId?{'X-Flow-Session':sessionId}:{},signal:AbortSignal.timeout(3000)});
+        const closed=await transport.send({kind:'cancel',executionId},{sessionId,signal:AbortSignal.timeout(3000)});
         // Cancellation may happen between polls; retain the final backend logs as well.
-        if(closed.ok&&closed.status!==204){const final=snapshot(await closed.json());if(final.executionId===executionId)progress(final);}
+        if(closed){const final=snapshot(closed);if(final.executionId===executionId)progress(final);}
       } catch { /* Session cleanup also cancels interactive runs. */ }
     }
     if(options.processTaskId) {
-      try {await fetcher(`/api/processes/${options.processTaskId}`,{method:'DELETE',credentials:'same-origin',headers:sessionId?{'X-Flow-Session':sessionId}:{},signal:AbortSignal.timeout(3000)});}catch{/* Durable lease is the fallback after disconnect. */}
+      try {await transport.send({kind:'releaseProcess',taskId:options.processTaskId},{sessionId,signal:AbortSignal.timeout(3000)});}catch{/* Durable lease is the fallback after disconnect. */}
     }
     if(sessionId) {
       // Cleanup has its own deadline, so cancellation of the run does not skip session invalidation.
-      try {await fetcher(`/api/sessions/${sessionId}`,{method:'DELETE',credentials:'same-origin',signal:AbortSignal.timeout(3000)});} catch { /* Lease expiry is the fallback when disconnected. */ }
+      try {await transport.send({kind:'closeSession',sessionId},{signal:AbortSignal.timeout(3000)});} catch { /* Lease expiry is the fallback when disconnected. */ }
     }
   }
 }

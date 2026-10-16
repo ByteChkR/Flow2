@@ -8,6 +8,7 @@
   export let running=false;
   export let history=[];
   export let names={};
+  export let embedded=false;
   const dispatch=createEventDispatcher();
   $: report=summarizePerformance(events);
   $: hotNodes=[...report.rows].sort((a,b)=>(b.selfMs+b.overheadMs)-(a.selfMs+a.overheadMs)).slice(0,12);
@@ -15,15 +16,15 @@
   $: totals=report.rows.reduce((sum,row)=>({self:sum.self+row.selfMs,overhead:sum.overhead+row.overheadMs}),{self:0,overhead:0});
   $: completed=history.filter(run=>run.state==='completed');
   $: times=completed.map(run=>run.durationMs);
-  const phases={preflight:'Browser: Vorbereitung',preparation:'Backend: Vorbereitung',runtime:'Browser: Runtime erstellen',http:'HTTP inkl. Serverarbeit',run:'Gesamter Lauf',dispatch:'Backend: Segment-Dispatch'};
+  const phases={preflight:'Browser: Vorbereitung',preparation:'Backend: Vorbereitung',runtime:'Browser: Runtime erstellen',http:'HTTP inkl. Serverarbeit',signalr:'SignalR inkl. Serverarbeit',run:'Gesamter Lauf',dispatch:'Backend: Segment-Dispatch'};
   function label(event){return names[`${event.graphId}/${event.nodeId}`]??event.nodeId;}
   function download(){
     const url=URL.createObjectURL(new Blob([JSON.stringify({schemaVersion:1,exportedAt:new Date().toISOString(),graphName,statistics,history,events},null,2)],{type:'application/json'}));
     const link=document.createElement('a');link.href=url;link.download='flow2-statistics.json';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
   }
 </script>
-<section class="performance" aria-label="Flow-Statistics">
-  <header><strong>Statistics</strong><span>{graphName} · {running?'Live':'Aktueller Graph'}</span><button disabled={!statistics&&!events.length} on:click={download}>JSON exportieren</button><button aria-label="Statistics schließen" on:click={()=>dispatch('close')}>×</button></header>
+<section class="performance" class:embedded aria-label="Flow-Statistics">
+  <header><strong>Statistics</strong><span>{graphName} · {running?'Live':'Aktueller Graph'}</span><button disabled={!statistics&&!events.length} on:click={download}>JSON exportieren</button>{#if !embedded}<button aria-label="Statistics schließen" on:click={()=>dispatch('close')}>×</button>{/if}</header>
   <div class="content">
     {#if statistics}
     <section aria-label="Statische Graph-Statistik">
@@ -54,7 +55,7 @@
       <p class="note">Diese Summen sind keine Graphlaufzeit. Subgraph- und UI-Wartezeiten sind aus Self herausgerechnet; sonstige I/O-Zeit bleibt enthalten.</p>
       {#if hotNodes.length}<h4>Nodes mit der höchsten Self + System-Zeit</h4><p class="legend"><span>● Eigenzeit</span><span class="system-label">● Node-Verwaltung</span></p>
       <div class="hot-nodes">{#each hotNodes as row}<div class="hot-node"><span title={label(row)}>{label(row)} · {row.environment==='server'?'Backend':'Browser'}</span><div class="hot-track" role="img" aria-label={`${label(row)}: Eigenzeit ${duration(row.selfMs)}, Verwaltung ${duration(row.overheadMs)}`}><i style={`width:${100*row.selfMs/maxNodeTime}%`}></i><i class="system-part" style={`width:${100*row.overheadMs/maxNodeTime}%`}></i></div><b>{duration(row.selfMs+row.overheadMs)}</b></div>{/each}</div>{/if}
-      <details open><summary>Vorbereitung und HTTP</summary>
+      <details open><summary>Vorbereitung und Transport</summary>
         <table><thead><tr><th>Phase</th><th>Dauer</th><th>Details</th></tr></thead><tbody>{#each report.profiled.filter(event=>phases[event.status]) as event}<tr><td>{phases[event.status]}</td><td>{duration(event.durationMs??0)}</td><td>{event.message??''}{#if event.profile?.queueMs!=null} · Sperre abwarten: {duration(event.profile.queueMs)}{/if}{#if event.profile?.resultLockMs!=null} · Ergebnissperre: {duration(event.profile.resultLockMs)}{/if}</td></tr>{/each}</tbody></table>
       </details>
       <details open><summary>Nodes – nach Verwaltungszeit sortiert</summary>
@@ -82,7 +83,7 @@
   </div>
 </section>
 <style>
-.performance{position:absolute;z-index:4;right:16px;bottom:52px;width:min(1050px,calc(100% - 32px));max-height:calc(100% - 80px);display:flex;flex-direction:column;background:var(--f-panel);color:var(--f-text);border:1px solid var(--f-border);border-radius:8px;box-shadow:0 6px 24px #0002;font-size:12px;touch-action:auto}header{display:flex;align-items:center;gap:12px;padding:10px;border-bottom:1px solid var(--f-border)}header span{flex:1;color:var(--f-muted)}button{font:inherit;background:transparent;color:inherit;border:1px solid var(--f-border);border-radius:4px;padding:4px 8px;cursor:pointer}.content{overflow:auto;padding:12px;overscroll-behavior:contain}p{line-height:1.5;margin:8px 0}table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;margin:8px 0}th,td{text-align:left;padding:6px;border-bottom:1px solid var(--f-border)}th{font-size:11px}small{display:block;color:var(--f-muted)}details{margin-top:14px}summary{cursor:pointer;font-weight:600}.note{color:var(--f-muted);font-size:11px}.timeline{display:flex;gap:8px;align-items:center;height:22px}.timeline>span{width:180px;flex:none;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.track{flex:1;background:color-mix(in srgb,var(--f-brand) 8%,var(--f-panel));height:12px}.bar{background:#df8a22;min-width:1px;height:12px}.bar i{display:block;background:#2581ca;height:12px}h4{font-size:11px;margin:10px 0}
+.performance{position:absolute;z-index:4;right:16px;bottom:52px;width:min(1050px,calc(100% - 32px));max-height:calc(100% - 80px);display:flex;flex-direction:column;background:var(--f-panel);color:var(--f-text);border:1px solid var(--f-border);border-radius:8px;box-shadow:0 6px 24px #0002;font-size:12px;touch-action:auto}.performance.embedded{position:relative;inset:auto;width:auto;max-height:none;border:0;border-radius:0;box-shadow:none}header{display:flex;align-items:center;gap:12px;padding:10px;border-bottom:1px solid var(--f-border)}header span{flex:1;color:var(--f-muted)}button{font:inherit;background:transparent;color:inherit;border:1px solid var(--f-border);border-radius:4px;padding:4px 8px;cursor:pointer}.content{overflow:auto;padding:12px;overscroll-behavior:contain}p{line-height:1.5;margin:8px 0}table{border-collapse:collapse;width:100%;font-variant-numeric:tabular-nums;margin:8px 0}th,td{text-align:left;padding:6px;border-bottom:1px solid var(--f-border)}th{font-size:11px}small{display:block;color:var(--f-muted)}details{margin-top:14px}summary{cursor:pointer;font-weight:600}.note{color:var(--f-muted);font-size:11px}.timeline{display:flex;gap:8px;align-items:center;height:22px}.timeline>span{width:180px;flex:none;overflow:hidden;white-space:nowrap;text-overflow:ellipsis}.track{flex:1;background:color-mix(in srgb,var(--f-brand) 8%,var(--f-panel));height:12px}.bar{background:#df8a22;min-width:1px;height:12px}.bar i{display:block;background:#2581ca;height:12px}h4{font-size:11px;margin:10px 0}
 
 h3{font-size:14px;margin:8px 0}h3 small{font-weight:400;margin-top:4px}.metrics{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:8px;margin:12px 0}.metrics>div{padding:12px;border:1px solid var(--f-border);border-radius:8px;background:color-mix(in srgb,var(--f-brand) 5%,var(--f-panel))}.metrics b{display:block;font-size:22px;font-variant-numeric:tabular-nums}.metrics span{display:block;color:var(--f-muted);margin-top:4px}.composition{display:flex;height:16px;border-radius:8px;overflow:hidden;background:var(--f-border)}.browser-part,.segment-size{background:#2581ca}.server-part,.server .segment-size{background:#8b5cf6}.legend{display:flex;gap:16px;color:#2581ca}.server-label{color:#8b5cf6}.system-label{color:#df8a22}.segment-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:8px;margin-top:8px}.segment-grid article{padding:10px;border:1px solid var(--f-border);border-left:3px solid #2581ca;border-radius:6px;overflow-wrap:anywhere}.segment-grid article.server{border-left-color:#8b5cf6}.segment-grid span{display:block;margin:4px 0}.segment-size{height:5px;border-radius:3px;margin-top:8px;min-width:2px}.hot-node{display:grid;grid-template-columns:minmax(100px,220px) minmax(60px,1fr) 85px;align-items:center;gap:8px;padding:5px 0}.hot-node>span{white-space:nowrap;text-overflow:ellipsis;overflow:hidden}.hot-node>b{text-align:right;font-variant-numeric:tabular-nums}.hot-track{height:14px;display:flex;background:color-mix(in srgb,var(--f-brand) 5%,var(--f-panel));border-radius:3px;overflow:hidden}.hot-track i{height:100%;background:#2581ca}.hot-track .system-part{background:#df8a22}
 </style>

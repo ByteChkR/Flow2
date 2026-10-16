@@ -22,7 +22,7 @@ public sealed record InvocationInfo(Guid ExecutionId,string GraphId,Guid? Parent
 public sealed record InvocationWork(InvocationInfo Invocation,Dictionary<string,JsonElement> Inputs);
 public sealed record GraphCall(string SegmentId,string AttemptId,GraphReference Reference,Dictionary<string,JsonElement> Inputs,string CallKey="");
 public sealed record BrowserWorkItem(ExecutionSegment Segment, string AttemptId, Dictionary<string,string> Wires,Guid ExecutionId);
-public sealed record BrowserWork(ExecutionSnapshot Execution, ExecutionSegment? Segment, string? AttemptId, Dictionary<string,string>? Wires, BrowserWorkItem[] WorkItems,InvocationWork[] Invocations);
+public sealed record BrowserWork(ExecutionSnapshot Execution, ExecutionSegment? Segment, string? AttemptId, Dictionary<string,string>? Wires, BrowserWorkItem[] WorkItems,InvocationWork[] Invocations, long Revision = 0);
 public sealed record BrowserResultItem(Guid ExecutionId, BrowserResult Result);
 public sealed record BrowserResult(string SegmentId, string AttemptId, Dictionary<string,string> Wires, ExecutionFailure? Error = null, Dictionary<string,JsonElement>? Outputs = null);
 
@@ -172,6 +172,8 @@ public sealed class Orchestrator(TimeProvider clock, IFlowRuntimeFactory factory
         public HashSet<string> Running { get; } = new();
         public Dictionary<string,string> Attempts { get; } = new();
         public Dictionary<string,string> AcceptedResults { get; } = new();
+        public long Revision { get; set; }
+        public TaskCompletionSource<long> NextChange { get; set; } = new(TaskCreationOptions.RunContinuationsAsynchronously);
         public Guid Id { get; } = id;
         public string Owner { get; } = owner;
         public Session? Session { get; } = session;
@@ -191,27 +193,54 @@ public sealed class Orchestrator(TimeProvider clock, IFlowRuntimeFactory factory
     private static string Token() => Convert.ToHexString(RandomNumberGenerator.GetBytes(32));
     private DateTimeOffset Now => clock.GetUtcNow();
 
-    public string CreateSession(string owner, NodeCatalog nodes, CodecCatalog codecs, Action<string>? phase = null)
+    // Successful capability validation only. Sessions and their declarations remain separate.
+    private readonly HashSet<string> validatedSessionCapabilities = new(StringComparer.Ordinal);
+    private readonly Queue<string> sessionCapabilityOrder = new();
+    private string? sessionCapabilityVersion;
+    public string CreateSession(string owner, NodeCatalog nodes, CodecCatalog codecs, Action<string>? phase = null, PhaseTimings? timing = null)
     {
         lock(gate)
         {
             phase?.Invoke("Abgelaufene Runtime-Sitzungen werden aufgeräumt");
+            timing?.Mark("sessionQueueMs");
             SweepCore();
+            timing?.Mark("sessionSweepMs");
             if (string.IsNullOrWhiteSpace(owner)) throw new ProtocolException(401,"owner","Authentication required.");
-            phase?.Invoke("Backend-Nodekatalog wird geladen");
-            var runtime = factory.Create();
-            phase?.Invoke($"Browser-Nodekatalog wird geprüft ({nodes.Nodes.Length} Nodes)");
-            var nodeErrors = ContractSchemas.Validate("catalog",JsonSerializer.SerializeToElement(nodes,ContractSchemas.JsonOptions));
-            phase?.Invoke($"Browser-Codecs werden geprüft ({codecs.Codecs.Length} Codecs)");
-            var errors = nodeErrors.Concat(TransportContracts.ValidateCatalog(codecs,new TypeRegistry(runtime.Nodes.Types))).ToArray();
-            if(errors.Length!=0) throw new ContractException(errors);
             if(codecs.Environment!="browser" || nodes.Nodes.Any(node=>node.Environments.Any(env=>env!="browser")))
                 throw new ProtocolException(400,"environment","Expected browser capabilities.");
+            var version = FlowOptimizations.ValidationReuse ? factory.PreparationVersion : null;
+            if (sessionCapabilityVersion != version)
+            {
+                validatedSessionCapabilities.Clear(); sessionCapabilityOrder.Clear(); sessionCapabilityVersion = version;
+            }
+            var key = version is null ? null : Convert.ToHexString(SHA256.HashData(JsonSerializer.SerializeToUtf8Bytes(new { nodes, codecs }, ContractSchemas.JsonOptions)));
+            var hit = key is not null && validatedSessionCapabilities.Contains(key);
+            timing?.Mark("sessionCacheLookupMs");
+            if (!hit)
+            {
+                phase?.Invoke("Backend-Nodekatalog wird geladen");
+                var runtime = factory.Create();
+                timing?.Mark("sessionFactoryMs");
+                phase?.Invoke($"Browser-Nodekatalog wird geprüft ({nodes.Nodes.Length} Nodes)");
+                var nodeErrors = ContractSchemas.Validate("catalog",JsonSerializer.SerializeToElement(nodes,ContractSchemas.JsonOptions));
+                timing?.Mark("sessionValidateNodesMs");
+                phase?.Invoke($"Browser-Codecs werden geprüft ({codecs.Codecs.Length} Codecs)");
+                var errors = nodeErrors.Concat(runtime.Nodes.ValidateCodecs(codecs)).ToArray();
+                timing?.Mark("sessionValidateCodecsMs");
+                if(errors.Length!=0) throw new ContractException(errors);
+                if (key is not null)
+                {
+                    if (sessionCapabilityOrder.Count >= 64) validatedSessionCapabilities.Remove(sessionCapabilityOrder.Dequeue());
+                    validatedSessionCapabilities.Add(key); sessionCapabilityOrder.Enqueue(key);
+                }
+            }
             phase?.Invoke("Geprüfte Browser-Metadaten werden kopiert");
             // Freeze declarations for this session; a later request cannot substitute capabilities.
             var frozenNodes=JsonSerializer.Deserialize<NodeCatalog>(JsonSerializer.Serialize(nodes,ContractSchemas.JsonOptions),ContractSchemas.JsonOptions)!;
             var frozenCodecs=JsonSerializer.Deserialize<CodecCatalog>(JsonSerializer.Serialize(codecs,ContractSchemas.JsonOptions),ContractSchemas.JsonOptions)!;
-            var id=Token();sessions.Add(id,new(id,owner,frozenNodes,frozenCodecs){Expires=Now+Lease});return id;
+            timing?.Mark("sessionFreezeMs");
+            var id=Token();sessions.Add(id,new(id,owner,frozenNodes,frozenCodecs){Expires=Now+Lease});
+            timing?.Mark("sessionStoreMs");return id;
         }
     }
     /// <summary>Validates a backend bundle without creating an execution or running nodes.</summary>
@@ -288,20 +317,27 @@ public sealed class Orchestrator(TimeProvider clock, IFlowRuntimeFactory factory
         lock(gate)
         {
             var acquired=profiling?System.Diagnostics.Stopwatch.GetTimestamp():0;
+            var timing=profiling?new PhaseTimings():null;
             var hits=cacheHits;var misses=cacheMisses;var validationHits=preflightHits;
             SweepCore();
             Session? session=flow.Mode is "interactive" or "hybrid" || sessionId is not null?RequireSession(sessionId,owner):null;
             if(string.IsNullOrEmpty(owner))throw new ProtocolException(401,"owner","Authentication required.");
             if(validation is not null&&bundle is null)throw new ProtocolException(400,"bundle_required","Validation receipt requires its bundle.");
             var approved=bundle is not null&&Approved(bundle,session,validation);
+            timing?.Mark("approvalMs");
             var snapshot=bundle is null?null:new GraphBundleSnapshot(bundle,approved);
+            timing?.Mark("snapshotMs");
             if(snapshot is not null&&!TransportContracts.Equivalent(snapshot.Root,flow))throw new ProtocolException(400,"bundle_root","Root flow differs from workspace snapshot.");
             if(flow.Nodes.Any(node=>node.Graph is not null)&&snapshot is null)throw new ProtocolException(400,"bundle_required","Graph nodes require a workspace snapshot.");
             flow=GraphContracts.MaterializeHybrid(flow);
+            timing?.Mark("rootAndHybridMs");
             var preparations=new Dictionary<string,(ExecutionPlan Plan,NodeCatalog Catalog)>();
             if(approved)preflightHits++;
             if(snapshot is not null&&!approved)Preflight(flow,session,snapshot,inputs,[],preparations:preparations);
+            timing?.Mark("preflightMs");
             var execution=StartCore(flow,session,owner,inputs,snapshot,null,null,preparations:preparations,profiling:profiling,allowUnknownInputs:allowUnknownInputs,staticValidated:snapshot is not null);
+            timing?.Mark("startCoreMs");
+            if(timing is not null)Record(execution,"server","profile","preparationPhases",profile:timing.Values);
             if(profiling)Record(execution,"server","profile","preparation",duration:System.Diagnostics.Stopwatch.GetElapsedTime(acquired).TotalMilliseconds,profile:new Dictionary<string,double>{{"queueMs",System.Diagnostics.Stopwatch.GetElapsedTime(requested,acquired).TotalMilliseconds},{"cacheHits",cacheHits-hits},{"cacheMisses",cacheMisses-misses},{"validationCacheHits",preflightHits-validationHits},{"staticValidationReused",approved?1:0}});
             return Snapshot(execution);
         }
@@ -386,6 +422,7 @@ public sealed class Orchestrator(TimeProvider clock, IFlowRuntimeFactory factory
     }
     private Execution StartCore(FlowDocument flow,Session? session,string owner,IReadOnlyDictionary<string,JsonElement>? inputs,GraphBundleSnapshot? bundle,Execution? parent,string? callNode,IReadOnlyDictionary<string,object>? nativeInputs=null,Dictionary<string,(ExecutionPlan Plan,NodeCatalog Catalog)>? preparations=null,bool profiling=false,bool allowUnknownInputs=false,bool staticValidated=false)
     {
+        var timing=(parent?.Profiling??profiling)?new PhaseTimings():null;
         var allowedEnvironments=DesignationEnvironments(flow,parent?.AllowedEnvironments);
         var preparationStart=System.Diagnostics.Stopwatch.GetTimestamp();
         if((flow.Mode is "interactive" or "hybrid")&&session is null)throw new ProtocolException(400,"graph_environment","A backend-only run cannot invoke a browser graph.");
@@ -396,7 +433,9 @@ public sealed class Orchestrator(TimeProvider clock, IFlowRuntimeFactory factory
             prepared = Prepare(flow,session,bundle); preparations[preparationKey]=prepared;
         }
         var isolated=parent is not null && parent.Plan.Nodes.Single(n=>n.Id==callNode).Graph?.Operation=="parallelMap";
+        timing?.Mark("planLookupMs");
         var context=isolated?factory.CreateIsolatedExecutionForFlow(flow,parent!.Context):factory.CreateExecutionForFlow(flow,parent?.Context);var id=Guid.NewGuid();
+        timing?.Mark("executionFactoryMs");
         var baseCatalog=prepared.Catalog;
         var browserCatalog=session?.Nodes??new(1,[]);var browserCodecs=session?.Codecs??new(1,"browser",[]);
         if(bundle is not null)
@@ -406,7 +445,9 @@ public sealed class Orchestrator(TimeProvider clock, IFlowRuntimeFactory factory
             browserCodecs=browserCodecs with{Codecs=MergeCodecs(browserCodecs.Codecs,bundle.PreparedCodecs)};
         }
         browserCatalog=PageNodes.BrowserCatalog(flow,ValueNodes.BrowserCatalog(flow,browserCatalog));
+        timing?.Mark("specializeMs");
         var runtime=new CompiledExecution(id,flow,browserCatalog,browserCodecs,context.Nodes,context.Codecs,inputs,nativeInputs,!FlowOptimizations.PlanCache || factory.PreparationVersion is null ? null : prepared.Plan, allowUnknownInputs);
+        timing?.Mark("runtimeMs");
         var runtimePlan=runtime.Plan;
         var wireInputs=nativeInputs is null?(inputs??new Dictionary<string,JsonElement>()):ToWire(runtimePlan.Interface.Inputs,nativeInputs);
         if (parent is null) RequireTransport(runtimePlan.Interface.Outputs, "Root outputs");
@@ -423,7 +464,11 @@ public sealed class Orchestrator(TimeProvider clock, IFlowRuntimeFactory factory
         Record(execution,"server","execution","running",message:"Ausführung gestartet.");
         if(session is not null)session.Expires=Now+Lease; // Preparation under the gate must not consume the browser lease.
         if(execution.Profiling&&parent is not null)Record(execution,"server","profile","preparation",duration:System.Diagnostics.Stopwatch.GetElapsedTime(preparationStart).TotalMilliseconds,profile:new Dictionary<string,double>{{"staticValidationReused",execution.StaticValidated?1:0}});
-        Advance(execution);return execution;
+        timing?.Mark("inputChecksAndRegistrationMs");
+        Advance(execution);
+        timing?.Mark("initialAdvanceMs");
+        if(timing is not null)Record(execution,"server","profile","initializationPhases",profile:timing.Values);
+        return execution;
     }
     private async Task<IReadOnlyDictionary<string,object>> InvokeNative(Guid id,string node,GraphReference reference,FlowInterface signature,IReadOnlyDictionary<string,object> inputs,CancellationToken cancellation,string callKey="")
     {
@@ -583,7 +628,32 @@ public sealed class Orchestrator(TimeProvider clock, IFlowRuntimeFactory factory
             var work=Terminal(execution)?[]:Descendants(execution).Where(item=>!Terminal(item)).SelectMany(item=>item.Plan.Segments.Where(segment=>item.Attempts.ContainsKey(segment.Id))
                 .Select(segment=>new BrowserWorkItem(Clone(segment),item.Attempts[segment.Id],Incoming(item,segment),item.Id))).ToArray();
             var first=work.FirstOrDefault();
-            return new(Snapshot(execution),first?.Segment,first?.AttemptId,first?.Wires,work,Descendants(execution).Select(item=>new InvocationWork(Info(item),item.Inputs.Where(pair=>item.Plan.Interface.Inputs.Any(p=>p.Name==pair.Key&&item.Plan.Nodes.Any(n=>n.Id==p.NodeId&&n.Environment=="browser"))).ToDictionary(pair=>pair.Key,pair=>pair.Value.Clone()))).ToArray());
+            return new(Snapshot(execution),first?.Segment,first?.AttemptId,first?.Wires,work,Descendants(execution).Select(item=>new InvocationWork(Info(item),item.Inputs.Where(pair=>item.Plan.Interface.Inputs.Any(p=>p.Name==pair.Key&&item.Plan.Nodes.Any(n=>n.Id==p.NodeId&&n.Environment=="browser"))).ToDictionary(pair=>pair.Key,pair=>pair.Value.Clone()))).ToArray(),execution.Revision);
+        }
+    }
+
+    /// <summary>Full authoritative snapshots, with atomic subscribe/read and no network I/O under the lock.
+    /// Intermediate revisions may coalesce: outstanding attempts and final status remain in the snapshot.</summary>
+    public async Task<BrowserWork> WaitForWorkAsync(Guid id, string sessionId, string owner, long afterRevision, CancellationToken cancellation)
+    {
+        if(afterRevision < -1)throw new ProtocolException(400,"revision","Invalid execution revision.");
+        while(true)
+        {
+            cancellation.ThrowIfCancellationRequested();
+            Task changed;
+            lock(gate)
+            {
+                var work=Next(id,sessionId,owner);
+                var execution=Find(id);
+                if(execution.Parent is not null)throw new ProtocolException(400,"stream_root","Work subscriptions must target the root execution.");
+                if(afterRevision>execution.Revision)throw new ProtocolException(409,"revision","Execution revision is ahead of the server.");
+                if(afterRevision<execution.Revision||Terminal(execution))return work;
+                changed=execution.NextChange.Task;
+            }
+            // Renew a live subscription's lease even while a dialog or server node is running.
+            // This timer never emits a network message or starts/repeats a segment.
+            try { await changed.WaitAsync(TimeSpan.FromSeconds(10),cancellation).ConfigureAwait(false); }
+            catch(TimeoutException) { }
         }
     }
     public ExecutionSnapshot Result(Guid id,string? sessionId,string? owner,BrowserResult result)
@@ -875,6 +945,10 @@ public sealed class Orchestrator(TimeProvider clock, IFlowRuntimeFactory factory
     {
         item.Events.Add(new($"server-{item.Id}-{item.Events.Count}",Now,environment,kind,status,segment,node,connection,message,duration,item.Plan.FlowId,item.Id,item.Parent?.Id,item.CallNodeId,profile));
         var root=item;while(root.Parent is not null)root=root.Parent;
+        var change=root.NextChange;
+        root.Revision++;
+        root.NextChange=new(TaskCreationOptions.RunContinuationsAsynchronously);
+        change.TrySetResult(root.Revision);
         // Delivery never participates in the state transition; polling is authoritative.
         try { changes?.Changed(root.Owner,root.Id); } catch { /* Notification failure must not fail a flow. */ }
     }

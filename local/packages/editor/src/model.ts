@@ -18,7 +18,7 @@ export interface EditorResource {
 }
 export interface EditorTab {id:string; resourceId:string; view:string; title?:string; pinned:boolean}
 export interface EditorView {id:string; component:ComponentType; props?:Record<string,unknown>; keepAlive?:boolean}
-export interface EditorPanel {id:string;placement:'tree'|'tab';component:ComponentType;props?:Record<string,unknown>}
+export interface EditorPanel {id:string;placement:'tree'|'tab'|'workspace-header-top'|'workspace-header-bottom'|'workspace-bottom';component:ComponentType;panelComponent?:ComponentType;props?:Record<string,unknown>}
 export interface EditorDropTarget {canDrop:(resourceId:string)=>boolean;drop:(resourceId:string)=>void}
 export interface EditorProvider {rootDrop?:EditorDropTarget;id:string; label:string; views:EditorView[]; commands?:EditorCommand[];panels?:EditorPanel[]}
 export interface EditorDocument {
@@ -35,7 +35,7 @@ export interface EditorOverlay {id:string;component:ComponentType;tabId?:string;
 export interface EditorSnapshot {
  providers:EditorProvider[];resources:EditorResource[];selectedId:string|null;tabs:EditorTab[];activeId:string|null;
  documents:Record<string,EditorDocument>;scopes:SaveScope[];status:Record<string,ScopeStatus>;
- expanded:Record<string,boolean>;overlays:EditorOverlay[];error:string|null;
+ expanded:Record<string,boolean>;overlays:EditorOverlay[];workspacePanels:EditorPanel[];error:string|null;
 }
 export type DirtyDecision='save'|'discard'|'cancel';
 export interface EditorPreferences {version:1;tabs:EditorTab[];activeId:string|null;expanded:Record<string,boolean>}
@@ -44,13 +44,14 @@ const clone=(value:unknown)=>structuredClone(value);
 const dirtyCache=new WeakMap<EditorDocument,boolean>();
 export function documentDirty(doc:EditorDocument){if(!dirtyCache.has(doc))dirtyCache.set(doc,doc.draft!==doc.saved&&doc.fingerprint(doc.draft)!==doc.fingerprint(doc.saved));return dirtyCache.get(doc)!;}
 export function createEditorStore(options:{identityKey:string;storage?:Pick<Storage,'getItem'|'setItem'>;confirm?:(message:string)=>Promise<DirtyDecision>} ) {
- const initial:EditorSnapshot={providers:[],resources:[],selectedId:null,tabs:[],activeId:null,documents:{},scopes:[],status:{},expanded:{},overlays:[],error:null};
+ const initial:EditorSnapshot={providers:[],resources:[],selectedId:null,tabs:[],activeId:null,documents:{},scopes:[],status:{},expanded:{},overlays:[],workspacePanels:[],error:null};
  const store=writable(initial);let pending:EditorPreferences|undefined;let destroyed=false;
  const preferenceKey=`adam.editor.v1.${encodeURIComponent(options.identityKey)}`;
  try{const parsed=JSON.parse(options.storage?.getItem(preferenceKey)??'null');if(parsed?.version===1&&Array.isArray(parsed.tabs)&&parsed.expanded&&typeof parsed.expanded==='object')pending=parsed;}catch{/* Unavailable/corrupt personal preferences don't affect documents. */}
  const hadPreferences=!!pending;let restoreOrder=pending?.tabs.map(tab=>tab.id)??[];
  const orderRestored=(tabs:EditorTab[])=>[...tabs].sort((a,b)=>Number(b.pinned)-Number(a.pinned)||(restoreOrder.includes(a.id)?restoreOrder.indexOf(a.id):Infinity)-(restoreOrder.includes(b.id)?restoreOrder.indexOf(b.id):Infinity));
  const commandSets=new Map<string,EditorCommand[]>();
+ const panelSets=new Map<string,EditorPanel[]>();
  const snapshot=()=>get(store);
  const update=(fn:(state:EditorSnapshot)=>EditorSnapshot)=>{if(!destroyed)store.update(fn);};
  function persist(){const s=snapshot();try{options.storage?.setItem(preferenceKey,JSON.stringify({version:1,tabs:orderRestored([...s.tabs,...(pending?.tabs??[]).filter(t=>!s.tabs.some(open=>open.id===t.id))]),activeId:s.activeId??pending?.activeId??null,expanded:s.expanded}));}catch{/* Storage may be disabled. */}}
@@ -60,7 +61,8 @@ export function createEditorStore(options:{identityKey:string;storage?:Pick<Stor
  function canReload(id:string){const s=snapshot(),scope=s.scopes.find(item=>item.id===id);return !!scope&&!scope.locked&&!s.status[id]?.busy;}
  function activeContext():EditorContext {const s=snapshot(),tab=s.tabs.find(item=>item.id===s.activeId);const r=tab&&resource(tab.resourceId);return {...(tab?{tab}:{}),...(r?{resource:r}:{})};}
  function restore(){if(!pending)return;const s=snapshot();const tabs=pending.tabs.filter(t=>typeof t.id==='string'&&typeof t.view==='string'&&s.resources.some(r=>r.id===t.resourceId&&s.providers.find(p=>p.id===r.providerId)?.views.some(v=>v.id===t.view)));const ids=new Set(s.tabs.map(t=>t.id));update(s=>({...s,tabs:orderRestored([...s.tabs,...tabs.filter(t=>!ids.has(t.id))]),activeId:tabs.some(t=>t.id===pending?.activeId)?pending!.activeId:s.activeId,expanded:{...pending!.expanded,...s.expanded}}));pending={...pending,tabs:pending.tabs.filter(t=>!tabs.some(open=>open.id===t.id)),activeId:tabs.some(t=>t.id===pending?.activeId)?null:pending.activeId};}
- function provider(value:EditorProvider){update(s=>({...s,providers:[...s.providers.filter(p=>p.id!==value.id),value]}));restore();}
+ function workspacePanels(providers:EditorProvider[]){return [...providers.flatMap(provider=>provider.panels??[]),...[...panelSets.values()].flat()].filter(panel=>panel.placement==='workspace-header-top'||panel.placement==='workspace-header-bottom'||panel.placement==='workspace-bottom');}
+ function provider(value:EditorProvider){update(s=>{const providers=[...s.providers.filter(p=>p.id!==value.id),value];return {...s,providers,workspacePanels:workspacePanels(providers)};});restore();}
  function resources(providerId:string,values:EditorResource[]){
   if(values.some(r=>r.providerId!==providerId)||new Set(values.map(r=>r.id)).size!==values.length)throw new Error('Ungültige Ressourcenregistrierung.');
   update(s=>{const other=s.resources.filter(r=>r.providerId!==providerId);if(values.some(r=>other.some(o=>o.id===r.id)))throw new Error('Ressourcen-ID ist bereits registriert.');const all=[...other,...values];const tabs=s.tabs.filter(t=>all.some(r=>r.id===t.resourceId));return {...s,resources:all,tabs,activeId:tabs.some(t=>t.id===s.activeId)?s.activeId:tabs.at(-1)?.id??null};});restore();
@@ -126,6 +128,8 @@ export function createEditorStore(options:{identityKey:string;storage?:Pick<Stor
   registerCommands:(owner:string,commands:EditorCommand[])=>{commandSets.set(owner,commands);},
   commandsFor:(owner:string)=>commandSets.get(owner)??[],
   unregisterCommands:(owner:string)=>{commandSets.delete(owner);},
+  registerPanels:(owner:string,panels:EditorPanel[])=>{panelSets.set(owner,panels);update(s=>({...s,workspacePanels:workspacePanels(s.providers)}));},
+  unregisterPanels:(owner:string)=>{if(!panelSets.delete(owner))return;update(s=>({...s,workspacePanels:workspacePanels(s.providers)}));},
   hasChanges:()=>Object.values(snapshot().documents).some(documentDirty),
   destroy:()=>{destroyed=true;},
   hasPreferences:()=>hadPreferences,

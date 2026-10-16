@@ -7,10 +7,14 @@
   import GroupDeleteDialog from './GroupDeleteDialog.svelte';
   import {groupDeletion} from './layout.js';
   import MessagePanel from '@adam/editor/diagnostics/MessagePanel.svelte';
+  import WorkspaceNodeToolboxPanel from './WorkspaceNodeToolboxPanel.svelte';
+  import WorkspaceNodeToolboxButton from './WorkspaceNodeToolboxButton.svelte';
+  import {openBottomTab,openStatistics,updateDiagnostics,updateLogs,updateProfiler,updateStatistics} from './workspace-bottom-console.js';
   import {flowMessages} from './messages.js';
   import {ContractError} from '@adam-flow/core/flow-core/schema.js';
   $: messageBundle=bundle??{schemaVersion:1,rootGraphId:flow.id,graphs:[flow]};
   $: actionMessages=error?flowMessages(error,messageBundle,catalog.catalog,catalog.types,graphNames):[];
+  $: validationMessages=fullDiagnostics.length?flowMessages({diagnostics:fullDiagnostics},messageBundle,catalog.catalog,catalog.types,graphNames,'flow-validation'):[];
   function navigateMessage(target){if(target.graphId===flow.id)focusNodes(target.nodeIds);else dispatch('diagnostic',target);}
 
   import RecentEntities from "../host/RecentEntities.svelte";
@@ -29,7 +33,7 @@
  import ContextMenuStyles from './ContextMenuStyles.svelte';
   import RecordEditDialog from './RecordEditDialog.svelte';
   import {configureFlow} from './record-edit.js';
-  import {readPreference,writePreference,rememberInputs,restoreInputs} from './editor-preferences.js';
+  import {rememberInputs,restoreInputs} from './editor-preferences.js';
   import {executionBundle} from './execution-bundle.js';
   import '@adam-flow/editor/host.js';
   import {copyNodes,readNodes,pasteNodes,nodeClipboardMime,rememberNodes,rememberedNodes} from './clipboard.js';
@@ -76,12 +80,11 @@
   $: performanceNames=Object.fromEntries((bundle?.graphs??[flow]).flatMap(graph=>graph.nodes.map(node=>[`${graph.id}/${node.id}`,`${graphNames[graph.id]??graph.id}: ${definition(node)?.metadata?.label??node.type}`])));
   function closeStatistics(){performanceOpen=false;}
   $: statisticsEnvironment=executionMode==='local'?'browser':(externalRun?.invocation.hybridEnvironment??'server');
-  $: staticStatistics=performanceOpen?graphStatistics(flow,bundle,graph=>workspace.inspect(JSON.stringify(graph),executionBundle(bundle,graph,{}),statisticsEnvironment)):undefined;
+  $: staticStatistics=active?graphStatistics(flow,bundle,graph=>workspace.inspect(JSON.stringify(graph),executionBundle(bundle,graph,{}),statisticsEnvironment)):undefined;
   $: shownPerformance=externalRun&&!running?externalRun.events.filter(event=>event.profile||event.kind==='profile'):performanceEvents;
   import {appendLog} from './logs.js';
   import NodeDebug from './NodeDebug.svelte';
   import { startDebug,traceDebug,finishDebug,durationLabel } from './debug.js';
-  import NodeTree from './NodeTree.svelte';
   import { completeNodePositions,visibleInputPorts,nodeTree,nodeTreeText,graphPoint,zoomAt,connectionPaths,portPosition,bezierPath,orientPorts } from './model.js';
   import { createFlowWorkspace, nodeToolbox } from '@adam-flow/editor/host.js';
   import { isHybridType,inputRequired,flowInterface,graphCatalog,graphNodeDefinition,graphNodeType,sameGraphSignature } from '@adam-flow/core/flow-core/index.js';
@@ -97,21 +100,13 @@
   import ExpressionEditor from './ExpressionEditor.svelte';
   let expressionEditor;
   function openExpression(node,field){try{expressionEditor={nodeId:node.id,title:field.label,scalarResult:['orderBy','thenBy'].includes(queryOperation(node)),predicate:['where','any','all'].includes(queryOperation(node)),graph:parseContract('expression',node.config.expression??field.default)};}catch(cause){error=cause;}}
-  $: if(commandHost){
-    if(logsOpen)commandHost.overlay({id:commandOwner+'.logs',tabId:commandOwner,component:LogOverlay,props:{entries:logs,running,executionId:logExecutionId},events:{close:()=>logsOpen=false,clear:()=>logs=[]}});
-    else commandHost.closeOverlay(commandOwner+'.logs');
-  }
-  $: if(commandHost){
-    if(performanceOpen)commandHost.overlay({id:commandOwner+'.performance',tabId:commandOwner,component:StatisticsView,props:{statistics:staticStatistics,graphName,profiling,events:shownPerformance,running,history:externalRun&&!running?[]:performanceHistory,names:performanceNames},events:{close:closeStatistics}});
-    else commandHost.closeOverlay(commandOwner+'.performance');
-  }
   export let workspace=createFlowWorkspace();
   export let catalog;
   export let graphName='Flow';
   export let commandHost;export let commandOwner;let actionBar;
   $: tabCommands=[
-   {id:'statistics',label:'Statistics',placement:'tab',run:()=>performanceOpen=!performanceOpen},
-   {id:'logs',label:`Logs (${logs.length})`,placement:'tab',run:()=>logsOpen=!logsOpen},
+   {id:'statistics',label:'Statistics',placement:'tab',run:openStatistics},
+   {id:'logs',label:`Logs (${logs.length})`,placement:'tab',run:()=>{updateLogs(flow.id,graphName,{entries:logs,running,executionId:logExecutionId});openBottomTab(`logs:${flow.id}`);}},
    {id:'preview',label:'Vorschau öffnen',placement:'tab',enabled:()=>previewAvailable,run:()=>onPreview?.()},
    {id:'validate',label:'Prüfen',placement:'tab',enabled:()=>!!catalog&&!locked&&!running&&!validating&&!!flow.nodes.length,run:validateFull},
    {id:'clearDebug',label:'Debug zurücksetzen',placement:'tab',visible:()=>!!execution&&!running,enabled:()=>!readOnly,run:clearDebug},
@@ -249,13 +244,10 @@
   let logs=[],logsOpen=false,logExecutionId;
   let localEdit=false,inputDialog,runInputsOpen=false,runError='';
   $: if(previewVisible&&runInputsOpen)closeRunInputs();
-  let toolboxOpen=true,toolboxWidth=260,toolboxObserver;
   let canvasMenu,canvasMenuPosition={x:0,y:0},annotationPoint;
   $: allowedRuntimes=(flow.designation?flowDesignations.get(flow.designation)?.environments:undefined)??(inheritedDesignation?flowDesignations.get(inheritedDesignation)?.environments:undefined)??['server','browser'];
   function runtimeOptions(def){return def.environments.filter(env=>allowedRuntimes.includes(env));}
   function editLocal(draft){if(interfaceLocked)return;flow=configureFlow(flow,draft,catalog.catalog,(bundle?.graphs??[]).map(flow=>({id:flow.id,flow})));graphName=draft.name;positions=completeNodePositions(flow,positions);saveLayout();changed();}
-  function toggleToolbox(){toolboxOpen=!toolboxOpen;writePreference('toolbox',{open:toolboxOpen,width:toolboxWidth});}
-  function observeToolbox(element){toolboxObserver?.disconnect();toolboxObserver=new ResizeObserver(entries=>{const width=entries[0]?.borderBoxSize?.[0]?.inlineSize;if(width>=190){toolboxWidth=width;writePreference('toolbox',{open:toolboxOpen,width});}});toolboxObserver.observe(element);return {destroy(){toolboxObserver?.disconnect();}};}
   async function openCanvasMenu(event){
     if(readOnly||loading)return;
     if(event.type==='contextmenu'&&event.target.closest('.node,.comment-card,.node-group'))return;
@@ -306,6 +298,13 @@
     const link=document.createElement('a');link.href=url;link.download='flow2-node-tree.txt';link.click();setTimeout(()=>URL.revokeObjectURL(url),1000);
   }
   $: tree=nodeTree(palette.filter(node=>(!interfaceLocked||!node.flowPort)&&(flow.mode!=='hybrid'||portable(node))),search,nodeToolbox);
+  function treeForSearch(value){return nodeTree(palette.filter(node=>(!interfaceLocked||!node.flowPort)&&(flow.mode!=='hybrid'||portable(node))),value,nodeToolbox);}
+  $: if(commandHost&&active)commandHost.registerPanels(commandOwner,[{id:commandOwner+'.toolbox',placement:'workspace-header-top',component:WorkspaceNodeToolboxButton,panelComponent:WorkspaceNodeToolboxPanel,props:{catalog,loading,tree,treeForSearch,disabled:readOnly,onAdd:add,onDownload:downloadNodeTree}}]);
+  $: if(commandHost&&!active)commandHost.unregisterPanels(commandOwner);
+  $: if(active)updateStatistics({graphId:flow.id,statistics:staticStatistics,graphName,profiling:false,events:[],running:false,history:[],names:performanceNames});
+  $: if(active)updateDiagnostics({messages:[...validationMessages,...actionMessages],navigate:navigateMessage,canNavigate:target=>messageBundle.graphs.some(graph=>graph.id===target.graphId&&target.nodeIds.some(id=>graph.nodes.some(node=>node.id===id)))});
+  $: if(logExecutionId||logs.length||running)updateLogs(flow.id,graphName,{entries:logs,running,executionId:logExecutionId,clear:()=>logs=[]});
+  $: if(profiling&&(running||performanceEvents.length||performanceHistory.length))updateProfiler(flow.id,graphName,{statistics:undefined,graphName,profiling,events:shownPerformance,running,history:externalRun&&!running?[]:performanceHistory,names:performanceNames});
   $: definitions=Object.fromEntries((effectiveCatalog?.nodes||[]).map(node=>[`${node.type}@${node.version}${node.nodeId?'/'+node.nodeId:''}`,node]));
   $: connections=loading||!catalog?[]:connectionPaths(flow,definitions,positions,selectedFields);
   $: preview=connectionPreview(gesture,flow,definitions,positions,selectedFields);
@@ -734,7 +733,7 @@
     const runBundle=executionBundle(bundle,flow,inputs);
     const snapshot=runBundle?.graphs.find(graph=>graph.id===flow.id)??structuredClone(flow);
     flowOutputs=undefined;controlOutput=false;logs=[];logsOpen=!profiling;logExecutionId=undefined;
-    performanceEvents=[];profileBuffer=[];if(profiling){performanceOpen=true;const key=JSON.stringify([snapshot,runBundle,inputs]);if(key!==performanceKey){performanceHistory=[];performanceKey=key;}}
+    performanceEvents=[];profileBuffer=[];updateLogs(flow.id,graphName,{entries:logs,running:true,executionId:undefined,clear:()=>logs=[]},{open:true});if(profiling){performanceOpen=true;updateProfiler(flow.id,graphName,{statistics:undefined,graphName,profiling,events:[],running:true,history:[],names:performanceNames},{open:true});const key=JSON.stringify([snapshot,runBundle,inputs]);if(key!==performanceKey){performanceHistory=[];performanceKey=key;}}
     running=true;dispatch('runstate',true);cancelGesture();controller=new AbortController();notice='Flow wird ausgeführt …';
     debugNow=performance.now();debugNodes=startDebug(snapshot,workspace.inspect(JSON.stringify(snapshot),runBundle).plan.skippedNodeIds);
     execution={flowId:snapshot.id,version:snapshot.version,state:'starting',startedAt:debugNow,id:undefined};
@@ -757,7 +756,7 @@
       if(cancelled){notice='Ausführung abgebrochen.';error={code:'cancelled'};}else{notice='';error=cause;}
     }finally{performanceEvents=profileBuffer.slice();if(profiling){const report=summarizePerformance(performanceEvents);if(report.runMs!==null)performanceHistory=[...performanceHistory,{state:execution?.state,durationMs:report.runMs,cacheHits:report.cacheHits,cacheMisses:report.cacheMisses}].slice(-20);}clearInterval(debugTimer);running=false;dispatch('graphresult',{state:execution?.state,error:error||null,messages:error?flowMessages(error,messageBundle,catalog.catalog,catalog.types,graphNames):[],outputs:flowOutputs??{}});dispatch('graphend',execution?.state);dispatch('runstate',false);controller=undefined;}
   }
-  onMount(()=>{const prefs=readPreference('toolbox');if(prefs&&typeof prefs==='object'){toolboxOpen=prefs.open!==false;if(Number.isFinite(prefs.width))toolboxWidth=Math.max(190,Math.min(600,prefs.width));}void load();});onDestroy(()=>{disposed=true;wrapperRequest?.resolve(false);commandHost?.unregisterCommands(commandOwner);commandHost?.closeOverlay(commandOwner+'.logs');commandHost?.closeOverlay(commandOwner+'.performance');catalogController.abort();controller?.abort();clearInterval(debugTimer);});
+  onMount(()=>{void load();});onDestroy(()=>{disposed=true;wrapperRequest?.resolve(false);commandHost?.unregisterCommands(commandOwner);commandHost?.unregisterPanels(commandOwner);commandHost?.closeOverlay(commandOwner+'.logs');commandHost?.closeOverlay(commandOwner+'.performance');catalogController.abort();controller?.abort();clearInterval(debugTimer);});
 </script>
 {#if $checkProgress}<ValidationProgressDialog progress={$checkProgress}/>{/if}
 {#if groupDeleteRequest}<GroupDeleteDialog name={groupDeleteRequest.name} description="Beim Auflösen bleiben Nodes, Kommentare und Untergruppen erhalten. Beim Löschen wird der Gruppeninhalt einschließlich Untergruppen entfernt. Geschützte Start- und Schnittstellen-Nodes bleiben erhalten." onChoose={deleteGroupChoice} onClose={()=>groupDeleteRequest=null}/>{/if}
@@ -782,20 +781,7 @@
     </div>
   {/if}
   <div class="body">
-    <button class="toolbox-toggle" aria-expanded={toolboxOpen} aria-label={toolboxOpen?'Node-Bibliothek einklappen':'Node-Bibliothek ausklappen'} on:click={toggleToolbox}>{toolboxOpen?'‹':'›'}</button>
-    {#if toolboxOpen}<aside class="toolbox" style={`width:${toolboxWidth}px`} use:observeToolbox aria-label="Node-Bibliothek"><div class="library-heading"><h2>Nodes</h2><span>{catalog?.catalog.nodes.filter(node=>!node.control?.start).length||0}</span></div>
-      <button class="tree-download" disabled={loading||!catalog} title="Vollständigen Node-Baum mit Gruppen, technischen Namen und Laufzeiten als Text herunterladen" on:click={downloadNodeTree}>Node-Baum herunterladen</button>
-      <input class="search" aria-label="Nodes suchen" type="search" placeholder="Nodes suchen …" bind:value={search} />
-
-      <div class="tree">
-        {#if loading}<p class="muted" role="status">Nodes werden geladen …</p>
-        {:else if !catalog}<button on:click={load}>Erneut laden</button>
-        {:else}{#key search}<NodeTree {tree} expanded={!!search.trim()} disabled={readOnly} on:add={event=>add(event.detail)} />{/key}{#if !tree.children.length&&!tree.nodes.length}<p class="muted">Keine Nodes gefunden.</p>{/if}{/if}
-      </div>
-      <p class="library-help">Node auf den Graphen ziehen<br />oder zum Hinzufügen anklicken.<br />Gruppen: Node-Kopf hinein- oder herausziehen.<br />Shift+Ziehen auf der Fläche: Rechteckauswahl.<br />Strg/Shift-Klick: Mehrfachauswahl.<br />Strg+C / Strg+V: Kopieren / Einfügen.<br />Strg+A: Nodes, Kommentare und Gruppen auswählen.</p>
-    </aside>{/if}
     <div class="graph-area">
-      <MessagePanel messages={actionMessages} navigate={navigateMessage} canNavigate={target=>messageBundle.graphs.some(g=>g.id===target.graphId&&target.nodeIds.some(id=>g.nodes.some(n=>n.id===id)))}/>
     <!-- The graph is a composite keyboard surface; its nodes and ports expose native buttons. -->
     <!-- svelte-ignore a11y-no-noninteractive-tabindex a11y-no-noninteractive-element-interactions -->
     <div class="canvas" bind:this={canvas} role="application" aria-label="Flow-Graph" tabindex="0" on:contextmenu={openCanvasMenu} on:keydown={event=>{if(event.key==='ContextMenu'||event.key==='F10'&&event.shiftKey)openCanvasMenu(event);else key(event);}} on:copy={copySelection} on:paste={pasteSelection} on:pointerdown={panStart} on:wheel|nonpassive={wheel} on:dragover|preventDefault on:drop={drop}
@@ -875,7 +861,7 @@
       {#if !commandHost&&performanceOpen}<StatisticsView statistics={staticStatistics} {graphName} {profiling} events={shownPerformance} {running} history={externalRun&&!running?[]:performanceHistory} names={performanceNames} on:close={()=>performanceOpen=false} />{/if}
       {#if !commandHost&&logsOpen}<LogOverlay entries={logs} {running} executionId={logExecutionId} on:close={()=>logsOpen=false} on:clear={()=>logs=[]} />{/if}
       <div class="viewport-controls"><button aria-label="Verkleinern" on:click={()=>setZoom(zoom-.1)}>−</button><button title="Ansicht zurücksetzen" on:click={()=>{zoom=1;offset={x:0,y:0};}}>{Math.round(zoom*100)} %</button><button aria-label="Vergrößern" on:click={()=>setZoom(zoom+.1)}>＋</button></div>
-      <footer><span class:error={!!error} role="status">{(error?'Details im Meldungsbereich':notice)||(pending?'Gegenüberliegenden Port auswählen. Escape bricht ab.':'Fläche ziehen zum Verschieben · Mausrad zum Zoomen')}</span><span>{flow.nodes.length} Nodes · {flow.connections.length} Verbindungen</span></footer>
+      <footer><span class:error={!!error} role="status">{(error?'Details in der Fehlerkonsole':notice)||(pending?'Gegenüberliegenden Port auswählen. Escape bricht ab.':'Fläche ziehen zum Verschieben · Mausrad zum Zoomen')}</span><span>{flow.nodes.length} Nodes · {flow.connections.length} Verbindungen</span></footer>
     </div>
     </div>
   </div>
@@ -929,7 +915,7 @@
 
  .run-options{display:flex;flex-direction:column;align-items:flex-start;gap:12px;border:1px solid var(--f-border);border-radius:5px;padding:12px;margin:16px 0}.run-options label{display:flex;align-items:center;gap:7px}.run-inputs h2{margin:0;font-size:18px}.run-inputs h3{font-size:14px}
 
- .graph-title{display:flex;align-items:center;gap:6px}.edit-graph{opacity:0;padding:3px}.graph-title:hover .edit-graph,.graph-title:focus-within .edit-graph{opacity:1}.toolbox{min-width:190px;max-width:min(600px,50vw);resize:horizontal;overflow:auto}.toolbox-toggle{padding:3px;align-self:stretch;border-radius:0;width:20px}.run-inputs{position:fixed;width:520px;max-width:calc(100vw - 32px);max-height:85vh;overflow:auto;background:var(--f-panel);color:var(--f-text);border:1px solid var(--f-border);border-radius:8px;padding:20px}.run-inputs::backdrop{background:#0006}.dialog-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.run-inputs :global([role=alert]){color:var(--f-danger)}.environment select[aria-invalid=true]{border-color:var(--f-danger)}
+ .graph-title{display:flex;align-items:center;gap:6px}.edit-graph{opacity:0;padding:3px}.graph-title:hover .edit-graph,.graph-title:focus-within .edit-graph{opacity:1}.graph-area{order:1}.run-inputs{position:fixed;width:520px;max-width:calc(100vw - 32px);max-height:85vh;overflow:auto;background:var(--f-panel);color:var(--f-text);border:1px solid var(--f-border);border-radius:8px;padding:20px}.run-inputs::backdrop{background:#0006}.dialog-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:18px}.run-inputs :global([role=alert]){color:var(--f-danger)}.environment select[aria-invalid=true]{border-color:var(--f-danger)}
 
   .field-picker{padding:0 10px 10px}.field-picker select{width:100%;min-width:0}
 

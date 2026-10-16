@@ -55,7 +55,7 @@ public sealed class CompiledExecution : IDisposable
         else
         {
             inputs ??= new Dictionary<string,JsonElement>();
-            FlowInterfaces.RequireValues(plan.Interface.Inputs, inputs, registry: new(registry.Types), allowUnknown: allowUnknownInputs);
+            FlowInterfaces.RequireValues(plan.Interface.Inputs, inputs, registry: registry.ValidatedTypes, allowUnknown: allowUnknownInputs);
             flowInputs = plan.Interface.Inputs.Where(p => inputs.ContainsKey(p.Name)).ToDictionary(p => p.Name, p =>
             {
                 // Public parameters remain part of the interface even when their nodes are unused.

@@ -11,6 +11,8 @@
  import {internalGroups,internalGroupOf,saveInternalGroup,moveInternalGraph,deleteInternalGroup} from './internal-groups.js';
  import Flow2TreeTools from './Flow2TreeTools.svelte';
  import Flow2GraphTab from './Flow2GraphTab.svelte';
+ import WorkspaceBottomConsole from './WorkspaceBottomConsole.svelte';
+ import WorkspaceBottomConsoleButtons from './WorkspaceBottomConsoleButtons.svelte';
  import GroupDeleteDialog from './GroupDeleteDialog.svelte';
  import RecordEditDialog from './RecordEditDialog.svelte';
  import ExecutionOverlay from '../ui/ExecutionOverlay.svelte';
@@ -38,7 +40,7 @@
  let previewId=null,previewResult=null,fullscreen=false,previewMinimized=false,autoForeground=true;
  let importFile,pendingImport,importName='';
  let error='',loading=true,designationFilter='';
- let saveDiagnostics=[],diagnosticState,checkingValidation=false,pendingDiagnostic;
+ let saveDiagnostics=[],diagnosticState,checkingValidation=false,renewingValidation=false,pendingDiagnostic;
  $: statuses=validationStates(state);
  $: persistedResults=catalog?locateSavedDiagnostics(state,statuses):[];
  function locateSavedDiagnostics(current,status){
@@ -50,7 +52,7 @@
  $: designations=[...new Set([...flowDesignations.list().map(item=>item.id),...state.graphs.map(graph=>graph.flow.designation).filter(Boolean)])].map(id=>flowDesignations.get(id)??{id,name:`Unbekannt: ${id}`});
  const unsubscribe=editor.subscribe(snapshot=>{const shared=snapshot.documents[documentId];if(shared&&shared.draft!==lastShared){if(lastSaved&&lastSaved!==shared.saved){generation++;editors={};}lastSaved=shared.saved;lastShared=shared.draft;state=shared.draft;}});
  $: if(storageReady&&state!==lastShared){if(editor.edit(documentId,state))lastShared=state;}
- $: editingBlocked=!!runningId||!!$editor.status[scopeId]?.busy||!storageReady;
+ $: editingBlocked=!!runningId||!!$editor.status[scopeId]?.busy||renewingValidation||!storageReady;
  $: graphNames=Object.fromEntries(state.graphs.map(graph=>[graph.id,graph.name+(graph.inlineOwner?' · Inline':graph.ownerId?' · Intern':'')]));
  const actions={changeControlSignature,pasteInline,createInline,debugContext,invocationLabel,open,editRecord,openCall,endRun,changed,runState,deleteEntry,promote,internalCopy,
   diagnosticShown:()=>pendingDiagnostic=undefined,
@@ -62,9 +64,10 @@
   preview:()=>previewMinimized=false,choose:(id,value)=>chosen={...chosen,[id]:value},
   options:options=>{if(autoForeground!==options.autoForeground)autoForeground=options.autoForeground;if(fullscreen!==options.fullscreen)fullscreen=options.fullscreen;}
  };
- $: editor.provider({id,label:'Flows',rootDrop:dropTarget(),panels:[{id:'flow2.designations',placement:'tree',component:Flow2TreeTools,props:{designations,value:designationFilter,onChange:value=>designationFilter=value}}],views:[{id:'edit',component:Flow2GraphTab,keepAlive:true}],commands:[
+ $: editor.provider({id,label:'Flows',rootDrop:dropTarget(),panels:[{id:'flow2.designations',placement:'tree',component:Flow2TreeTools,props:{designations,value:designationFilter,onChange:value=>designationFilter=value}},{id:'flow2.bottomConsoleButtons',placement:'workspace-header-bottom',component:WorkspaceBottomConsoleButtons},{id:'flow2.bottomConsole',placement:'workspace-bottom',component:WorkspaceBottomConsole}],views:[{id:'edit',component:Flow2GraphTab,keepAlive:true}],commands:[
   {id:'flow2.export',label:'Workspace exportieren',icon:'buttonIcons/download',placement:'resource-header',enabled:()=>!editingBlocked,run:exportWorkspace},
   {id:'flow2.import',label:'Workspace importieren',icon:'buttonIcons/upload',placement:'resource-header',enabled:()=>!editingBlocked,run:()=>importFile.click()},
+  {id:'flow2.renewValidation',label:'Erneut validieren und Freigabe speichern',placement:'resource-header',enabled:()=>storageReady&&!editingBlocked&&!editor.scopeDirty(scopeId),run:renewValidation},
  ]});
  $: editor.scope({id:scopeId,label:'Flow-Workspace',providerId:id,locked:!!runningId||!storageReady,save:save,reload:reload});
  function command(key,label,run,enabled=()=>!editingBlocked){return {id:key,label,placement:'context',run,enabled};}
@@ -160,6 +163,19 @@
    if(disposed)throw new Error('Editor geschlossen.');persistenceDocument=doc;
    return [{id:documentId,draft:fromDocument(doc,draft)}];
   }catch(cause){throw new Error(persistenceError(cause));}finally{checkingValidation=false;}
+ }
+ async function renewValidation(){
+  if(!storageReady||editingBlocked||editor.scopeDirty(scopeId))throw new Error('Bitte ungespeicherte Änderungen zuerst speichern oder verwerfen.');
+  renewingValidation=true;checkingValidation=true;saveDiagnostics=[];diagnosticState=undefined;
+  try{
+   const draft=structuredClone(state);
+   const doc=await saveProgress.run(id=>saveWorkspace(draft,persistenceDocument,controller.signal,workspace.validationCapabilities(),id),{},controller.signal);
+   if(disposed)throw new Error('Editor wurde geschlossen.');
+   persistenceDocument=doc;
+   const renewed=fromDocument(doc,draft);
+   state=renewed;editor.replace(documentId,renewed);lastShared=renewed;
+  }catch(cause){throw new Error(persistenceError(cause));}
+  finally{checkingValidation=false;renewingValidation=false;}
  }
  async function showSaveDiagnostic(result){const target=state.graphs.find(g=>g.id===result.graphId);await open(target?.inlineOwner?target.ownerId:result.graphId);pendingDiagnostic=result;}
 

@@ -11,9 +11,10 @@ import {formattingNodes} from './nodes/formatting.js';
 import {binaryNodes} from './nodes/binary.js';
 import {assertNode} from './nodes/assert.js';
 import {start,wait,print,error,constantDate,constantString} from './nodes/basic.js';
+import {detailToolbarActionNodes} from './nodes/detail-toolbar-actions.js';
 /** Register portable nodes in either a standalone or application-owned registry. */
 export function registerCommonNodes(nodes:BrowserNodeRegistry):void {
- for(const node of [...scalarNodes,...extendedScalarNodes,...textNodes,...regexNodes,...jsonNodes,...formattingNodes,...binaryNodes,start,wait,print,error,constantDate,constantString,assertNode,coalesceImplementation()])nodes.register(node);
+ for(const node of [...scalarNodes,...extendedScalarNodes,...textNodes,...regexNodes,...jsonNodes,...formattingNodes,...binaryNodes,start,wait,print,error,constantDate,constantString,assertNode,coalesceImplementation(),...detailToolbarActionNodes])nodes.register(node);
  for(const definition of generalValueTemplates())nodes.register(valueImplementation(definition));
 }
 
@@ -28,4 +29,26 @@ export function createStandardRegistry(types:TypeDocument={schemaVersion:1,types
  registerCommonCodecs(codecs);
  registerCatalogValueCodecs(codecs,nodes.catalog);
  return {nodes,codecs};
+}
+
+/** Owner-scoped metadata cache. Every call still creates separate mutable registries.
+ * Revalidate when the supplied type document changes, including in-place edits. */
+export function createStandardRegistryFactory(){
+ const prepared=new WeakMap<TypeDocument,{signature:string;registry:ReturnType<typeof createStandardRegistry>}>();
+ return (types:TypeDocument)=>{
+  const signature=JSON.stringify(types),cached=prepared.get(types);
+  if(!cached||cached.signature!==signature){
+   const registry=createStandardRegistry(types);
+   // Keep the template private: callers may specialize their returned registry.
+   prepared.set(types,{signature,registry});
+   return fork(registry);
+  }
+  return fork(cached.registry);
+ };
+ function fork(template:ReturnType<typeof createStandardRegistry>){
+  const nodes=template.nodes.forkMetadata(),codecs=template.codecs.forkMetadata();
+  registerCommonNodes(nodes);registerCommonCodecs(codecs);
+  registerCatalogValueCodecs(codecs,nodes.catalog);
+  return {nodes,codecs};
+ }
 }

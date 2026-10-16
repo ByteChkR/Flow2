@@ -48,12 +48,17 @@ public sealed class NodeRegistry
 
     // Only share our privately owned, already validated type snapshot. Public getters
     // return defensive copies; nodes, CLR mappings and service delegates stay isolated.
-    private NodeRegistry(TypeDocument frozenTypes, TypeRegistry validatedTypes)
+    private NodeRegistry(TypeDocument frozenTypes, TypeRegistry validatedTypes, Func<IServiceProvider>? services = null)
     {
         types = frozenTypes;
         typeRegistry = validatedTypes;
+        this.services = services;
     }
     public NodeRegistry ForkEmptyMetadata() => new(types, typeRegistry);
+    /// <summary>Fresh registrations and service binding; only frozen type metadata is shared.</summary>
+    public NodeRegistry ForkEmptyExecution(Func<IServiceProvider>? services = null) => new(types, typeRegistry, services);
+    public IReadOnlyList<Diagnostic> ValidateCodecs(CodecCatalog codecs) => TransportContracts.ValidateCatalog(codecs, typeRegistry);
+    internal TypeRegistry ValidatedTypes => typeRegistry;
 
     internal IServiceProvider ExecutionServices() => services?.Invoke()
         ?? throw new InvalidOperationException("DI nodes require an execution service scope. Metadata registries cannot execute them.");
