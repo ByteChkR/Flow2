@@ -31,9 +31,9 @@ export class BrowserExecution {
   private readonly flowInputs:Record<string,JsonValue>;
   private readonly types:TypeRegistry;
   constructor(readonly executionId: string, flow: Flow, catalog: Catalog, types: TypeDocument,
-    capabilities: Capabilities, private readonly nodes: BrowserNodeRegistry, private readonly codecs: BrowserCodecRegistry, inputs:Record<string,JsonValue>={}, preparation?:{plan?:ExecutionPlan;snapshotNodeCatalog?:boolean;runtimeIndexes?:boolean}) {
-    // A prepared plan is supplied only by the run-local cache after successful validation.
-    this.compiledPlan = preparation?.plan??compileFlow(flow, catalog, types, {...capabilities,browser:codecs.catalog});
+    capabilities: Capabilities, private readonly nodes: BrowserNodeRegistry, private readonly codecs: BrowserCodecRegistry, inputs:Record<string,JsonValue>={}, preparation?:{plan?:ExecutionPlan;preparePlan?:typeof compileFlow;snapshotNodeCatalog?:boolean;runtimeIndexes?:boolean}) {
+    // Prepared plans come from trusted host caches, never from graph JSON.
+    this.compiledPlan = preparation?.plan??(preparation?.preparePlan??compileFlow)(flow, catalog, types, {...capabilities,browser:codecs.catalog});
     this.useIndexes=preparation?.runtimeIndexes!==false;
     this.nodesById=new Map(this.useIndexes?this.compiledPlan.nodes.map(node=>[node.id,node]):[]);
     this.segmentsById=new Map(this.useIndexes?this.compiledPlan.segments.map(segment=>[segment.id,segment]):[]);

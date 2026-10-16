@@ -15,7 +15,7 @@
   $: totals=report.rows.reduce((sum,row)=>({self:sum.self+row.selfMs,overhead:sum.overhead+row.overheadMs}),{self:0,overhead:0});
   $: completed=history.filter(run=>run.state==='completed');
   $: times=completed.map(run=>run.durationMs);
-  const phases={preflight:'Browser: Vorbereitung',preparation:'Backend: Vorbereitung',runtime:'Browser: Runtime erstellen',http:'HTTP inkl. Serverarbeit',run:'Gesamter Lauf',dispatch:'Backend: Segment-Dispatch'};
+  const phases={preflight:'Browser: Vorbereitung',preparation:'Backend: Vorbereitung',runtime:'Browser: Runtime erstellen',http:'HTTP inkl. Serverarbeit',signalr:'SignalR inkl. Serverarbeit',run:'Gesamter Lauf',dispatch:'Backend: Segment-Dispatch'};
   function label(event){return names[`${event.graphId}/${event.nodeId}`]??event.nodeId;}
   function download(){
     const url=URL.createObjectURL(new Blob([JSON.stringify({schemaVersion:1,exportedAt:new Date().toISOString(),graphName,statistics,history,events},null,2)],{type:'application/json'}));
@@ -54,7 +54,7 @@
       <p class="note">Diese Summen sind keine Graphlaufzeit. Subgraph- und UI-Wartezeiten sind aus Self herausgerechnet; sonstige I/O-Zeit bleibt enthalten.</p>
       {#if hotNodes.length}<h4>Nodes mit der höchsten Self + System-Zeit</h4><p class="legend"><span>● Eigenzeit</span><span class="system-label">● Node-Verwaltung</span></p>
       <div class="hot-nodes">{#each hotNodes as row}<div class="hot-node"><span title={label(row)}>{label(row)} · {row.environment==='server'?'Backend':'Browser'}</span><div class="hot-track" role="img" aria-label={`${label(row)}: Eigenzeit ${duration(row.selfMs)}, Verwaltung ${duration(row.overheadMs)}`}><i style={`width:${100*row.selfMs/maxNodeTime}%`}></i><i class="system-part" style={`width:${100*row.overheadMs/maxNodeTime}%`}></i></div><b>{duration(row.selfMs+row.overheadMs)}</b></div>{/each}</div>{/if}
-      <details open><summary>Vorbereitung und HTTP</summary>
+      <details open><summary>Vorbereitung und Transport</summary>
         <table><thead><tr><th>Phase</th><th>Dauer</th><th>Details</th></tr></thead><tbody>{#each report.profiled.filter(event=>phases[event.status]) as event}<tr><td>{phases[event.status]}</td><td>{duration(event.durationMs??0)}</td><td>{event.message??''}{#if event.profile?.queueMs!=null} · Sperre abwarten: {duration(event.profile.queueMs)}{/if}{#if event.profile?.resultLockMs!=null} · Ergebnissperre: {duration(event.profile.resultLockMs)}{/if}</td></tr>{/each}</tbody></table>
       </details>
       <details open><summary>Nodes – nach Verwaltungszeit sortiert</summary>

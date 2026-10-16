@@ -33,7 +33,7 @@ export function createLocalFlowCheck(options:OrchestratorOptions,bundle?:GraphBu
   registerValueNodes(flow,registry.nodes);registerCatalogValueCodecs(registry.codecs,catalog);
   if(bundle)registerGraphNodes(flow,bundle,registry.nodes,registry.codecs,async()=>{throw new Error('Validation cannot execute graphs.');});
   // Compile without constructing an execution: required input values arrive later.
-  const plan=compileFlow(flow,catalog,options.types,{server:options.serverCodecs,browser:registry.codecs.catalog});
+  const plan=(options.preparePlan??compileFlow)(flow,catalog,options.types,{server:options.serverCodecs,browser:registry.codecs.catalog});
   const localCatalog=options.subgraphOptimizations?.localCatalogSnapshot?registry.nodes.catalog:undefined;
   for(const node of plan.nodes){
    const local=resolveDefinition(localCatalog??registry.nodes.catalog,node);
@@ -99,7 +99,7 @@ export async function runLocalFlow(options:OrchestratorOptions):Promise<Executio
    }
   });
   const specializationFinished=options.profiling?performance.now():0;
-  const runtime=new BrowserExecution(executionId,flow,catalog,options.types,{server:options.serverCodecs,browser:registry.codecs.catalog},registry.nodes,registry.codecs,inputs,{...(cached?{plan:cached.plan}:{}),runtimeIndexes:options.subgraphOptimizations?.browserRuntimeIndexes!==false,snapshotNodeCatalog:options.subgraphOptimizations?.localCatalogSnapshot===true});
+  const runtime=new BrowserExecution(executionId,flow,catalog,options.types,{server:options.serverCodecs,browser:registry.codecs.catalog},registry.nodes,registry.codecs,inputs,{preparePlan:options.preparePlan,...(cached?{plan:cached.plan}:{}),runtimeIndexes:options.subgraphOptimizations?.browserRuntimeIndexes!==false,snapshotNodeCatalog:options.subgraphOptimizations?.localCatalogSnapshot===true});
   const plan=runtime.plan;
   if(options.subgraphOptimizations?.localPreparationCache&&!cached)prepared.set(flow.id,{catalog,plan});
   if(options.profiling)emit({kind:'profile',status:'subgraphPreparation',graphId:flow.id,invocationId:executionId,parentInvocationId,callNodeId,durationMs:performance.now()-preparationStarted,profile:{catalogMs:catalogFinished-preparationStarted,designationMs:registryStarted-catalogFinished,registryMs:registryFinished-registryStarted,specializationMs:specializationFinished-registryFinished,runtimeMs:performance.now()-specializationFinished,cacheHits:cached?1:0,cacheMisses:options.subgraphOptimizations?.localPreparationCache&&!cached?1:0}});
