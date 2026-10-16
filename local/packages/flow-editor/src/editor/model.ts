@@ -84,7 +84,8 @@ export function bezierPath(source:Point,target:Point):string {
   return `M ${source.x} ${source.y} C ${source.x+bend} ${source.y}, ${target.x-bend} ${target.y}, ${target.x} ${target.y}`;
 }
 /** Entity setters expose hundreds of optional ports; reveal only used or explicitly selected fields. */
-export function visibleInputPorts(node:import('@adam-flow/core/flow-core/index.js').Flow['nodes'][number],definition:NodeDefinition,connections:import('@adam-flow/core/flow-core/index.js').Flow['connections'],selected:string[]=[]):string[] {
+export function visibleInputPorts(node:import('@adam-flow/core/flow-core/index.js').Flow['nodes'][number],definition:NodeDefinition|undefined,connections:import('@adam-flow/core/flow-core/index.js').Flow['connections'],selected:string[]=[]):string[] {
+  if(!definition)return [];
   const ports=Object.keys(definition.inputs);
   if(node.type!=='Backend.EF.SetFields')return ports;
   const connected=new Set(connections.filter(edge=>edge.kind!=='control'&&edge.target.nodeId===node.id).map(edge=>edge.target.port));
@@ -93,9 +94,11 @@ export function visibleInputPorts(node:import('@adam-flow/core/flow-core/index.j
 export function portPosition(flow:import('@adam-flow/core/flow-core/index.js').Flow,definitions:Record<string,NodeDefinition>,positions:Record<string,Point>,address:EditorPort,selected:Record<string,string[]>={}):Point {
   const node=flow.nodes.find(node=>node.id===address.nodeId)!;
   const definition=(definitions[`${node.type}@${node.typeVersion}/${node.id}`]??definitions[`${node.type}@${node.typeVersion}`])!;
+  const position=nodePosition(flow,positions,node.id);
+  // A stale or host-specific node must stay visible as a diagnostic, not crash the entire graph.
+  if(!definition)return {x:position.x+(address.direction==='outputs'?240:0),y:position.y+103};
   const control=address.kind==='control';
   const index=control?0:(address.direction==='inputs'?visibleInputPorts(node,definition,flow.connections,selected[node.id]):Object.keys(definition.outputs)).indexOf(address.port)+(definition.control?1:0);
-  const position=nodePosition(flow,positions,node.id);
   return {x:position.x+(address.direction==='outputs'?240:0),y:position.y+103+index*28};
 }
 /** Explicit inputs let Svelte invalidate the entire geometry when a node moves. */

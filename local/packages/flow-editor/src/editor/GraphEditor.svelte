@@ -814,10 +814,17 @@
         </g></svg>
         {#each (loading||!catalog?[]:flow.nodes.filter(n=>!ownedReference(n.id))) as node (node.id)}
           {@const def=definition(node)}
-          {@const visiblePorts=visibleInputPorts(node,def,flow.connections,selectedFields[node.id])}
-          {@const hiddenPorts=Object.keys(def.inputs).filter(port=>!visiblePorts.includes(port))}
           {@const issue=signatureIssue(node,bundle,catalog)}
-          {@const hasError=!!issue||debugNodes[node.id]?.status==='failed'||!!validationErrors[node.id]?.length||!!fullNodeErrors[node.id]?.length}
+          {@const hasError=!def||!!issue||debugNodes[node.id]?.status==='failed'||!!validationErrors[node.id]?.length||!!fullNodeErrors[node.id]?.length}
+          {#if !def}
+            <article class="node unsupported-node" data-selectable-node={node.id} data-environment={node.environment} class:has-error={true} data-execution-status={debugNodes[node.id]?.status} class:selected={selected.includes(node.id)} style={`left:${positions[node.id]?.x??70}px;top:${positions[node.id]?.y??100}px`} aria-label={`Nicht unterstützte Node ${node.type}`}>
+              <div class="node-heading"><button class="node-drag" title="Diese Node ist im aktuell geladenen Katalog nicht vorhanden." aria-disabled="true"><span class="node-title">{node.type}</span><span class="error-badge">! Nicht unterstützt</span></button></div>
+              <div class="environment"><span>{node.environment==='server'?'Backend':'Browser'}</span><span>Nur lesbar</span></div>
+              <p>Node-Version {node.typeVersion} ist im aktuellen Host-Katalog nicht verfügbar. Der Graph bleibt unverändert.</p>
+            </article>
+          {:else}
+            {@const visiblePorts=visibleInputPorts(node,def,flow.connections,selectedFields[node.id])}
+            {@const hiddenPorts=Object.keys(def.inputs).filter(port=>!visiblePorts.includes(port))}
           <article class="node" data-selectable-node={node.id} data-environment={node.environment} class:has-error={hasError} data-execution-status={debugNodes[node.id]?.status} class:selected={selected.includes(node.id)} style={`left:${positions[node.id]?.x??70}px;top:${positions[node.id]?.y??100}px`} aria-label={def.metadata?.label||node.type}>
             <div class="node-heading"><button class="node-drag" title={`${def.metadata?.label||node.type}${def.metadata?.description?'\n'+def.metadata.description:''}`} aria-disabled={readOnly} on:pointerdown={event=>moveStart(event,node.id)} on:click={event=>{if(event.detail===0){selected=[node.id];clearAnnotations();}}}><span class="node-title">{node.graph?.graphId?(graphNames[node.graph.graphId]||node.graph.graphId):def.metadata?.label||node.type}</span>{#if hasError}<span class="error-badge">! Fehler</span>{/if}</button><button class="remove" title="Node entfernen" aria-label={`${def.metadata?.label||node.type} entfernen`} disabled={readOnly||def.control?.start||interfaceLocked&&!!def.flowPort} on:click={()=>remove(node.id)}>×</button></div>
             <div class="environment"><span>{flow.mode==='hybrid'?'Runtime des Aufrufers':'Ausführung'}</span>{#if flow.mode==='hybrid'}<span>{externalRun?.invocation.hybridEnvironment==='browser'?'Browser':externalRun?.invocation.hybridEnvironment==='server'||running?'Backend':'Beim Aufruf festgelegt'}</span>{:else}<select aria-label={`${def.metadata?.label||node.type}: Ausführung`} aria-invalid={!runtimeOptions(def).includes(node.environment)} disabled={readOnly||(runtimeOptions(def).length===1&&runtimeOptions(def).includes(node.environment))||!runtimeOptions(def).length} value={node.environment} on:change={event=>environment(node,event)}>{#if !runtimeOptions(def).includes(node.environment)}<option value={node.environment} disabled>{node.environment} · nicht zulässig</option>{/if}{#each runtimeOptions(def) as env}<option value={env}>{env==='server'?'Backend':'Browser'}</option>{/each}</select>{/if}</div>
@@ -862,6 +869,7 @@
             {#if issue}<button disabled={readOnly} on:click={()=>refreshSignature(node)}>Schnittstelle aktualisieren</button>{/if}
             <NodeDebug errors={[...(fullNodeErrors[node.id]||[]),...(validationErrors[node.id]||[]),...(issue?[issue]:[])]} debug={debugNodes[node.id]} environment={node.environment} now={debugNow} />
           </article>
+          {/if}
         {/each}
       </div>
       {#if !commandHost&&performanceOpen}<StatisticsView statistics={staticStatistics} {graphName} {profiling} events={shownPerformance} {running} history={externalRun&&!running?[]:performanceHistory} names={performanceNames} on:close={()=>performanceOpen=false} />{/if}
@@ -945,5 +953,6 @@
   .node.has-error{border-color:var(--f-danger);box-shadow:0 0 0 2px #dc2626,0 4px 16px #dc262626}
   .node.has-error .node-heading{box-shadow:inset 0 3px #dc2626}
   .error-badge{margin-left:auto;flex:none;padding:2px 6px;border-radius:4px;background:#b91c1c;color:white;font-size:10px;font-weight:700}
+  .unsupported-node p{margin:0;padding:0 12px 12px;color:var(--f-muted);font-size:11px;line-height:1.45}.unsupported-node .node-drag{cursor:not-allowed}.unsupported-node .environment{border-bottom:1px solid var(--f-border)}
   .parameter{display:flex;flex-direction:column;gap:5px;margin:10px 0;font-size:12px;overflow-wrap:anywhere}.parameter small{font-size:10px;color:var(--f-muted)}
 </style>
