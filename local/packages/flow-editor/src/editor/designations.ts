@@ -34,8 +34,9 @@ export function assignDesignation(flow: Flow, id: string | undefined, catalog: C
     const nodeId=createId();
     next.nodes.push({id:nodeId,type:generalValueNodeType(nodeId,'output'),typeVersion:1,environment,config:{name:'DefaultValues'},value:{operation:'output',type:{kind:'object',fields:{}}}});
   }
+  const declaredOutputs=Object.keys(definition.outputs?.required??{});
   const initialOutput = id==='default-value' ? 'DefaultValues'
-    : id==='frontend.detail.toolbarAction.v1' ? 'NextDetailsAction' : undefined;
+    : declaredOutputs.length===1 ? declaredOutputs[0] : undefined;
   if(initialOutput) {
     const start=next.nodes.find(node=>node.type==='Standard.Flow.Start');
     const nodeId=start?.id??createId();
@@ -44,6 +45,7 @@ export function assignDesignation(flow: Flow, id: string | undefined, catalog: C
     const bareInterface=next.connections.length===0&&next.nodes.every(node=>node.type==='Standard.Flow.Start'||node.value?.operation==='input'||node.value?.operation==='output');
     if(!start)next.nodes.unshift({id:nodeId,type:'Standard.Flow.Start',typeVersion:1,environment,config:{}});
     if(bareInterface) {
+      if(start)start.environment=environment;
       const output=next.nodes.find(node=>node.value?.operation==='output'&&node.config.name===initialOutput);
       if(output)next.connections.push({kind:'control',source:{nodeId,port:'out'},target:{nodeId:output.id,port:'in'}});
     }
